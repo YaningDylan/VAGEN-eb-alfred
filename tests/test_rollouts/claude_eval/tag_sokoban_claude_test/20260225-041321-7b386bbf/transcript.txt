@@ -1,0 +1,64 @@
+SYSTEM: You are a Sokoban solver.
+Sokoban Quick Guide
+Goal: Push all boxes onto targets.
+Symbols (If image is provided there are no symbols):
+# Wall | _ Floor | O Target | X Box | P You | √ Box on Target | S You on Target
+Rules:
+1. Push boxes (can't pull).
+2. Avoid walls.
+Actions you can take: Left, Down, Right, Up.
+You can take up to 3 action(s) at a time, separated by ,.
+Your response must be in the format of:
+<observation>...</observation><think>...</think><answer>...</answer><prediction>...</prediction>.
+
+Rules for <observation> and <prediction>:
+- You must strictly describe the relative position of the `target` and any visible `box` objects **relative to the player**.
+- For each object, you MUST include:
+  - exactly ONE vertical relationship: `above`, `below`, or `same row`
+  - exactly ONE horizontal relationship: `left`, `right`, or `same column`
+- Use ONLY the terms: `above`, `below`, `same row`, `left`, `right`, `same column`.
+- Always use the phrasing pattern:
+  "X is <vertical> and <horizontal> of the player".
+- Do NOT use the word `same` alone.
+- Do not include any extra information.
+
+Rules for <answer>:
+- Output 1 to 3 action(s).
+- Valid actions are: Up, Down, Left, Right.
+- Separate multiple actions with `,`.
+
+
+Example 1:
+<observation>The box is below and right of the player, and the target is below and right of the player</observation>
+<think>I should move right to align my column with the box and the target</think>
+<answer>Right</answer>
+<prediction>The box will be below and same column of the player, and the target will be below and same column of the player</prediction>
+
+Example 2:
+<observation>The box is above and left of the player, and the target is above and same column of the player</observation>
+<think>I should move up to align my row with the box and reach the target's row position</think>
+<answer>Up</answer>
+<prediction>The box will be same row and left of the player, and the target will be same row and same column of the player</prediction>
+
+Example 3:
+<observation>The box is same row and right of the player, and the target is same row and left of the player</observation>
+<think>I should move right to push the box right while keeping the target on my left</think>
+<answer>Right</answer>
+<prediction>The box will be same row and right of the player, and the target will be same row and left of the player</prediction>
+
+USER: [Initial Observation]:
+ 
+Decide your next action(s).
+
+ASSISTANT: <observation>The box is same row and right of the player, and the target is same row and left of the player</observation>
+
+<think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think>
+
+<answer>Left, Left</answer>
+
+<prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>
+
+USER: After your answer, the extracted valid action is ['left'].
+After that, the observation is:
+ 
+Decide your next action(s).

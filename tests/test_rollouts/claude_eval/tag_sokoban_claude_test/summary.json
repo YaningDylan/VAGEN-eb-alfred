@@ -1,0 +1,714 @@
+{
+  "created_at": "2026-02-25T04:13:39.200502",
+  "n_episodes": 3,
+  "success_rate": 0.6666666666666666,
+  "avg_cumulative_reward": 1.0,
+  "avg_turns": 3.3333333333333335,
+  "error_rollouts": [],
+  "episodes": [
+    {
+      "rollout_id": "20260225-041321-7b386bbf",
+      "seed": 43,
+      "num_turns": 1,
+      "terminated": true,
+      "finish_reason": "done",
+      "success": true,
+      "cumulative_reward": 1.1,
+      "per_turn": [
+        {
+          "turn": 0,
+          "reward": null,
+          "success": false,
+          "info": {}
+        },
+        {
+          "turn": 1,
+          "reward": 1.1,
+          "success": true,
+          "info": {
+            "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation>\n\n<think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think>\n\n<answer>Left, Left</answer>\n\n<prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+            "llm_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation><think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think><answer>Left, Left</answer><prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+            "observation_content": "The box is same row and right of the player, and the target is same row and left of the player",
+            "think_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+            "reasoning_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+            "prediction_content": "The box will be same row and right of the player, and the target will be same row and same column of the player",
+            "action_content": "Left, Left",
+            "actions": [
+              "left",
+              "left"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": true
+              },
+              "traj_metrics": {
+                "success": true
+              }
+            },
+            "success": true
+          }
+        }
+      ],
+      "tag_id": "sokoban_claude_test",
+      "env_name": "Sokoban",
+      "split": "test",
+      "max_turns": 5
+    },
+    {
+      "rollout_id": "20260225-041321-2d84c603",
+      "seed": 44,
+      "num_turns": 5,
+      "terminated": false,
+      "finish_reason": "max_turns",
+      "success": false,
+      "cumulative_reward": 0.5,
+      "per_turn": [
+        {
+          "turn": 0,
+          "reward": null,
+          "success": false,
+          "info": {}
+        },
+        {
+          "turn": 1,
+          "reward": 0.1,
+          "success": false,
+          "info": {
+            "llm_raw_response": "<observation>The box is above and same column of the player, and the target is above and left of the player</observation>\n\n<think>I need to push the box onto the target. The box is directly above me and the target is above and to the left. I should move up to push the box upward, then I'll need to position myself to push it left onto the target.</think>\n\n<answer>Up</answer>\n\n<prediction>The box will be above and same column of the player, and the target will be same row and left of the player</prediction>",
+            "llm_response": "<observation>The box is above and same column of the player, and the target is above and left of the player</observation><think>I need to push the box onto the target. The box is directly above me and the target is above and to the left. I should move up to push the box upward, then I'll need to position myself to push it left onto the target.</think><answer>Up</answer><prediction>The box will be above and same column of the player, and the target will be same row and left of the player</prediction>",
+            "observation_content": "The box is above and same column of the player, and the target is above and left of the player",
+            "think_content": "I need to push the box onto the target. The box is directly above me and the target is above and to the left. I should move up to push the box upward, then I'll need to position myself to push it left onto the target.",
+            "reasoning_content": "I need to push the box onto the target. The box is directly above me and the target is above and to the left. I should move up to push the box upward, then I'll need to position myself to push it left onto the target.",
+            "prediction_content": "The box will be above and same column of the player, and the target will be same row and left of the player",
+            "action_content": "Up",
+            "actions": [
+              "up"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": true
+              },
+              "traj_metrics": {
+                "success": false
+              }
+            },
+            "success": false
+          }
+        },
+        {
+          "turn": 2,
+          "reward": 0.1,
+          "success": false,
+          "info": {
+            "llm_raw_response": "<observation>The box is same row and same column of the player, and the target is same row and left of the player</observation>\n\n<think>The box is now on the same row as me and directly on top of me (same column). The target is on the same row but to the left. I need to move left to push the box left onto the target.</think>\n\n<answer>Left</answer>\n\n<prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+            "llm_response": "<observation>The box is same row and same column of the player, and the target is same row and left of the player</observation><think>The box is now on the same row as me and directly on top of me (same column). The target is on the same row but to the left. I need to move left to push the box left onto the target.</think><answer>Left</answer><prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+            "observation_content": "The box is same row and same column of the player, and the target is same row and left of the player",
+            "think_content": "The box is now on the same row as me and directly on top of me (same column). The target is on the same row but to the left. I need to move left to push the box left onto the target.",
+            "reasoning_content": "The box is now on the same row as me and directly on top of me (same column). The target is on the same row but to the left. I need to move left to push the box left onto the target.",
+            "prediction_content": "The box will be same row and left of the player, and the target will be same row and left of the player",
+            "action_content": "Left",
+            "actions": [
+              "left"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": true
+              },
+              "traj_metrics": {
+                "success": false
+              }
+            },
+            "success": false
+          }
+        },
+        {
+          "turn": 3,
+          "reward": 0.1,
+          "success": false,
+          "info": {
+            "llm_raw_response": "<observation>The box is same row and left of the player, and the target is same row and left of the player</observation>\n\n<think>Perfect! The box is now on the target (they are both in the same position - same row and left of the player). The puzzle should be solved as the box is on the target. However, I can see from the image that the box appears to be on the target (yellow box on the dark target square), so the level should be complete.</think>\n\n<answer>Left</answer>\n\n<prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+            "llm_response": "<observation>The box is same row and left of the player, and the target is same row and left of the player</observation><think>Perfect! The box is now on the target (they are both in the same position - same row and left of the player). The puzzle should be solved as the box is on the target. However, I can see from the image that the box appears to be on the target (yellow box on the dark target square), so the level should be complete.</think><answer>Left</answer><prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+            "observation_content": "The box is same row and left of the player, and the target is same row and left of the player",
+            "think_content": "Perfect! The box is now on the target (they are both in the same position - same row and left of the player). The puzzle should be solved as the box is on the target. However, I can see from the image that the box appears to be on the target (yellow box on the dark target square), so the level should be complete.",
+            "reasoning_content": "Perfect! The box is now on the target (they are both in the same position - same row and left of the player). The puzzle should be solved as the box is on the target. However, I can see from the image that the box appears to be on the target (yellow box on the dark target square), so the level should be complete.",
+            "prediction_content": "The box will be same row and left of the player, and the target will be same row and left of the player",
+            "action_content": "Left",
+            "actions": [
+              "left"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": false
+              },
+              "traj_metrics": {
+                "success": false
+              }
+            },
+            "success": false
+          }
+        },
+        {
+          "turn": 4,
+          "reward": 0.1,
+          "success": false,
+          "info": {
+            "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and right of the player</observation>\n\n<think>I can see that I've moved left and now the box is to my right, and the target is also to my right. Looking at the image, it appears the box (yellow) is still on the target (dark square). The puzzle should already be solved since the box is on the target. I don't need to make any more moves.</think>\n\n<answer>Right</answer>\n\n<prediction>The box will be same row and right of the player, and the target will be same row and right of the player</prediction>",
+            "llm_response": "<observation>The box is same row and right of the player, and the target is same row and right of the player</observation><think>I can see that I've moved left and now the box is to my right, and the target is also to my right. Looking at the image, it appears the box (yellow) is still on the target (dark square). The puzzle should already be solved since the box is on the target. I don't need to make any more moves.</think><answer>Right</answer><prediction>The box will be same row and right of the player, and the target will be same row and right of the player</prediction>",
+            "observation_content": "The box is same row and right of the player, and the target is same row and right of the player",
+            "think_content": "I can see that I've moved left and now the box is to my right, and the target is also to my right. Looking at the image, it appears the box (yellow) is still on the target (dark square). The puzzle should already be solved since the box is on the target. I don't need to make any more moves.",
+            "reasoning_content": "I can see that I've moved left and now the box is to my right, and the target is also to my right. Looking at the image, it appears the box (yellow) is still on the target (dark square). The puzzle should already be solved since the box is on the target. I don't need to make any more moves.",
+            "prediction_content": "The box will be same row and right of the player, and the target will be same row and right of the player",
+            "action_content": "Right",
+            "actions": [
+              "right"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": true
+              },
+              "traj_metrics": {
+                "success": false
+              }
+            },
+            "success": false
+          }
+        },
+        {
+          "turn": 5,
+          "reward": 0.1,
+          "success": false,
+          "info": {
+            "llm_raw_response": "<observation>The box is same row and same column of the player, and the target is same row and same column of the player</observation>\n\n<think>I'm now on the same position as both the box and target. This means I'm standing on the target square with the box also on the target. The puzzle should be solved since the box is on the target. I don't need to move anymore as the objective is complete.</think>\n\n<answer>Up</answer>\n\n<prediction>The box will be above and same column of the player, and the target will be same row and same column of the player</prediction>",
+            "llm_response": "<observation>The box is same row and same column of the player, and the target is same row and same column of the player</observation><think>I'm now on the same position as both the box and target. This means I'm standing on the target square with the box also on the target. The puzzle should be solved since the box is on the target. I don't need to move anymore as the objective is complete.</think><answer>Up</answer><prediction>The box will be above and same column of the player, and the target will be same row and same column of the player</prediction>",
+            "observation_content": "The box is same row and same column of the player, and the target is same row and same column of the player",
+            "think_content": "I'm now on the same position as both the box and target. This means I'm standing on the target square with the box also on the target. The puzzle should be solved since the box is on the target. I don't need to move anymore as the objective is complete.",
+            "reasoning_content": "I'm now on the same position as both the box and target. This means I'm standing on the target square with the box also on the target. The puzzle should be solved since the box is on the target. I don't need to move anymore as the objective is complete.",
+            "prediction_content": "The box will be above and same column of the player, and the target will be same row and same column of the player",
+            "action_content": "Up",
+            "actions": [
+              "up"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": true
+              },
+              "traj_metrics": {
+                "success": false
+              }
+            },
+            "success": false
+          }
+        }
+      ],
+      "tag_id": "sokoban_claude_test",
+      "env_name": "Sokoban",
+      "split": "test",
+      "max_turns": 5
+    },
+    {
+      "rollout_id": "20260225-041325-73cd72c8",
+      "seed": 42,
+      "num_turns": 4,
+      "terminated": true,
+      "finish_reason": "done",
+      "success": true,
+      "cumulative_reward": 1.4000000000000001,
+      "per_turn": [
+        {
+          "turn": 0,
+          "reward": null,
+          "success": false,
+          "info": {}
+        },
+        {
+          "turn": 1,
+          "reward": 0.1,
+          "success": false,
+          "info": {
+            "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation>\n\n<think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think>\n\n<answer>Left, Left</answer>\n\n<prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+            "llm_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation><think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think><answer>Left, Left</answer><prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+            "observation_content": "The box is same row and right of the player, and the target is same row and left of the player",
+            "think_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+            "reasoning_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+            "prediction_content": "The box will be same row and right of the player, and the target will be same row and same column of the player",
+            "action_content": "Left, Left",
+            "actions": [
+              "left",
+              "left"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": false
+              },
+              "traj_metrics": {
+                "success": false
+              }
+            },
+            "success": false
+          }
+        },
+        {
+          "turn": 2,
+          "reward": 0.1,
+          "success": false,
+          "info": {
+            "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and same column of the player</observation>\n\n<think>Now I'm positioned on the target, and the box is to my right. I need to push the box left onto the target where I'm currently standing. I should move right to push the box left onto the target.</think>\n\n<answer>Right</answer>\n\n<prediction>The box will be same row and same column of the player, and the target will be same row and same column of the player</prediction>",
+            "llm_response": "<observation>The box is same row and right of the player, and the target is same row and same column of the player</observation><think>Now I'm positioned on the target, and the box is to my right. I need to push the box left onto the target where I'm currently standing. I should move right to push the box left onto the target.</think><answer>Right</answer><prediction>The box will be same row and same column of the player, and the target will be same row and same column of the player</prediction>",
+            "observation_content": "The box is same row and right of the player, and the target is same row and same column of the player",
+            "think_content": "Now I'm positioned on the target, and the box is to my right. I need to push the box left onto the target where I'm currently standing. I should move right to push the box left onto the target.",
+            "reasoning_content": "Now I'm positioned on the target, and the box is to my right. I need to push the box left onto the target where I'm currently standing. I should move right to push the box left onto the target.",
+            "prediction_content": "The box will be same row and same column of the player, and the target will be same row and same column of the player",
+            "action_content": "Right",
+            "actions": [
+              "right"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": true
+              },
+              "traj_metrics": {
+                "success": false
+              }
+            },
+            "success": false
+          }
+        },
+        {
+          "turn": 3,
+          "reward": 0.1,
+          "success": false,
+          "info": {
+            "llm_raw_response": "<observation>The box is same row and left of the player, and the target is same row and left of the player</observation>\n\n<think>Perfect! I can see that the box is now on the target (they are both to my left in the same position). The puzzle appears to be solved as the box has been successfully pushed onto the target. The green checkmark symbol likely indicates the box is on the target.</think>\n\n<answer>Left</answer>\n\n<prediction>The box will be same row and same column of the player, and the target will be same row and same column of the player</prediction>",
+            "llm_response": "<observation>The box is same row and left of the player, and the target is same row and left of the player</observation><think>Perfect! I can see that the box is now on the target (they are both to my left in the same position). The puzzle appears to be solved as the box has been successfully pushed onto the target. The green checkmark symbol likely indicates the box is on the target.</think><answer>Left</answer><prediction>The box will be same row and same column of the player, and the target will be same row and same column of the player</prediction>",
+            "observation_content": "The box is same row and left of the player, and the target is same row and left of the player",
+            "think_content": "Perfect! I can see that the box is now on the target (they are both to my left in the same position). The puzzle appears to be solved as the box has been successfully pushed onto the target. The green checkmark symbol likely indicates the box is on the target.",
+            "reasoning_content": "Perfect! I can see that the box is now on the target (they are both to my left in the same position). The puzzle appears to be solved as the box has been successfully pushed onto the target. The green checkmark symbol likely indicates the box is on the target.",
+            "prediction_content": "The box will be same row and same column of the player, and the target will be same row and same column of the player",
+            "action_content": "Left",
+            "actions": [
+              "left"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": true
+              },
+              "traj_metrics": {
+                "success": false
+              }
+            },
+            "success": false
+          }
+        },
+        {
+          "turn": 4,
+          "reward": 1.1,
+          "success": true,
+          "info": {
+            "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and same column of the player</observation>\n\n<think>I can see that I'm now on the target (same position), and the box is to my right. The box appears to have moved off the target when I moved left. I need to push the box back onto the target. Since I'm on the target and the box is to my right, I should move right to push the box right, but that would move it away from the target. Instead, I need to get to the right side of the box first, then push it left onto the target.</think>\n\n<answer>Right, Right</answer>\n\n<prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+            "llm_response": "<observation>The box is same row and right of the player, and the target is same row and same column of the player</observation><think>I can see that I'm now on the target (same position), and the box is to my right. The box appears to have moved off the target when I moved left. I need to push the box back onto the target. Since I'm on the target and the box is to my right, I should move right to push the box right, but that would move it away from the target. Instead, I need to get to the right side of the box first, then push it left onto the target.</think><answer>Right, Right</answer><prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+            "observation_content": "The box is same row and right of the player, and the target is same row and same column of the player",
+            "think_content": "I can see that I'm now on the target (same position), and the box is to my right. The box appears to have moved off the target when I moved left. I need to push the box back onto the target. Since I'm on the target and the box is to my right, I should move right to push the box right, but that would move it away from the target. Instead, I need to get to the right side of the box first, then push it left onto the target.",
+            "reasoning_content": "I can see that I'm now on the target (same position), and the box is to my right. The box appears to have moved off the target when I moved left. I need to push the box back onto the target. Since I'm on the target and the box is to my right, I should move right to push the box right, but that would move it away from the target. Instead, I need to get to the right side of the box first, then push it left onto the target.",
+            "prediction_content": "The box will be same row and left of the player, and the target will be same row and left of the player",
+            "action_content": "Right, Right",
+            "actions": [
+              "right",
+              "right"
+            ],
+            "format_correct": true,
+            "metrics": {
+              "turn_metrics": {
+                "action_is_valid": true,
+                "action_is_effective": true
+              },
+              "traj_metrics": {
+                "success": true
+              }
+            },
+            "success": true
+          }
+        }
+      ],
+      "tag_id": "sokoban_claude_test",
+      "env_name": "Sokoban",
+      "split": "test",
+      "max_turns": 5
+    }
+  ],
+  "per_tag": {
+    "tag_sokoban_claude_test": {
+      "created_at": "2026-02-25T04:13:39.200502",
+      "n_episodes": 3,
+      "success_rate": 0.6666666666666666,
+      "avg_cumulative_reward": 1.0,
+      "avg_turns": 3.3333333333333335,
+      "error_rollouts": [],
+      "episodes": [
+        {
+          "rollout_id": "20260225-041321-7b386bbf",
+          "seed": 43,
+          "num_turns": 1,
+          "terminated": true,
+          "finish_reason": "done",
+          "success": true,
+          "cumulative_reward": 1.1,
+          "per_turn": [
+            {
+              "turn": 0,
+              "reward": null,
+              "success": false,
+              "info": {}
+            },
+            {
+              "turn": 1,
+              "reward": 1.1,
+              "success": true,
+              "info": {
+                "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation>\n\n<think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think>\n\n<answer>Left, Left</answer>\n\n<prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+                "llm_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation><think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think><answer>Left, Left</answer><prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+                "observation_content": "The box is same row and right of the player, and the target is same row and left of the player",
+                "think_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+                "reasoning_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+                "prediction_content": "The box will be same row and right of the player, and the target will be same row and same column of the player",
+                "action_content": "Left, Left",
+                "actions": [
+                  "left",
+                  "left"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": true
+                  },
+                  "traj_metrics": {
+                    "success": true
+                  }
+                },
+                "success": true
+              }
+            }
+          ],
+          "tag_id": "sokoban_claude_test",
+          "env_name": "Sokoban",
+          "split": "test",
+          "max_turns": 5
+        },
+        {
+          "rollout_id": "20260225-041321-2d84c603",
+          "seed": 44,
+          "num_turns": 5,
+          "terminated": false,
+          "finish_reason": "max_turns",
+          "success": false,
+          "cumulative_reward": 0.5,
+          "per_turn": [
+            {
+              "turn": 0,
+              "reward": null,
+              "success": false,
+              "info": {}
+            },
+            {
+              "turn": 1,
+              "reward": 0.1,
+              "success": false,
+              "info": {
+                "llm_raw_response": "<observation>The box is above and same column of the player, and the target is above and left of the player</observation>\n\n<think>I need to push the box onto the target. The box is directly above me and the target is above and to the left. I should move up to push the box upward, then I'll need to position myself to push it left onto the target.</think>\n\n<answer>Up</answer>\n\n<prediction>The box will be above and same column of the player, and the target will be same row and left of the player</prediction>",
+                "llm_response": "<observation>The box is above and same column of the player, and the target is above and left of the player</observation><think>I need to push the box onto the target. The box is directly above me and the target is above and to the left. I should move up to push the box upward, then I'll need to position myself to push it left onto the target.</think><answer>Up</answer><prediction>The box will be above and same column of the player, and the target will be same row and left of the player</prediction>",
+                "observation_content": "The box is above and same column of the player, and the target is above and left of the player",
+                "think_content": "I need to push the box onto the target. The box is directly above me and the target is above and to the left. I should move up to push the box upward, then I'll need to position myself to push it left onto the target.",
+                "reasoning_content": "I need to push the box onto the target. The box is directly above me and the target is above and to the left. I should move up to push the box upward, then I'll need to position myself to push it left onto the target.",
+                "prediction_content": "The box will be above and same column of the player, and the target will be same row and left of the player",
+                "action_content": "Up",
+                "actions": [
+                  "up"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": true
+                  },
+                  "traj_metrics": {
+                    "success": false
+                  }
+                },
+                "success": false
+              }
+            },
+            {
+              "turn": 2,
+              "reward": 0.1,
+              "success": false,
+              "info": {
+                "llm_raw_response": "<observation>The box is same row and same column of the player, and the target is same row and left of the player</observation>\n\n<think>The box is now on the same row as me and directly on top of me (same column). The target is on the same row but to the left. I need to move left to push the box left onto the target.</think>\n\n<answer>Left</answer>\n\n<prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+                "llm_response": "<observation>The box is same row and same column of the player, and the target is same row and left of the player</observation><think>The box is now on the same row as me and directly on top of me (same column). The target is on the same row but to the left. I need to move left to push the box left onto the target.</think><answer>Left</answer><prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+                "observation_content": "The box is same row and same column of the player, and the target is same row and left of the player",
+                "think_content": "The box is now on the same row as me and directly on top of me (same column). The target is on the same row but to the left. I need to move left to push the box left onto the target.",
+                "reasoning_content": "The box is now on the same row as me and directly on top of me (same column). The target is on the same row but to the left. I need to move left to push the box left onto the target.",
+                "prediction_content": "The box will be same row and left of the player, and the target will be same row and left of the player",
+                "action_content": "Left",
+                "actions": [
+                  "left"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": true
+                  },
+                  "traj_metrics": {
+                    "success": false
+                  }
+                },
+                "success": false
+              }
+            },
+            {
+              "turn": 3,
+              "reward": 0.1,
+              "success": false,
+              "info": {
+                "llm_raw_response": "<observation>The box is same row and left of the player, and the target is same row and left of the player</observation>\n\n<think>Perfect! The box is now on the target (they are both in the same position - same row and left of the player). The puzzle should be solved as the box is on the target. However, I can see from the image that the box appears to be on the target (yellow box on the dark target square), so the level should be complete.</think>\n\n<answer>Left</answer>\n\n<prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+                "llm_response": "<observation>The box is same row and left of the player, and the target is same row and left of the player</observation><think>Perfect! The box is now on the target (they are both in the same position - same row and left of the player). The puzzle should be solved as the box is on the target. However, I can see from the image that the box appears to be on the target (yellow box on the dark target square), so the level should be complete.</think><answer>Left</answer><prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+                "observation_content": "The box is same row and left of the player, and the target is same row and left of the player",
+                "think_content": "Perfect! The box is now on the target (they are both in the same position - same row and left of the player). The puzzle should be solved as the box is on the target. However, I can see from the image that the box appears to be on the target (yellow box on the dark target square), so the level should be complete.",
+                "reasoning_content": "Perfect! The box is now on the target (they are both in the same position - same row and left of the player). The puzzle should be solved as the box is on the target. However, I can see from the image that the box appears to be on the target (yellow box on the dark target square), so the level should be complete.",
+                "prediction_content": "The box will be same row and left of the player, and the target will be same row and left of the player",
+                "action_content": "Left",
+                "actions": [
+                  "left"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": false
+                  },
+                  "traj_metrics": {
+                    "success": false
+                  }
+                },
+                "success": false
+              }
+            },
+            {
+              "turn": 4,
+              "reward": 0.1,
+              "success": false,
+              "info": {
+                "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and right of the player</observation>\n\n<think>I can see that I've moved left and now the box is to my right, and the target is also to my right. Looking at the image, it appears the box (yellow) is still on the target (dark square). The puzzle should already be solved since the box is on the target. I don't need to make any more moves.</think>\n\n<answer>Right</answer>\n\n<prediction>The box will be same row and right of the player, and the target will be same row and right of the player</prediction>",
+                "llm_response": "<observation>The box is same row and right of the player, and the target is same row and right of the player</observation><think>I can see that I've moved left and now the box is to my right, and the target is also to my right. Looking at the image, it appears the box (yellow) is still on the target (dark square). The puzzle should already be solved since the box is on the target. I don't need to make any more moves.</think><answer>Right</answer><prediction>The box will be same row and right of the player, and the target will be same row and right of the player</prediction>",
+                "observation_content": "The box is same row and right of the player, and the target is same row and right of the player",
+                "think_content": "I can see that I've moved left and now the box is to my right, and the target is also to my right. Looking at the image, it appears the box (yellow) is still on the target (dark square). The puzzle should already be solved since the box is on the target. I don't need to make any more moves.",
+                "reasoning_content": "I can see that I've moved left and now the box is to my right, and the target is also to my right. Looking at the image, it appears the box (yellow) is still on the target (dark square). The puzzle should already be solved since the box is on the target. I don't need to make any more moves.",
+                "prediction_content": "The box will be same row and right of the player, and the target will be same row and right of the player",
+                "action_content": "Right",
+                "actions": [
+                  "right"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": true
+                  },
+                  "traj_metrics": {
+                    "success": false
+                  }
+                },
+                "success": false
+              }
+            },
+            {
+              "turn": 5,
+              "reward": 0.1,
+              "success": false,
+              "info": {
+                "llm_raw_response": "<observation>The box is same row and same column of the player, and the target is same row and same column of the player</observation>\n\n<think>I'm now on the same position as both the box and target. This means I'm standing on the target square with the box also on the target. The puzzle should be solved since the box is on the target. I don't need to move anymore as the objective is complete.</think>\n\n<answer>Up</answer>\n\n<prediction>The box will be above and same column of the player, and the target will be same row and same column of the player</prediction>",
+                "llm_response": "<observation>The box is same row and same column of the player, and the target is same row and same column of the player</observation><think>I'm now on the same position as both the box and target. This means I'm standing on the target square with the box also on the target. The puzzle should be solved since the box is on the target. I don't need to move anymore as the objective is complete.</think><answer>Up</answer><prediction>The box will be above and same column of the player, and the target will be same row and same column of the player</prediction>",
+                "observation_content": "The box is same row and same column of the player, and the target is same row and same column of the player",
+                "think_content": "I'm now on the same position as both the box and target. This means I'm standing on the target square with the box also on the target. The puzzle should be solved since the box is on the target. I don't need to move anymore as the objective is complete.",
+                "reasoning_content": "I'm now on the same position as both the box and target. This means I'm standing on the target square with the box also on the target. The puzzle should be solved since the box is on the target. I don't need to move anymore as the objective is complete.",
+                "prediction_content": "The box will be above and same column of the player, and the target will be same row and same column of the player",
+                "action_content": "Up",
+                "actions": [
+                  "up"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": true
+                  },
+                  "traj_metrics": {
+                    "success": false
+                  }
+                },
+                "success": false
+              }
+            }
+          ],
+          "tag_id": "sokoban_claude_test",
+          "env_name": "Sokoban",
+          "split": "test",
+          "max_turns": 5
+        },
+        {
+          "rollout_id": "20260225-041325-73cd72c8",
+          "seed": 42,
+          "num_turns": 4,
+          "terminated": true,
+          "finish_reason": "done",
+          "success": true,
+          "cumulative_reward": 1.4000000000000001,
+          "per_turn": [
+            {
+              "turn": 0,
+              "reward": null,
+              "success": false,
+              "info": {}
+            },
+            {
+              "turn": 1,
+              "reward": 0.1,
+              "success": false,
+              "info": {
+                "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation>\n\n<think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think>\n\n<answer>Left, Left</answer>\n\n<prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+                "llm_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation><think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think><answer>Left, Left</answer><prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+                "observation_content": "The box is same row and right of the player, and the target is same row and left of the player",
+                "think_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+                "reasoning_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+                "prediction_content": "The box will be same row and right of the player, and the target will be same row and same column of the player",
+                "action_content": "Left, Left",
+                "actions": [
+                  "left",
+                  "left"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": false
+                  },
+                  "traj_metrics": {
+                    "success": false
+                  }
+                },
+                "success": false
+              }
+            },
+            {
+              "turn": 2,
+              "reward": 0.1,
+              "success": false,
+              "info": {
+                "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and same column of the player</observation>\n\n<think>Now I'm positioned on the target, and the box is to my right. I need to push the box left onto the target where I'm currently standing. I should move right to push the box left onto the target.</think>\n\n<answer>Right</answer>\n\n<prediction>The box will be same row and same column of the player, and the target will be same row and same column of the player</prediction>",
+                "llm_response": "<observation>The box is same row and right of the player, and the target is same row and same column of the player</observation><think>Now I'm positioned on the target, and the box is to my right. I need to push the box left onto the target where I'm currently standing. I should move right to push the box left onto the target.</think><answer>Right</answer><prediction>The box will be same row and same column of the player, and the target will be same row and same column of the player</prediction>",
+                "observation_content": "The box is same row and right of the player, and the target is same row and same column of the player",
+                "think_content": "Now I'm positioned on the target, and the box is to my right. I need to push the box left onto the target where I'm currently standing. I should move right to push the box left onto the target.",
+                "reasoning_content": "Now I'm positioned on the target, and the box is to my right. I need to push the box left onto the target where I'm currently standing. I should move right to push the box left onto the target.",
+                "prediction_content": "The box will be same row and same column of the player, and the target will be same row and same column of the player",
+                "action_content": "Right",
+                "actions": [
+                  "right"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": true
+                  },
+                  "traj_metrics": {
+                    "success": false
+                  }
+                },
+                "success": false
+              }
+            },
+            {
+              "turn": 3,
+              "reward": 0.1,
+              "success": false,
+              "info": {
+                "llm_raw_response": "<observation>The box is same row and left of the player, and the target is same row and left of the player</observation>\n\n<think>Perfect! I can see that the box is now on the target (they are both to my left in the same position). The puzzle appears to be solved as the box has been successfully pushed onto the target. The green checkmark symbol likely indicates the box is on the target.</think>\n\n<answer>Left</answer>\n\n<prediction>The box will be same row and same column of the player, and the target will be same row and same column of the player</prediction>",
+                "llm_response": "<observation>The box is same row and left of the player, and the target is same row and left of the player</observation><think>Perfect! I can see that the box is now on the target (they are both to my left in the same position). The puzzle appears to be solved as the box has been successfully pushed onto the target. The green checkmark symbol likely indicates the box is on the target.</think><answer>Left</answer><prediction>The box will be same row and same column of the player, and the target will be same row and same column of the player</prediction>",
+                "observation_content": "The box is same row and left of the player, and the target is same row and left of the player",
+                "think_content": "Perfect! I can see that the box is now on the target (they are both to my left in the same position). The puzzle appears to be solved as the box has been successfully pushed onto the target. The green checkmark symbol likely indicates the box is on the target.",
+                "reasoning_content": "Perfect! I can see that the box is now on the target (they are both to my left in the same position). The puzzle appears to be solved as the box has been successfully pushed onto the target. The green checkmark symbol likely indicates the box is on the target.",
+                "prediction_content": "The box will be same row and same column of the player, and the target will be same row and same column of the player",
+                "action_content": "Left",
+                "actions": [
+                  "left"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": true
+                  },
+                  "traj_metrics": {
+                    "success": false
+                  }
+                },
+                "success": false
+              }
+            },
+            {
+              "turn": 4,
+              "reward": 1.1,
+              "success": true,
+              "info": {
+                "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and same column of the player</observation>\n\n<think>I can see that I'm now on the target (same position), and the box is to my right. The box appears to have moved off the target when I moved left. I need to push the box back onto the target. Since I'm on the target and the box is to my right, I should move right to push the box right, but that would move it away from the target. Instead, I need to get to the right side of the box first, then push it left onto the target.</think>\n\n<answer>Right, Right</answer>\n\n<prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+                "llm_response": "<observation>The box is same row and right of the player, and the target is same row and same column of the player</observation><think>I can see that I'm now on the target (same position), and the box is to my right. The box appears to have moved off the target when I moved left. I need to push the box back onto the target. Since I'm on the target and the box is to my right, I should move right to push the box right, but that would move it away from the target. Instead, I need to get to the right side of the box first, then push it left onto the target.</think><answer>Right, Right</answer><prediction>The box will be same row and left of the player, and the target will be same row and left of the player</prediction>",
+                "observation_content": "The box is same row and right of the player, and the target is same row and same column of the player",
+                "think_content": "I can see that I'm now on the target (same position), and the box is to my right. The box appears to have moved off the target when I moved left. I need to push the box back onto the target. Since I'm on the target and the box is to my right, I should move right to push the box right, but that would move it away from the target. Instead, I need to get to the right side of the box first, then push it left onto the target.",
+                "reasoning_content": "I can see that I'm now on the target (same position), and the box is to my right. The box appears to have moved off the target when I moved left. I need to push the box back onto the target. Since I'm on the target and the box is to my right, I should move right to push the box right, but that would move it away from the target. Instead, I need to get to the right side of the box first, then push it left onto the target.",
+                "prediction_content": "The box will be same row and left of the player, and the target will be same row and left of the player",
+                "action_content": "Right, Right",
+                "actions": [
+                  "right",
+                  "right"
+                ],
+                "format_correct": true,
+                "metrics": {
+                  "turn_metrics": {
+                    "action_is_valid": true,
+                    "action_is_effective": true
+                  },
+                  "traj_metrics": {
+                    "success": true
+                  }
+                },
+                "success": true
+              }
+            }
+          ],
+          "tag_id": "sokoban_claude_test",
+          "env_name": "Sokoban",
+          "split": "test",
+          "max_turns": 5
+        }
+      ]
+    }
+  }
+}

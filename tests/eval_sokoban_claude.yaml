@@ -1,0 +1,41 @@
+envs:
+  - name: Sokoban
+    n_envs: 3
+    tag_id: sokoban_claude_test
+    seed: [42, 45, 1]
+    split: test
+    max_turns: 5
+    config:
+      dim_room: [6, 6]
+      max_steps: 100
+      num_boxes: 1
+      render_mode: vision
+      max_actions_per_step: 3
+      action_sep: ","
+      use_example_in_sys_prompt: true
+      prompt_format: wm
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./test_rollouts/claude_eval
+  default_max_turns: 5
+
+run:
+  backend: claude
+  base_seed: 0
+  max_concurrent_jobs: 2
+  resume: off
+  live_summary: true
+
+backends:
+  claude:
+    api_key: ""
+    base_url: null
+    model: "claude-sonnet-4-20250514"
+    max_concurrency: 2
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

@@ -1,0 +1,3 @@
+[
+  "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation>\n\n<think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think>\n\n<answer>Left, Left</answer>\n\n<prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>"
+]

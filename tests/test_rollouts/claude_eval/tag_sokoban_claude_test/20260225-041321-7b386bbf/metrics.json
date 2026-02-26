@@ -1,0 +1,56 @@
+{
+  "rollout_id": "20260225-041321-7b386bbf",
+  "seed": 43,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.1,
+  "rewards": [
+    1.1
+  ],
+  "num_turns": 1,
+  "infos": [
+    {},
+    {
+      "llm_raw_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation>\n\n<think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think>\n\n<answer>Left, Left</answer>\n\n<prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+      "llm_response": "<observation>The box is same row and right of the player, and the target is same row and left of the player</observation><think>I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.</think><answer>Left, Left</answer><prediction>The box will be same row and right of the player, and the target will be same row and same column of the player</prediction>",
+      "observation_content": "The box is same row and right of the player, and the target is same row and left of the player",
+      "think_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+      "reasoning_content": "I can see that the box is to my right and the target is to my left, all in the same row. Since I need to push the box onto the target, I should move left to get behind the box (relative to the target), then push it left onto the target.",
+      "prediction_content": "The box will be same row and right of the player, and the target will be same row and same column of the player",
+      "action_content": "Left, Left",
+      "actions": [
+        "left",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "dim_room": [
+      6,
+      6
+    ],
+    "max_steps": 100,
+    "num_boxes": 1,
+    "render_mode": "vision",
+    "max_actions_per_step": 3,
+    "action_sep": ",",
+    "use_example_in_sys_prompt": true,
+    "prompt_format": "wm"
+  },
+  "max_turns": 5,
+  "tag_id": "sokoban_claude_test",
+  "split": "test",
+  "env_name": "Sokoban"
+}
