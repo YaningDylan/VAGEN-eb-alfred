@@ -1,0 +1,54 @@
+# EB-ALFRED evaluation with Claude API via remote environment server.
+#
+# Prerequisites:
+#   1. Start the EB-ALFRED remote server (requires embench conda env + GPU X server):
+#      DISPLAY=:1 python -m vagen.envs.eb_alfred.serve --port 8000
+#
+#   2. Run this evaluation (requires vagen conda env):
+#      python -m vagen.evaluate.run_eval --config tests/eval_eb_alfred_claude.yaml
+
+envs:
+  - name: RemoteEnv
+    n_envs: 3
+    tag_id: eb_alfred_claude_test
+    seed: [42, 45, 48]
+    split: test
+    max_turns: 30
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      eval_set: base
+      x_display: "0"
+      selected_indexes: [0, 1, 2]
+      max_turns: 30
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./test_rollouts/claude_eval
+  default_max_turns: 30
+
+run:
+  backend: claude
+  base_seed: 0
+  max_concurrent_jobs: 2
+  resume: off
+  live_summary: true
+
+backends:
+  claude:
+    api_key: ""
+    base_url: null
+    model: "claude-sonnet-4-20250514"
+    max_concurrency: 2
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

@@ -1,14 +1,16 @@
 """
-EB-ALFRED environment adapter for VAGEN.
+EB-Manipulation environment adapter for VAGEN.
 
-Wraps the EBAlfEnv from EmbodiedBench as a GymImageEnv,
+Wraps the EBManEnv from EmbodiedBench as a GymImageEnv,
 enabling integration with VAGEN's RL training and evaluation pipeline.
 
-The underlying EBAlfEnv uses AI2-THOR for 3D household robot task simulation.
-It requires a GPU-accelerated X server for rendering.
+The underlying EBManEnv uses PyRep/CoppeliaSim for robot manipulation
+simulation (Franka Panda arm). It runs headless and does not require
+a GPU-accelerated X server (unlike EB-ALFRED/AI2-THOR).
 """
 
 import asyncio
+import copy
 import os
 import numpy as np
 from PIL import Image
@@ -21,98 +23,138 @@ from .utils.prompt import (
     init_observation_template,
     action_template,
 )
-from .utils.utils import parse_response, match_action, numpy_to_pil
+from .utils.utils import parse_response, parse_action_vector, numpy_to_pil
 
 from vagen.envs.gym_image_env import GymImageEnv
 
 
 @dataclass
-class EbAlfredEnvConfig:
-    """Configuration for EB-ALFRED environment."""
+class EbManipulationEnvConfig:
+    """Configuration for EB-Manipulation environment."""
 
     # Environment settings
     eval_set: str = "base"
     exp_name: str = "vagen_eval"
     down_sample_ratio: float = 1.0
-    resolution: int = 500
-    x_display: str = "1"
+    img_size: Tuple[int, int] = (500, 500)
     selected_indexes: List[int] = field(default_factory=list)
-    detection_box: bool = False
+    log_path: Optional[str] = None
 
     # Interaction settings
-    max_turns: int = 30
+    max_turns: int = 15
     max_actions_per_step: int = 1
     action_sep: str = ","
     image_placeholder: str = "<image>"
     prompt_format: str = "free_think"
     use_example_in_sys_prompt: bool = True
-
-    # Observation image settings
-    obs_image_size: Optional[int] = None  # Resize obs image to this size (square). None = use original.
+    camera_view: str = "front_rgb"
 
     # Reward settings
     format_reward: float = 0.1
     success_reward: float = 1.0
 
 
-class EbAlfred(GymImageEnv):
+class EbManipulation(GymImageEnv):
     """
-    EB-ALFRED environment implementing the GymImageEnv async interface.
+    EB-Manipulation environment implementing the GymImageEnv async interface.
 
-    Wraps EBAlfEnv from EmbodiedBench, which uses AI2-THOR for
-    3D household robot task simulation (e.g., "Clean a rag, put it away").
+    Wraps EBManEnv from EmbodiedBench, which uses PyRep/CoppeliaSim for
+    robot manipulation tasks (pick, stack, place, wipe).
 
     Key features:
-    - 162+ discrete actions (find, pick up, put down, open, close, etc.)
-    - Dynamic action space per episode (multi-instance objects)
-    - Vision-only observations (RGB images from AI2-THOR)
-    - Dense reward via task progress + format reward
+    - 7D discrete action space: [X, Y, Z, Roll, Pitch, Yaw, Gripper]
+    - Multiple camera views (front, wrist, shoulder, overhead)
+    - 4 task types across 5 evaluation sets
+    - Object coordinate information for spatial reasoning
     """
 
     def __init__(self, env_config: Dict[str, Any]):
         super().__init__(env_config)
 
         # Filter config keys to only those in the dataclass
-        valid_keys = EbAlfredEnvConfig.__dataclass_fields__
+        valid_keys = EbManipulationEnvConfig.__dataclass_fields__
         filtered = {k: v for k, v in env_config.items() if k in valid_keys}
-        self.config = EbAlfredEnvConfig(**filtered)
+        self.config = EbManipulationEnvConfig(**filtered)
 
-        # Set X display before importing/creating EBAlfEnv
-        import embodiedbench.envs.eb_alfred.EBAlfEnv as ebalfenv_mod
-        ebalfenv_mod.X_DISPLAY = self.config.x_display
-        from embodiedbench.envs.eb_alfred.EBAlfEnv import EBAlfEnv
+        # Import and create EBManEnv
+        import amsolver.task_environment as _amsolver_te
+        import embodiedbench.envs.eb_manipulation.EBManEnv as _ebman_mod
+        from embodiedbench.envs.eb_manipulation.EBManEnv import EBManEnv
 
-        self.env = EBAlfEnv(
+        # Patch TTMS_FOLDER to be absolute (it's relative by default,
+        # which only works if cwd == EmbodiedBench root)
+        _eb_man_dir = os.path.dirname(os.path.abspath(_ebman_mod.__file__))
+        _abs_ttms = os.path.join(_eb_man_dir, "")
+        _ebman_mod.TTMS_FOLDER = _abs_ttms
+        _amsolver_te.TTMS_FOLDER = _abs_ttms
+
+        self.env = EBManEnv(
             eval_set=self.config.eval_set,
-            exp_name=self.config.exp_name,
+            render_mode=None,  # No Qt window; images come from obs cameras
+            img_size=self.config.img_size,
             down_sample_ratio=self.config.down_sample_ratio,
             selected_indexes=self.config.selected_indexes,
-            detection_box=self.config.detection_box,
-            resolution=self.config.resolution,
+            log_path=self.config.log_path,
         )
 
         # Adapter state (reset per episode)
         self._total_turns: int = 0
-        self._last_action: str = ""
+        self._last_action_str: str = ""
         self._last_feedback: str = ""
-        self._action_list: List[str] = []
-        self._action_map: Dict[str, str] = {}  # lowercase -> original
+        self._object_coords: str = ""
 
     # ------------------------------------------------------------------
     # GymImageEnv abstract methods
     # ------------------------------------------------------------------
 
     async def close(self) -> None:
-        """Close AI2-THOR process."""
-        await asyncio.to_thread(self.env.close)
+        """Close CoppeliaSim/PyRep process.
+
+        CoppeliaSim often segfaults during Qt shutdown. We isolate
+        the shutdown in a forked child process so the parent (server)
+        survives.
+        """
+
+        def _fork_close():
+            pid = os.fork()
+            if pid == 0:
+                # Child: perform the close (may segfault)
+                try:
+                    self.env.close()
+                except Exception:
+                    pass
+                os._exit(0)
+            else:
+                # Parent: wait for child (with timeout)
+                import signal as _sig
+
+                def _alarm_handler(signum, frame):
+                    try:
+                        os.kill(pid, _sig.SIGKILL)
+                    except OSError:
+                        pass
+
+                old = _sig.signal(_sig.SIGALRM, _alarm_handler)
+                _sig.alarm(15)
+                try:
+                    os.waitpid(pid, 0)
+                except ChildProcessError:
+                    pass
+                finally:
+                    _sig.alarm(0)
+                    _sig.signal(_sig.SIGALRM, old)
+
+        try:
+            await asyncio.to_thread(_fork_close)
+        except Exception:
+            pass
 
     async def system_prompt(self) -> Dict[str, Any]:
         """
         Return the static system prompt.
 
-        Includes role description, action descriptions, guidelines,
-        and format instructions. The dynamic per-episode content
-        (task instruction, available actions) is in the reset observation.
+        Includes robot description, action space definition, coordinate
+        frame description, and format instructions.
         """
         sys_str = system_prompt()
         fmt_str = format_prompt(
@@ -129,33 +171,32 @@ class EbAlfred(GymImageEnv):
 
         The seed selects which episode to load from the dataset
         (seed % number_of_episodes). After reset, the observation
-        includes the task instruction, available actions, and
-        the initial RGB image from AI2-THOR.
+        includes the task instruction, object coordinates, and
+        the front RGB image from CoppeliaSim.
         """
         # Select episode based on seed
         episode_idx = seed % self.env.number_of_episodes
         self.env._current_episode_num = episode_idx
 
-        await asyncio.to_thread(self.env.reset)
+        description, obs = await asyncio.to_thread(self.env.reset)
 
         # Reset adapter state
         self._total_turns = 0
-        self._last_action = ""
+        self._last_action_str = ""
         self._last_feedback = ""
 
-        # Build action lookup for this episode (action space is dynamic)
-        self._action_list = list(self.env.language_skill_set)
-        self._action_map = {a.lower(): a for a in self._action_list}
+        # Extract object coordinates
+        self._object_coords = self._get_object_coords(self.env.last_frame_obs)
 
         # Build observation
-        obs = self._build_obs(init=True)
+        obs_dict = self._build_obs(init=True)
         info = {
             "task_instruction": self.env.episode_language_instruction,
-            "num_actions": len(self._action_list),
             "eval_set": self.config.eval_set,
             "episode_idx": episode_idx,
+            "task_class": getattr(self.env, "task_class", "unknown"),
         }
-        return obs, info
+        return obs_dict, info
 
     async def step(
         self, action_str: str
@@ -163,9 +204,8 @@ class EbAlfred(GymImageEnv):
         """
         Execute one step given the LLM's response.
 
-        Parses <think>...</think><answer>...</answer> from action_str,
-        matches the action against the current action space, and
-        executes it in AI2-THOR.
+        Parses <think>...</think><answer>[X,Y,Z,Roll,Pitch,Yaw,Gripper]</answer>
+        from action_str, converts to discrete action, and executes in CoppeliaSim.
         """
         self._total_turns += 1
 
@@ -196,30 +236,29 @@ class EbAlfred(GymImageEnv):
         }
 
         if format_correct and actions:
-            reward += self.config.format_reward
+            action_vector = parse_action_vector(actions[0])
 
-            for action_name in actions:
-                matched = match_action(action_name, self._action_list, self._action_map)
-
-                if matched is None:
-                    # Action name not recognized
-                    self._last_action = action_name
-                    self._last_feedback = (
-                        f"Action '{action_name}' is not a recognized action."
-                    )
-                    break
-
+            if action_vector is None:
+                # Could not parse the 7D action vector
+                self._last_action_str = parsed.get("action_content", "")
+                self._last_feedback = (
+                    "Could not parse a valid 7D action vector. "
+                    "Please output [X, Y, Z, Roll, Pitch, Yaw, Gripper] with integer values."
+                )
+            else:
+                reward += self.config.format_reward
                 metrics["turn_metrics"]["action_is_valid"] = True
 
-                # Execute in AI2-THOR
+                self._last_action_str = str(action_vector)
+
+                # Execute in CoppeliaSim (pass None for recorder)
                 obs_raw, step_reward, step_done, step_info = (
-                    await asyncio.to_thread(self.env.step, matched)
+                    await asyncio.to_thread(self.env.step, action_vector, None)
                 )
 
-                self._last_action = matched
                 self._last_feedback = step_info.get("env_feedback", "")
 
-                action_success = step_info.get("last_action_success", 0.0)
+                action_success = step_info.get("action_success", 0.0)
                 if action_success:
                     metrics["turn_metrics"]["action_is_effective"] = True
 
@@ -228,17 +267,19 @@ class EbAlfred(GymImageEnv):
                     done = True
                     reward += self.config.success_reward
                     metrics["traj_metrics"]["success"] = True
-                    break
 
                 if step_done:
                     done = True
-                    break
+
+                # Update object coordinates
+                self._object_coords = self._get_object_coords(self.env.last_frame_obs)
         else:
-            # Format error: no valid actions parsed
-            self._last_action = parsed.get("action_content", "")
+            # Format error: no valid action parsed
+            self._last_action_str = parsed.get("action_content", "")
             self._last_feedback = (
                 "Could not parse a valid action from your response. "
-                "Please use the format: <think>...</think><answer>action name</answer>"
+                "Please use the format: "
+                "<think>...</think><answer>[X, Y, Z, Roll, Pitch, Yaw, Gripper]</answer>"
             )
 
         # Check turn limit
@@ -248,8 +289,8 @@ class EbAlfred(GymImageEnv):
         info["metrics"] = metrics
         info["success"] = metrics["traj_metrics"]["success"]
 
-        obs = self._build_obs(init=False)
-        return obs, reward, done, info
+        obs_dict = self._build_obs(init=False)
+        return obs_dict, reward, done, info
 
     # ------------------------------------------------------------------
     # Internal helpers
@@ -257,23 +298,21 @@ class EbAlfred(GymImageEnv):
 
     def _build_obs(self, init: bool) -> Dict[str, Any]:
         """Build observation dict with image and text."""
-        frame = self.env.env.last_event.frame
+        frame = self.env.last_frame_obs[self.config.camera_view]
         img = numpy_to_pil(frame)
-        if self.config.obs_image_size is not None:
-            sz = self.config.obs_image_size
-            img = img.resize((sz, sz), Image.LANCZOS)
         img_str = self.config.image_placeholder
 
         if init:
             obs_str = init_observation_template(
                 task_instruction=self.env.episode_language_instruction,
-                action_list=self._action_list,
+                object_coords=self._object_coords,
                 img_str=img_str,
             )
         else:
             obs_str = action_template(
-                last_action=self._last_action,
+                last_action=self._last_action_str,
                 env_feedback=self._last_feedback,
+                object_coords=self._object_coords,
                 img_str=img_str,
             )
 
@@ -284,30 +323,54 @@ class EbAlfred(GymImageEnv):
             },
         }
 
+    def _get_object_coords(self, obs_dict: Dict) -> str:
+        """
+        Extract object coordinate information from observation.
+
+        Uses form_object_coord_for_input from EmbodiedBench if available,
+        otherwise returns a simple description.
+        """
+        try:
+            from embodiedbench.envs.eb_manipulation.eb_man_utils import (
+                form_object_coord_for_input,
+            )
+
+            task_class = getattr(self.env, "task_class", None)
+            if task_class and obs_dict:
+                avg_obj_coord, _, _, _ = form_object_coord_for_input(
+                    copy.deepcopy(obs_dict),
+                    task_class,
+                    [self.config.camera_view],
+                )
+                return str(avg_obj_coord)
+        except Exception:
+            pass
+
+        return "Object coordinates not available."
+
 
 # ------------------------------
 # Local async test (optional)
 # ------------------------------
 if __name__ == "__main__":
     import fire
+    import os
     import logging
 
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
     async def main_async(
         eval_set: str = "base",
-        resolution: int = 500,
-        x_display: str = "1",
-        save_path: str = "./test_eb_alfred",
+        img_size: Tuple[int, int] = (500, 500),
+        save_path: str = "./test_eb_manipulation",
         prompt_format: str = "free_think",
     ):
         cfg = {
             "eval_set": eval_set,
-            "resolution": resolution,
-            "x_display": x_display,
+            "img_size": img_size,
             "prompt_format": prompt_format,
         }
-        env = EbAlfred(cfg)
+        env = EbManipulation(cfg)
 
         print("System Prompt:")
         sys_prompt = await env.system_prompt()
@@ -316,8 +379,8 @@ if __name__ == "__main__":
 
         obs, info = await env.reset(seed=0)
         print(f"Task: {info['task_instruction']}")
-        print(f"Available actions: {info['num_actions']}")
-        print(f"Observation:\n{obs['obs_str'][:200]}...")
+        print(f"Task class: {info['task_class']}")
+        print(f"Observation:\n{obs['obs_str'][:300]}...")
 
         step = 0
         os.makedirs(save_path, exist_ok=True)
@@ -329,7 +392,7 @@ if __name__ == "__main__":
             step += 1
             print(f"\nStep {step}:")
             try:
-                action_input = input("Enter action (or 'quit'): ")
+                action_input = input("Enter action vector (e.g., [50,30,40,60,60,60,1]) or 'quit': ")
             except EOFError:
                 action_input = "quit"
 
@@ -348,7 +411,7 @@ if __name__ == "__main__":
                 img.save(os.path.join(save_path, f"step_{step}.png"))
             print(f"Reward: {reward}, Done: {done}")
             print(f"Success: {info.get('success', False)}")
-            print(f"Observation:\n{obs['obs_str'][:200]}...")
+            print(f"Observation:\n{obs['obs_str'][:300]}...")
 
             if done:
                 print("Episode finished!")

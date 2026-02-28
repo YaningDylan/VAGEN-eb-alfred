@@ -1,0 +1,58 @@
+# EB-Manipulation evaluation: 20 random episodes with Claude API.
+#
+# Start server first:
+#   conda run -n embench --no-capture-output bash -c "
+#     export COPPELIASIM_ROOT=.../CoppeliaSim_Pro_V4_1_0_Ubuntu20_04
+#     export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$COPPELIASIM_ROOT
+#     export QT_QPA_PLATFORM_PLUGIN_PATH=\$COPPELIASIM_ROOT
+#     export DISPLAY=:0
+#     python -m vagen.envs.eb_manipulation.serve --port 8001
+#   "
+# Then run:
+#   conda run -n vagen python -m vagen.evaluate.run_eval --config tests/eval_eb_manipulation_claude_20ep.yaml
+
+envs:
+  - name: RemoteEnv
+    n_envs: 20
+    tag_id: eb_manipulation_claude_20ep
+    seed: [42]
+    seed_list: [0, 1, 2, 5, 6, 7, 8, 13, 14, 15, 16, 17, 19, 27, 34, 37, 38, 40, 42, 45]
+    split: test
+    max_turns: 15
+    config:
+      base_urls:
+        - "http://localhost:8001"
+      timeout: 300.0
+      eval_set: base
+      max_turns: 15
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./test_rollouts/eb_manipulation_claude_20ep
+  default_max_turns: 15
+
+run:
+  backend: claude
+  base_seed: 0
+  max_concurrent_jobs: 1
+  resume: skip_completed
+  live_summary: true
+
+backends:
+  claude:
+    api_key: ""
+    base_url: null
+    model: "claude-sonnet-4-20250514"
+    max_concurrency: 1
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

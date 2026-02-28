@@ -52,9 +52,10 @@ def encode_multipart(
     body = bytearray()
 
     # Data part (always present, even if empty)
+    # No filename so FastAPI treats it as a plain Form field (not UploadFile).
     data_bytes = json.dumps(data or {}, ensure_ascii=False).encode("utf-8")
     body += b"--" + bnd + crlf
-    body += b'Content-Disposition: form-data; name="data"; filename="data.json"' + crlf
+    body += b'Content-Disposition: form-data; name="data"' + crlf
     body += b"Content-Type: application/json; charset=utf-8" + crlf + crlf
     body += data_bytes + crlf
 

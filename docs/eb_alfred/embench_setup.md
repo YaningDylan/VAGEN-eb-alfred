@@ -235,10 +235,29 @@ DISPLAY=:1 python -m embodiedbench.main \
 ## 8. 环境信息
 
 ```
-Machine:    mll-4090-3 (RTX 4090)
-OS:         Ubuntu 22.04 (kernel 6.8.0-94)
+Machine:    march-ROG (RTX 5070 Ti)
+OS:         Linux 6.14.0-37-generic
 Python:     3.9.x (embench conda env)
 ai2thor:    2.1.0
-torch:      2.4.0+cu124 (方案 A) / 2.8.0 (当前)
-CUDA:       12.4
+torch:      2.8.0+cpu (CPU-only)
+flask:      1.1.4  ← 必须！不能用 flask 3.x
+werkzeug:   1.0.1  ← 必须！ai2thor 2.1.0 不兼容 werkzeug 2.0+
+DISPLAY:    :0 (XAUTHORITY=/run/user/1000/gdm/Xauthority)
+CUDA:       12.0 (nvcc) / driver 575.64.03
+```
+
+### 关键安装命令（含版本锁定）
+
+```bash
+conda create -n embench python=3.9 -y
+conda activate embench
+pip install ai2thor==2.1.0 gym==0.23.0 "numpy<2.0" scipy Pillow
+pip install networkx revtok vocab h5py tqdm
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+pip install "numpy<2.0"  # 重新锁定（上一步会升级 numpy）
+pip install opencv-python anthropic openai hydra-core omegaconf
+pip install google-generativeai
+pip install fastapi uvicorn httpx
+# 关键：固定 Flask/Werkzeug 版本
+pip install "werkzeug==1.0.1" "flask==1.1.4" "markupsafe<2.1" "jinja2<3.0" "itsdangerous<2.0"
 ```

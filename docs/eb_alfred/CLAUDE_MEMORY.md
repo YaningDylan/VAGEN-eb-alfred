@@ -62,108 +62,40 @@
 
 ## 3. 未完成任务 (Pending)
 
-### Phase 2: 端到端测试（阻塞于 GPU X server）
-- [ ] **在有 GPU X server 的机器上运行带渲染的 EBAlfEnv 测试**
+### Phase 2: 端到端测试
+- [x] **在有 GPU X server 的机器上运行带渲染的 EBAlfEnv 测试** ✅
+  - 机器：march-ROG（RTX 5070 Ti，DISPLAY=:0，属于当前用户 march）
+  - 验证通过：Image shape (500, 500, 3)，reset/step 均正常
+  - **关键修复**：必须降级 Flask/Werkzeug（见第6节"已知问题"）
+
+- [x] **在有 GPU X server 的机器上运行 VAGEN EbAlfred 适配器测试** ✅
+  - `XAUTHORITY=/run/user/1000/gdm/Xauthority DISPLAY=:0 PYTHONPATH=<vagen_root> conda run -n embench python ...`
+  - 验证通过：system_prompt/reset/step/bad_format 全部正常
+
+- [x] **启动远程服务 + 客户端测试** ✅
   ```bash
-  conda activate embench
-  DISPLAY=:1 python -c "
-  from embodiedbench.envs.eb_alfred.EBAlfEnv import EBAlfEnv
-  env = EBAlfEnv(eval_set='base', selected_indexes=[0])
-  obs = env.reset()
-  print(f'Image: {obs[\"head_rgb\"].shape}')
-  obs, reward, done, info = env.step(0)
-  print(f'Reward: {reward}, Feedback: {info[\"env_feedback\"]}')
-  env.close()
-  "
+  # 服务端（embench env）
+  XAUTHORITY=/run/user/1000/gdm/Xauthority DISPLAY=:0 PYTHONPATH=<vagen_root> \
+    conda run -n embench python -m vagen.envs.eb_alfred.serve --port 8000
+
+  # 客户端（vagen env）- reset() 必须在 system_prompt() 之前调用
+  PYTHONPATH=<vagen_root> conda run -n vagen python -c "
+    from vagen.envs_remote import GymImageEnvClient; ..."
   ```
+  **已修复 2 个 bug**：见第6节"已知问题"
 
-- [ ] **在有 GPU X server 的机器上运行 VAGEN EbAlfred 适配器测试**
-  ```bash
-  conda activate embench  # 注意：直接运行需要 embench env，因为 ai2thor==2.1.0
-  cd /path/to/VAGEN
-  DISPLAY=:1 python -c "
-  import asyncio
-  from vagen.envs.eb_alfred.eb_alfred_env import EbAlfred
+- [x] **编写评估 YAML 配置** ✅
+  已创建 `tests/eval_eb_alfred_claude.yaml`
 
-  async def test():
-      env = EbAlfred({
-          'eval_set': 'base',
-          'x_display': '1',
-          'selected_indexes': [0],
-          'prompt_format': 'free_think',
-      })
-
-      # system_prompt
-      sys = await env.system_prompt()
-      print('System prompt OK:', len(sys['obs_str']), 'chars')
-
-      # reset
-      obs, info = await env.reset(seed=0)
-      print('Task:', info['task_instruction'])
-      print('Actions:', info['num_actions'])
-      assert '<image>' in obs['obs_str']
-      assert len(obs['multi_modal_input']['<image>']) == 1
-      obs['multi_modal_input']['<image>'][0].save('/tmp/eb_alfred_reset.png')
-      print('Reset OK, image saved')
-
-      # step (valid action)
-      resp = '<think>I need to find a Cabinet first.</think><answer>find a Cabinet</answer>'
-      obs, reward, done, info = await env.step(resp)
-      print(f'Step: reward={reward}, done={done}, success={info[\"success\"]}')
-
-      # step (invalid format)
-      obs, reward, done, info = await env.step('garbage')
-      print(f'Bad format: reward={reward}')
-
-      await env.close()
-      print('ALL TESTS PASSED')
-
-  asyncio.run(test())
-  "
-  ```
-
-- [ ] **启动远程服务 + 客户端测试**
-  ```bash
-  # Terminal 1: 启动服务（embench env，需要 GPU X server）
-  conda activate embench
-  cd /path/to/VAGEN
-  DISPLAY=:1 python -m vagen.envs.eb_alfred.serve --port 8000
-
-  # Terminal 2: 客户端测试（vagen env）
-  conda activate vagen
-  cd /path/to/VAGEN
-  python -c "
-  import asyncio
-  from vagen.envs_remote import GymImageEnvClient
-
-  async def test():
-      client = GymImageEnvClient({
-          'base_urls': ['http://localhost:8000'],
-          'eval_set': 'base',
-          'x_display': '1',
-          'selected_indexes': [0],
-      })
-      obs, info = await client.reset(seed=0)
-      print('Remote reset OK:', obs['obs_str'][:100])
-      sys = await client.system_prompt()
-      print('Remote system_prompt OK:', len(sys['obs_str']), 'chars')
-      resp = '<think>test</think><answer>find a Cabinet</answer>'
-      obs, reward, done, info = await client.step(resp)
-      print(f'Remote step OK: reward={reward}, done={done}')
-      await client.close()
-      print('ALL REMOTE TESTS PASSED')
-  asyncio.run(test())
-  "
-  ```
-
-- [ ] **编写评估 YAML 配置**
-  需要创建 `tests/eval_eb_alfred_claude.yaml`（参考 `tests/eval_sokoban_claude.yaml`）
-
-- [ ] **Claude API 端到端评估**
-  ```bash
-  conda activate vagen
-  python -m vagen.evaluate.run_eval --config tests/eval_eb_alfred_claude.yaml
-  ```
+- [x] **Claude API 端到端评估** ✅
+  - 3 episodes，成功率 33.3%（1/3 任务成功），平均 reward 2.80
+  - 结果保存在 `tests/test_rollouts/claude_eval/tag_eb_alfred_claude_test/`
+  - 运行命令：
+    ```bash
+    ANTHROPIC_API_KEY=<key> PYTHONPATH=<vagen_root> \
+      conda run -n vagen python -m vagen.evaluate.run_eval \
+      --config tests/eval_eb_alfred_claude.yaml
+    ```
 
 - [ ] **（可选）RL 训练集成测试**
 
@@ -250,12 +182,22 @@
 
 ## 6. 已知问题 & 调试经验
 
-### GPU X Server（最大阻塞项）
+### GPU X Server
 - AI2-THOR 2.1.0 (Unity 2019) **必须**有 GPU 加速的 X server
 - **Xvfb 不行**：只有软件 OpenGL，Unity CPU 空转 (2000% CPU)
 - **EGL/headless 不行**：ai2thor 2.1.0 的 Unity binary 太旧，不支持
-- 需要管理员修改 `/etc/X11/Xwrapper.config`（`allowed_users=anybody`）或执行 `xhost +local:`
-- 当前机器 (`mll-4090-3`) 的 X server (:0) 属于用户 `pingyue`，认证受限
+- **当前机器 march-ROG (RTX 5070 Ti)**：`DISPLAY=:0`，属于用户 march 自己
+  - `XAUTHORITY=/run/user/1000/gdm/Xauthority DISPLAY=:0` 可直接使用
+  - 无需管理员权限！
+
+### Flask/Werkzeug 版本不兼容（关键！）
+- **问题**：ai2thor 2.1.0 的 `ThorRequestHandler.run_wsgi()` 方法在 Werkzeug 2.0+ 中被移除
+- **症状**：Unity 窗口能显示场景，但 Python `env.reset()` 永久阻塞；Unity 日志显示 `SocketException: The socket has been shut down`
+- **解决方案**：必须安装旧版本：
+  ```bash
+  pip install "werkzeug==1.0.1" "flask==1.1.4" "markupsafe<2.1" "jinja2<3.0" "itsdangerous<2.0"
+  ```
+- **已验证版本**：werkzeug==1.0.1, flask==1.1.4, markupsafe==2.0.1
 
 ### embench Conda Env 注意事项
 - ERA 的完整 `environment.yaml`（346 包）pip 阶段容易失败
@@ -263,6 +205,24 @@
 - `embodiedbench` 包缺少 `__init__.py`，需手动创建
 - `lmdeploy` 最新版与 Python 3.9 不兼容（`bool | None` 语法），但只在 `model_type=local` 时需要
 - `numpy>=2.0` 与 `gym==0.23.0` 不兼容，需用 `numpy<2.0`
+- `torch` 建议用 CPU-only 版本（embench env 不需要 GPU 计算）：`pip install torch --index-url https://download.pytorch.org/whl/cpu`
+- 安装 networkx/revtok/vocab 等包时会把 numpy 升级到 2.0+，事后需要 `pip install "numpy<2.0"` 重新降级
+
+### GymImageEnvClient Bug Fixes（已修复）
+1. **`reset()` 漏传 seed 给 `_ensure_connected_for_reset()`**
+   - 文件：`vagen/envs_remote/gym_image_env_client.py:384`
+   - 修复：`await self._ensure_connected_for_reset(seed)` （加上 `seed` 参数）
+
+2. **`encode_multipart` 给 data 字段加了 filename，导致 FastAPI 422**
+   - 文件：`vagen/envs_remote/multipart_codec.py`
+   - 原因：有 `filename="data.json"` 时，python-multipart 把字段当文件上传（`File`）处理，但服务端声明的是 `Form(str)`
+   - 修复：去掉 `; filename="data.json"`，保留 `Content-Disposition: form-data; name="data"`
+
+3. **embench env 缺少 `python-multipart`**
+   - `pip install python-multipart` 即可（FastAPI 的 Form/File 依赖）
+
+4. **vagen env 缺少 `anthropic`**
+   - `pip install anthropic` 即可
 
 ### EBAlfEnv 内部细节
 - `X_DISPLAY` 在 `EBAlfEnv.py:30` 硬编码为 `'1'`，通过 `ebalfenv_mod.X_DISPLAY = config.x_display` override
@@ -388,5 +348,5 @@ class EbAlfredEnvConfig:
 
 ---
 
-*Last updated: 2026-02-25*
+*Last updated: 2026-02-26 (Phase 2 全部完成：EBAlfEnv + Adapter + Remote + Claude API eval 均通过)*
 *Author: Claude (across multiple conversations)*

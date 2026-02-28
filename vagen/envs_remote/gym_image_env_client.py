@@ -381,7 +381,7 @@ class GymImageEnvClient(GymImageEnv):
         This is where the session is created and locked to a specific server URL.
         """
         # Establish connection on first reset
-        await self._ensure_connected_for_reset()
+        await self._ensure_connected_for_reset(seed)
 
         data, images = await self._call("reset", params={"seed": seed})
 

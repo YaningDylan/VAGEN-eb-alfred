@@ -253,6 +253,12 @@ class GenericVisionInferenceWorkflow:
             if error_info is not None:
                 final_infos = [*final_infos, error_info]
 
+            # Collect token usage if adapter supports it
+            token_usage = None
+            real_adapter = getattr(self.adapter, "inner", self.adapter)
+            if hasattr(real_adapter, "get_token_usage"):
+                token_usage = real_adapter.get_token_usage()
+
             # Always dump executed episodes (ignore dump_override)
             metrics = {
                 "rollout_id": rid,
@@ -266,6 +272,8 @@ class GenericVisionInferenceWorkflow:
                 "infos": final_infos,
                 "env_config": env_config_dump,
             }
+            if token_usage is not None:
+                metrics["token_usage"] = token_usage
             metrics.setdefault("max_turns", turn_limit)
             if error_info is not None:
                 metrics["error_details"] = error_info
