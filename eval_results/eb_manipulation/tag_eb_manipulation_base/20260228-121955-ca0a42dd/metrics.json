@@ -1,0 +1,11 @@
+{
+  "rollout_id": "20260228-121955-ca0a42dd",
+  "seed": 0,
+  "terminated": false,
+  "finish_reason": "error",
+  "success": false,
+  "cumulative_reward": 0.0,
+  "rewards": [],
+  "num_turns": 0,
+  "max_turns": 15
+}

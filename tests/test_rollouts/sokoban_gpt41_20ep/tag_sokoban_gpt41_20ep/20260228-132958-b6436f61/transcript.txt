@@ -1,0 +1,109 @@
+SYSTEM: You are a Sokoban solver.
+Sokoban Quick Guide
+Goal: Push all boxes onto targets.
+Symbols (If image is provided there are no symbols):
+# Wall | _ Floor | O Target | X Box | P You | √ Box on Target | S You on Target
+Rules:
+1. Push boxes (can't pull).
+2. Avoid walls.
+Actions you can take: Left, Down, Right, Up.
+You can take up to 3 action(s) at a time, separated by ,.
+You should first give your reasoning, and then your answer.
+Your response should be in the format of:
+<think>...</think><answer>...</answer>
+
+Example 1:
+<think>The box is one step below me, and the target is two steps below me. I should go down to reach the box and then push it down to the target.</think>
+<answer>Down</answer>
+
+Example 2:
+<think>The box is to the right of me, and the target is further to the right. I need to move right to get behind the box and push it toward the target.</think>
+<answer>Right</answer>
+
+Example 3:
+<think>The box is above me, and the target is above the box. I should move up to reach the box and then push it upward to the target.</think>
+<answer>Up</answer>
+
+USER: [Initial Observation]:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is directly above me, and the target is to the upper left corner. I should move left to get behind the box, then push the box left toward the target.</think>
+<answer>Left, Up, Left</answer>
+
+USER: After your answer, the extracted valid action is ['left', 'up', 'left'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is now to the right of me, and the target is to the upper left. I need to move up and left to get behind the box, so I can push it left toward the target.</think>
+<answer>Up, Left, Left</answer>
+
+USER: After your answer, the extracted valid action is ['up', 'left', 'left'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am now above the target, and the box is to my right. I should move right to get behind the box, then push it left onto the target.</think>
+<answer>Right, Right, Left</answer>
+
+USER: After your answer, the extracted valid action is ['right', 'right', 'left'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am now to the left of the box, and the target is to my left. I should push the box left onto the target.</think>
+<answer>Left</answer>
+
+USER: After your answer, the extracted valid action is ['left'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is still to the right and not yet on the target. I need to repeat the process of getting behind the box to push it left onto the target. I should move right, right, then left to get into position and push the box left again.</think>
+<answer>Right, Right, Left</answer>
+
+USER: After your answer, the extracted valid action is ['right', 'right', 'left'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am again to the left of the box, and the target is to my left. I should push the box left onto the target.</think>
+<answer>Left</answer>
+
+USER: After your answer, the extracted valid action is ['left'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is still not on the target. My previous actions are repeating the same cycle without progress. I need to find a different approach. The only way to push the box onto the target is to get behind it from the right side. To do this, I should move down, right, up to get to the right of the box.</think>
+<answer>Down, Right, Up</answer>
+
+USER: After your answer, the extracted valid action is ['down', 'right', 'up'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am now above the box, and the target is to the left. I need to move right to get to the right side of the box, so I can push it left onto the target.</think>
+<answer>Right, Down, Left</answer>
+
+USER: After your answer, the extracted valid action is ['right', 'down', 'left'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am now below the box, and the target is to the upper left. I should move up to get above the box, then right to get to the right of the box, and finally up to be in position to push the box left toward the target.</think>
+<answer>Up, Right, Up</answer>
+
+USER: After your answer, the extracted valid action is ['up', 'right', 'up'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am now to the right of the box, and the target is to the left. I should push the box left toward the target.</think>
+<answer>Left</answer>
+
+USER: After your answer, the extracted valid action is ['left'].
+After that, the observation is:
+ 
+Decide your next action(s).

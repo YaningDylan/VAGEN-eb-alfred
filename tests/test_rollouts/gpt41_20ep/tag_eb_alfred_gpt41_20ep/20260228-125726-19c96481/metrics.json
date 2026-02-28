@@ -1,0 +1,232 @@
+{
+  "rollout_id": "20260228-125726-19c96481",
+  "seed": 1395,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.9,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 9,
+  "infos": [
+    {
+      "task_instruction": "Relocate two books to a bedroom desk.",
+      "num_actions": 183,
+      "eval_set": "base",
+      "episode_idx": 18
+    },
+    {
+      "llm_raw_response": "<think>I need to find the books first before relocating them. Let me search for a Book.</think>\n<answer>find a Book</answer>",
+      "llm_response": "<think>I need to find the books first before relocating them. Let me search for a Book.</think><answer>find a Book</answer>",
+      "think_content": "I need to find the books first before relocating them. Let me search for a Book.",
+      "action_content": "find a Book",
+      "actions": [
+        "find a Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There are two books on the bed. I need to pick up the first book to relocate it.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There are two books on the bed. I need to pick up the first book to relocate it.</think><answer>pick up the Book</answer>",
+      "think_content": "There are two books on the bed. I need to pick up the first book to relocate it.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a book now. I need to find the bedroom desk to relocate the book there.</think>\n<answer>find a Desk</answer>",
+      "llm_response": "<think>I'm holding a book now. I need to find the bedroom desk to relocate the book there.</think><answer>find a Desk</answer>",
+      "think_content": "I'm holding a book now. I need to find the bedroom desk to relocate the book there.",
+      "action_content": "find a Desk",
+      "actions": [
+        "find a Desk"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm at the desk and holding the book. I should put the book down on the desk.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm at the desk and holding the book. I should put the book down on the desk.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm at the desk and holding the book. I should put the book down on the desk.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I have relocated the first book. Now I need to go back and find the second book to relocate it as well.</think>\n<answer>find a Book_2</answer>",
+      "llm_response": "<think>I have relocated the first book. Now I need to go back and find the second book to relocate it as well.</think><answer>find a Book_2</answer>",
+      "think_content": "I have relocated the first book. Now I need to go back and find the second book to relocate it as well.",
+      "action_content": "find a Book_2",
+      "actions": [
+        "find a Book_2"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The second book is on the bedside table. I need to pick it up to relocate it to the desk.</think>\n<answer>pick up the Book_2</answer>",
+      "llm_response": "<think>The second book is on the bedside table. I need to pick it up to relocate it to the desk.</think><answer>pick up the Book_2</answer>",
+      "think_content": "The second book is on the bedside table. I need to pick it up to relocate it to the desk.",
+      "action_content": "pick up the Book_2",
+      "actions": [
+        "pick up the Book_2"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The correct action is to use the generic \"pick up the Book\" action, since \"pick up the Book_2\" is not recognized. I will pick up the book now.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>The correct action is to use the generic \"pick up the Book\" action, since \"pick up the Book_2\" is not recognized. I will pick up the book now.</think><answer>pick up the Book</answer>",
+      "think_content": "The correct action is to use the generic \"pick up the Book\" action, since \"pick up the Book_2\" is not recognized. I will pick up the book now.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the second book now. I need to go to the desk to relocate it there.</think>\n<answer>find a Desk</answer>",
+      "llm_response": "<think>I'm holding the second book now. I need to go to the desk to relocate it there.</think><answer>find a Desk</answer>",
+      "think_content": "I'm holding the second book now. I need to go to the desk to relocate it there.",
+      "action_content": "find a Desk",
+      "actions": [
+        "find a Desk"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm at the desk and holding the second book. I should put it down on the desk to complete the relocation task.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm at the desk and holding the second book. I should put it down on the desk to complete the relocation task.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm at the desk and holding the second book. I should put it down on the desk to complete the relocation task.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "eval_set": "base",
+    "x_display": "0",
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 31902,
+    "completion_tokens": 337,
+    "total_tokens": 32239,
+    "num_calls": 9
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_gpt41_20ep",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

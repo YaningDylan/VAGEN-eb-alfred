@@ -1,0 +1,42 @@
+{
+  "rollout_id": "20260228-123400-23ed903f",
+  "seed": 1611,
+  "terminated": false,
+  "finish_reason": "model_error",
+  "success": false,
+  "cumulative_reward": 0.0,
+  "rewards": [],
+  "num_turns": 0,
+  "infos": [
+    {
+      "task_instruction": "Examine a tv remote next to the light of a tall lamp.",
+      "num_actions": 207,
+      "eval_set": "base",
+      "episode_idx": 30
+    },
+    {
+      "unexpected_error": "BadRequestError(\"Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CYasMStpjBVohzBfhXKdo'}\")",
+      "error_type": "BadRequestError",
+      "message": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CYasMStpjBVohzBfhXKdo'}"
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "eval_set": "base",
+    "x_display": "0",
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "max_turns": 30,
+  "error_details": "not jsonable",
+  "tag_id": "eb_alfred_claude_20ep",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

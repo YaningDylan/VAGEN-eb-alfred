@@ -1,0 +1,6 @@
+[
+  "<think>I need to locate a phone first. Let me find a CellPhone.</think>\n<answer>find a CellPhone</answer>",
+  "<think>The cell phone is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the CellPhone</answer>",
+  "<think>Now that I have the phone, I need to go to the bed to put it down there.</think>\n<answer>find a Bed</answer>",
+  "<think>I'm at the bed and holding the phone. I should put the phone down on the bed.</think>\n<answer>put down the object in hand</answer>"
+]

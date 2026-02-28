@@ -1,0 +1,250 @@
+{
+  "rollout_id": "20260228-132934-54cebda3",
+  "seed": 963,
+  "terminated": false,
+  "finish_reason": "max_turns",
+  "success": false,
+  "cumulative_reward": 0.1,
+  "rewards": [
+    0.1,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "num_turns": 10,
+  "infos": [
+    {},
+    {
+      "llm_raw_response": "<think>The box is directly below me, and the target is to the right of the box. I should move down to get behind the box, then move right to push the box onto the target.</think>\n<answer>Down, Right</answer>",
+      "llm_response": "<think>The box is directly below me, and the target is to the right of the box. I should move down to get behind the box, then move right to push the box onto the target.</think><answer>Down, Right</answer>",
+      "think_content": "The box is directly below me, and the target is to the right of the box. I should move down to get behind the box, then move right to push the box onto the target.",
+      "action_content": "Down, Right",
+      "actions": [
+        "down",
+        "right"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is now on the target, and there are no more boxes or targets left to interact with. The puzzle appears to be solved.</think>\n<answer>No action needed</answer>",
+      "llm_response": "<think>The box is now on the target, and there are no more boxes or targets left to interact with. The puzzle appears to be solved.</think><answer>No action needed</answer>",
+      "think_content": "The box is now on the target, and there are no more boxes or targets left to interact with. The puzzle appears to be solved.",
+      "action_content": "No action needed",
+      "actions": [
+        "no action needed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is already on the target, and there are no more boxes or targets to interact with. The puzzle is complete, so no further actions are necessary.</think>\n<answer>No action needed</answer>",
+      "llm_response": "<think>The box is already on the target, and there are no more boxes or targets to interact with. The puzzle is complete, so no further actions are necessary.</think><answer>No action needed</answer>",
+      "think_content": "The box is already on the target, and there are no more boxes or targets to interact with. The puzzle is complete, so no further actions are necessary.",
+      "action_content": "No action needed",
+      "actions": [
+        "no action needed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box remains on the target, and there are no additional boxes or targets. The puzzle is already solved, so no further actions are required.</think>\n<answer>No action needed</answer>",
+      "llm_response": "<think>The box remains on the target, and there are no additional boxes or targets. The puzzle is already solved, so no further actions are required.</think><answer>No action needed</answer>",
+      "think_content": "The box remains on the target, and there are no additional boxes or targets. The puzzle is already solved, so no further actions are required.",
+      "action_content": "No action needed",
+      "actions": [
+        "no action needed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are necessary.</think>\n<answer>No action needed</answer>",
+      "llm_response": "<think>The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are necessary.</think><answer>No action needed</answer>",
+      "think_content": "The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are necessary.",
+      "action_content": "No action needed",
+      "actions": [
+        "no action needed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The puzzle is already solved: the box is on the target, and there are no further actions available or necessary.</think>\n<answer>No action needed</answer>",
+      "llm_response": "<think>The puzzle is already solved: the box is on the target, and there are no further actions available or necessary.</think><answer>No action needed</answer>",
+      "think_content": "The puzzle is already solved: the box is on the target, and there are no further actions available or necessary.",
+      "action_content": "No action needed",
+      "actions": [
+        "no action needed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are required.</think>\n<answer>No action needed</answer>",
+      "llm_response": "<think>The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are required.</think><answer>No action needed</answer>",
+      "think_content": "The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are required.",
+      "action_content": "No action needed",
+      "actions": [
+        "no action needed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box remains on the target, and there are no further actions available. The puzzle is already solved.</think>\n<answer>No action needed</answer>",
+      "llm_response": "<think>The box remains on the target, and there are no further actions available. The puzzle is already solved.</think><answer>No action needed</answer>",
+      "think_content": "The box remains on the target, and there are no further actions available. The puzzle is already solved.",
+      "action_content": "No action needed",
+      "actions": [
+        "no action needed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are required.</think>\n<answer>No action needed</answer>",
+      "llm_response": "<think>The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are required.</think><answer>No action needed</answer>",
+      "think_content": "The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are required.",
+      "action_content": "No action needed",
+      "actions": [
+        "no action needed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is on the target, and there are no further actions available or necessary. The puzzle is solved.</think>\n<answer>No action needed</answer>",
+      "llm_response": "<think>The box is on the target, and there are no further actions available or necessary. The puzzle is solved.</think><answer>No action needed</answer>",
+      "think_content": "The box is on the target, and there are no further actions available or necessary. The puzzle is solved.",
+      "action_content": "No action needed",
+      "actions": [
+        "no action needed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "dim_room": [
+      6,
+      6
+    ],
+    "max_steps": 100,
+    "num_boxes": 1,
+    "render_mode": "vision",
+    "max_actions_per_step": 3,
+    "action_sep": ",",
+    "use_example_in_sys_prompt": true,
+    "prompt_format": "free_think",
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 20556,
+    "completion_tokens": 405,
+    "total_tokens": 20961,
+    "num_calls": 10
+  },
+  "max_turns": 10,
+  "tag_id": "sokoban_gpt41_20ep",
+  "split": "test",
+  "env_name": "Sokoban"
+}

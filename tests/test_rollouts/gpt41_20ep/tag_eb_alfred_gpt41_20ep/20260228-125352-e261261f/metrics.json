@@ -1,0 +1,232 @@
+{
+  "rollout_id": "20260228-125352-e261261f",
+  "seed": 747,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.9,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 9,
+  "infos": [
+    {
+      "task_instruction": "Move a bowl with a watch inside from the desk to the side table.",
+      "num_actions": 194,
+      "eval_set": "base",
+      "episode_idx": 33
+    },
+    {
+      "llm_raw_response": "<think>I need to locate the desk first, since the bowl with the watch inside is on it.</think>\n<answer>find a Desk</answer>",
+      "llm_response": "<think>I need to locate the desk first, since the bowl with the watch inside is on it.</think><answer>find a Desk</answer>",
+      "think_content": "I need to locate the desk first, since the bowl with the watch inside is on it.",
+      "action_content": "find a Desk",
+      "actions": [
+        "find a Desk"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The desk may not be present or accessible. I will try to find the bowl directly, as it is the object I need to move.</think>\n<answer>find a Bowl</answer>",
+      "llm_response": "<think>The desk may not be present or accessible. I will try to find the bowl directly, as it is the object I need to move.</think><answer>find a Bowl</answer>",
+      "think_content": "The desk may not be present or accessible. I will try to find the bowl directly, as it is the object I need to move.",
+      "action_content": "find a Bowl",
+      "actions": [
+        "find a Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the bowl on the desk. I need to check if there is a watch inside the bowl before picking it up. Let me look inside the bowl.</think>\n<answer>find a Watch</answer>",
+      "llm_response": "<think>I see the bowl on the desk. I need to check if there is a watch inside the bowl before picking it up. Let me look inside the bowl.</think><answer>find a Watch</answer>",
+      "think_content": "I see the bowl on the desk. I need to check if there is a watch inside the bowl before picking it up. Let me look inside the bowl.",
+      "action_content": "find a Watch",
+      "actions": [
+        "find a Watch"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The watch is not inside the bowl; it is on a shelf. I need to put the watch inside the bowl before moving the bowl. First, I should pick up the watch.</think>\n<answer>pick up the Watch</answer>",
+      "llm_response": "<think>The watch is not inside the bowl; it is on a shelf. I need to put the watch inside the bowl before moving the bowl. First, I should pick up the watch.</think><answer>pick up the Watch</answer>",
+      "think_content": "The watch is not inside the bowl; it is on a shelf. I need to put the watch inside the bowl before moving the bowl. First, I should pick up the watch.",
+      "action_content": "pick up the Watch",
+      "actions": [
+        "pick up the Watch"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the watch. Now I need to go back to the bowl to put the watch inside it.</think>\n<answer>find a Bowl</answer>",
+      "llm_response": "<think>I'm holding the watch. Now I need to go back to the bowl to put the watch inside it.</think><answer>find a Bowl</answer>",
+      "think_content": "I'm holding the watch. Now I need to go back to the bowl to put the watch inside it.",
+      "action_content": "find a Bowl",
+      "actions": [
+        "find a Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm near the bowl and holding the watch. I should put the watch into the bowl.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm near the bowl and holding the watch. I should put the watch into the bowl.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm near the bowl and holding the watch. I should put the watch into the bowl.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The watch is now inside the bowl. Next, I need to pick up the bowl to move it to the side table.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The watch is now inside the bowl. Next, I need to pick up the bowl to move it to the side table.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The watch is now inside the bowl. Next, I need to pick up the bowl to move it to the side table.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the bowl with the watch inside. Now I need to find the side table to move the bowl there.</think>\n<answer>find a SideTable</answer>",
+      "llm_response": "<think>I'm holding the bowl with the watch inside. Now I need to find the side table to move the bowl there.</think><answer>find a SideTable</answer>",
+      "think_content": "I'm holding the bowl with the watch inside. Now I need to find the side table to move the bowl there.",
+      "action_content": "find a SideTable",
+      "actions": [
+        "find a SideTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm at the side table and holding the bowl with the watch inside. I should put the bowl down on the side table to complete the task.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm at the side table and holding the bowl with the watch inside. I should put the bowl down on the side table to complete the task.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm at the side table and holding the bowl with the watch inside. I should put the bowl down on the side table to complete the task.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "eval_set": "base",
+    "x_display": "0",
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 33079,
+    "completion_tokens": 362,
+    "total_tokens": 33441,
+    "num_calls": 9
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_gpt41_20ep",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

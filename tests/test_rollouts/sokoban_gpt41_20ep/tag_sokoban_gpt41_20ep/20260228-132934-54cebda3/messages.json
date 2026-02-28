@@ -1,0 +1,310 @@
+[
+  {
+    "role": "system",
+    "content": [
+      {
+        "type": "text",
+        "text": "You are a Sokoban solver.\nSokoban Quick Guide\nGoal: Push all boxes onto targets.\nSymbols (If image is provided there are no symbols):\n# Wall | _ Floor | O Target | X Box | P You | √ Box on Target | S You on Target\nRules:\n1. Push boxes (can't pull).\n2. Avoid walls.\nActions you can take: Left, Down, Right, Up.\nYou can take up to 3 action(s) at a time, separated by ,.\nYou should first give your reasoning, and then your answer.\nYour response should be in the format of:\n<think>...</think><answer>...</answer>\n\nExample 1:\n<think>The box is one step below me, and the target is two steps below me. I should go down to reach the box and then push it down to the target.</think>\n<answer>Down</answer>\n\nExample 2:\n<think>The box is to the right of me, and the target is further to the right. I need to move right to get behind the box and push it toward the target.</think>\n<answer>Right</answer>\n\nExample 3:\n<think>The box is above me, and the target is above the box. I should move up to reach the box and then push it upward to the target.</think>\n<answer>Up</answer>\n"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "[Initial Observation]:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box is directly below me, and the target is to the right of the box. I should move down to get behind the box, then move right to push the box onto the target.</think>\n<answer>Down, Right</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is ['down', 'right'].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box is now on the target, and there are no more boxes or targets left to interact with. The puzzle appears to be solved.</think>\n<answer>No action needed</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box is already on the target, and there are no more boxes or targets to interact with. The puzzle is complete, so no further actions are necessary.</think>\n<answer>No action needed</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box remains on the target, and there are no additional boxes or targets. The puzzle is already solved, so no further actions are required.</think>\n<answer>No action needed</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are necessary.</think>\n<answer>No action needed</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The puzzle is already solved: the box is on the target, and there are no further actions available or necessary.</think>\n<answer>No action needed</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are required.</think>\n<answer>No action needed</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box remains on the target, and there are no further actions available. The puzzle is already solved.</think>\n<answer>No action needed</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box is still on the target, and there are no more moves to make. The puzzle is already solved, so no further actions are required.</think>\n<answer>No action needed</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box is on the target, and there are no further actions available or necessary. The puzzle is solved.</think>\n<answer>No action needed</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  }
+]

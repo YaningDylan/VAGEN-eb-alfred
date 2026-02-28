@@ -1,0 +1,6 @@
+[
+  "<think>I need to hold a pillow first. Let me find a pillow in the environment.</think>\n<answer>find a Pillow</answer>",
+  "<think>The pillow is nearby and I'm not holding anything. I should pick up the pillow.</think>\n<answer>pick up the Pillow</answer>",
+  "<think>I am now holding the pillow. Next, I need to turn on a lamp. I see a floor lamp in the room, so I should navigate to it.</think>\n<answer>find a FloorLamp</answer>",
+  "<think>I am near the floor lamp and holding the pillow. Now I should turn on the floor lamp.</think>\n<answer>turn on the FloorLamp</answer>"
+]

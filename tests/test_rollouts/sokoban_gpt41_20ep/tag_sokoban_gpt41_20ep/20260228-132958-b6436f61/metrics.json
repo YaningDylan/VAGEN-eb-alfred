@@ -1,0 +1,263 @@
+{
+  "rollout_id": "20260228-132958-b6436f61",
+  "seed": 1827,
+  "terminated": false,
+  "finish_reason": "max_turns",
+  "success": false,
+  "cumulative_reward": 0.9999999999999999,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 10,
+  "infos": [
+    {},
+    {
+      "llm_raw_response": "<think>The box is directly above me, and the target is to the upper left corner. I should move left to get behind the box, then push the box left toward the target.</think>\n<answer>Left, Up, Left</answer>",
+      "llm_response": "<think>The box is directly above me, and the target is to the upper left corner. I should move left to get behind the box, then push the box left toward the target.</think><answer>Left, Up, Left</answer>",
+      "think_content": "The box is directly above me, and the target is to the upper left corner. I should move left to get behind the box, then push the box left toward the target.",
+      "action_content": "Left, Up, Left",
+      "actions": [
+        "left",
+        "up",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is now to the right of me, and the target is to the upper left. I need to move up and left to get behind the box, so I can push it left toward the target.</think>\n<answer>Up, Left, Left</answer>",
+      "llm_response": "<think>The box is now to the right of me, and the target is to the upper left. I need to move up and left to get behind the box, so I can push it left toward the target.</think><answer>Up, Left, Left</answer>",
+      "think_content": "The box is now to the right of me, and the target is to the upper left. I need to move up and left to get behind the box, so I can push it left toward the target.",
+      "action_content": "Up, Left, Left",
+      "actions": [
+        "up",
+        "left",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now above the target, and the box is to my right. I should move right to get behind the box, then push it left onto the target.</think>\n<answer>Right, Right, Left</answer>",
+      "llm_response": "<think>I am now above the target, and the box is to my right. I should move right to get behind the box, then push it left onto the target.</think><answer>Right, Right, Left</answer>",
+      "think_content": "I am now above the target, and the box is to my right. I should move right to get behind the box, then push it left onto the target.",
+      "action_content": "Right, Right, Left",
+      "actions": [
+        "right",
+        "right",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now to the left of the box, and the target is to my left. I should push the box left onto the target.</think>\n<answer>Left</answer>",
+      "llm_response": "<think>I am now to the left of the box, and the target is to my left. I should push the box left onto the target.</think><answer>Left</answer>",
+      "think_content": "I am now to the left of the box, and the target is to my left. I should push the box left onto the target.",
+      "action_content": "Left",
+      "actions": [
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still to the right and not yet on the target. I need to repeat the process of getting behind the box to push it left onto the target. I should move right, right, then left to get into position and push the box left again.</think>\n<answer>Right, Right, Left</answer>",
+      "llm_response": "<think>The box is still to the right and not yet on the target. I need to repeat the process of getting behind the box to push it left onto the target. I should move right, right, then left to get into position and push the box left again.</think><answer>Right, Right, Left</answer>",
+      "think_content": "The box is still to the right and not yet on the target. I need to repeat the process of getting behind the box to push it left onto the target. I should move right, right, then left to get into position and push the box left again.",
+      "action_content": "Right, Right, Left",
+      "actions": [
+        "right",
+        "right",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am again to the left of the box, and the target is to my left. I should push the box left onto the target.</think>\n<answer>Left</answer>",
+      "llm_response": "<think>I am again to the left of the box, and the target is to my left. I should push the box left onto the target.</think><answer>Left</answer>",
+      "think_content": "I am again to the left of the box, and the target is to my left. I should push the box left onto the target.",
+      "action_content": "Left",
+      "actions": [
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still not on the target. My previous actions are repeating the same cycle without progress. I need to find a different approach. The only way to push the box onto the target is to get behind it from the right side. To do this, I should move down, right, up to get to the right of the box.</think>\n<answer>Down, Right, Up</answer>",
+      "llm_response": "<think>The box is still not on the target. My previous actions are repeating the same cycle without progress. I need to find a different approach. The only way to push the box onto the target is to get behind it from the right side. To do this, I should move down, right, up to get to the right of the box.</think><answer>Down, Right, Up</answer>",
+      "think_content": "The box is still not on the target. My previous actions are repeating the same cycle without progress. I need to find a different approach. The only way to push the box onto the target is to get behind it from the right side. To do this, I should move down, right, up to get to the right of the box.",
+      "action_content": "Down, Right, Up",
+      "actions": [
+        "down",
+        "right",
+        "up"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now above the box, and the target is to the left. I need to move right to get to the right side of the box, so I can push it left onto the target.</think>\n<answer>Right, Down, Left</answer>",
+      "llm_response": "<think>I am now above the box, and the target is to the left. I need to move right to get to the right side of the box, so I can push it left onto the target.</think><answer>Right, Down, Left</answer>",
+      "think_content": "I am now above the box, and the target is to the left. I need to move right to get to the right side of the box, so I can push it left onto the target.",
+      "action_content": "Right, Down, Left",
+      "actions": [
+        "right",
+        "down",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now below the box, and the target is to the upper left. I should move up to get above the box, then right to get to the right of the box, and finally up to be in position to push the box left toward the target.</think>\n<answer>Up, Right, Up</answer>",
+      "llm_response": "<think>I am now below the box, and the target is to the upper left. I should move up to get above the box, then right to get to the right of the box, and finally up to be in position to push the box left toward the target.</think><answer>Up, Right, Up</answer>",
+      "think_content": "I am now below the box, and the target is to the upper left. I should move up to get above the box, then right to get to the right of the box, and finally up to be in position to push the box left toward the target.",
+      "action_content": "Up, Right, Up",
+      "actions": [
+        "up",
+        "right",
+        "up"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now to the right of the box, and the target is to the left. I should push the box left toward the target.</think>\n<answer>Left</answer>",
+      "llm_response": "<think>I am now to the right of the box, and the target is to the left. I should push the box left toward the target.</think><answer>Left</answer>",
+      "think_content": "I am now to the right of the box, and the target is to the left. I should push the box left toward the target.",
+      "action_content": "Left",
+      "actions": [
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "dim_room": [
+      6,
+      6
+    ],
+    "max_steps": 100,
+    "num_boxes": 1,
+    "render_mode": "vision",
+    "max_actions_per_step": 3,
+    "action_sep": ",",
+    "use_example_in_sys_prompt": true,
+    "prompt_format": "free_think",
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 21296,
+    "completion_tokens": 548,
+    "total_tokens": 21844,
+    "num_calls": 10
+  },
+  "max_turns": 10,
+  "tag_id": "sokoban_gpt41_20ep",
+  "split": "test",
+  "env_name": "Sokoban"
+}

@@ -1,0 +1,81 @@
+{
+  "rollout_id": "20260228-132958-8478c9ea",
+  "seed": 1935,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.2000000000000002,
+  "rewards": [
+    0.1,
+    1.1
+  ],
+  "num_turns": 2,
+  "infos": [
+    {},
+    {
+      "llm_raw_response": "<think>The box is directly above me, and the target is above the box. I should move up to push the box onto the target.</think>\n<answer>Up</answer>",
+      "llm_response": "<think>The box is directly above me, and the target is above the box. I should move up to push the box onto the target.</think><answer>Up</answer>",
+      "think_content": "The box is directly above me, and the target is above the box. I should move up to push the box onto the target.",
+      "action_content": "Up",
+      "actions": [
+        "up"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is now directly in front of me and is aligned with the target above it. I should move up again to push the box onto the target.</think>\n<answer>Up</answer>",
+      "llm_response": "<think>The box is now directly in front of me and is aligned with the target above it. I should move up again to push the box onto the target.</think><answer>Up</answer>",
+      "think_content": "The box is now directly in front of me and is aligned with the target above it. I should move up again to push the box onto the target.",
+      "action_content": "Up",
+      "actions": [
+        "up"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "dim_room": [
+      6,
+      6
+    ],
+    "max_steps": 100,
+    "num_boxes": 1,
+    "render_mode": "vision",
+    "max_actions_per_step": 3,
+    "action_sep": ",",
+    "use_example_in_sys_prompt": true,
+    "prompt_format": "free_think",
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 1445,
+    "completion_tokens": 80,
+    "total_tokens": 1525,
+    "num_calls": 2
+  },
+  "max_turns": 10,
+  "tag_id": "sokoban_gpt41_20ep",
+  "split": "test",
+  "env_name": "Sokoban"
+}

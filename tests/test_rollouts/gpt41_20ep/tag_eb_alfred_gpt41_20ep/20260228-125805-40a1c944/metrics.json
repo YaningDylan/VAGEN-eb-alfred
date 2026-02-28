@@ -1,0 +1,127 @@
+{
+  "rollout_id": "20260228-125805-40a1c944",
+  "seed": 1503,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.4000000000000001,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 4,
+  "infos": [
+    {
+      "task_instruction": "Turn on the lamp while holding the remote.",
+      "num_actions": 207,
+      "eval_set": "base",
+      "episode_idx": 24
+    },
+    {
+      "llm_raw_response": "<think>I need to hold the remote before turning on the lamp. First, I should find a RemoteControl.</think>\n<answer>find a RemoteControl</answer>",
+      "llm_response": "<think>I need to hold the remote before turning on the lamp. First, I should find a RemoteControl.</think><answer>find a RemoteControl</answer>",
+      "think_content": "I need to hold the remote before turning on the lamp. First, I should find a RemoteControl.",
+      "action_content": "find a RemoteControl",
+      "actions": [
+        "find a RemoteControl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The remote control is nearby and I am not holding anything. I should pick it up.</think>\n<answer>pick up the RemoteControl</answer>",
+      "llm_response": "<think>The remote control is nearby and I am not holding anything. I should pick it up.</think><answer>pick up the RemoteControl</answer>",
+      "think_content": "The remote control is nearby and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the RemoteControl",
+      "actions": [
+        "pick up the RemoteControl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now holding the remote. Next, I need to find a lamp to turn on. I should look for a FloorLamp or DeskLamp.</think>\n<answer>find a FloorLamp</answer>",
+      "llm_response": "<think>I am now holding the remote. Next, I need to find a lamp to turn on. I should look for a FloorLamp or DeskLamp.</think><answer>find a FloorLamp</answer>",
+      "think_content": "I am now holding the remote. Next, I need to find a lamp to turn on. I should look for a FloorLamp or DeskLamp.",
+      "action_content": "find a FloorLamp",
+      "actions": [
+        "find a FloorLamp"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am holding the remote and near the floor lamp. I should turn on the floor lamp now.</think>\n<answer>turn on the FloorLamp</answer>",
+      "llm_response": "<think>I am holding the remote and near the floor lamp. I should turn on the floor lamp now.</think><answer>turn on the FloorLamp</answer>",
+      "think_content": "I am holding the remote and near the floor lamp. I should turn on the floor lamp now.",
+      "action_content": "turn on the FloorLamp",
+      "actions": [
+        "turn on the FloorLamp"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "eval_set": "base",
+    "x_display": "0",
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 11779,
+    "completion_tokens": 147,
+    "total_tokens": 11926,
+    "num_calls": 4
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_gpt41_20ep",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

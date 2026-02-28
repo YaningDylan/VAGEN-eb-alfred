@@ -1,0 +1,6 @@
+[
+  "<think>I need to hold the remote before turning on the lamp. First, I should find a RemoteControl.</think>\n<answer>find a RemoteControl</answer>",
+  "<think>The remote control is nearby and I am not holding anything. I should pick it up.</think>\n<answer>pick up the RemoteControl</answer>",
+  "<think>I am now holding the remote. Next, I need to find a lamp to turn on. I should look for a FloorLamp or DeskLamp.</think>\n<answer>find a FloorLamp</answer>",
+  "<think>I am holding the remote and near the floor lamp. I should turn on the floor lamp now.</think>\n<answer>turn on the FloorLamp</answer>"
+]

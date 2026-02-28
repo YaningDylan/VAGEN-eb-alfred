@@ -1,0 +1,127 @@
+{
+  "rollout_id": "20260228-125839-4641b951",
+  "seed": 1719,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.4000000000000001,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 4,
+  "infos": [
+    {
+      "task_instruction": "Put a phone on a bed.",
+      "num_actions": 206,
+      "eval_set": "base",
+      "episode_idx": 36
+    },
+    {
+      "llm_raw_response": "<think>I need to locate a phone first. Let me find a CellPhone.</think>\n<answer>find a CellPhone</answer>",
+      "llm_response": "<think>I need to locate a phone first. Let me find a CellPhone.</think><answer>find a CellPhone</answer>",
+      "think_content": "I need to locate a phone first. Let me find a CellPhone.",
+      "action_content": "find a CellPhone",
+      "actions": [
+        "find a CellPhone"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cell phone is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the CellPhone</answer>",
+      "llm_response": "<think>The cell phone is nearby and I'm not holding anything. I should pick it up.</think><answer>pick up the CellPhone</answer>",
+      "think_content": "The cell phone is nearby and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the CellPhone",
+      "actions": [
+        "pick up the CellPhone"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Now that I have the phone, I need to go to the bed to put it down there.</think>\n<answer>find a Bed</answer>",
+      "llm_response": "<think>Now that I have the phone, I need to go to the bed to put it down there.</think><answer>find a Bed</answer>",
+      "think_content": "Now that I have the phone, I need to go to the bed to put it down there.",
+      "action_content": "find a Bed",
+      "actions": [
+        "find a Bed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm at the bed and holding the phone. I should put the phone down on the bed.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm at the bed and holding the phone. I should put the phone down on the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm at the bed and holding the phone. I should put the phone down on the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "eval_set": "base",
+    "x_display": "0",
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 11692,
+    "completion_tokens": 131,
+    "total_tokens": 11823,
+    "num_calls": 4
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_gpt41_20ep",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

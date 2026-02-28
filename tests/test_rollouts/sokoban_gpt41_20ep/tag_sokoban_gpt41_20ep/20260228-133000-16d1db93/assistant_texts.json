@@ -1,0 +1,4 @@
+[
+  "<think>The box is directly to the right of me, and the target is to the right of the box. I should move right to push the box onto the target.</think>\n<answer>Right</answer>",
+  "<think>The box is still to the right of me, and the target is to the right of the box. I should move right again to push the box onto the target.</think>\n<answer>Right</answer>"
+]

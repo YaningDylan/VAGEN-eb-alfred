@@ -1,0 +1,83 @@
+{
+  "rollout_id": "20260228-132956-35d1b9cb",
+  "seed": 1611,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.2000000000000002,
+  "rewards": [
+    0.1,
+    1.1
+  ],
+  "num_turns": 2,
+  "infos": [
+    {},
+    {
+      "llm_raw_response": "<think>The box is directly above me, and the target is above and to the left of the box. First, I need to move up to get behind the box, then move left to push the box onto the target.</think>\n<answer>Up, Left</answer>",
+      "llm_response": "<think>The box is directly above me, and the target is above and to the left of the box. First, I need to move up to get behind the box, then move left to push the box onto the target.</think><answer>Up, Left</answer>",
+      "think_content": "The box is directly above me, and the target is above and to the left of the box. First, I need to move up to get behind the box, then move left to push the box onto the target.",
+      "action_content": "Up, Left",
+      "actions": [
+        "up",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is now directly to my left, and the target is directly above the box. I need to move left to get behind the box, then push the box up onto the target.</think>\n<answer>Left, Up</answer>",
+      "llm_response": "<think>The box is now directly to my left, and the target is directly above the box. I need to move left to get behind the box, then push the box up onto the target.</think><answer>Left, Up</answer>",
+      "think_content": "The box is now directly to my left, and the target is directly above the box. I need to move left to get behind the box, then push the box up onto the target.",
+      "action_content": "Left, Up",
+      "actions": [
+        "left",
+        "up"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "dim_room": [
+      6,
+      6
+    ],
+    "max_steps": 100,
+    "num_boxes": 1,
+    "render_mode": "vision",
+    "max_actions_per_step": 3,
+    "action_sep": ",",
+    "use_example_in_sys_prompt": true,
+    "prompt_format": "free_think",
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 1467,
+    "completion_tokens": 108,
+    "total_tokens": 1575,
+    "num_calls": 2
+  },
+  "max_turns": 10,
+  "tag_id": "sokoban_gpt41_20ep",
+  "split": "test",
+  "env_name": "Sokoban"
+}

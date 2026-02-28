@@ -1,0 +1,3 @@
+[
+  "<think>The player is to the right of the box, and the target is to the left of the box. To push the box onto the target, the player should move to the left side of the box. First, move left to get behind the box, then push the box left onto the target.</think>\n<answer>Left, Left</answer>"
+]

@@ -1,0 +1,37 @@
+SYSTEM: You are a Sokoban solver.
+Sokoban Quick Guide
+Goal: Push all boxes onto targets.
+Symbols (If image is provided there are no symbols):
+# Wall | _ Floor | O Target | X Box | P You | √ Box on Target | S You on Target
+Rules:
+1. Push boxes (can't pull).
+2. Avoid walls.
+Actions you can take: Left, Down, Right, Up.
+You can take up to 3 action(s) at a time, separated by ,.
+You should first give your reasoning, and then your answer.
+Your response should be in the format of:
+<think>...</think><answer>...</answer>
+
+Example 1:
+<think>The box is one step below me, and the target is two steps below me. I should go down to reach the box and then push it down to the target.</think>
+<answer>Down</answer>
+
+Example 2:
+<think>The box is to the right of me, and the target is further to the right. I need to move right to get behind the box and push it toward the target.</think>
+<answer>Right</answer>
+
+Example 3:
+<think>The box is above me, and the target is above the box. I should move up to reach the box and then push it upward to the target.</think>
+<answer>Up</answer>
+
+USER: [Initial Observation]:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is directly below me, and the target is directly below the box. I should push the box down onto the target.</think>
+<answer>Down</answer>
+
+USER: After your answer, the extracted valid action is ['down'].
+After that, the observation is:
+ 
+Decide your next action(s).

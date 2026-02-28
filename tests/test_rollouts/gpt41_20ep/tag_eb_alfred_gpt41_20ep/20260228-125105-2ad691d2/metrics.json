@@ -1,0 +1,232 @@
+{
+  "rollout_id": "20260228-125105-2ad691d2",
+  "seed": 531,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.9,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 9,
+  "infos": [
+    {
+      "task_instruction": "Put two sets of keys on the shelf.",
+      "num_actions": 179,
+      "eval_set": "base",
+      "episode_idx": 21
+    },
+    {
+      "llm_raw_response": "<think>I see a set of keys (KeyChain) on the side table. I need to find another set of keys before proceeding to the shelf.</think>\n<answer>find a KeyChain_2</answer>",
+      "llm_response": "<think>I see a set of keys (KeyChain) on the side table. I need to find another set of keys before proceeding to the shelf.</think><answer>find a KeyChain_2</answer>",
+      "think_content": "I see a set of keys (KeyChain) on the side table. I need to find another set of keys before proceeding to the shelf.",
+      "action_content": "find a KeyChain_2",
+      "actions": [
+        "find a KeyChain_2"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see another set of keys (KeyChain_2) on the sofa. I need to pick up one set of keys to start with.</think>\n<answer>pick up the KeyChain_2</answer>",
+      "llm_response": "<think>I see another set of keys (KeyChain_2) on the sofa. I need to pick up one set of keys to start with.</think><answer>pick up the KeyChain_2</answer>",
+      "think_content": "I see another set of keys (KeyChain_2) on the sofa. I need to pick up one set of keys to start with.",
+      "action_content": "pick up the KeyChain_2",
+      "actions": [
+        "pick up the KeyChain_2"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The available action is to pick up the KeyChain, not KeyChain_2. I should pick up the KeyChain that is nearby.</think>\n<answer>pick up the KeyChain</answer>",
+      "llm_response": "<think>The available action is to pick up the KeyChain, not KeyChain_2. I should pick up the KeyChain that is nearby.</think><answer>pick up the KeyChain</answer>",
+      "think_content": "The available action is to pick up the KeyChain, not KeyChain_2. I should pick up the KeyChain that is nearby.",
+      "action_content": "pick up the KeyChain",
+      "actions": [
+        "pick up the KeyChain"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding one set of keys. Now I need to find a shelf to put it on.</think>\n<answer>find a Shelf</answer>",
+      "llm_response": "<think>I'm holding one set of keys. Now I need to find a shelf to put it on.</think><answer>find a Shelf</answer>",
+      "think_content": "I'm holding one set of keys. Now I need to find a shelf to put it on.",
+      "action_content": "find a Shelf",
+      "actions": [
+        "find a Shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm at the shelf and holding a set of keys. I should put this set of keys on the shelf.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm at the shelf and holding a set of keys. I should put this set of keys on the shelf.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm at the shelf and holding a set of keys. I should put this set of keys on the shelf.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>One set of keys is now on the shelf. I need to get the second set of keys from the sofa.</think>\n<answer>find a KeyChain_2</answer>",
+      "llm_response": "<think>One set of keys is now on the shelf. I need to get the second set of keys from the sofa.</think><answer>find a KeyChain_2</answer>",
+      "think_content": "One set of keys is now on the shelf. I need to get the second set of keys from the sofa.",
+      "action_content": "find a KeyChain_2",
+      "actions": [
+        "find a KeyChain_2"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The second set of keys (KeyChain_2) is on the sofa and I am nearby. I should pick it up.</think>\n<answer>pick up the KeyChain</answer>",
+      "llm_response": "<think>The second set of keys (KeyChain_2) is on the sofa and I am nearby. I should pick it up.</think><answer>pick up the KeyChain</answer>",
+      "think_content": "The second set of keys (KeyChain_2) is on the sofa and I am nearby. I should pick it up.",
+      "action_content": "pick up the KeyChain",
+      "actions": [
+        "pick up the KeyChain"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the second set of keys. Now I need to return to the shelf to place them there.</think>\n<answer>find a Shelf</answer>",
+      "llm_response": "<think>I'm holding the second set of keys. Now I need to return to the shelf to place them there.</think><answer>find a Shelf</answer>",
+      "think_content": "I'm holding the second set of keys. Now I need to return to the shelf to place them there.",
+      "action_content": "find a Shelf",
+      "actions": [
+        "find a Shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm at the shelf and holding the second set of keys. I should put this set of keys on the shelf as well.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm at the shelf and holding the second set of keys. I should put this set of keys on the shelf as well.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm at the shelf and holding the second set of keys. I should put this set of keys on the shelf as well.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "eval_set": "base",
+    "x_display": "0",
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 31886,
+    "completion_tokens": 364,
+    "total_tokens": 32250,
+    "num_calls": 9
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_gpt41_20ep",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

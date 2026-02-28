@@ -1,0 +1,121 @@
+{
+  "rollout_id": "20260228-120238-ca2b1998",
+  "seed": 1719,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.4000000000000001,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 4,
+  "infos": [
+    {
+      "task_instruction": "Put a phone on a bed.",
+      "num_actions": 206,
+      "eval_set": "base",
+      "episode_idx": 36
+    },
+    {
+      "llm_raw_response": "<think>I need to put a phone on a bed. I can see a bed in the current observation. First, I need to find a phone (CellPhone) to pick up, then I'll put it on the bed. Let me start by finding a CellPhone.</think>\n\n<answer>find a CellPhone</answer>",
+      "llm_response": "<think>I need to put a phone on a bed. I can see a bed in the current observation. First, I need to find a phone (CellPhone) to pick up, then I'll put it on the bed. Let me start by finding a CellPhone.</think><answer>find a CellPhone</answer>",
+      "think_content": "I need to put a phone on a bed. I can see a bed in the current observation. First, I need to find a phone (CellPhone) to pick up, then I'll put it on the bed. Let me start by finding a CellPhone.",
+      "action_content": "find a CellPhone",
+      "actions": [
+        "find a CellPhone"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Great! I can see a CellPhone (black phone) on what appears to be a wooden desk or dresser. I need to pick it up first before I can put it on the bed. I'm close to the phone, so I should be able to pick it up.</think>\n\n<answer>pick up the CellPhone</answer>",
+      "llm_response": "<think>Great! I can see a CellPhone (black phone) on what appears to be a wooden desk or dresser. I need to pick it up first before I can put it on the bed. I'm close to the phone, so I should be able to pick it up.</think><answer>pick up the CellPhone</answer>",
+      "think_content": "Great! I can see a CellPhone (black phone) on what appears to be a wooden desk or dresser. I need to pick it up first before I can put it on the bed. I'm close to the phone, so I should be able to pick it up.",
+      "action_content": "pick up the CellPhone",
+      "actions": [
+        "pick up the CellPhone"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Perfect! I can see the CellPhone is now in my hand (shown at the bottom of the screen with a blue outline). Now I need to navigate to the bed to put the phone on it. I saw a bed in the first observation, so I need to find the bed again.</think>\n\n<answer>find a Bed</answer>",
+      "llm_response": "<think>Perfect! I can see the CellPhone is now in my hand (shown at the bottom of the screen with a blue outline). Now I need to navigate to the bed to put the phone on it. I saw a bed in the first observation, so I need to find the bed again.</think><answer>find a Bed</answer>",
+      "think_content": "Perfect! I can see the CellPhone is now in my hand (shown at the bottom of the screen with a blue outline). Now I need to navigate to the bed to put the phone on it. I saw a bed in the first observation, so I need to find the bed again.",
+      "action_content": "find a Bed",
+      "actions": [
+        "find a Bed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Excellent! I'm now at the bed and I can see the bed with its patterned bedding. I'm holding the CellPhone (visible at the bottom of the screen with blue outline). Now I need to put the phone down on the bed. I should use \"put down the object in hand\" to place it on the bed.</think>\n\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>Excellent! I'm now at the bed and I can see the bed with its patterned bedding. I'm holding the CellPhone (visible at the bottom of the screen with blue outline). Now I need to put the phone down on the bed. I should use \"put down the object in hand\" to place it on the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "Excellent! I'm now at the bed and I can see the bed with its patterned bedding. I'm holding the CellPhone (visible at the bottom of the screen with blue outline). Now I need to put the phone down on the bed. I should use \"put down the object in hand\" to place it on the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "eval_set": "base",
+    "x_display": "0",
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_claude_20ep",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

@@ -1,0 +1,143 @@
+{
+  "rollout_id": "20260228-084651-1949430b",
+  "seed": 3,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.4000000000000001,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 4,
+  "infos": [
+    {
+      "task_instruction": "Pick up a remote and turn on a lamp",
+      "num_actions": 180,
+      "eval_set": "base",
+      "episode_idx": 3
+    },
+    {
+      "llm_raw_response": "<think>I need to pick up a remote and turn on a lamp. First, I should find a remote control. I can see there are multiple remote controls available (RemoteControl, RemoteControl_2, RemoteControl_3). Let me start by finding the first remote control.</think>\n\n<answer>find a RemoteControl</answer>",
+      "llm_response": "<think>I need to pick up a remote and turn on a lamp. First, I should find a remote control. I can see there are multiple remote controls available (RemoteControl, RemoteControl_2, RemoteControl_3). Let me start by finding the first remote control.</think><answer>find a RemoteControl</answer>",
+      "think_content": "I need to pick up a remote and turn on a lamp. First, I should find a remote control. I can see there are multiple remote controls available (RemoteControl, RemoteControl_2, RemoteControl_3). Let me start by finding the first remote control.",
+      "action_content": "find a RemoteControl",
+      "actions": [
+        "find a RemoteControl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Great! I can see a remote control on the wooden table/surface. I can see it clearly in the image. Now I need to pick it up since I'm close to it and not holding anything.</think>\n\n<answer>pick up the RemoteControl</answer>",
+      "llm_response": "<think>Great! I can see a remote control on the wooden table/surface. I can see it clearly in the image. Now I need to pick it up since I'm close to it and not holding anything.</think><answer>pick up the RemoteControl</answer>",
+      "think_content": "Great! I can see a remote control on the wooden table/surface. I can see it clearly in the image. Now I need to pick it up since I'm close to it and not holding anything.",
+      "action_content": "pick up the RemoteControl",
+      "actions": [
+        "pick up the RemoteControl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Perfect! I can see I'm now holding the remote control (it's visible at the bottom of the screen). Now I need to find a lamp to turn on. I can see from the available actions that there are two types of lamps: DeskLamp and FloorLamp. Let me find a FloorLamp first.</think>\n\n<answer>find a FloorLamp</answer>",
+      "llm_response": "<think>Perfect! I can see I'm now holding the remote control (it's visible at the bottom of the screen). Now I need to find a lamp to turn on. I can see from the available actions that there are two types of lamps: DeskLamp and FloorLamp. Let me find a FloorLamp first.</think><answer>find a FloorLamp</answer>",
+      "think_content": "Perfect! I can see I'm now holding the remote control (it's visible at the bottom of the screen). Now I need to find a lamp to turn on. I can see from the available actions that there are two types of lamps: DeskLamp and FloorLamp. Let me find a FloorLamp first.",
+      "action_content": "find a FloorLamp",
+      "actions": [
+        "find a FloorLamp"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Excellent! I can see a floor lamp in front of me - it's the tall black lamp with multiple spherical segments stacked on top of each other. I'm holding the remote control (visible at the bottom of the screen) and I'm near the floor lamp. Now I need to turn on the floor lamp.</think>\n\n<answer>turn on the FloorLamp</answer>",
+      "llm_response": "<think>Excellent! I can see a floor lamp in front of me - it's the tall black lamp with multiple spherical segments stacked on top of each other. I'm holding the remote control (visible at the bottom of the screen) and I'm near the floor lamp. Now I need to turn on the floor lamp.</think><answer>turn on the FloorLamp</answer>",
+      "think_content": "Excellent! I can see a floor lamp in front of me - it's the tall black lamp with multiple spherical segments stacked on top of each other. I'm holding the remote control (visible at the bottom of the screen) and I'm near the floor lamp. Now I need to turn on the floor lamp.",
+      "action_content": "turn on the FloorLamp",
+      "actions": [
+        "turn on the FloorLamp"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "eval_set": "base",
+    "x_display": "0",
+    "selected_indexes": [
+      0,
+      5,
+      6,
+      7,
+      14,
+      15,
+      18,
+      20,
+      26,
+      28,
+      31,
+      32,
+      35,
+      36,
+      38,
+      39,
+      41,
+      46,
+      48,
+      50
+    ],
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_claude_20",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

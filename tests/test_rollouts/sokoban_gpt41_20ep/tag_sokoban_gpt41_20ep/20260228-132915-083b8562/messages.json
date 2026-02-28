@@ -1,0 +1,310 @@
+[
+  {
+    "role": "system",
+    "content": [
+      {
+        "type": "text",
+        "text": "You are a Sokoban solver.\nSokoban Quick Guide\nGoal: Push all boxes onto targets.\nSymbols (If image is provided there are no symbols):\n# Wall | _ Floor | O Target | X Box | P You | √ Box on Target | S You on Target\nRules:\n1. Push boxes (can't pull).\n2. Avoid walls.\nActions you can take: Left, Down, Right, Up.\nYou can take up to 3 action(s) at a time, separated by ,.\nYou should first give your reasoning, and then your answer.\nYour response should be in the format of:\n<think>...</think><answer>...</answer>\n\nExample 1:\n<think>The box is one step below me, and the target is two steps below me. I should go down to reach the box and then push it down to the target.</think>\n<answer>Down</answer>\n\nExample 2:\n<think>The box is to the right of me, and the target is further to the right. I need to move right to get behind the box and push it toward the target.</think>\n<answer>Right</answer>\n\nExample 3:\n<think>The box is above me, and the target is above the box. I should move up to reach the box and then push it upward to the target.</think>\n<answer>Up</answer>\n"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "[Initial Observation]:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box is to the left of me, and the target is to the left of the box. I should move left to push the box onto the target.</think>\n<answer>Left</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is ['left'].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The box is now directly above the target, and I am to the right of the box. I should move left to get behind the box and push it down onto the target.</think>\n<answer>Left, Down</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is ['left', 'down'].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>I am now below the box, and the target is still to the left of the box. I need to move up to get behind the box and then push it left onto the target.</think>\n<answer>Up, Left</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is ['up', 'left'].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>I am back to the previous position: to the right of the box, which is above the target. The only way to progress is to try a different approach. I should try moving down to see if I can reposition myself for a better push.</think>\n<answer>Down</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is ['down'].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>I am again below the box, and the box is to the left of me, above the target. The only way to push the box onto the target is to get above the box and push it down. I should move up to get above the box.</think>\n<answer>Up</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is ['up'].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>I am stuck in a loop, always ending up to the right of the box. There is no way to get above or below the box due to the walls. The only possible move is to the left, but that just pushes the box left without solving the puzzle. This puzzle appears unsolvable from this configuration.</think>\n<answer>Left</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is ['left'].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>I am repeating the same moves and returning to the same position each time. There is no way to get behind the box to push it onto the target due to the wall layout. This puzzle is unsolvable from this configuration, and any further moves will just repeat the loop.</think>\n<answer>No valid moves to solve the puzzle from this configuration.</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>I am stuck in a loop with no new valid actions available. The configuration does not allow me to push the box onto the target due to the wall placement. There are no further moves that will progress the puzzle.</think>\n<answer>No valid actions available.</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The current configuration has no valid moves left, and I am stuck in a loop. The puzzle cannot be solved from this state.</think>\n<answer>No valid actions available.</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "<think>The puzzle is in a state where no further moves are possible, and the box cannot be pushed onto the target due to the wall layout. There are no valid actions left to take.</think>\n<answer>No valid actions available.</answer>"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "After your answer, the extracted valid action is [].\nAfter that, the observation is:\n"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<data_url>"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\nDecide your next action(s).\n"
+      }
+    ]
+  }
+]

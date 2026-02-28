@@ -1,0 +1,257 @@
+{
+  "rollout_id": "20260228-132932-1b71bd33",
+  "seed": 855,
+  "terminated": false,
+  "finish_reason": "max_turns",
+  "success": false,
+  "cumulative_reward": 0.9999999999999999,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 10,
+  "infos": [
+    {},
+    {
+      "llm_raw_response": "<think>The box is to the right of me, and the target is below the box. I should move right to get behind the box, then push it down onto the target.</think>\n<answer>Right, Down</answer>",
+      "llm_response": "<think>The box is to the right of me, and the target is below the box. I should move right to get behind the box, then push it down onto the target.</think><answer>Right, Down</answer>",
+      "think_content": "The box is to the right of me, and the target is below the box. I should move right to get behind the box, then push it down onto the target.",
+      "action_content": "Right, Down",
+      "actions": [
+        "right",
+        "down"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is now below me, and the target is below the box. I should move down to get behind the box and push it down onto the target.</think>\n<answer>Down, Down</answer>",
+      "llm_response": "<think>The box is now below me, and the target is below the box. I should move down to get behind the box and push it down onto the target.</think><answer>Down, Down</answer>",
+      "think_content": "The box is now below me, and the target is below the box. I should move down to get behind the box and push it down onto the target.",
+      "action_content": "Down, Down",
+      "actions": [
+        "down",
+        "down"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still below me, and the target is below the box. I need to move down to push the box onto the target.</think>\n<answer>Down</answer>",
+      "llm_response": "<think>The box is still below me, and the target is below the box. I need to move down to push the box onto the target.</think><answer>Down</answer>",
+      "think_content": "The box is still below me, and the target is below the box. I need to move down to push the box onto the target.",
+      "action_content": "Down",
+      "actions": [
+        "down"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still below me, and the target is below the box. I need to move down to push the box onto the target.</think>\n<answer>Down</answer>",
+      "llm_response": "<think>The box is still below me, and the target is below the box. I need to move down to push the box onto the target.</think><answer>Down</answer>",
+      "think_content": "The box is still below me, and the target is below the box. I need to move down to push the box onto the target.",
+      "action_content": "Down",
+      "actions": [
+        "down"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still below me, and the target is below the box. I need to move down to push the box onto the target.</think>\n<answer>Down</answer>",
+      "llm_response": "<think>The box is still below me, and the target is below the box. I need to move down to push the box onto the target.</think><answer>Down</answer>",
+      "think_content": "The box is still below me, and the target is below the box. I need to move down to push the box onto the target.",
+      "action_content": "Down",
+      "actions": [
+        "down"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still below me, and the target is below the box. I need to move down to push the box onto the target. It seems I am repeating the same action, but this is the only way to push the box onto the target.</think>\n<answer>Down</answer>",
+      "llm_response": "<think>The box is still below me, and the target is below the box. I need to move down to push the box onto the target. It seems I am repeating the same action, but this is the only way to push the box onto the target.</think><answer>Down</answer>",
+      "think_content": "The box is still below me, and the target is below the box. I need to move down to push the box onto the target. It seems I am repeating the same action, but this is the only way to push the box onto the target.",
+      "action_content": "Down",
+      "actions": [
+        "down"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still below me, and the target is below the box. However, after repeating the down action several times, the box has not moved. This suggests that there may be a wall or boundary below the box, preventing it from being pushed further. I should try a different approach to solve the puzzle.</think>\n<answer>Up, Left</answer>",
+      "llm_response": "<think>The box is still below me, and the target is below the box. However, after repeating the down action several times, the box has not moved. This suggests that there may be a wall or boundary below the box, preventing it from being pushed further. I should try a different approach to solve the puzzle.</think><answer>Up, Left</answer>",
+      "think_content": "The box is still below me, and the target is below the box. However, after repeating the down action several times, the box has not moved. This suggests that there may be a wall or boundary below the box, preventing it from being pushed further. I should try a different approach to solve the puzzle.",
+      "action_content": "Up, Left",
+      "actions": [
+        "up",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now above and to the left of the box. To push the box onto the target, I need to get to the right side of the box. I should move right, then down to position myself below the box, and then right again to get behind it.</think>\n<answer>Right, Down, Right</answer>",
+      "llm_response": "<think>I am now above and to the left of the box. To push the box onto the target, I need to get to the right side of the box. I should move right, then down to position myself below the box, and then right again to get behind it.</think><answer>Right, Down, Right</answer>",
+      "think_content": "I am now above and to the left of the box. To push the box onto the target, I need to get to the right side of the box. I should move right, then down to position myself below the box, and then right again to get behind it.",
+      "action_content": "Right, Down, Right",
+      "actions": [
+        "right",
+        "down",
+        "right"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now to the right of the box. To push the box onto the target, I need to move below the box. I should move down, then left to get behind the box, and then up to push it down onto the target.</think>\n<answer>Down, Left, Up</answer>",
+      "llm_response": "<think>I am now to the right of the box. To push the box onto the target, I need to move below the box. I should move down, then left to get behind the box, and then up to push it down onto the target.</think><answer>Down, Left, Up</answer>",
+      "think_content": "I am now to the right of the box. To push the box onto the target, I need to move below the box. I should move down, then left to get behind the box, and then up to push it down onto the target.",
+      "action_content": "Down, Left, Up",
+      "actions": [
+        "down",
+        "left",
+        "up"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am still to the right of the box, and the box is still not on the target. My previous attempts to get below or behind the box have not worked due to the wall layout. The only way to push the box onto the target is to get to its left and push it right. I should move left to get to the left of the box, then push it right onto the target.</think>\n<answer>Left, Right</answer>",
+      "llm_response": "<think>I am still to the right of the box, and the box is still not on the target. My previous attempts to get below or behind the box have not worked due to the wall layout. The only way to push the box onto the target is to get to its left and push it right. I should move left to get to the left of the box, then push it right onto the target.</think><answer>Left, Right</answer>",
+      "think_content": "I am still to the right of the box, and the box is still not on the target. My previous attempts to get below or behind the box have not worked due to the wall layout. The only way to push the box onto the target is to get to its left and push it right. I should move left to get to the left of the box, then push it right onto the target.",
+      "action_content": "Left, Right",
+      "actions": [
+        "left",
+        "right"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "dim_room": [
+      6,
+      6
+    ],
+    "max_steps": 100,
+    "num_boxes": 1,
+    "render_mode": "vision",
+    "max_actions_per_step": 3,
+    "action_sep": ",",
+    "use_example_in_sys_prompt": true,
+    "prompt_format": "free_think",
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 20928,
+    "completion_tokens": 577,
+    "total_tokens": 21505,
+    "num_calls": 10
+  },
+  "max_turns": 10,
+  "tag_id": "sokoban_gpt41_20ep",
+  "split": "test",
+  "env_name": "Sokoban"
+}

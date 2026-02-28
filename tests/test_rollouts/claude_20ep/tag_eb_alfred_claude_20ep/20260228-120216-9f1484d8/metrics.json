@@ -1,0 +1,121 @@
+{
+  "rollout_id": "20260228-120216-9f1484d8",
+  "seed": 1503,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.4000000000000001,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 4,
+  "infos": [
+    {
+      "task_instruction": "Turn on the lamp while holding the remote.",
+      "num_actions": 207,
+      "eval_set": "base",
+      "episode_idx": 24
+    },
+    {
+      "llm_raw_response": "<think>I need to turn on the lamp while holding the remote. First, I should find a remote control to pick up, then find a lamp to turn on. Let me start by finding a remote control.</think>\n\n<answer>find a RemoteControl</answer>",
+      "llm_response": "<think>I need to turn on the lamp while holding the remote. First, I should find a remote control to pick up, then find a lamp to turn on. Let me start by finding a remote control.</think><answer>find a RemoteControl</answer>",
+      "think_content": "I need to turn on the lamp while holding the remote. First, I should find a remote control to pick up, then find a lamp to turn on. Let me start by finding a remote control.",
+      "action_content": "find a RemoteControl",
+      "actions": [
+        "find a RemoteControl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Great! I can see a remote control on the chair. Now I need to pick it up so I can hold it while turning on the lamp.</think>\n\n<answer>pick up the RemoteControl</answer>",
+      "llm_response": "<think>Great! I can see a remote control on the chair. Now I need to pick it up so I can hold it while turning on the lamp.</think><answer>pick up the RemoteControl</answer>",
+      "think_content": "Great! I can see a remote control on the chair. Now I need to pick it up so I can hold it while turning on the lamp.",
+      "action_content": "pick up the RemoteControl",
+      "actions": [
+        "pick up the RemoteControl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Perfect! I'm now holding the remote control as I can see it in my hand at the bottom of the screen. Now I need to find a lamp to turn on. I can look for either a FloorLamp or a DeskLamp.</think>\n\n<answer>find a FloorLamp</answer>",
+      "llm_response": "<think>Perfect! I'm now holding the remote control as I can see it in my hand at the bottom of the screen. Now I need to find a lamp to turn on. I can look for either a FloorLamp or a DeskLamp.</think><answer>find a FloorLamp</answer>",
+      "think_content": "Perfect! I'm now holding the remote control as I can see it in my hand at the bottom of the screen. Now I need to find a lamp to turn on. I can look for either a FloorLamp or a DeskLamp.",
+      "action_content": "find a FloorLamp",
+      "actions": [
+        "find a FloorLamp"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Excellent! I can see a floor lamp in front of me - it appears to be a pink/salmon colored lamp with a geometric design. I'm still holding the remote control (visible at the bottom of the screen). Now I need to turn on this floor lamp while holding the remote.</think>\n\n<answer>turn on the FloorLamp</answer>",
+      "llm_response": "<think>Excellent! I can see a floor lamp in front of me - it appears to be a pink/salmon colored lamp with a geometric design. I'm still holding the remote control (visible at the bottom of the screen). Now I need to turn on this floor lamp while holding the remote.</think><answer>turn on the FloorLamp</answer>",
+      "think_content": "Excellent! I can see a floor lamp in front of me - it appears to be a pink/salmon colored lamp with a geometric design. I'm still holding the remote control (visible at the bottom of the screen). Now I need to turn on this floor lamp while holding the remote.",
+      "action_content": "turn on the FloorLamp",
+      "actions": [
+        "turn on the FloorLamp"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "eval_set": "base",
+    "x_display": "0",
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_claude_20ep",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

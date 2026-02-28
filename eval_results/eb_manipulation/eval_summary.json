@@ -1,0 +1,23 @@
+{
+  "eval_set": "base",
+  "model": "claude-sonnet-4-20250514",
+  "n_episodes": 1,
+  "max_turns": 15,
+  "success_rate": 0.0,
+  "avg_reward": 0.0,
+  "avg_turns": 0.0,
+  "total_time_s": 7.091256141662598,
+  "episodes": [
+    {
+      "rollout_id": "20260228-121955-ca0a42dd",
+      "seed": 0,
+      "terminated": false,
+      "finish_reason": "error",
+      "success": false,
+      "cumulative_reward": 0.0,
+      "rewards": [],
+      "num_turns": 0,
+      "max_turns": 15
+    }
+  ]
+}

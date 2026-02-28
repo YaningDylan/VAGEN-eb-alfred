@@ -1,0 +1,233 @@
+{
+  "rollout_id": "20260228-132957-133883c9",
+  "seed": 1719,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.9,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 9,
+  "infos": [
+    {},
+    {
+      "llm_raw_response": "<think>The box is directly above me, and the target is to the right of the box. I should move up to get behind the box and then push it right onto the target.</think>\n<answer>Up, Right</answer>",
+      "llm_response": "<think>The box is directly above me, and the target is to the right of the box. I should move up to get behind the box and then push it right onto the target.</think><answer>Up, Right</answer>",
+      "think_content": "The box is directly above me, and the target is to the right of the box. I should move up to get behind the box and then push it right onto the target.",
+      "action_content": "Up, Right",
+      "actions": [
+        "up",
+        "right"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is now to my right, and the target is to the right of the box. I should move right to push the box onto the target.</think>\n<answer>Right</answer>",
+      "llm_response": "<think>The box is now to my right, and the target is to the right of the box. I should move right to push the box onto the target.</think><answer>Right</answer>",
+      "think_content": "The box is now to my right, and the target is to the right of the box. I should move right to push the box onto the target.",
+      "action_content": "Right",
+      "actions": [
+        "right"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still to my right, and the target is to the right of the box. I need to push the box right once more to place it on the target.</think>\n<answer>Right</answer>",
+      "llm_response": "<think>The box is still to my right, and the target is to the right of the box. I need to push the box right once more to place it on the target.</think><answer>Right</answer>",
+      "think_content": "The box is still to my right, and the target is to the right of the box. I need to push the box right once more to place it on the target.",
+      "action_content": "Right",
+      "actions": [
+        "right"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still to my right, and the target is also to the right of the box. I need to push the box right again to place it onto the target.</think>\n<answer>Right</answer>",
+      "llm_response": "<think>The box is still to my right, and the target is also to the right of the box. I need to push the box right again to place it onto the target.</think><answer>Right</answer>",
+      "think_content": "The box is still to my right, and the target is also to the right of the box. I need to push the box right again to place it onto the target.",
+      "action_content": "Right",
+      "actions": [
+        "right"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still to my right, and the target is also to the right of the box. I need to push the box right again to place it onto the target.</think>\n<answer>Right</answer>",
+      "llm_response": "<think>The box is still to my right, and the target is also to the right of the box. I need to push the box right again to place it onto the target.</think><answer>Right</answer>",
+      "think_content": "The box is still to my right, and the target is also to the right of the box. I need to push the box right again to place it onto the target.",
+      "action_content": "Right",
+      "actions": [
+        "right"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The box is still to my right, and the target is also to the right of the box. However, it seems that pushing right repeatedly is not changing the state. I should reconsider my approach. There may be a wall to the right, preventing further movement. I need to find another way to solve the puzzle, but currently, the only movable direction is right, which is not progressing the solution. I should try moving away from the box to reposition myself.</think>\n<answer>Down, Left</answer>",
+      "llm_response": "<think>The box is still to my right, and the target is also to the right of the box. However, it seems that pushing right repeatedly is not changing the state. I should reconsider my approach. There may be a wall to the right, preventing further movement. I need to find another way to solve the puzzle, but currently, the only movable direction is right, which is not progressing the solution. I should try moving away from the box to reposition myself.</think><answer>Down, Left</answer>",
+      "think_content": "The box is still to my right, and the target is also to the right of the box. However, it seems that pushing right repeatedly is not changing the state. I should reconsider my approach. There may be a wall to the right, preventing further movement. I need to find another way to solve the puzzle, but currently, the only movable direction is right, which is not progressing the solution. I should try moving away from the box to reposition myself.",
+      "action_content": "Down, Left",
+      "actions": [
+        "down",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now at the bottom left corner. To push the box onto the target, I need to get above the box so I can push it down, then right onto the target. I should move up, then right to position myself above the box.</think>\n<answer>Up, Right</answer>",
+      "llm_response": "<think>I am now at the bottom left corner. To push the box onto the target, I need to get above the box so I can push it down, then right onto the target. I should move up, then right to position myself above the box.</think><answer>Up, Right</answer>",
+      "think_content": "I am now at the bottom left corner. To push the box onto the target, I need to get above the box so I can push it down, then right onto the target. I should move up, then right to position myself above the box.",
+      "action_content": "Up, Right",
+      "actions": [
+        "up",
+        "right"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now below the box again, in the same position as before. To solve the puzzle, I need to push the box right onto the target. However, pushing right repeatedly did not work previously, indicating that the box cannot be pushed further right. I need to find a way to push the box down or reposition it, but the only open space is below and to the left. I should try moving left and up to get above the box and see if I can push it down.</think>\n<answer>Left, Up</answer>",
+      "llm_response": "<think>I am now below the box again, in the same position as before. To solve the puzzle, I need to push the box right onto the target. However, pushing right repeatedly did not work previously, indicating that the box cannot be pushed further right. I need to find a way to push the box down or reposition it, but the only open space is below and to the left. I should try moving left and up to get above the box and see if I can push it down.</think><answer>Left, Up</answer>",
+      "think_content": "I am now below the box again, in the same position as before. To solve the puzzle, I need to push the box right onto the target. However, pushing right repeatedly did not work previously, indicating that the box cannot be pushed further right. I need to find a way to push the box down or reposition it, but the only open space is below and to the left. I should try moving left and up to get above the box and see if I can push it down.",
+      "action_content": "Left, Up",
+      "actions": [
+        "left",
+        "up"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now to the left of the box, and there is open space below the box. If I push the box down, I can then maneuver to push it right onto the target. So, I should push the box down.</think>\n<answer>Right, Down</answer>",
+      "llm_response": "<think>I am now to the left of the box, and there is open space below the box. If I push the box down, I can then maneuver to push it right onto the target. So, I should push the box down.</think><answer>Right, Down</answer>",
+      "think_content": "I am now to the left of the box, and there is open space below the box. If I push the box down, I can then maneuver to push it right onto the target. So, I should push the box down.",
+      "action_content": "Right, Down",
+      "actions": [
+        "right",
+        "down"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "dim_room": [
+      6,
+      6
+    ],
+    "max_steps": 100,
+    "num_boxes": 1,
+    "render_mode": "vision",
+    "max_actions_per_step": 3,
+    "action_sep": ",",
+    "use_example_in_sys_prompt": true,
+    "prompt_format": "free_think",
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 17474,
+    "completion_tokens": 571,
+    "total_tokens": 18045,
+    "num_calls": 9
+  },
+  "max_turns": 10,
+  "tag_id": "sokoban_gpt41_20ep",
+  "split": "test",
+  "env_name": "Sokoban"
+}

@@ -1,0 +1,76 @@
+===============================================================================================
+  EB-ALFRED Inference Evaluation Report
+  Model: GPT-4.1
+  Date: 2026-02-28 13:06
+  Eval Set: base  |  Max Turns: 30  |  Episodes: 20
+===============================================================================================
+
+## Summary
+  Overall Success Rate:  12/20 = 60.0%
+  Clean Success Rate:    12/20 = 60.0%  (excluding model errors)
+  Average Reward:        2.24
+  Average Turns:         17.2
+  Model Errors:          0/20
+
+## Token Usage
+  ┌─────────────────────────┬──────────────┬──────────────┬──────────────┐
+  │                         │   Prompt     │  Completion  │    Total     │
+  ├─────────────────────────┼──────────────┼──────────────┼──────────────┤
+  │ Total (all episodes)    │    2,139,507 │       14,060 │    2,153,567 │
+  │ Avg per task            │      106,975 │          703 │      107,678 │
+  │ Avg per turn            │        6,219 │           41 │        6,260 │
+  └─────────────────────────┴──────────────┴──────────────┴──────────────┘
+
+## Per-Episode Results
+
+ #    Seed   Ep  Turns   Reward   OK?      Tokens    Reason  Task
+---------------------------------------------------------------------------------------------------------
+ 1     315    9      4     1.40     Y      10,625        done  hold a pillow while turning on a lamp
+ 2     100   49     30     3.00     N     211,670        done  Put two sets of keys on the couch.
+ 3     207    3     30     3.00     N     213,411        done  Put two rolls of toilet paper on the back ...
+ 4     423   15      4     1.40     Y      12,935        done  Place a newspaper on a couch.
+ 5     531   21      9     1.90     Y      32,250        done  Put two sets of keys on the shelf.
+ 6     639   27     30     3.00     N     225,142        done  Place a rinsed slice of tomato in the micr...
+ 7     747   33      9     1.90     Y      33,441        done  Move a bowl with a watch inside from the d...
+ 8     855   39     17     2.70     Y      95,585        done  place a sauce pan with a spatula in it on ...
+ 9     963   45     19     1.90     N     103,707        done  Turn on the lamp while holding the teapot.
+10    1071    0     30     2.20     N     213,534        done  Clean a rag, put it away.
+11    1179    6     30     4.00     Y     233,527        done  Put a glass with a butter knife in it and ...
+12    1287   12     14     2.40     Y      63,574        done  Put a bowl with the watch in it on the she...
+13    1395   18      9     1.90     Y      32,239        done  Relocate two books to a bedroom desk.
+14    1503   24      4     1.40     Y      11,926        done  Turn on the lamp while holding the remote.
+15    1611   30     30     2.20     N     220,622        done  Examine a tv remote next to the light of a...
+16    1719   36      4     1.40     Y      11,823        done  Put a phone on a bed.
+17    1827   42     21     2.10     N     119,624        done  Place a cleaned sponge in a bathtub.
+18    1935   48     16     2.60     Y      83,981        done  Put two newspapers away in a drawer.
+19    2043    3     30     3.00     N     213,318        done  Put two rolls of toilet paper on the back ...
+20    2151    9      4     1.40     Y      10,633        done  hold a pillow while turning on a lamp
+---------------------------------------------------------------------------------------------------------
+
+## Successful Episodes
+  [seed=315] hold a pillow while turning on a lamp (turns=4, reward=1.40, tokens=10,625)
+  [seed=423] Place a newspaper on a couch. (turns=4, reward=1.40, tokens=12,935)
+  [seed=531] Put two sets of keys on the shelf. (turns=9, reward=1.90, tokens=32,250)
+  [seed=747] Move a bowl with a watch inside from the desk to the side table. (turns=9, reward=1.90, tokens=33,441)
+  [seed=855] place a sauce pan with a spatula in it on the kitchen counter (turns=17, reward=2.70, tokens=95,585)
+  [seed=1179] Put a glass with a butter knife in it and put them in a sink. (turns=30, reward=4.00, tokens=233,527)
+  [seed=1287] Put a bowl with the watch in it on the shelf. (turns=14, reward=2.40, tokens=63,574)
+  [seed=1395] Relocate two books to a bedroom desk. (turns=9, reward=1.90, tokens=32,239)
+  [seed=1503] Turn on the lamp while holding the remote. (turns=4, reward=1.40, tokens=11,926)
+  [seed=1719] Put a phone on a bed. (turns=4, reward=1.40, tokens=11,823)
+  [seed=1935] Put two newspapers away in a drawer. (turns=16, reward=2.60, tokens=83,981)
+  [seed=2151] hold a pillow while turning on a lamp (turns=4, reward=1.40, tokens=10,633)
+
+## Failed Episodes (no model error)
+  [seed=100] Put two sets of keys on the couch. (turns=30, reason=done, tokens=211,670)
+  [seed=207] Put two rolls of toilet paper on the back of a toilet. (turns=30, reason=done, tokens=213,411)
+  [seed=639] Place a rinsed slice of tomato in the microwave (turns=30, reason=done, tokens=225,142)
+  [seed=963] Turn on the lamp while holding the teapot. (turns=19, reason=done, tokens=103,707)
+  [seed=1071] Clean a rag, put it away. (turns=30, reason=done, tokens=213,534)
+  [seed=1611] Examine a tv remote next to the light of a tall lamp. (turns=30, reason=done, tokens=220,622)
+  [seed=1827] Place a cleaned sponge in a bathtub. (turns=21, reason=done, tokens=119,624)
+  [seed=2043] Put two rolls of toilet paper on the back of a toilet. (turns=30, reason=done, tokens=213,318)
+
+===============================================================================================
+  Rollout data: /home/march/workspace/Yaning/VAGEN-eb-alfred/tests/test_rollouts/gpt41_20ep/tag_eb_alfred_gpt41_20ep
+===============================================================================================

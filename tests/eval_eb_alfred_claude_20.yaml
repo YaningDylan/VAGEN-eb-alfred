@@ -1,0 +1,54 @@
+# EB-ALFRED evaluation with Claude API - 20 random test cases.
+#
+# Prerequisites:
+#   1. EB-ALFRED remote server must be running:
+#      DISPLAY=:0 python -m vagen.envs.eb_alfred.serve --port 8000
+#
+#   2. Run this evaluation:
+#      python -m vagen.evaluate.run_eval --config tests/eval_eb_alfred_claude_20.yaml
+
+envs:
+  - name: RemoteEnv
+    n_envs: 20
+    tag_id: eb_alfred_claude_20
+    seed_list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    split: test
+    max_turns: 30
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      eval_set: base
+      x_display: "0"
+      selected_indexes: [0, 5, 6, 7, 14, 15, 18, 20, 26, 28, 31, 32, 35, 36, 38, 39, 41, 46, 48, 50]
+      max_turns: 30
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./eval_results/claude_20_random
+  default_max_turns: 30
+
+run:
+  backend: claude
+  base_seed: 0
+  max_concurrent_jobs: 1
+  resume: off
+  live_summary: true
+
+backends:
+  claude:
+    api_key: ""
+    base_url: null
+    model: "claude-sonnet-4-20250514"
+    max_concurrency: 1
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

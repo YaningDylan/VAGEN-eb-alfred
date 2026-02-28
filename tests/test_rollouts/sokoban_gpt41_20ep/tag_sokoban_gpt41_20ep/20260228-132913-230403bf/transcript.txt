@@ -1,0 +1,109 @@
+SYSTEM: You are a Sokoban solver.
+Sokoban Quick Guide
+Goal: Push all boxes onto targets.
+Symbols (If image is provided there are no symbols):
+# Wall | _ Floor | O Target | X Box | P You | √ Box on Target | S You on Target
+Rules:
+1. Push boxes (can't pull).
+2. Avoid walls.
+Actions you can take: Left, Down, Right, Up.
+You can take up to 3 action(s) at a time, separated by ,.
+You should first give your reasoning, and then your answer.
+Your response should be in the format of:
+<think>...</think><answer>...</answer>
+
+Example 1:
+<think>The box is one step below me, and the target is two steps below me. I should go down to reach the box and then push it down to the target.</think>
+<answer>Down</answer>
+
+Example 2:
+<think>The box is to the right of me, and the target is further to the right. I need to move right to get behind the box and push it toward the target.</think>
+<answer>Right</answer>
+
+Example 3:
+<think>The box is above me, and the target is above the box. I should move up to reach the box and then push it upward to the target.</think>
+<answer>Up</answer>
+
+USER: [Initial Observation]:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is to the left of me, and the target is to the lower left of the box. I should move left to get behind the box, then push it left toward the target.</think>
+<answer>Left, Left</answer>
+
+USER: After your answer, the extracted valid action is ['left', 'left'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is now directly above the target. I need to move left to get behind the box and push it down onto the target.</think>
+<answer>Left, Down</answer>
+
+USER: After your answer, the extracted valid action is ['left', 'down'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is now directly to the right of the target. I need to move left to get behind the box and push it left onto the target.</think>
+<answer>Left</answer>
+
+USER: After your answer, the extracted valid action is ['left'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am now below the box, and the target is directly below me. I should push the box down onto the target.</think>
+<answer>Down</answer>
+
+USER: After your answer, the extracted valid action is ['down'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is now directly above the target. I need to move up to get behind the box and push it down onto the target.</think>
+<answer>Up, Down</answer>
+
+USER: After your answer, the extracted valid action is ['up', 'down'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am still below the target, and the box is above the target. I need to move up again to get behind the box and push it down onto the target.</think>
+<answer>Up, Down</answer>
+
+USER: After your answer, the extracted valid action is ['up', 'down'].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am in a loop where I keep moving up and down without making progress. The box is directly above the target, but I cannot push it down because there is no space above the box to get behind it. I need to find another way to solve the puzzle, but currently, there is no other path or move available. The box cannot be pushed onto the target from this position.</think>
+<answer>No valid moves to solve the puzzle from this position.</answer>
+
+USER: After your answer, the extracted valid action is [].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>I am stuck in a loop below the target, and there is no way to get behind the box to push it onto the target. The puzzle cannot be solved from this position because the box is against the wall and cannot be moved down onto the target.</think>
+<answer>No valid moves available. The puzzle is unsolvable from this state.</answer>
+
+USER: After your answer, the extracted valid action is [].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The current configuration is unsolvable because the box is stuck against the wall above the target, and there is no way to get behind it to push it onto the target. No further actions can solve the puzzle from this state.</think>
+<answer>No valid moves available.</answer>
+
+USER: After your answer, the extracted valid action is [].
+After that, the observation is:
+ 
+Decide your next action(s).
+
+ASSISTANT: <think>The box is stuck against the top wall and cannot be pushed onto the target below it. There are no available moves that will solve the puzzle from this position.</think>
+<answer>No valid moves available.</answer>
+
+USER: After your answer, the extracted valid action is [].
+After that, the observation is:
+ 
+Decide your next action(s).

@@ -1,0 +1,4 @@
+[
+  "<think>The box is directly above me, and the target is above and to the left of the box. First, I need to move up to get behind the box, then move left to push the box onto the target.</think>\n<answer>Up, Left</answer>",
+  "<think>The box is now directly to my left, and the target is directly above the box. I need to move left to get behind the box, then push the box up onto the target.</think>\n<answer>Left, Up</answer>"
+]

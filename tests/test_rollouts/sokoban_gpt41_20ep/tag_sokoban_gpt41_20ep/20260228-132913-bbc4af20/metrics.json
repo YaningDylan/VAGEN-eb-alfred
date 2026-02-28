@@ -1,0 +1,61 @@
+{
+  "rollout_id": "20260228-132913-bbc4af20",
+  "seed": 207,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.1,
+  "rewards": [
+    1.1
+  ],
+  "num_turns": 1,
+  "infos": [
+    {},
+    {
+      "llm_raw_response": "<think>The player is to the right of the box, and the target is to the left of the box. To push the box onto the target, the player should move to the left side of the box. First, move left to get behind the box, then push the box left onto the target.</think>\n<answer>Left, Left</answer>",
+      "llm_response": "<think>The player is to the right of the box, and the target is to the left of the box. To push the box onto the target, the player should move to the left side of the box. First, move left to get behind the box, then push the box left onto the target.</think><answer>Left, Left</answer>",
+      "think_content": "The player is to the right of the box, and the target is to the left of the box. To push the box onto the target, the player should move to the left side of the box. First, move left to get behind the box, then push the box left onto the target.",
+      "action_content": "Left, Left",
+      "actions": [
+        "left",
+        "left"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "dim_room": [
+      6,
+      6
+    ],
+    "max_steps": 100,
+    "num_boxes": 1,
+    "render_mode": "vision",
+    "max_actions_per_step": 3,
+    "action_sep": ",",
+    "use_example_in_sys_prompt": true,
+    "prompt_format": "free_think",
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 558,
+    "completion_tokens": 73,
+    "total_tokens": 631,
+    "num_calls": 1
+  },
+  "max_turns": 10,
+  "tag_id": "sokoban_gpt41_20ep",
+  "split": "test",
+  "env_name": "Sokoban"
+}
