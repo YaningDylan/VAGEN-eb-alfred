@@ -41,7 +41,8 @@ class EbAlfredEnvConfig:
 
     # Interaction settings
     max_turns: int = 30
-    max_actions_per_step: int = 1
+    max_actions_per_step: int = 20
+    max_env_steps: int = 30  # Max total environment actions per episode (matches ERA)
     action_sep: str = ","
     image_placeholder: str = "<image>"
     prompt_format: str = "free_think"
@@ -93,6 +94,7 @@ class EbAlfred(GymImageEnv):
 
         # Adapter state (reset per episode)
         self._total_turns: int = 0
+        self._total_env_steps: int = 0
         self._last_action: str = ""
         self._last_feedback: str = ""
         self._action_list: List[str] = []
@@ -108,13 +110,17 @@ class EbAlfred(GymImageEnv):
 
     async def system_prompt(self) -> Dict[str, Any]:
         """
-        Return the static system prompt.
+        Return the system prompt with per-episode task and action list.
 
         Includes role description, action descriptions, guidelines,
-        and format instructions. The dynamic per-episode content
-        (task instruction, available actions) is in the reset observation.
+        the current task instruction, available actions, and format
+        instructions. This ensures no-concat mode always has access
+        to task and action information.
         """
-        sys_str = system_prompt()
+        sys_str = system_prompt(
+            task_instruction=self.env.episode_language_instruction,
+            action_list=self._action_list,
+        )
         fmt_str = format_prompt(
             max_actions_per_step=self.config.max_actions_per_step,
             action_sep=self.config.action_sep,
@@ -140,6 +146,7 @@ class EbAlfred(GymImageEnv):
 
         # Reset adapter state
         self._total_turns = 0
+        self._total_env_steps = 0
         self._last_action = ""
         self._last_feedback = ""
 
@@ -198,6 +205,10 @@ class EbAlfred(GymImageEnv):
         if format_correct and actions:
             reward += self.config.format_reward
 
+            # Clip actions to remaining env step budget (ERA-style)
+            remaining = self.config.max_env_steps - self._total_env_steps
+            actions = actions[:remaining] if remaining > 0 else []
+
             for action_name in actions:
                 matched = match_action(action_name, self._action_list, self._action_map)
 
@@ -212,6 +223,7 @@ class EbAlfred(GymImageEnv):
                 metrics["turn_metrics"]["action_is_valid"] = True
 
                 # Execute in AI2-THOR
+                self._total_env_steps += 1
                 obs_raw, step_reward, step_done, step_info = (
                     await asyncio.to_thread(self.env.step, matched)
                 )
@@ -233,6 +245,15 @@ class EbAlfred(GymImageEnv):
                 if step_done:
                     done = True
                     break
+
+                # ERA-style: break on action failure to replan
+                if not action_success:
+                    break
+
+                # Check env step limit
+                if self._total_env_steps >= self.config.max_env_steps:
+                    done = True
+                    break
         else:
             # Format error: no valid actions parsed
             self._last_action = parsed.get("action_content", "")
@@ -241,8 +262,10 @@ class EbAlfred(GymImageEnv):
                 "Please use the format: <think>...</think><answer>action name</answer>"
             )
 
-        # Check turn limit
+        # Check turn limit and env step limit
         if self._total_turns >= self.config.max_turns:
+            done = True
+        if self._total_env_steps >= self.config.max_env_steps:
             done = True
 
         info["metrics"] = metrics
@@ -266,8 +289,6 @@ class EbAlfred(GymImageEnv):
 
         if init:
             obs_str = init_observation_template(
-                task_instruction=self.env.episode_language_instruction,
-                action_list=self._action_list,
                 img_str=img_str,
             )
         else:
