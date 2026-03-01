@@ -44,6 +44,66 @@ def parse_free_think(response: str, action_sep: str = ",", max_actions: int = 1)
     }
 
 
+def parse_wm(response: str, action_sep: str = ",", max_actions: int = 1) -> Dict:
+    """
+    Parse wm format response:
+    <observation>...</observation>
+    <think>...</think>
+    <answer>...</answer>
+    <prediction>...</prediction>
+    """
+    pattern = (
+        r'<observation>(.*?)</observation>\s*'
+        r'<think>(.*?)</think>\s*'
+        r'<answer>(.*?)</answer>\s*'
+        r'<prediction>(.*?)</prediction>'
+    )
+
+    match = re.search(pattern, response, re.DOTALL)
+    format_correct = match is not None
+
+    if not match:
+        observation_content = ""
+        think_content = ""
+        prediction_content = ""
+        action_content = ""
+        actions: List[str] = []
+    else:
+        observation_content = match.group(1).strip()
+        think_content = match.group(2).strip()
+        action_content = match.group(3).strip()
+        prediction_content = match.group(4).strip()
+
+        if max_actions == 1:
+            actions = [action_content.strip()] if action_content.strip() else []
+        else:
+            actions = [a.strip() for a in action_content.split(action_sep) if a.strip()]
+            if len(actions) > max_actions:
+                actions = actions[:max_actions]
+                action_content = action_sep.join(actions)
+
+    llm_response = (
+        f"<observation>{observation_content}</observation>"
+        f"<think>{think_content}</think>"
+        f"<answer>{action_content}</answer>"
+        f"<prediction>{prediction_content}</prediction>"
+    )
+
+    reasoning_content = think_content
+
+    return {
+        "llm_raw_response": response,
+        "llm_response": llm_response,
+        "observation_content": observation_content,
+        "think_content": think_content,
+        "reasoning_content": reasoning_content,
+        "prediction_content": prediction_content,
+        "action_content": action_content,
+        "actions": actions,
+        "format_correct": format_correct,
+    }
+
+
 def parse_response(
     response: str,
     prompt_format: str = "free_think",
@@ -53,6 +113,8 @@ def parse_response(
     """Parse LLM response based on the specified prompt format."""
     if prompt_format == "free_think":
         return parse_free_think(response, action_sep, max_actions)
+    elif prompt_format == "wm":
+        return parse_wm(response, action_sep, max_actions)
     else:
         raise ValueError(f"Unknown prompt format: {prompt_format}")
 

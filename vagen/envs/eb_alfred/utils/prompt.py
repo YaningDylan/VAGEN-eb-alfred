@@ -49,6 +49,8 @@ def format_prompt(max_actions_per_step, action_sep, add_example=True, prompt_for
     """Generate format prompt based on the specified format."""
     if prompt_format == "free_think":
         return free_think_format_prompt(max_actions_per_step, action_sep, add_example)
+    elif prompt_format == "wm":
+        return wm_format_prompt(max_actions_per_step, action_sep, add_example)
     else:
         raise ValueError(f"Unknown prompt format: {prompt_format}")
 
@@ -73,6 +75,46 @@ Example 2:
 Example 3:
 <think>I'm holding the mug and I'm near the table. Let me put it down.</think>
 <answer>put down the object in hand</answer>"""
+        return base + "\n" + examples
+
+    return base
+
+
+def wm_format_prompt(max_actions_per_step, action_sep, add_example=True):
+    """Generate format prompt for wm format with observation and prediction tags."""
+    base = f"""You should output {max_actions_per_step} action(s) at a time.
+Output the action name exactly as listed in the available actions, or the action ID (integer).
+Your response must be in the format of:
+<observation>...</observation><think>...</think><answer>action name or action ID</answer><prediction>...</prediction>.
+
+Rules for <observation>:
+- Describe the current scene: what objects you see, your position, what you are holding, and relevant receptacle states.
+
+Rules for <prediction>:
+- Predict what will change after your action: where you will be, what you will see, and the expected result.
+
+Rules for <answer>:
+- Output exactly 1 action name or action ID."""
+
+    if add_example:
+        examples = """
+Example 1:
+<observation>I see a kitchen with a counter, a microwave, and a mug on the counter. I am not holding anything.</observation>
+<think>I need to pick up the mug. First, I should find it to get close to it.</think>
+<answer>find a Mug</answer>
+<prediction>I will navigate to the mug and see it up close on the counter.</prediction>
+
+Example 2:
+<observation>I am close to a Mug on the counter. I am not holding anything. The mug is within reach.</observation>
+<think>The mug is nearby and I'm not holding anything. I should pick it up.</think>
+<answer>pick up the Mug</answer>
+<prediction>I will be holding the mug. The counter will no longer have the mug on it.</prediction>
+
+Example 3:
+<observation>I am holding a Mug. I see a table nearby with an empty spot.</observation>
+<think>I'm holding the mug and I'm near the table. Let me put it down.</think>
+<answer>put down the object in hand</answer>
+<prediction>The mug will be placed on the table. I will no longer be holding anything.</prediction>"""
         return base + "\n" + examples
 
     return base

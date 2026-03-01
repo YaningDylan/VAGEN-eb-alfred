@@ -1,0 +1,73 @@
+# EB-ALFRED benchmark: dual RTX 4090, non-concat mode, GPT-4.1.
+#
+# Dual 4090 (24 GB each): ~110 sessions per GPU × 2 = 220 max sessions.
+# RAM is usually the bottleneck: 256 GB → ~333 instances, 128 GB → ~163.
+#
+# Steps:
+#   1. Start server:
+#        DISPLAY=:0 MAX_SESSIONS=200 ./start_server.sh
+#   2. Run benchmark:
+#        conda run -n vagen python -m vagen.evaluate.run_eval \
+#            --config examples/evaluate/eb_alfred/dual_gpu_benchmark.yaml
+
+envs:
+  - name: RemoteEnv
+    n_envs: 128
+    tag_id: bench_dual4090_500_128ep
+    seed: [42]
+    seed_list: [42, 49, 56, 63, 70, 77, 84, 91, 98, 105,
+                112, 119, 126, 133, 140, 147, 154, 161, 168, 175,
+                182, 189, 196, 203, 210, 217, 224, 231, 238, 245,
+                252, 259, 266, 273, 280, 287, 294, 301, 308, 315,
+                322, 329, 336, 343, 350, 357, 364, 371, 378, 385,
+                392, 399, 406, 413, 420, 427, 434, 441, 448, 455,
+                462, 469, 476, 483, 490, 497, 504, 511, 518, 525,
+                532, 539, 546, 553, 560, 567, 574, 581, 588, 595,
+                602, 609, 616, 623, 630, 637, 644, 651, 658, 665,
+                672, 679, 686, 693, 700, 707, 714, 721, 728, 735,
+                742, 749, 756, 763, 770, 777, 784, 791, 798, 805,
+                812, 819, 826, 833, 840, 847, 854, 861, 868, 875,
+                882, 889, 896, 903, 910, 917, 924, 931]
+    split: test
+    concat_history: false
+    max_turns: 30
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      timeout: 600
+      retries: 30
+      backoff: 1.5
+      eval_set: base
+      x_display: "0"
+      max_turns: 30
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./benchmarking/results/dual4090_500_128ep
+  default_max_turns: 30
+
+run:
+  backend: openai
+  base_seed: 0
+  max_concurrent_jobs: 64
+  resume: skip_completed
+  live_summary: true
+
+backends:
+  openai:
+    api_key: ""               # or env OPENAI_API_KEY
+    base_url: null
+    model: "gpt-4.1"
+    max_concurrency: 64
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

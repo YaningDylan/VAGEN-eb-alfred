@@ -35,6 +35,7 @@ class GenericVisionInferenceWorkflow:
         success_keys: Optional[List[str]] = None,
         success_threshold: float = 0.99,
         chat_config: Optional[Dict[str, Any]] = None,
+        concat_history: bool = True,
     ):
         self.adapter = adapter
         self.dump_dir = dump_dir
@@ -43,6 +44,7 @@ class GenericVisionInferenceWorkflow:
         self.success_keys = success_keys or ["success", "is_success", "solved"]
         self.success_threshold = success_threshold
         self.chat_config = dict(chat_config or {})
+        self.concat_history = concat_history
         if self.dump_dir:
             os.makedirs(self.dump_dir, exist_ok=True)
 
@@ -180,9 +182,15 @@ class GenericVisionInferenceWorkflow:
             user_imgs_per_turn.append(user_imgs)
 
             for t in range(turn_limit):
+                # In non-concat mode, only send system + current user msg
+                if self.concat_history:
+                    api_messages = messages
+                else:
+                    api_messages = [messages[0], messages[-1]]  # system + latest user
+
                 # Safeguard completion
                 try:
-                    reply = await self.adapter.acompletion(messages, **self.chat_config)
+                    reply = await self.adapter.acompletion(api_messages, **self.chat_config)
                 except OpenAIError as e:
                     error_info = {
                         "provider_error": repr(e),

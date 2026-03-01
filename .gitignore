@@ -32,3 +32,12 @@ data/
 exps/
 wandb/
 outputs/
+
+# Benchmark results and rollouts (large, regeneratable)
+benchmarking/results/
+tests/test_rollouts/
+rollouts/
+
+# Misc
+yolo11n.pt
+*.pt
