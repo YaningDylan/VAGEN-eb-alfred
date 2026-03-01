@@ -7,6 +7,7 @@ import json
 import asyncio
 import uuid
 import logging
+import time
 
 from vagen.evaluate.adapters.base_adapter import ModelAdapter
 from vagen.evaluate.utils.mm_utils import _now_tag, extract_images
@@ -165,9 +166,17 @@ class GenericVisionInferenceWorkflow:
         turn_limit = int(max_turns)
         assert turn_limit > 0, f"Invalid max_turns={turn_limit} in workflow"
 
+        # Timing accumulators (seconds)
+        t_reset: float = 0.0
+        t_llm: float = 0.0
+        t_env_step: float = 0.0
+        _ep_start = time.perf_counter()
+
         try:
             # Reset and obtain system/user initial messages
+            _t0 = time.perf_counter()
             obs, info = await env.reset(seed=seed)
+            t_reset = time.perf_counter() - _t0
             infos.append(info)
 
             # Normal execution path (this episode WILL be dumped)
@@ -190,7 +199,9 @@ class GenericVisionInferenceWorkflow:
 
                 # Safeguard completion
                 try:
+                    _t0 = time.perf_counter()
                     reply = await self.adapter.acompletion(api_messages, **self.chat_config)
+                    t_llm += time.perf_counter() - _t0
                 except OpenAIError as e:
                     error_info = {
                         "provider_error": repr(e),
@@ -216,7 +227,9 @@ class GenericVisionInferenceWorkflow:
                 messages.append({"role": "assistant", "content": [{"type": "text", "text": reply}]})
 
                 try:
+                    _t0 = time.perf_counter()
                     next_obs, r, done, step_info = await env.step(reply)
+                    t_env_step += time.perf_counter() - _t0
                 except Exception as e:
                     error_info = {
                         "env_step_error": repr(e),
@@ -267,6 +280,20 @@ class GenericVisionInferenceWorkflow:
             if hasattr(real_adapter, "get_token_usage"):
                 token_usage = real_adapter.get_token_usage()
 
+            # Timing summary
+            n_turns = len(assistant_texts)
+            t_total = time.perf_counter() - _ep_start
+            t_other = max(0.0, t_total - t_reset - t_llm - t_env_step)
+            timing = {
+                "total_s": round(t_total, 3),
+                "reset_s": round(t_reset, 3),
+                "llm_s": round(t_llm, 3),
+                "env_step_s": round(t_env_step, 3),
+                "other_s": round(t_other, 3),
+                "avg_llm_per_turn_s": round(t_llm / n_turns, 3) if n_turns else 0.0,
+                "avg_env_step_per_turn_s": round(t_env_step / n_turns, 3) if n_turns else 0.0,
+            }
+
             # Always dump executed episodes (ignore dump_override)
             metrics = {
                 "rollout_id": rid,
@@ -276,13 +303,15 @@ class GenericVisionInferenceWorkflow:
                 "success": success,
                 "cumulative_reward": float(cumulative_reward),
                 "rewards": rewards,
-                "num_turns": len(assistant_texts),
+                "num_turns": n_turns,
                 "infos": final_infos,
                 "env_config": env_config_dump,
+                "timing": timing,
             }
             if token_usage is not None:
                 metrics["token_usage"] = token_usage
             metrics.setdefault("max_turns", turn_limit)
+            metrics.setdefault("concat_history", self.concat_history)
             if error_info is not None:
                 metrics["error_details"] = error_info
             if metadata:
@@ -299,7 +328,7 @@ class GenericVisionInferenceWorkflow:
             result = {
                 "rollout_id": rid,
                 "final_text": assistant_texts[-1] if assistant_texts else "",
-                "num_turns": len(assistant_texts),
+                "num_turns": n_turns,
                 "messages": messages,
                 "terminated": terminated,
                 "finish_reason": finish_reason,

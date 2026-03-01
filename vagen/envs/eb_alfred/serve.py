@@ -22,6 +22,8 @@ Usage:
 """
 
 import argparse
+import asyncio
+import concurrent.futures
 import uvicorn
 
 from vagen.envs_remote.service import build_gym_service
@@ -51,6 +53,12 @@ def main():
         default=0,
         help="Max concurrent sessions (0=unlimited)",
     )
+    parser.add_argument(
+        "--thread-workers",
+        type=int,
+        default=128,
+        help="Thread pool size for Unity instance creation (default: 128)",
+    )
     args = parser.parse_args()
 
     x_displays = args.x_displays.split(",") if args.x_displays else None
@@ -61,6 +69,17 @@ def main():
         max_sessions=args.max_sessions,
     )
     app = build_gym_service(handler)
+
+    # Expand the asyncio thread pool via FastAPI startup so concurrent Unity
+    # startups don't queue behind Python's default limit of min(32, cpu+4).
+    _thread_workers = args.thread_workers
+
+    @app.on_event("startup")
+    async def _set_thread_pool():
+        loop = asyncio.get_event_loop()
+        loop.set_default_executor(
+            concurrent.futures.ThreadPoolExecutor(max_workers=_thread_workers)
+        )
 
     displays_str = ", ".join(f":{d}" for d in handler._x_displays)
     print(f"Starting EB-ALFRED service on {args.host}:{args.port}")

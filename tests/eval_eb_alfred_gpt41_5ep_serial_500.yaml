@@ -1,0 +1,61 @@
+# EB-ALFRED evaluation: 5 episodes, GPT-4.1, 500×500 resolution, SERIAL (baseline).
+#
+# Prerequisites (one-time per machine restart):
+#   1. Start GPU X server:
+#      Xorg -noreset +extension GLX +extension RANDR +extension RENDER \
+#           -config /tmp/xorg.conf :2 &
+#   2. Start env server:
+#      DISPLAY=:2 /venv/vagen/bin/python -m vagen.envs.eb_alfred.serve \
+#          --port 8000 --x-displays 2
+#
+# Run:
+#   OPENAI_API_KEY=... /venv/vagen/bin/python -m vagen.evaluate.run_eval \
+#       --config tests/eval_eb_alfred_gpt41_5ep_serial_500.yaml
+
+envs:
+  - name: RemoteEnv
+    n_envs: 5
+    tag_id: eb_alfred_gpt41_5ep_serial_500
+    seed_list: [0, 30, 60, 90, 120]
+    split: test
+    concat_history: true      # EB-ALFRED requires full history (multi-step task, model needs memory)
+    max_turns: 30
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      timeout: 600
+      eval_set: base
+      x_display: "2"
+      obs_image_size: 500
+      max_turns: 30
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./test_rollouts/gpt41_5ep_serial_500
+  default_max_turns: 30
+
+run:
+  backend: openai
+  base_seed: 0
+  max_concurrent_jobs: 1      # serial: one episode at a time
+  resume: skip_completed
+  live_summary: true
+
+backends:
+  openai:
+    api_key: ""               # uses OPENAI_API_KEY env var
+    base_url: null
+    model: "gpt-4.1"
+    max_concurrency: 1        # serial: no concurrent LLM calls
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

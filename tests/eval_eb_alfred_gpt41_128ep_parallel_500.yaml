@@ -1,0 +1,70 @@
+# EB-ALFRED evaluation: 128 episodes, GPT-4.1, 500×500 resolution, HIGH-CONCURRENCY.
+#
+# Prerequisites (one-time per machine restart):
+#   1. Start GPU X server:
+#      Xorg -noreset +extension GLX +extension RANDR +extension RENDER \
+#           -config /tmp/xorg.conf :2 &
+#   2. Start env server:
+#      DISPLAY=:2 conda run -n embench \
+#          python -m vagen.envs.eb_alfred.serve --port 8000 --x-displays 2
+#
+# Run:
+#   conda run -n vagen python -m vagen.evaluate.run_eval \
+#       --config tests/eval_eb_alfred_gpt41_128ep_parallel_500.yaml
+
+envs:
+  - name: RemoteEnv
+    n_envs: 128
+    tag_id: eb_alfred_gpt41_128ep_parallel_500
+    seed_list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+                16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+                30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
+                44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
+                58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71,
+                72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85,
+                86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
+                100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111,
+                112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123,
+                124, 125, 126, 127]
+    split: test
+    concat_history: true      # EB-ALFRED requires full history (multi-step task, model needs memory)
+    max_turns: 30
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      timeout: 600
+      eval_set: base
+      x_display: "2"
+      obs_image_size: 500
+      max_turns: 30
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./test_rollouts/gpt41_128ep_parallel_500
+  default_max_turns: 30
+
+run:
+  backend: openai
+  base_seed: 0
+  max_concurrent_jobs: 100    # run up to 100 episodes in parallel
+  resume: skip_completed
+  live_summary: true
+
+backends:
+  openai:
+    api_key: ""               # uses OPENAI_API_KEY env var
+    base_url: null
+    model: "gpt-4.1"
+    max_concurrency: 100      # allow up to 100 concurrent LLM API calls
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0
