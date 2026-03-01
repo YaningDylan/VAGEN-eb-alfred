@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194122-e3786d41",
+  "seed": 30,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "Put the books on the desk.",
+      "num_actions": 183,
+      "eval_set": "base",
+      "episode_idx": 30
+    },
+    {
+      "llm_raw_response": "<think>I need to locate the books first. Let me find a Book.</think>\n<answer>find a Book</answer>",
+      "llm_response": "<think>I need to locate the books first. Let me find a Book.</think><answer>find a Book</answer>",
+      "think_content": "I need to locate the books first. Let me find a Book.",
+      "action_content": "find a Book",
+      "actions": [
+        "find a Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The book is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>The book is nearby and I'm not holding anything. I should pick it up.</think><answer>pick up the Book</answer>",
+      "think_content": "The book is nearby and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book now. I see a bed nearby, which could be a suitable place to put the book down.</think>\n<answer>find the Bed</answer>",
+      "llm_response": "<think>I'm holding the book now. I see a bed nearby, which could be a suitable place to put the book down.</think><answer>find the Bed</answer>",
+      "think_content": "I'm holding the book now. I see a bed nearby, which could be a suitable place to put the book down.",
+      "action_content": "find the Bed",
+      "actions": [
+        "find the Bed"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book titled \"Deep Learning\" on the bed, and I am close to it. I am not holding anything, so I can pick it up.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book titled \"Deep Learning\" on the bed, and I am close to it. I am not holding anything, so I can pick it up.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book titled \"Deep Learning\" on the bed, and I am close to it. I am not holding anything, so I can pick it up.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm already holding the Book. I should put it down on the nearby bed or table.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm already holding the Book. I should put it down on the nearby bed or table.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm already holding the Book. I should put it down on the nearby bed or table.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book on the bed next to the stuffed panda. I should pick up the book.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book on the bed next to the stuffed panda. I should pick up the book.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book on the bed next to the stuffed panda. I should pick up the book.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the book and I'm near the bed. I should put the book down on the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a panda plush toy on the bed. I should find another object or wait for a specific task.</think>\n<answer>find a Pillow</answer>",
+      "llm_response": "<think>I see a panda plush toy on the bed. I should find another object or wait for a specific task.</think><answer>find a Pillow</answer>",
+      "think_content": "I see a panda plush toy on the bed. I should find another object or wait for a specific task.",
+      "action_content": "find a Pillow",
+      "actions": [
+        "find a Pillow"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The pillow is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Pillow</answer>",
+      "llm_response": "<think>The pillow is nearby and I'm not holding anything. I should pick it up.</think><answer>pick up the Pillow</answer>",
+      "think_content": "The pillow is nearby and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Pillow",
+      "actions": [
+        "pick up the Pillow"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the pillow and I'm near the bed. I should put the pillow down on the bed.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the pillow and I'm near the bed. I should put the pillow down on the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the pillow and I'm near the bed. I should put the pillow down on the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book on the bedside table. I should find the book to interact with it.</think>\n<answer>find the Book</answer>",
+      "llm_response": "<think>There is a book on the bedside table. I should find the book to interact with it.</think><answer>find the Book</answer>",
+      "think_content": "There is a book on the bedside table. I should find the book to interact with it.",
+      "action_content": "find the Book",
+      "actions": [
+        "find the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The book is visible and nearby, and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>The book is visible and nearby, and I'm not holding anything. I should pick it up.</think><answer>pick up the Book</answer>",
+      "think_content": "The book is visible and nearby, and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book. I should find a suitable place to put it down, such as a table or a shelf.</think>\n<answer>find a Table</answer>",
+      "llm_response": "<think>I'm holding the book. I should find a suitable place to put it down, such as a table or a shelf.</think><answer>find a Table</answer>",
+      "think_content": "I'm holding the book. I should find a suitable place to put it down, such as a table or a shelf.",
+      "action_content": "find a Table",
+      "actions": [
+        "find a Table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a book titled \"Deep Learning\" on the bed. I am close to the book and not holding anything, so I should pick it up.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>I see a book titled \"Deep Learning\" on the bed. I am close to the book and not holding anything, so I should pick it up.</think><answer>pick up the Book</answer>",
+      "think_content": "I see a book titled \"Deep Learning\" on the bed. I am close to the book and not holding anything, so I should pick it up.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm currently holding the Book. I should put it down on a nearby surface, such as the bed.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm currently holding the Book. I should put it down on a nearby surface, such as the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm currently holding the Book. I should put it down on a nearby surface, such as the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book titled \"Deep Learning\" on the bed. I should pick it up since it is nearby and I am not holding anything.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book titled \"Deep Learning\" on the bed. I should pick it up since it is nearby and I am not holding anything.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book titled \"Deep Learning\" on the bed. I should pick it up since it is nearby and I am not holding anything.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the book and I'm near the bed. I should put the book down on the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since it is nearby and I am not holding anything.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since it is nearby and I am not holding anything.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since it is nearby and I am not holding anything.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the book and I'm near the bed. I should put the book down on the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a book titled \"Deep Learning\" on the bed. I should find a receptacle, like a bookshelf or a table, to organize or store the book.</think>\n<answer>find a Bookshelf</answer>",
+      "llm_response": "<think>I see a book titled \"Deep Learning\" on the bed. I should find a receptacle, like a bookshelf or a table, to organize or store the book.</think><answer>find a Bookshelf</answer>",
+      "think_content": "I see a book titled \"Deep Learning\" on the bed. I should find a receptacle, like a bookshelf or a table, to organize or store the book.",
+      "action_content": "find a Bookshelf",
+      "actions": [
+        "find a Bookshelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since I am close to it and not holding anything.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since I am close to it and not holding anything.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since I am close to it and not holding anything.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the book and I'm near the bed. I should put the book down on the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book titled \"Deep Learning\" on the bed. I should find another object or receptacle to interact with next.</think>\n<answer>find a nightstand</answer>",
+      "llm_response": "<think>There is a book titled \"Deep Learning\" on the bed. I should find another object or receptacle to interact with next.</think><answer>find a nightstand</answer>",
+      "think_content": "There is a book titled \"Deep Learning\" on the bed. I should find another object or receptacle to interact with next.",
+      "action_content": "find a nightstand",
+      "actions": [
+        "find a nightstand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I am close to it and not holding anything, so I should pick it up.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I am close to it and not holding anything, so I should pick it up.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book titled \"Deep Learning\" visible on the bed. I am close to it and not holding anything, so I should pick it up.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the book and I'm near the bed. I should put the book down on the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since it is nearby and I am not holding anything.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since it is nearby and I am not holding anything.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since it is nearby and I am not holding anything.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the book and I'm near the bed. I should put the book down on the bed.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the book and I'm near the bed. I should put the book down on the bed.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since it is nearby and I am not holding anything.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since it is nearby and I am not holding anything.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book titled \"Deep Learning\" visible on the bed. I should pick it up since it is nearby and I am not holding anything.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book. I should find a suitable place to put it down, such as a table or a shelf.</think>\n<answer>find a Table</answer>",
+      "llm_response": "<think>I'm holding the book. I should find a suitable place to put it down, such as a table or a shelf.</think><answer>find a Table</answer>",
+      "think_content": "I'm holding the book. I should find a suitable place to put it down, such as a table or a shelf.",
+      "action_content": "find a Table",
+      "actions": [
+        "find a Table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book nearby and I am not holding anything. I should pick up the book.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book nearby and I am not holding anything. I should pick up the book.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book nearby and I am not holding anything. I should pick up the book.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 503.917,
+    "reset_s": 91.256,
+    "llm_s": 186.876,
+    "env_step_s": 202.567,
+    "other_s": 23.218,
+    "avg_llm_per_turn_s": 6.229,
+    "avg_env_step_per_turn_s": 6.752
+  },
+  "token_usage": {
+    "prompt_tokens": 23906,
+    "completion_tokens": 1155,
+    "total_tokens": 25061,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194122-6f47aa97",
+  "seed": 24,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "move the book to the couch ",
+      "num_actions": 185,
+      "eval_set": "base",
+      "episode_idx": 24
+    },
+    {
+      "llm_raw_response": "<think>I need to locate the book before I can move it to the couch.</think>\n<answer>find a Book</answer>",
+      "llm_response": "<think>I need to locate the book before I can move it to the couch.</think><answer>find a Book</answer>",
+      "think_content": "I need to locate the book before I can move it to the couch.",
+      "action_content": "find a Book",
+      "actions": [
+        "find a Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The book is on the table and I am nearby. I am not holding anything, so I should pick up the book.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>The book is on the table and I am nearby. I am not holding anything, so I should pick up the book.</think><answer>pick up the Book</answer>",
+      "think_content": "The book is on the table and I am nearby. I am not holding anything, so I should pick up the book.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the book and I'm near a table. I should put the book down on the table.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the book and I'm near a table. I should put the book down on the table.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the book and I'm near a table. I should put the book down on the table.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a notebook on the floor near the table. I should find the notebook to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>There is a notebook on the floor near the table. I should find the notebook to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "There is a notebook on the floor near the table. I should find the notebook to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Notebook</answer>",
+      "llm_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think><answer>pick up the Notebook</answer>",
+      "think_content": "The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Notebook",
+      "actions": [
+        "pick up the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor. I need to navigate to it before interacting with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor. I need to navigate to it before interacting with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor. I need to navigate to it before interacting with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Notebook</answer>",
+      "llm_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think><answer>pick up the Notebook</answer>",
+      "think_content": "The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Notebook",
+      "actions": [
+        "pick up the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor. I need to navigate to it before interacting with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor. I need to navigate to it before interacting with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor. I need to navigate to it before interacting with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor near the table. I should navigate to it so I can interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor near the table. I should navigate to it so I can interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor near the table. I should navigate to it so I can interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the notebook on the floor near the table. I should move closer to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see the notebook on the floor near the table. I should move closer to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see the notebook on the floor near the table. I should move closer to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Notebook</answer>",
+      "llm_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think><answer>pick up the Notebook</answer>",
+      "think_content": "The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Notebook",
+      "actions": [
+        "pick up the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor. I need to navigate to it before interacting with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor. I need to navigate to it before interacting with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor. I need to navigate to it before interacting with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The notebook is on the floor near the table. I need to get closer to it first.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>The notebook is on the floor near the table. I need to get closer to it first.</think><answer>find the Notebook</answer>",
+      "think_content": "The notebook is on the floor near the table. I need to get closer to it first.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the notebook on the floor near the table. I should move closer to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see the notebook on the floor near the table. I should move closer to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see the notebook on the floor near the table. I should move closer to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor near the table. I should navigate to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor near the table. I should navigate to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor near the table. I should navigate to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor nearby. I should move closer to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor nearby. I should move closer to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The notebook is on the floor near the table. I need to get closer to it first.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>The notebook is on the floor near the table. I need to get closer to it first.</think><answer>find the Notebook</answer>",
+      "think_content": "The notebook is on the floor near the table. I need to get closer to it first.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor near the table. I should navigate to it first.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor near the table. I should navigate to it first.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor near the table. I should navigate to it first.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Notebook</answer>",
+      "llm_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think><answer>pick up the Notebook</answer>",
+      "think_content": "The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Notebook",
+      "actions": [
+        "pick up the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor. I need to get closer to it before interacting with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor. I need to get closer to it before interacting with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor. I need to get closer to it before interacting with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Notebook</answer>",
+      "llm_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think><answer>pick up the Notebook</answer>",
+      "think_content": "The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Notebook",
+      "actions": [
+        "pick up the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor. I need to get closer to it before interacting with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor. I need to get closer to it before interacting with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor. I need to get closer to it before interacting with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor near the table. I should move closer to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor near the table. I should move closer to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor near the table. I should move closer to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor nearby. I should move closer to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor nearby. I should move closer to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor nearby. I should move closer to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor nearby. I should move closer to it to interact with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor nearby. I should move closer to it to interact with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Notebook</answer>",
+      "llm_response": "<think>The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.</think><answer>pick up the Notebook</answer>",
+      "think_content": "The notebook is on the floor nearby, and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Notebook",
+      "actions": [
+        "pick up the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a notebook on the floor. I need to get closer to it before interacting with it.</think>\n<answer>find the Notebook</answer>",
+      "llm_response": "<think>I see a notebook on the floor. I need to get closer to it before interacting with it.</think><answer>find the Notebook</answer>",
+      "think_content": "I see a notebook on the floor. I need to get closer to it before interacting with it.",
+      "action_content": "find the Notebook",
+      "actions": [
+        "find the Notebook"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 433.148,
+    "reset_s": 104.474,
+    "llm_s": 166.522,
+    "env_step_s": 142.517,
+    "other_s": 19.636,
+    "avg_llm_per_turn_s": 5.551,
+    "avg_env_step_per_turn_s": 4.751
+  },
+  "token_usage": {
+    "prompt_tokens": 24028,
+    "completion_tokens": 1006,
+    "total_tokens": 25034,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

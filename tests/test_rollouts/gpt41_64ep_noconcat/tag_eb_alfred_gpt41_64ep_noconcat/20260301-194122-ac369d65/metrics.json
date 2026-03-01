@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194122-ac369d65",
+  "seed": 21,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "Put a clean plate on the counter.",
+      "num_actions": 253,
+      "eval_set": "base",
+      "episode_idx": 21
+    },
+    {
+      "llm_raw_response": "<think>I need to find a clean plate first before placing it on the counter.</think>\n<answer>find a Plate</answer>",
+      "llm_response": "<think>I need to find a clean plate first before placing it on the counter.</think><answer>find a Plate</answer>",
+      "think_content": "I need to find a clean plate first before placing it on the counter.",
+      "action_content": "find a Plate",
+      "actions": [
+        "find a Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The plate is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>The plate is nearby and I'm not holding anything. I should pick it up.</think><answer>pick up the Plate</answer>",
+      "think_content": "The plate is nearby and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink to clean it.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink to clean it.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink to clean it.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or put it away.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or put it away.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or put it away.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink to clean it.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink to clean it.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink to clean it.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or move it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a dirty plate near the sink. I should clean the plate by turning on the sink first.</think>\n<answer>turn on the Sink</answer>",
+      "llm_response": "<think>I'm holding a dirty plate near the sink. I should clean the plate by turning on the sink first.</think><answer>turn on the Sink</answer>",
+      "think_content": "I'm holding a dirty plate near the sink. I should clean the plate by turning on the sink first.",
+      "action_content": "turn on the Sink",
+      "actions": [
+        "turn on the Sink"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a dirty plate on the counter. I should pick it up to clean or move it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>I see a dirty plate on the counter. I should pick it up to clean or move it.</think><answer>pick up the Plate</answer>",
+      "think_content": "I see a dirty plate on the counter. I should pick it up to clean or move it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm currently holding the Plate and I'm near the sink. I should put the Plate down in the sink.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm currently holding the Plate and I'm near the sink. I should put the Plate down in the sink.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm currently holding the Plate and I'm near the sink. I should put the Plate down in the sink.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or move it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a dirty plate near the sink. I should clean it, but first I need to turn on the sink to get water.</think>\n<answer>turn on the Faucet</answer>",
+      "llm_response": "<think>I'm holding a dirty plate near the sink. I should clean it, but first I need to turn on the sink to get water.</think><answer>turn on the Faucet</answer>",
+      "think_content": "I'm holding a dirty plate near the sink. I should clean it, but first I need to turn on the sink to get water.",
+      "action_content": "turn on the Faucet",
+      "actions": [
+        "turn on the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a dirty plate on the counter near the sink with the faucet turned on. I should pick up the dirty plate to wash it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>I see a dirty plate on the counter near the sink with the faucet turned on. I should pick up the dirty plate to wash it.</think><answer>pick up the Plate</answer>",
+      "think_content": "I see a dirty plate on the counter near the sink with the faucet turned on. I should pick up the dirty plate to wash it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm currently holding the Plate. I should put it down, possibly in the sink since it appears dirty.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm currently holding the Plate. I should put it down, possibly in the sink since it appears dirty.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm currently holding the Plate. I should put it down, possibly in the sink since it appears dirty.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or move it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink for washing.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink for washing.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink for washing.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or move it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink for cleaning.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink for cleaning.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink for cleaning.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or move it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the plate and I'm near the sink. I should put the plate in the sink.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the plate and I'm near the sink. I should put the plate in the sink.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the plate and I'm near the sink. I should put the plate in the sink.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should clean it by placing it in the sink. First, I need to pick up the plate.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should clean it by placing it in the sink. First, I need to pick up the plate.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should clean it by placing it in the sink. First, I need to pick up the plate.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink for washing.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink for washing.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink for washing.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean it or put it away.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean it or put it away.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean it or put it away.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the plate and I'm near the sink. I should put the plate into the sink.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the plate and I'm near the sink. I should put the plate into the sink.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the plate and I'm near the sink. I should put the plate into the sink.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or put it away.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or put it away.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or put it away.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink to clean it.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink to clean it.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink to clean it.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or move it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the plate and I'm near the sink. I should put the plate in the sink.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the plate and I'm near the sink. I should put the plate in the sink.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the plate and I'm near the sink. I should put the plate in the sink.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or move it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding a dirty plate and I'm near the sink. I should put the plate in the sink.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>There is a dirty plate on the counter. I should pick it up to clean or move it.</think><answer>pick up the Plate</answer>",
+      "think_content": "There is a dirty plate on the counter. I should pick it up to clean or move it.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 501.997,
+    "reset_s": 93.405,
+    "llm_s": 208.517,
+    "env_step_s": 180.035,
+    "other_s": 20.039,
+    "avg_llm_per_turn_s": 6.951,
+    "avg_env_step_per_turn_s": 6.001
+  },
+  "token_usage": {
+    "prompt_tokens": 24521,
+    "completion_tokens": 1104,
+    "total_tokens": 25625,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

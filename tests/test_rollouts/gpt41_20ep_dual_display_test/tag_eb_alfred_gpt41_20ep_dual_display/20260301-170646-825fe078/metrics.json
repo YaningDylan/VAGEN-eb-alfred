@@ -1,0 +1,129 @@
+{
+  "rollout_id": "20260301-170646-825fe078",
+  "seed": 13,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 1.4000000000000001,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 4,
+  "infos": [
+    {
+      "task_instruction": "Put a bowl on a coffee table.",
+      "num_actions": 182,
+      "eval_set": "base",
+      "episode_idx": 13
+    },
+    {
+      "llm_raw_response": "<think>I need to find a bowl first before I can put it on the coffee table.</think>\n<answer>find a Bowl</answer>",
+      "llm_response": "<think>I need to find a bowl first before I can put it on the coffee table.</think><answer>find a Bowl</answer>",
+      "think_content": "I need to find a bowl first before I can put it on the coffee table.",
+      "action_content": "find a Bowl",
+      "actions": [
+        "find a Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The bowl is on the table and I am not holding anything. I should pick up the bowl.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The bowl is on the table and I am not holding anything. I should pick up the bowl.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The bowl is on the table and I am not holding anything. I should pick up the bowl.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am now holding the bowl. Next, I need to find the coffee table to place the bowl on it.</think>\n<answer>find a CoffeeTable</answer>",
+      "llm_response": "<think>I am now holding the bowl. Next, I need to find the coffee table to place the bowl on it.</think><answer>find a CoffeeTable</answer>",
+      "think_content": "I am now holding the bowl. Next, I need to find the coffee table to place the bowl on it.",
+      "action_content": "find a CoffeeTable",
+      "actions": [
+        "find a CoffeeTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am holding the bowl and am now near the coffee table. I should put the bowl down on the coffee table.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I am holding the bowl and am now near the coffee table. I should put the bowl down on the coffee table.</think><answer>put down the object in hand</answer>",
+      "think_content": "I am holding the bowl and am now near the coffee table. I should put the bowl down on the coffee table.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 10850,
+    "completion_tokens": 141,
+    "total_tokens": 10991,
+    "num_calls": 4
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_gpt41_20ep_dual_display",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

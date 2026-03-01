@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194122-98471016",
+  "seed": 14,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "Place a newspaper on a couch.",
+      "num_actions": 236,
+      "eval_set": "base",
+      "episode_idx": 14
+    },
+    {
+      "llm_raw_response": "<think>I need to get a newspaper before I can place it on the couch. Let me find a newspaper first.</think>\n<answer>find a Newspaper</answer>",
+      "llm_response": "<think>I need to get a newspaper before I can place it on the couch. Let me find a newspaper first.</think><answer>find a Newspaper</answer>",
+      "think_content": "I need to get a newspaper before I can place it on the couch. Let me find a newspaper first.",
+      "action_content": "find a Newspaper",
+      "actions": [
+        "find a Newspaper"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The newspaper is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Newspaper</answer>",
+      "llm_response": "<think>The newspaper is nearby and I'm not holding anything. I should pick it up.</think><answer>pick up the Newspaper</answer>",
+      "think_content": "The newspaper is nearby and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Newspaper",
+      "actions": [
+        "pick up the Newspaper"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a newspaper on the table. I should pick it up since it is nearby and I am not holding anything.</think>\n<answer>pick up the Newspaper</answer>",
+      "llm_response": "<think>There is a newspaper on the table. I should pick it up since it is nearby and I am not holding anything.</think><answer>pick up the Newspaper</answer>",
+      "think_content": "There is a newspaper on the table. I should pick it up since it is nearby and I am not holding anything.",
+      "action_content": "pick up the Newspaper",
+      "actions": [
+        "pick up the Newspaper"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a newspaper on the table. I should find another object or wait for a specific task.</think>\n<answer>find a Chair</answer>",
+      "llm_response": "<think>There is a newspaper on the table. I should find another object or wait for a specific task.</think><answer>find a Chair</answer>",
+      "think_content": "There is a newspaper on the table. I should find another object or wait for a specific task.",
+      "action_content": "find a Chair",
+      "actions": [
+        "find a Chair"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a newspaper on the table in front of me. I am close enough to pick it up.</think>\n<answer>pick up the Newspaper</answer>",
+      "llm_response": "<think>There is a newspaper on the table in front of me. I am close enough to pick it up.</think><answer>pick up the Newspaper</answer>",
+      "think_content": "There is a newspaper on the table in front of me. I am close enough to pick it up.",
+      "action_content": "pick up the Newspaper",
+      "actions": [
+        "pick up the Newspaper"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a newspaper on the table. I should find another object or wait for a new task.</think>\n<answer>find a chair</answer>",
+      "llm_response": "<think>There is a newspaper on the table. I should find another object or wait for a new task.</think><answer>find a chair</answer>",
+      "think_content": "There is a newspaper on the table. I should find another object or wait for a new task.",
+      "action_content": "find a chair",
+      "actions": [
+        "find a chair"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a newspaper on top of the desk. I should pick it up since it is accessible and I am not holding anything.</think>\n<answer>pick up the Newspaper</answer>",
+      "llm_response": "<think>There is a newspaper on top of the desk. I should pick it up since it is accessible and I am not holding anything.</think><answer>pick up the Newspaper</answer>",
+      "think_content": "There is a newspaper on top of the desk. I should pick it up since it is accessible and I am not holding anything.",
+      "action_content": "pick up the Newspaper",
+      "actions": [
+        "pick up the Newspaper"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the newspaper and I'm near a table. I should put the newspaper down on the table.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a newspaper on the table. I should find another object or receptacle to interact with next.</think>\n<answer>find a Drawer</answer>",
+      "llm_response": "<think>There is a newspaper on the table. I should find another object or receptacle to interact with next.</think><answer>find a Drawer</answer>",
+      "think_content": "There is a newspaper on the table. I should find another object or receptacle to interact with next.",
+      "action_content": "find a Drawer",
+      "actions": [
+        "find a Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a drawer in front of me. I should open it to check its contents.</think>\n<answer>open the Drawer</answer>",
+      "llm_response": "<think>I see a drawer in front of me. I should open it to check its contents.</think><answer>open the Drawer</answer>",
+      "think_content": "I see a drawer in front of me. I should open it to check its contents.",
+      "action_content": "open the Drawer",
+      "actions": [
+        "open the Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object inside the open drawer that looks accessible. I should pick it up since I'm not holding anything.</think>\n<answer>pick up the object in the Drawer</answer>",
+      "llm_response": "<think>There is an object inside the open drawer that looks accessible. I should pick it up since I'm not holding anything.</think><answer>pick up the object in the Drawer</answer>",
+      "think_content": "There is an object inside the open drawer that looks accessible. I should pick it up since I'm not holding anything.",
+      "action_content": "pick up the object in the Drawer",
+      "actions": [
+        "pick up the object in the Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object visible in the open drawer. I am close enough to pick it up and I am not currently holding anything.</think>\n<answer>pick up</answer>",
+      "llm_response": "<think>There is an object visible in the open drawer. I am close enough to pick it up and I am not currently holding anything.</think><answer>pick up</answer>",
+      "think_content": "There is an object visible in the open drawer. I am close enough to pick it up and I am not currently holding anything.",
+      "action_content": "pick up",
+      "actions": [
+        "pick up"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see an object on the table that I might want to interact with. I should move closer to it first.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>I see an object on the table that I might want to interact with. I should move closer to it first.</think><answer>find the object on the table</answer>",
+      "think_content": "I see an object on the table that I might want to interact with. I should move closer to it first.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that I can interact with. I should move closer to it to pick it up.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that I can interact with. I should move closer to it to pick it up.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that I can interact with. I should move closer to it to pick it up.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like a rectangular box, possibly a food item or a package. I need to get closer to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like a rectangular box, possibly a food item or a package. I need to get closer to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like a rectangular box, possibly a food item or a package. I need to get closer to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that I can interact with. I need to get closer to it to pick it up.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that I can interact with. I need to get closer to it to pick it up.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that I can interact with. I need to get closer to it to pick it up.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like a rectangular box, possibly a food item or a package. I need to get closer to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like a rectangular box, possibly a food item or a package. I need to get closer to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like a rectangular box, possibly a food item or a package. I need to get closer to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like it can be picked up. I need to pick it up since I am close to it and not holding anything.</think>\n<answer>pick up the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like it can be picked up. I need to pick it up since I am close to it and not holding anything.</think><answer>pick up the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like it can be picked up. I need to pick it up since I am close to it and not holding anything.",
+      "action_content": "pick up the object on the table",
+      "actions": [
+        "pick up the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see an object on the table. I need to find out what it is before interacting with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>I see an object on the table. I need to find out what it is before interacting with it.</think><answer>find the object on the table</answer>",
+      "think_content": "I see an object on the table. I need to find out what it is before interacting with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks like a box or a package. I need to get closer to it to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is an object on the table that looks accessible. I should move closer to it to interact with it.</think>\n<answer>find the object on the table</answer>",
+      "llm_response": "<think>There is an object on the table that looks accessible. I should move closer to it to interact with it.</think><answer>find the object on the table</answer>",
+      "think_content": "There is an object on the table that looks accessible. I should move closer to it to interact with it.",
+      "action_content": "find the object on the table",
+      "actions": [
+        "find the object on the table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 467.377,
+    "reset_s": 123.363,
+    "llm_s": 181.294,
+    "env_step_s": 146.502,
+    "other_s": 16.218,
+    "avg_llm_per_turn_s": 6.043,
+    "avg_env_step_per_turn_s": 4.883
+  },
+  "token_usage": {
+    "prompt_tokens": 24525,
+    "completion_tokens": 1205,
+    "total_tokens": 25730,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

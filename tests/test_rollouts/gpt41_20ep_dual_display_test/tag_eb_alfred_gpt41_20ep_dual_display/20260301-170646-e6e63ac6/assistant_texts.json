@@ -1,0 +1,6 @@
+[
+  "<think>I need to find a towel first. Let me look for a HandTowel.</think>\n<answer>find a HandTowel</answer>",
+  "<think>The hand towel is nearby and I am not holding anything. I should pick it up.</think>\n<answer>pick up the HandTowel</answer>",
+  "<think>I am now holding the hand towel. Next, I need to find the tub to put the towel in it.</think>\n<answer>find a Bathtub</answer>",
+  "<think>I am holding the hand towel and am now near the bathtub. I should put the towel in the tub.</think>\n<answer>put down the object in hand</answer>"
+]

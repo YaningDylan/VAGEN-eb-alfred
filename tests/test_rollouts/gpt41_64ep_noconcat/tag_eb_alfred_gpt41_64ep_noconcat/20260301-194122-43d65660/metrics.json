@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194122-43d65660",
+  "seed": 52,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "Put two rolls of toilet paper on the back of a toilet.",
+      "num_actions": 181,
+      "eval_set": "base",
+      "episode_idx": 2
+    },
+    {
+      "llm_raw_response": "<think>I need to locate some toilet paper rolls first. Let me find a ToiletPaper.</think>\n<answer>find a ToiletPaper</answer>",
+      "llm_response": "<think>I need to locate some toilet paper rolls first. Let me find a ToiletPaper.</think><answer>find a ToiletPaper</answer>",
+      "think_content": "I need to locate some toilet paper rolls first. Let me find a ToiletPaper.",
+      "action_content": "find a ToiletPaper",
+      "actions": [
+        "find a ToiletPaper"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The ToiletPaper is nearby and I am not holding anything. I should pick it up.</think>\n<answer>pick up the ToiletPaper</answer>",
+      "llm_response": "<think>The ToiletPaper is nearby and I am not holding anything. I should pick it up.</think><answer>pick up the ToiletPaper</answer>",
+      "think_content": "The ToiletPaper is nearby and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the ToiletPaper",
+      "actions": [
+        "pick up the ToiletPaper"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the toilet paper and I'm near the toilet tank. I should put the toilet paper down on the toilet tank.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the toilet paper and I'm near the toilet tank. I should put the toilet paper down on the toilet tank.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the toilet paper and I'm near the toilet tank. I should put the toilet paper down on the toilet tank.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet under the sink. I should try to open it to check for useful items inside.</think>\n<answer>open the cabinet</answer>",
+      "llm_response": "<think>I see a cabinet under the sink. I should try to open it to check for useful items inside.</think><answer>open the cabinet</answer>",
+      "think_content": "I see a cabinet under the sink. I should try to open it to check for useful items inside.",
+      "action_content": "open the cabinet",
+      "actions": [
+        "open the cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet may be locked or blocked. I should try to open the other cabinet door if available.</think>\n<answer>open the other Cabinet</answer>",
+      "llm_response": "<think>The cabinet may be locked or blocked. I should try to open the other cabinet door if available.</think><answer>open the other Cabinet</answer>",
+      "think_content": "The cabinet may be locked or blocked. I should try to open the other cabinet door if available.",
+      "action_content": "open the other Cabinet",
+      "actions": [
+        "open the other Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a cabinet under the sink that might contain useful items. I should try to open it.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>There is a cabinet under the sink that might contain useful items. I should try to open it.</think><answer>open the Cabinet</answer>",
+      "think_content": "There is a cabinet under the sink that might contain useful items. I should try to open it.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet may not be accessible from my current position. I should try to find another object or receptacle nearby that I can interact with.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>The cabinet may not be accessible from my current position. I should try to find another object or receptacle nearby that I can interact with.</think><answer>find the Soap</answer>",
+      "think_content": "The cabinet may not be accessible from my current position. I should try to find another object or receptacle nearby that I can interact with.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I can see the soap on top of the toilet tank and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>I can see the soap on top of the toilet tank and I'm not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "I can see the soap on top of the toilet tank and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the soap on top of the toilet tank. I need to find the soap first before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see the soap on top of the toilet tank. I need to find the soap first before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see the soap on top of the toilet tank. I need to find the soap first before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the soap on top of the toilet tank and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>I see the soap on top of the toilet tank and I'm not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "I see the soap on top of the toilet tank and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the soap on top of the toilet tank. I need to get closer to it before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see the soap on top of the toilet tank. I need to get closer to it before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see the soap on top of the toilet tank. I need to get closer to it before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The bar of soap is visible on top of the toilet tank and I am near it. I am not holding anything, so I should pick up the soap.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The bar of soap is visible on top of the toilet tank and I am near it. I am not holding anything, so I should pick up the soap.</think><answer>pick up the Soap</answer>",
+      "think_content": "The bar of soap is visible on top of the toilet tank and I am near it. I am not holding anything, so I should pick up the soap.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The bar of soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The bar of soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "The bar of soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The bar of soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The bar of soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "The bar of soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the soap on top of the toilet tank. I need to find the soap first before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see the soap on top of the toilet tank. I need to find the soap first before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see the soap on top of the toilet tank. I need to find the soap first before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The soap is visible on top of the toilet tank and I am near it. I am not holding anything, so I should pick up the soap.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The soap is visible on top of the toilet tank and I am near it. I am not holding anything, so I should pick up the soap.</think><answer>pick up the Soap</answer>",
+      "think_content": "The soap is visible on top of the toilet tank and I am near it. I am not holding anything, so I should pick up the soap.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The soap is visible on top of the toilet tank and I am near it. I am not holding anything, so I should pick up the soap.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The soap is visible on top of the toilet tank and I am near it. I am not holding anything, so I should pick up the soap.</think><answer>pick up the Soap</answer>",
+      "think_content": "The soap is visible on top of the toilet tank and I am near it. I am not holding anything, so I should pick up the soap.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the soap on top of the toilet tank and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>I see the soap on top of the toilet tank and I'm not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "I see the soap on top of the toilet tank and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.</think><answer>find the Soap</answer>",
+      "think_content": "I see a bar of soap on top of the toilet tank. I need to get closer to it before interacting with it.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "The soap is visible on top of the toilet tank and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 434.8,
+    "reset_s": 121.642,
+    "llm_s": 179.56,
+    "env_step_s": 116.699,
+    "other_s": 16.9,
+    "avg_llm_per_turn_s": 5.985,
+    "avg_env_step_per_turn_s": 3.89
+  },
+  "token_usage": {
+    "prompt_tokens": 24007,
+    "completion_tokens": 1129,
+    "total_tokens": 25136,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

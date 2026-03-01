@@ -1,0 +1,6 @@
+[
+  "<think>I need to locate a coffee mug before I can move it to the nightstand. Let me find a mug first.</think>\n<answer>find a Mug</answer>",
+  "<think>The mug is on the desk and I am nearby. I should pick up the mug.</think>\n<answer>pick up the Mug</answer>",
+  "<think>I'm holding the mug. Now I need to navigate to the nightstand to place the mug there.</think>\n<answer>find a SideTable</answer>",
+  "<think>I'm holding the mug and I'm near the nightstand. I should put the mug down on the nightstand.</think>\n<answer>put down the object in hand</answer>"
+]

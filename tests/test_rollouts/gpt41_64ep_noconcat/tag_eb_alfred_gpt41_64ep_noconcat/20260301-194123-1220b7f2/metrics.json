@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194123-1220b7f2",
+  "seed": 59,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "Move two CDs to the bottom drawer of the desk.",
+      "num_actions": 180,
+      "eval_set": "base",
+      "episode_idx": 9
+    },
+    {
+      "llm_raw_response": "<think>I need to locate the CDs first. Let me find a CD.</think>\n<answer>find a CD</answer>",
+      "llm_response": "<think>I need to locate the CDs first. Let me find a CD.</think><answer>find a CD</answer>",
+      "think_content": "I need to locate the CDs first. Let me find a CD.",
+      "action_content": "find a CD",
+      "actions": [
+        "find a CD"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The CD is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the CD</answer>",
+      "llm_response": "<think>The CD is nearby and I'm not holding anything. I should pick it up.</think><answer>pick up the CD</answer>",
+      "think_content": "The CD is nearby and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the CD",
+      "actions": [
+        "pick up the CD"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the CD. I should decide where to put it down. There is a bowl nearby that could serve as a receptacle.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the CD. I should decide where to put it down. There is a bowl nearby that could serve as a receptacle.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the CD. I should decide where to put it down. There is a bowl nearby that could serve as a receptacle.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There are two clocks visible, one on the top shelf and one on the lower shelf. I should specify which clock to interact with next. Let me find the clock on the top shelf.</think>\n<answer>find the Clock on the top shelf</answer>",
+      "llm_response": "<think>There are two clocks visible, one on the top shelf and one on the lower shelf. I should specify which clock to interact with next. Let me find the clock on the top shelf.</think><answer>find the Clock on the top shelf</answer>",
+      "think_content": "There are two clocks visible, one on the top shelf and one on the lower shelf. I should specify which clock to interact with next. Let me find the clock on the top shelf.",
+      "action_content": "find the Clock on the top shelf",
+      "actions": [
+        "find the Clock on the top shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a clock on the top shelf and I am near it. I am not holding anything, so I should pick up the clock.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>There is a clock on the top shelf and I am near it. I am not holding anything, so I should pick up the clock.</think><answer>pick up the Clock</answer>",
+      "think_content": "There is a clock on the top shelf and I am near it. I am not holding anything, so I should pick up the clock.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a clock on the shelf in front of me. I should try to pick it up, but I need to use the correct action format.</think>\n<answer>pick up Clock</answer>",
+      "llm_response": "<think>I see a clock on the shelf in front of me. I should try to pick it up, but I need to use the correct action format.</think><answer>pick up Clock</answer>",
+      "think_content": "I see a clock on the shelf in front of me. I should try to pick it up, but I need to use the correct action format.",
+      "action_content": "pick up Clock",
+      "actions": [
+        "pick up Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think>\n<answer>pick up Clock_2</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think><answer>pick up Clock_2</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.",
+      "action_content": "pick up Clock_2",
+      "actions": [
+        "pick up Clock_2"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify the correct action to pick up one of them. Since I'm close to the clocks, I should try to pick up one of them.</think>\n<answer>pick up Clock</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify the correct action to pick up one of them. Since I'm close to the clocks, I should try to pick up one of them.</think><answer>pick up Clock</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify the correct action to pick up one of them. Since I'm close to the clocks, I should try to pick up one of them.",
+      "action_content": "pick up Clock",
+      "actions": [
+        "pick up Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to interact with. Let me find the clock on the lower shelf first.</think>\n<answer>find the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to interact with. Let me find the clock on the lower shelf first.</think><answer>find the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to interact with. Let me find the clock on the lower shelf first.",
+      "action_content": "find the Clock on the lower shelf",
+      "actions": [
+        "find the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick it up.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick it up.</think><answer>pick up the Clock</answer>",
+      "think_content": "I see a clock on the lower shelf and I'm close to it. I should pick it up.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to interact with. I'll find the clock on the lower shelf first.</think>\n<answer>find the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to interact with. I'll find the clock on the lower shelf first.</think><answer>find the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to interact with. I'll find the clock on the lower shelf first.",
+      "action_content": "find the Clock on the lower shelf",
+      "actions": [
+        "find the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a clock on the lower shelf, and I am near it. I am not holding anything, so I should pick up the clock.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>There is a clock on the lower shelf, and I am near it. I am not holding anything, so I should pick up the clock.</think><answer>pick up the Clock</answer>",
+      "think_content": "There is a clock on the lower shelf, and I am near it. I am not holding anything, so I should pick up the clock.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. Since I need to interact with one, I should specify which clock to pick up. I'll try picking up the clock on the lower shelf.</think>\n<answer>pick up the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. Since I need to interact with one, I should specify which clock to pick up. I'll try picking up the clock on the lower shelf.</think><answer>pick up the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. Since I need to interact with one, I should specify which clock to pick up. I'll try picking up the clock on the lower shelf.",
+      "action_content": "pick up the Clock on the lower shelf",
+      "actions": [
+        "pick up the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick up the clock.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick up the clock.</think><answer>pick up the Clock</answer>",
+      "think_content": "I see a clock on the lower shelf and I'm close to it. I should pick up the clock.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf.</think>\n<answer>pick up the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf.</think><answer>pick up the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf.",
+      "action_content": "pick up the Clock on the lower shelf",
+      "actions": [
+        "pick up the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick it up.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick it up.</think><answer>pick up the Clock</answer>",
+      "think_content": "I see a clock on the lower shelf and I'm close to it. I should pick it up.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think>\n<answer>pick up the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think><answer>pick up the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.",
+      "action_content": "pick up the Clock on the lower shelf",
+      "actions": [
+        "pick up the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a clock on the lower shelf. I need to find it first before picking it up.</think>\n<answer>find the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see a clock on the lower shelf. I need to find it first before picking it up.</think><answer>find the Clock on the lower shelf</answer>",
+      "think_content": "I see a clock on the lower shelf. I need to find it first before picking it up.",
+      "action_content": "find the Clock on the lower shelf",
+      "actions": [
+        "find the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a clock on the lower shelf, and I am near it. I am not holding anything, so I can pick it up.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>There is a clock on the lower shelf, and I am near it. I am not holding anything, so I can pick it up.</think><answer>pick up the Clock</answer>",
+      "think_content": "There is a clock on the lower shelf, and I am near it. I am not holding anything, so I can pick it up.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to interact with. I'll try picking up the clock on the lower shelf.</think>\n<answer>pick up the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to interact with. I'll try picking up the clock on the lower shelf.</think><answer>pick up the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to interact with. I'll try picking up the clock on the lower shelf.",
+      "action_content": "pick up the Clock on the lower shelf",
+      "actions": [
+        "pick up the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a clock on the lower shelf in front of me, and I am not holding anything. I should pick up the clock.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>There is a clock on the lower shelf in front of me, and I am not holding anything. I should pick up the clock.</think><answer>pick up the Clock</answer>",
+      "think_content": "There is a clock on the lower shelf in front of me, and I am not holding anything. I should pick up the clock.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think>\n<answer>pick up the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think><answer>pick up the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.",
+      "action_content": "pick up the Clock on the lower shelf",
+      "actions": [
+        "pick up the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick it up.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick it up.</think><answer>pick up the Clock</answer>",
+      "think_content": "I see a clock on the lower shelf and I'm close to it. I should pick it up.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think>\n<answer>pick up the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think><answer>pick up the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.",
+      "action_content": "pick up the Clock on the lower shelf",
+      "actions": [
+        "pick up the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks, one on the upper shelf and one on the lower shelf. I need to specify which clock to interact with. I'll find the Clock on the lower shelf first.</think>\n<answer>find the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks, one on the upper shelf and one on the lower shelf. I need to specify which clock to interact with. I'll find the Clock on the lower shelf first.</think><answer>find the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks, one on the upper shelf and one on the lower shelf. I need to specify which clock to interact with. I'll find the Clock on the lower shelf first.",
+      "action_content": "find the Clock on the lower shelf",
+      "actions": [
+        "find the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick it up.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>I see a clock on the lower shelf and I'm close to it. I should pick it up.</think><answer>pick up the Clock</answer>",
+      "think_content": "I see a clock on the lower shelf and I'm close to it. I should pick it up.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think>\n<answer>pick up the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.</think><answer>pick up the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to pick up. I'll pick up the clock on the lower shelf since it's closer.",
+      "action_content": "pick up the Clock on the lower shelf",
+      "actions": [
+        "pick up the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a clock on the lower shelf in front of me. I am not holding anything, so I should try to pick it up.</think>\n<answer>pick up the Clock</answer>",
+      "llm_response": "<think>I see a clock on the lower shelf in front of me. I am not holding anything, so I should try to pick it up.</think><answer>pick up the Clock</answer>",
+      "think_content": "I see a clock on the lower shelf in front of me. I am not holding anything, so I should try to pick it up.",
+      "action_content": "pick up the Clock",
+      "actions": [
+        "pick up the Clock"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks on the shelf. I need to specify which clock to interact with. I'll find the clock on the lower shelf first.</think>\n<answer>find the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks on the shelf. I need to specify which clock to interact with. I'll find the clock on the lower shelf first.</think><answer>find the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks on the shelf. I need to specify which clock to interact with. I'll find the clock on the lower shelf first.",
+      "action_content": "find the Clock on the lower shelf",
+      "actions": [
+        "find the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see two clocks, one on the upper shelf and one on the lower shelf. I need to find the clock on the lower shelf to interact with it.</think>\n<answer>find the Clock on the lower shelf</answer>",
+      "llm_response": "<think>I see two clocks, one on the upper shelf and one on the lower shelf. I need to find the clock on the lower shelf to interact with it.</think><answer>find the Clock on the lower shelf</answer>",
+      "think_content": "I see two clocks, one on the upper shelf and one on the lower shelf. I need to find the clock on the lower shelf to interact with it.",
+      "action_content": "find the Clock on the lower shelf",
+      "actions": [
+        "find the Clock on the lower shelf"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 439.046,
+    "reset_s": 122.007,
+    "llm_s": 169.898,
+    "env_step_s": 129.663,
+    "other_s": 17.477,
+    "avg_llm_per_turn_s": 5.663,
+    "avg_env_step_per_turn_s": 4.322
+  },
+  "token_usage": {
+    "prompt_tokens": 24113,
+    "completion_tokens": 1302,
+    "total_tokens": 25415,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

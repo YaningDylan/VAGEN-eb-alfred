@@ -1,0 +1,276 @@
+{
+  "rollout_id": "20260301-170646-8e432704",
+  "seed": 1,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": true,
+  "cumulative_reward": 2.1,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    1.1
+  ],
+  "num_turns": 11,
+  "infos": [
+    {
+      "task_instruction": "Set plate with a spoon in it on the kitchen table",
+      "num_actions": 218,
+      "eval_set": "base",
+      "episode_idx": 1
+    },
+    {
+      "llm_raw_response": "<think>I need to find a plate first to start assembling the set. Let me locate a plate.</think>\n<answer>find a Plate</answer>",
+      "llm_response": "<think>I need to find a plate first to start assembling the set. Let me locate a plate.</think><answer>find a Plate</answer>",
+      "think_content": "I need to find a plate first to start assembling the set. Let me locate a plate.",
+      "action_content": "find a Plate",
+      "actions": [
+        "find a Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The plate is nearby and I'm not holding anything. I should pick up the plate.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>The plate is nearby and I'm not holding anything. I should pick up the plate.</think><answer>pick up the Plate</answer>",
+      "think_content": "The plate is nearby and I'm not holding anything. I should pick up the plate.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Now I need to find a spoon to place on the plate. Let me locate a spoon.</think>\n<answer>find a Spoon</answer>",
+      "llm_response": "<think>Now I need to find a spoon to place on the plate. Let me locate a spoon.</think><answer>find a Spoon</answer>",
+      "think_content": "Now I need to find a spoon to place on the plate. Let me locate a spoon.",
+      "action_content": "find a Spoon",
+      "actions": [
+        "find a Spoon"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The spoon is nearby, but I am currently holding the plate. I need to put the plate down first before I can pick up the spoon.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>The spoon is nearby, but I am currently holding the plate. I need to put the plate down first before I can pick up the spoon.</think><answer>put down the object in hand</answer>",
+      "think_content": "The spoon is nearby, but I am currently holding the plate. I need to put the plate down first before I can pick up the spoon.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I should not try to put the plate on the spoon. Instead, I need to put the plate down on a valid surface, such as the countertop, so I can pick up the spoon.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I should not try to put the plate on the spoon. Instead, I need to put the plate down on a valid surface, such as the countertop, so I can pick up the spoon.</think><answer>put down the object in hand</answer>",
+      "think_content": "I should not try to put the plate on the spoon. Instead, I need to put the plate down on a valid surface, such as the countertop, so I can pick up the spoon.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>It seems the plate is being placed directly on the spoon, which is not a valid receptacle. I should try to move to a different location, such as the kitchen table, to put the plate down there instead.</think>\n<answer>find a DiningTable</answer>",
+      "llm_response": "<think>It seems the plate is being placed directly on the spoon, which is not a valid receptacle. I should try to move to a different location, such as the kitchen table, to put the plate down there instead.</think><answer>find a DiningTable</answer>",
+      "think_content": "It seems the plate is being placed directly on the spoon, which is not a valid receptacle. I should try to move to a different location, such as the kitchen table, to put the plate down there instead.",
+      "action_content": "find a DiningTable",
+      "actions": [
+        "find a DiningTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>Now that I'm at the dining table, I should put the plate down here so I can go back and get the spoon.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>Now that I'm at the dining table, I should put the plate down here so I can go back and get the spoon.</think><answer>put down the object in hand</answer>",
+      "think_content": "Now that I'm at the dining table, I should put the plate down here so I can go back and get the spoon.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The plate is now on the dining table. Next, I need to go back and get the spoon.</think>\n<answer>find a Spoon</answer>",
+      "llm_response": "<think>The plate is now on the dining table. Next, I need to go back and get the spoon.</think><answer>find a Spoon</answer>",
+      "think_content": "The plate is now on the dining table. Next, I need to go back and get the spoon.",
+      "action_content": "find a Spoon",
+      "actions": [
+        "find a Spoon"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The spoon is nearby and I am not holding anything. I should pick up the spoon.</think>\n<answer>pick up the Spoon</answer>",
+      "llm_response": "<think>The spoon is nearby and I am not holding anything. I should pick up the spoon.</think><answer>pick up the Spoon</answer>",
+      "think_content": "The spoon is nearby and I am not holding anything. I should pick up the spoon.",
+      "action_content": "pick up the Spoon",
+      "actions": [
+        "pick up the Spoon"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I have the spoon. Now I need to return to the dining table to place the spoon on the plate.</think>\n<answer>find a DiningTable</answer>",
+      "llm_response": "<think>I have the spoon. Now I need to return to the dining table to place the spoon on the plate.</think><answer>find a DiningTable</answer>",
+      "think_content": "I have the spoon. Now I need to return to the dining table to place the spoon on the plate.",
+      "action_content": "find a DiningTable",
+      "actions": [
+        "find a DiningTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm at the dining table with the plate on it. I should put the spoon on the plate to complete the task.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm at the dining table with the plate on it. I should put the spoon on the plate to complete the task.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm at the dining table with the plate on it. I should put the spoon on the plate to complete the task.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": true
+        }
+      },
+      "success": true
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "token_usage": {
+    "prompt_tokens": 46812,
+    "completion_tokens": 440,
+    "total_tokens": 47252,
+    "num_calls": 11
+  },
+  "max_turns": 30,
+  "tag_id": "eb_alfred_gpt41_20ep_dual_display",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

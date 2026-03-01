@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194122-dfb4f7b5",
+  "seed": 41,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "Place a cleaned sponge in a bathtub.",
+      "num_actions": 192,
+      "eval_set": "base",
+      "episode_idx": 41
+    },
+    {
+      "llm_raw_response": "<think>I need to find a dish sponge to clean it before placing it in the bathtub. Let me locate a DishSponge first.</think>\n<answer>find a DishSponge</answer>",
+      "llm_response": "<think>I need to find a dish sponge to clean it before placing it in the bathtub. Let me locate a DishSponge first.</think><answer>find a DishSponge</answer>",
+      "think_content": "I need to find a dish sponge to clean it before placing it in the bathtub. Let me locate a DishSponge first.",
+      "action_content": "find a DishSponge",
+      "actions": [
+        "find a DishSponge"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The DishSponge is nearby and I am not holding anything. I should pick it up.</think>\n<answer>pick up the DishSponge</answer>",
+      "llm_response": "<think>The DishSponge is nearby and I am not holding anything. I should pick it up.</think><answer>pick up the DishSponge</answer>",
+      "think_content": "The DishSponge is nearby and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the DishSponge",
+      "actions": [
+        "pick up the DishSponge"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the DishSponge and I'm near the bathtub. I should put the DishSponge in the bathtub.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the DishSponge and I'm near the bathtub. I should put the DishSponge in the bathtub.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the DishSponge and I'm near the bathtub. I should put the DishSponge in the bathtub.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bathtub behind a shower curtain. I should look for an object to interact with in this area.</think>\n<answer>find a Soap</answer>",
+      "llm_response": "<think>I see a bathtub behind a shower curtain. I should look for an object to interact with in this area.</think><answer>find a Soap</answer>",
+      "think_content": "I see a bathtub behind a shower curtain. I should look for an object to interact with in this area.",
+      "action_content": "find a Soap",
+      "actions": [
+        "find a Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bathtub behind the shower curtain. Soap is often found near or inside the bathtub. I should look more closely at the bathtub area.</think>\n<answer>find Bathtub</answer>",
+      "llm_response": "<think>I see a bathtub behind the shower curtain. Soap is often found near or inside the bathtub. I should look more closely at the bathtub area.</think><answer>find Bathtub</answer>",
+      "think_content": "I see a bathtub behind the shower curtain. Soap is often found near or inside the bathtub. I should look more closely at the bathtub area.",
+      "action_content": "find Bathtub",
+      "actions": [
+        "find Bathtub"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bathtub behind a shower curtain. If I want to interact with the bathtub, I may need to open the curtain first.</think>\n<answer>open the ShowerCurtain</answer>",
+      "llm_response": "<think>I see a bathtub behind a shower curtain. If I want to interact with the bathtub, I may need to open the curtain first.</think><answer>open the ShowerCurtain</answer>",
+      "think_content": "I see a bathtub behind a shower curtain. If I want to interact with the bathtub, I may need to open the curtain first.",
+      "action_content": "open the ShowerCurtain",
+      "actions": [
+        "open the ShowerCurtain"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The shower curtain is already partially open, revealing the bathtub. I should look for an object to interact with inside or near the bathtub.</think>\n<answer>find a BathTowel</answer>",
+      "llm_response": "<think>The shower curtain is already partially open, revealing the bathtub. I should look for an object to interact with inside or near the bathtub.</think><answer>find a BathTowel</answer>",
+      "think_content": "The shower curtain is already partially open, revealing the bathtub. I should look for an object to interact with inside or near the bathtub.",
+      "action_content": "find a BathTowel",
+      "actions": [
+        "find a BathTowel"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bathtub behind a shower curtain. I should look for a towel nearby, possibly on a towel rack or shelf. Let me look around the bathroom for a BathTowel.</think>\n<answer>find a BathTowel</answer>",
+      "llm_response": "<think>I see a bathtub behind a shower curtain. I should look for a towel nearby, possibly on a towel rack or shelf. Let me look around the bathroom for a BathTowel.</think><answer>find a BathTowel</answer>",
+      "think_content": "I see a bathtub behind a shower curtain. I should look for a towel nearby, possibly on a towel rack or shelf. Let me look around the bathroom for a BathTowel.",
+      "action_content": "find a BathTowel",
+      "actions": [
+        "find a BathTowel"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bathtub behind a shower curtain. There might be a towel nearby, possibly on a towel rack or shelf. I should look around for a towel.</think>\n<answer>find a towel</answer>",
+      "llm_response": "<think>I see a bathtub behind a shower curtain. There might be a towel nearby, possibly on a towel rack or shelf. I should look around for a towel.</think><answer>find a towel</answer>",
+      "think_content": "I see a bathtub behind a shower curtain. There might be a towel nearby, possibly on a towel rack or shelf. I should look around for a towel.",
+      "action_content": "find a towel",
+      "actions": [
+        "find a towel"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bathtub behind a shower curtain. I should look for places where a towel might be stored, such as nearby cabinets or shelves.</think>\n<answer>find a cabinet</answer>",
+      "llm_response": "<think>I see a bathtub behind a shower curtain. I should look for places where a towel might be stored, such as nearby cabinets or shelves.</think><answer>find a cabinet</answer>",
+      "think_content": "I see a bathtub behind a shower curtain. I should look for places where a towel might be stored, such as nearby cabinets or shelves.",
+      "action_content": "find a cabinet",
+      "actions": [
+        "find a cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a bathtub behind a shower curtain. Since there is no cabinet here, I should explore other objects or areas in the bathroom. Let me try to find a Sink, as it is commonly found in bathrooms.</think>\n<answer>find a Sink</answer>",
+      "llm_response": "<think>I see a bathtub behind a shower curtain. Since there is no cabinet here, I should explore other objects or areas in the bathroom. Let me try to find a Sink, as it is commonly found in bathrooms.</think><answer>find a Sink</answer>",
+      "think_content": "I see a bathtub behind a shower curtain. Since there is no cabinet here, I should explore other objects or areas in the bathroom. Let me try to find a Sink, as it is commonly found in bathrooms.",
+      "action_content": "find a Sink",
+      "actions": [
+        "find a Sink"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I have found the sink. Now I should check if the sink is turned on or off, and turn it on if needed.</think>\n<answer>turn on the Sink</answer>",
+      "llm_response": "<think>I have found the sink. Now I should check if the sink is turned on or off, and turn it on if needed.</think><answer>turn on the Sink</answer>",
+      "think_content": "I have found the sink. Now I should check if the sink is turned on or off, and turn it on if needed.",
+      "action_content": "turn on the Sink",
+      "actions": [
+        "turn on the Sink"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The sink is in view, but since \"turn on\" is not a recognized action, I should look for another object or receptacle to interact with nearby.</think>\n<answer>find a Cabinet</answer>",
+      "llm_response": "<think>The sink is in view, but since \"turn on\" is not a recognized action, I should look for another object or receptacle to interact with nearby.</think><answer>find a Cabinet</answer>",
+      "think_content": "The sink is in view, but since \"turn on\" is not a recognized action, I should look for another object or receptacle to interact with nearby.",
+      "action_content": "find a Cabinet",
+      "actions": [
+        "find a Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink in front of me. There might be objects of interest nearby, such as a faucet or items on or around the sink. I should look for a Faucet next.</think>\n<answer>find a Faucet</answer>",
+      "llm_response": "<think>I see a sink in front of me. There might be objects of interest nearby, such as a faucet or items on or around the sink. I should look for a Faucet next.</think><answer>find a Faucet</answer>",
+      "think_content": "I see a sink in front of me. There might be objects of interest nearby, such as a faucet or items on or around the sink. I should look for a Faucet next.",
+      "action_content": "find a Faucet",
+      "actions": [
+        "find a Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am near the faucet. I should try to turn it on.</think>\n<answer>turn on the Faucet</answer>",
+      "llm_response": "<think>I am near the faucet. I should try to turn it on.</think><answer>turn on the Faucet</answer>",
+      "think_content": "I am near the faucet. I should try to turn it on.",
+      "action_content": "turn on the Faucet",
+      "actions": [
+        "turn on the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The faucet is on and water is running into the sink. To avoid overflowing, I should turn off the faucet.</think>\n<answer>turn off the Faucet</answer>",
+      "llm_response": "<think>The faucet is on and water is running into the sink. To avoid overflowing, I should turn off the faucet.</think><answer>turn off the Faucet</answer>",
+      "think_content": "The faucet is on and water is running into the sink. To avoid overflowing, I should turn off the faucet.",
+      "action_content": "turn off the Faucet",
+      "actions": [
+        "turn off the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The faucet is now off. I should look for a towel to dry my hands.</think>\n<answer>find a Towel</answer>",
+      "llm_response": "<think>The faucet is now off. I should look for a towel to dry my hands.</think><answer>find a Towel</answer>",
+      "think_content": "The faucet is now off. I should look for a towel to dry my hands.",
+      "action_content": "find a Towel",
+      "actions": [
+        "find a Towel"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink in front of me. Towels are often stored in cabinets or on racks nearby. I should look for a cabinet or drawer to search for a towel.</think>\n<answer>find a Cabinet</answer>",
+      "llm_response": "<think>I see a sink in front of me. Towels are often stored in cabinets or on racks nearby. I should look for a cabinet or drawer to search for a towel.</think><answer>find a Cabinet</answer>",
+      "think_content": "I see a sink in front of me. Towels are often stored in cabinets or on racks nearby. I should look for a cabinet or drawer to search for a towel.",
+      "action_content": "find a Cabinet",
+      "actions": [
+        "find a Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink in front of me. I should try to interact with it. Let me try turning on the sink.</think>\n<answer>turn on the Sink</answer>",
+      "llm_response": "<think>I see a sink in front of me. I should try to interact with it. Let me try turning on the sink.</think><answer>turn on the Sink</answer>",
+      "think_content": "I see a sink in front of me. I should try to interact with it. Let me try turning on the sink.",
+      "action_content": "turn on the Sink",
+      "actions": [
+        "turn on the Sink"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink, but since \"turn on\" is not a recognized action, I should look for another object or receptacle to interact with in this area.</think>\n<answer>find a Soap</answer>",
+      "llm_response": "<think>I see a sink, but since \"turn on\" is not a recognized action, I should look for another object or receptacle to interact with in this area.</think><answer>find a Soap</answer>",
+      "think_content": "I see a sink, but since \"turn on\" is not a recognized action, I should look for another object or receptacle to interact with in this area.",
+      "action_content": "find a Soap",
+      "actions": [
+        "find a Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am near the sink, but I do not see any soap here. I should look around for a soap, possibly near the sink or in a nearby cabinet.</think>\n<answer>find a Cabinet</answer>",
+      "llm_response": "<think>I am near the sink, but I do not see any soap here. I should look around for a soap, possibly near the sink or in a nearby cabinet.</think><answer>find a Cabinet</answer>",
+      "think_content": "I am near the sink, but I do not see any soap here. I should look around for a soap, possibly near the sink or in a nearby cabinet.",
+      "action_content": "find a Cabinet",
+      "actions": [
+        "find a Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink in front of me. I should try to find another object or receptacle nearby, such as a drawer or another storage location.</think>\n<answer>find a Drawer</answer>",
+      "llm_response": "<think>I see a sink in front of me. I should try to find another object or receptacle nearby, such as a drawer or another storage location.</think><answer>find a Drawer</answer>",
+      "think_content": "I see a sink in front of me. I should try to find another object or receptacle nearby, such as a drawer or another storage location.",
+      "action_content": "find a Drawer",
+      "actions": [
+        "find a Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am near the drawers. To interact with the contents, I need to open a drawer first.</think>\n<answer>open the Drawer</answer>",
+      "llm_response": "<think>I am near the drawers. To interact with the contents, I need to open a drawer first.</think><answer>open the Drawer</answer>",
+      "think_content": "I am near the drawers. To interact with the contents, I need to open a drawer first.",
+      "action_content": "open the Drawer",
+      "actions": [
+        "open the Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The drawer is now open, but it appears to be empty. I should check another drawer for items.</think>\n<answer>find the next Drawer</answer>",
+      "llm_response": "<think>The drawer is now open, but it appears to be empty. I should check another drawer for items.</think><answer>find the next Drawer</answer>",
+      "think_content": "The drawer is now open, but it appears to be empty. I should check another drawer for items.",
+      "action_content": "find the next Drawer",
+      "actions": [
+        "find the next Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The current drawer is open and empty. I should try opening another drawer to look for items.</think>\n<answer>open the next Drawer</answer>",
+      "llm_response": "<think>The current drawer is open and empty. I should try opening another drawer to look for items.</think><answer>open the next Drawer</answer>",
+      "think_content": "The current drawer is open and empty. I should try opening another drawer to look for items.",
+      "action_content": "open the next Drawer",
+      "actions": [
+        "open the next Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The current drawer is open and empty. I should try opening another drawer to check its contents.</think>\n<answer>open the next closed Drawer</answer>",
+      "llm_response": "<think>The current drawer is open and empty. I should try opening another drawer to check its contents.</think><answer>open the next closed Drawer</answer>",
+      "think_content": "The current drawer is open and empty. I should try opening another drawer to check its contents.",
+      "action_content": "open the next closed Drawer",
+      "actions": [
+        "open the next closed Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The current drawer is open and empty. I should try opening the next closed drawer to check its contents.</think>\n<answer>open Drawer_2</answer>",
+      "llm_response": "<think>The current drawer is open and empty. I should try opening the next closed drawer to check its contents.</think><answer>open Drawer_2</answer>",
+      "think_content": "The current drawer is open and empty. I should try opening the next closed drawer to check its contents.",
+      "action_content": "open Drawer_2",
+      "actions": [
+        "open Drawer_2"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The drawer is already open, and I can see its contents. I should look for an object to interact with next. There is a bar of soap on the counter that I can pick up.</think>\n<answer>find the Soap</answer>",
+      "llm_response": "<think>The drawer is already open, and I can see its contents. I should look for an object to interact with next. There is a bar of soap on the counter that I can pick up.</think><answer>find the Soap</answer>",
+      "think_content": "The drawer is already open, and I can see its contents. I should look for an object to interact with next. There is a bar of soap on the counter that I can pick up.",
+      "action_content": "find the Soap",
+      "actions": [
+        "find the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The soap is visible on the counter and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Soap</answer>",
+      "llm_response": "<think>The soap is visible on the counter and I am not holding anything. I should pick it up.</think><answer>pick up the Soap</answer>",
+      "think_content": "The soap is visible on the counter and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Soap",
+      "actions": [
+        "pick up the Soap"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The soap is on the counter and I am nearby. I should pick it up.</think>\n<answer>pick up</answer>",
+      "llm_response": "<think>The soap is on the counter and I am nearby. I should pick it up.</think><answer>pick up</answer>",
+      "think_content": "The soap is on the counter and I am nearby. I should pick it up.",
+      "action_content": "pick up",
+      "actions": [
+        "pick up"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 468.855,
+    "reset_s": 104.277,
+    "llm_s": 180.451,
+    "env_step_s": 166.433,
+    "other_s": 17.693,
+    "avg_llm_per_turn_s": 6.015,
+    "avg_env_step_per_turn_s": 5.548
+  },
+  "token_usage": {
+    "prompt_tokens": 24129,
+    "completion_tokens": 1209,
+    "total_tokens": 25338,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

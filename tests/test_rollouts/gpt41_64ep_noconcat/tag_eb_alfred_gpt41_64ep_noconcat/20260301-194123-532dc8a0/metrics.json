@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194123-532dc8a0",
+  "seed": 57,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "Put a clean spatula on a wooden table.",
+      "num_actions": 204,
+      "eval_set": "base",
+      "episode_idx": 7
+    },
+    {
+      "llm_raw_response": "<think>I need to find a spatula first. Let me navigate to where a spatula might be.</think>\n<answer>find a Spatula</answer>",
+      "llm_response": "<think>I need to find a spatula first. Let me navigate to where a spatula might be.</think><answer>find a Spatula</answer>",
+      "think_content": "I need to find a spatula first. Let me navigate to where a spatula might be.",
+      "action_content": "find a Spatula",
+      "actions": [
+        "find a Spatula"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The spatula is on the table and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Spatula</answer>",
+      "llm_response": "<think>The spatula is on the table and I am not holding anything. I should pick it up.</think><answer>pick up the Spatula</answer>",
+      "think_content": "The spatula is on the table and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Spatula",
+      "actions": [
+        "pick up the Spatula"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm currently holding the spatula. To interact with other objects, I need to free my hand. I'll put down the spatula on the table.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm currently holding the spatula. To interact with other objects, I need to free my hand. I'll put down the spatula on the table.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm currently holding the spatula. To interact with other objects, I need to free my hand. I'll put down the spatula on the table.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a loaf of bread and a head of lettuce on the table. I should slice the bread to prepare it for use.</think>\n<answer>slice the Bread</answer>",
+      "llm_response": "<think>There is a loaf of bread and a head of lettuce on the table. I should slice the bread to prepare it for use.</think><answer>slice the Bread</answer>",
+      "think_content": "There is a loaf of bread and a head of lettuce on the table. I should slice the bread to prepare it for use.",
+      "action_content": "slice the Bread",
+      "actions": [
+        "slice the Bread"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The bread has been sliced. There is a lettuce nearby. I should slice the lettuce next.</think>\n<answer>slice the Lettuce</answer>",
+      "llm_response": "<think>The bread has been sliced. There is a lettuce nearby. I should slice the lettuce next.</think><answer>slice the Lettuce</answer>",
+      "think_content": "The bread has been sliced. There is a lettuce nearby. I should slice the lettuce next.",
+      "action_content": "slice the Lettuce",
+      "actions": [
+        "slice the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see sliced lettuce and sliced bread on the table. I should find a plate to place the sliced items on.</think>\n<answer>find a Plate</answer>",
+      "llm_response": "<think>I see sliced lettuce and sliced bread on the table. I should find a plate to place the sliced items on.</think><answer>find a Plate</answer>",
+      "think_content": "I see sliced lettuce and sliced bread on the table. I should find a plate to place the sliced items on.",
+      "action_content": "find a Plate",
+      "actions": [
+        "find a Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I have navigated to the Plate. Now I should pick it up since I am near it and not holding anything.</think>\n<answer>pick up the Plate</answer>",
+      "llm_response": "<think>I have navigated to the Plate. Now I should pick it up since I am near it and not holding anything.</think><answer>pick up the Plate</answer>",
+      "think_content": "I have navigated to the Plate. Now I should pick it up since I am near it and not holding anything.",
+      "action_content": "pick up the Plate",
+      "actions": [
+        "pick up the Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I need to navigate to CounterTop_3 to access the Plate. Let me go there first.</think>\n<answer>find CounterTop_3</answer>",
+      "llm_response": "<think>I need to navigate to CounterTop_3 to access the Plate. Let me go there first.</think><answer>find CounterTop_3</answer>",
+      "think_content": "I need to navigate to CounterTop_3 to access the Plate. Let me go there first.",
+      "action_content": "find CounterTop_3",
+      "actions": [
+        "find CounterTop_3"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I do not see any recognizable objects in the current view. I should try to find a specific object or receptacle to proceed.</think>\n<answer>find a Sink</answer>",
+      "llm_response": "<think>I do not see any recognizable objects in the current view. I should try to find a specific object or receptacle to proceed.</think><answer>find a Sink</answer>",
+      "think_content": "I do not see any recognizable objects in the current view. I should try to find a specific object or receptacle to proceed.",
+      "action_content": "find a Sink",
+      "actions": [
+        "find a Sink"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I have found the sink. I should check if the sink is turned off or on before proceeding with any further actions.</think>\n<answer>find the Sink Faucet</answer>",
+      "llm_response": "<think>I have found the sink. I should check if the sink is turned off or on before proceeding with any further actions.</think><answer>find the Sink Faucet</answer>",
+      "think_content": "I have found the sink. I should check if the sink is turned off or on before proceeding with any further actions.",
+      "action_content": "find the Sink Faucet",
+      "actions": [
+        "find the Sink Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I need to locate a relevant object or receptacle to interact with. I'll look for a Sink, as it may be nearby.</think>\n<answer>find a Sink</answer>",
+      "llm_response": "<think>I need to locate a relevant object or receptacle to interact with. I'll look for a Sink, as it may be nearby.</think><answer>find a Sink</answer>",
+      "think_content": "I need to locate a relevant object or receptacle to interact with. I'll look for a Sink, as it may be nearby.",
+      "action_content": "find a Sink",
+      "actions": [
+        "find a Sink"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty fork in the sink. I should pick it up to clean or move it.</think>\n<answer>pick up the Fork</answer>",
+      "llm_response": "<think>There is a dirty fork in the sink. I should pick it up to clean or move it.</think><answer>pick up the Fork</answer>",
+      "think_content": "There is a dirty fork in the sink. I should pick it up to clean or move it.",
+      "action_content": "pick up the Fork",
+      "actions": [
+        "pick up the Fork"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the fork and I'm near the sink. I should put the fork down in the sink.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the fork and I'm near the sink. I should put the fork down in the sink.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the fork and I'm near the sink. I should put the fork down in the sink.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a dirty knife in the sink. I should clean it by turning on the faucet.</think>\n<answer>turn on the Faucet</answer>",
+      "llm_response": "<think>There is a dirty knife in the sink. I should clean it by turning on the faucet.</think><answer>turn on the Faucet</answer>",
+      "think_content": "There is a dirty knife in the sink. I should clean it by turning on the faucet.",
+      "action_content": "turn on the Faucet",
+      "actions": [
+        "turn on the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The sink is filling with water and the faucet is still on. To prevent overflow, I should turn off the faucet.</think>\n<answer>turn off the Faucet</answer>",
+      "llm_response": "<think>The sink is filling with water and the faucet is still on. To prevent overflow, I should turn off the faucet.</think><answer>turn off the Faucet</answer>",
+      "think_content": "The sink is filling with water and the faucet is still on. To prevent overflow, I should turn off the faucet.",
+      "action_content": "turn off the Faucet",
+      "actions": [
+        "turn off the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a knife in the sink. I need to pick it up, but first I should find it to ensure I'm close enough.</think>\n<answer>find the Knife</answer>",
+      "llm_response": "<think>There is a knife in the sink. I need to pick it up, but first I should find it to ensure I'm close enough.</think><answer>find the Knife</answer>",
+      "think_content": "There is a knife in the sink. I need to pick it up, but first I should find it to ensure I'm close enough.",
+      "action_content": "find the Knife",
+      "actions": [
+        "find the Knife"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The knife is in the sink and I am close to it. I am not holding anything, so I should pick up the knife.</think>\n<answer>pick up the Knife</answer>",
+      "llm_response": "<think>The knife is in the sink and I am close to it. I am not holding anything, so I should pick up the knife.</think><answer>pick up the Knife</answer>",
+      "think_content": "The knife is in the sink and I am close to it. I am not holding anything, so I should pick up the knife.",
+      "action_content": "pick up the Knife",
+      "actions": [
+        "pick up the Knife"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the knife. I see a glass in the sink. I should find a sliceable object if I want to use the knife.</think>\n<answer>find a sliceable object</answer>",
+      "llm_response": "<think>I'm holding the knife. I see a glass in the sink. I should find a sliceable object if I want to use the knife.</think><answer>find a sliceable object</answer>",
+      "think_content": "I'm holding the knife. I see a glass in the sink. I should find a sliceable object if I want to use the knife.",
+      "action_content": "find a sliceable object",
+      "actions": [
+        "find a sliceable object"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a knife visible near the sink, which can be used for slicing. I should pick up the knife since I am close to it and not holding anything.</think>\n<answer>pick up the Knife</answer>",
+      "llm_response": "<think>There is a knife visible near the sink, which can be used for slicing. I should pick up the knife since I am close to it and not holding anything.</think><answer>pick up the Knife</answer>",
+      "think_content": "There is a knife visible near the sink, which can be used for slicing. I should pick up the knife since I am close to it and not holding anything.",
+      "action_content": "pick up the Knife",
+      "actions": [
+        "pick up the Knife"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm currently holding the Knife and I'm near the sink. I should put the Knife down in the sink.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm currently holding the Knife and I'm near the sink. I should put the Knife down in the sink.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm currently holding the Knife and I'm near the sink. I should put the Knife down in the sink.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There are cups in and around the sink. I should pick up a cup from the sink since I'm not holding anything.</think>\n<answer>pick up the Cup</answer>",
+      "llm_response": "<think>There are cups in and around the sink. I should pick up a cup from the sink since I'm not holding anything.</think><answer>pick up the Cup</answer>",
+      "think_content": "There are cups in and around the sink. I should pick up a cup from the sink since I'm not holding anything.",
+      "action_content": "pick up the Cup",
+      "actions": [
+        "pick up the Cup"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the cup near the sink. I should put the cup down in the sink.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the cup near the sink. I should put the cup down in the sink.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the cup near the sink. I should put the cup down in the sink.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink in front of me. If my goal involves using water or cleaning, I may need to turn on the faucet.</think>\n<answer>turn on the Faucet</answer>",
+      "llm_response": "<think>I see a sink in front of me. If my goal involves using water or cleaning, I may need to turn on the faucet.</think><answer>turn on the Faucet</answer>",
+      "think_content": "I see a sink in front of me. If my goal involves using water or cleaning, I may need to turn on the faucet.",
+      "action_content": "turn on the Faucet",
+      "actions": [
+        "turn on the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The faucet is on and the sink is filling with water. To prevent overflow, I should turn off the faucet.</think>\n<answer>turn off the Faucet</answer>",
+      "llm_response": "<think>The faucet is on and the sink is filling with water. To prevent overflow, I should turn off the faucet.</think><answer>turn off the Faucet</answer>",
+      "think_content": "The faucet is on and the sink is filling with water. To prevent overflow, I should turn off the faucet.",
+      "action_content": "turn off the Faucet",
+      "actions": [
+        "turn off the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink and a cup nearby. I should find the cup to interact with it.</think>\n<answer>find the Cup</answer>",
+      "llm_response": "<think>I see a sink and a cup nearby. I should find the cup to interact with it.</think><answer>find the Cup</answer>",
+      "think_content": "I see a sink and a cup nearby. I should find the cup to interact with it.",
+      "action_content": "find the Cup",
+      "actions": [
+        "find the Cup"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a cup visible on the counter near the sink. I should pick it up since I am close to it and not holding anything.</think>\n<answer>pick up the Cup</answer>",
+      "llm_response": "<think>There is a cup visible on the counter near the sink. I should pick it up since I am close to it and not holding anything.</think><answer>pick up the Cup</answer>",
+      "think_content": "There is a cup visible on the counter near the sink. I should pick it up since I am close to it and not holding anything.",
+      "action_content": "pick up the Cup",
+      "actions": [
+        "pick up the Cup"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the cup near the sink. To fill the cup with water, I need to turn on the faucet first.</think>\n<answer>turn on the Faucet</answer>",
+      "llm_response": "<think>I'm holding the cup near the sink. To fill the cup with water, I need to turn on the faucet first.</think><answer>turn on the Faucet</answer>",
+      "think_content": "I'm holding the cup near the sink. To fill the cup with water, I need to turn on the faucet first.",
+      "action_content": "turn on the Faucet",
+      "actions": [
+        "turn on the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The faucet is on and there is a bowl in the sink. I should pick up the bowl to use it or move it.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The faucet is on and there is a bowl in the sink. I should pick up the bowl to use it or move it.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The faucet is on and there is a bowl in the sink. I should pick up the bowl to use it or move it.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Bowl is in the Fridge, so I need to go to the Fridge to access it.</think>\n<answer>find the Fridge</answer>",
+      "llm_response": "<think>The Bowl is in the Fridge, so I need to go to the Fridge to access it.</think><answer>find the Fridge</answer>",
+      "think_content": "The Bowl is in the Fridge, so I need to go to the Fridge to access it.",
+      "action_content": "find the Fridge",
+      "actions": [
+        "find the Fridge"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a running faucet and a bowl in the sink. The water is on, so I should turn it off to conserve water.</think>\n<answer>turn off the Faucet</answer>",
+      "llm_response": "<think>There is a running faucet and a bowl in the sink. The water is on, so I should turn it off to conserve water.</think><answer>turn off the Faucet</answer>",
+      "think_content": "There is a running faucet and a bowl in the sink. The water is on, so I should turn it off to conserve water.",
+      "action_content": "turn off the Faucet",
+      "actions": [
+        "turn off the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 502.672,
+    "reset_s": 136.25,
+    "llm_s": 157.963,
+    "env_step_s": 198.203,
+    "other_s": 10.256,
+    "avg_llm_per_turn_s": 5.265,
+    "avg_env_step_per_turn_s": 6.607
+  },
+  "token_usage": {
+    "prompt_tokens": 24143,
+    "completion_tokens": 1155,
+    "total_tokens": 25298,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

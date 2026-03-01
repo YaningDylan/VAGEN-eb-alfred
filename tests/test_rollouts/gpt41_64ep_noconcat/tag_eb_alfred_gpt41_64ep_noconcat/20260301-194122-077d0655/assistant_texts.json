@@ -1,0 +1,16 @@
+[
+  "<think>I need to find a spatula first before I can put it on the wooden table.</think>\n<answer>find a Spatula</answer>",
+  "<think>The spatula is on the table and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Spatula</answer>",
+  "<think>I'm currently holding the spatula. To interact with other objects, I need to free my hand. I'll put down the spatula on the table.</think>\n<answer>put down the object in hand</answer>",
+  "<think>There is a loaf of bread and a lettuce on the table. I should slice the bread since it is commonly sliced for use.</think>\n<answer>slice the Bread</answer>",
+  "<think>The bread has been sliced. Next, I should find and pick up the lettuce that is on the table.</think>\n<answer>pick up the Lettuce</answer>",
+  "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+  "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+  "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+  "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+  "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+  "<think>The lettuce is on the table and I am close to it. I am not holding anything, so I can try to pick up the lettuce.</think>\n<answer>pick up the Lettuce</answer>",
+  "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+  "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+  "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>"
+]

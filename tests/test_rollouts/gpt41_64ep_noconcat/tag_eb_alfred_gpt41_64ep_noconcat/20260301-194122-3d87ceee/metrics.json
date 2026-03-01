@@ -1,0 +1,517 @@
+{
+  "rollout_id": "20260301-194122-3d87ceee",
+  "seed": 36,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 2.2000000000000006,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 22,
+  "infos": [
+    {
+      "task_instruction": "Put a cleaned washcloth away in a cabinet.",
+      "num_actions": 182,
+      "eval_set": "base",
+      "episode_idx": 36
+    },
+    {
+      "llm_raw_response": "<think>I need to locate a washcloth (Cloth) first before putting it away. Let me find a Cloth.</think>\n<answer>find a Cloth</answer>",
+      "llm_response": "<think>I need to locate a washcloth (Cloth) first before putting it away. Let me find a Cloth.</think><answer>find a Cloth</answer>",
+      "think_content": "I need to locate a washcloth (Cloth) first before putting it away. Let me find a Cloth.",
+      "action_content": "find a Cloth",
+      "actions": [
+        "find a Cloth"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I have found a cabinet, which might contain the cloth. I should open the cabinet to check inside.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I have found a cabinet, which might contain the cloth. I should open the cabinet to check inside.</think><answer>open the Cabinet</answer>",
+      "think_content": "I have found a cabinet, which might contain the cloth. I should open the cabinet to check inside.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is now open. I should look inside to find an object to interact with.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is now open. I should look inside to find an object to interact with.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is now open. I should look inside to find an object to interact with.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.</think><answer>open the Cabinet</answer>",
+      "think_content": "I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is already open. I should look inside to find the object I need. Let me find an object inside the cabinet.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is already open. I should look inside to find the object I need. Let me find an object inside the cabinet.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is already open. I should look inside to find the object I need. Let me find an object inside the cabinet.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.</think><answer>open the Cabinet</answer>",
+      "think_content": "I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is already open. I should look inside the cabinet to find the object I need next.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is already open. I should look inside the cabinet to find the object I need next.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is already open. I should look inside the cabinet to find the object I need next.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.</think><answer>open the Cabinet</answer>",
+      "think_content": "I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is already open. I should look inside to find an object to interact with.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is already open. I should look inside to find an object to interact with.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is already open. I should look inside to find an object to interact with.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think><answer>open the Cabinet</answer>",
+      "think_content": "I see a cabinet in front of me. To look for objects inside, I need to open it first.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is already open. I should look inside to find an object to interact with.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is already open. I should look inside to find an object to interact with.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is already open. I should look inside to find an object to interact with.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think><answer>open the Cabinet</answer>",
+      "think_content": "I see a cabinet in front of me. To look for objects inside, I need to open it first.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is already open. I should look inside to find an object to interact with.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is already open. I should look inside to find an object to interact with.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is already open. I should look inside to find an object to interact with.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is closed. I need to open it to see what's inside.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is closed. I need to open it to see what's inside.</think><answer>open the Cabinet</answer>",
+      "think_content": "The cabinet is closed. I need to open it to see what's inside.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is already open. I should look inside to find an object to interact with next.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is already open. I should look inside to find an object to interact with next.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is already open. I should look inside to find an object to interact with next.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think><answer>open the Cabinet</answer>",
+      "think_content": "I see a cabinet in front of me. To look for objects inside, I need to open it first.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is already open. I should look inside to find an object to interact with.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is already open. I should look inside to find an object to interact with.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is already open. I should look inside to find an object to interact with.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think><answer>open the Cabinet</answer>",
+      "think_content": "I see a cabinet in front of me. To look for objects inside, I need to open it first.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is already open. I should look inside the cabinet to find the object I need.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is already open. I should look inside the cabinet to find the object I need.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is already open. I should look inside the cabinet to find the object I need.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open it first.</think><answer>open the Cabinet</answer>",
+      "think_content": "I see a cabinet in front of me. To look for objects inside, I need to open it first.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet is already open. I should look inside the cabinet to find the object I need.</think>\n<answer>find an object inside the Cabinet</answer>",
+      "llm_response": "<think>The cabinet is already open. I should look inside the cabinet to find the object I need.</think><answer>find an object inside the Cabinet</answer>",
+      "think_content": "The cabinet is already open. I should look inside the cabinet to find the object I need.",
+      "action_content": "find an object inside the Cabinet",
+      "actions": [
+        "find an object inside the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.</think><answer>open the Cabinet</answer>",
+      "think_content": "I see a cabinet in front of me. To look for objects inside, I need to open the cabinet first.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 426.425,
+    "reset_s": 104.783,
+    "llm_s": 157.718,
+    "env_step_s": 146.983,
+    "other_s": 16.941,
+    "avg_llm_per_turn_s": 7.169,
+    "avg_env_step_per_turn_s": 6.681
+  },
+  "token_usage": {
+    "prompt_tokens": 18073,
+    "completion_tokens": 770,
+    "total_tokens": 18843,
+    "num_calls": 22
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

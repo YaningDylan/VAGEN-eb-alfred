@@ -1,0 +1,580 @@
+{
+  "rollout_id": "20260301-194122-63cf5912",
+  "seed": 37,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 2.500000000000001,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 25,
+  "infos": [
+    {
+      "task_instruction": "Put a cup with a butter knife in it on the kitchen island.",
+      "num_actions": 214,
+      "eval_set": "base",
+      "episode_idx": 37
+    },
+    {
+      "llm_raw_response": "<think>I need to find a Cup first to start assembling the required items.</think>\n<answer>find a Cup</answer>",
+      "llm_response": "<think>I need to find a Cup first to start assembling the required items.</think><answer>find a Cup</answer>",
+      "think_content": "I need to find a Cup first to start assembling the required items.",
+      "action_content": "find a Cup",
+      "actions": [
+        "find a Cup"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cup is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Cup</answer>",
+      "llm_response": "<think>The cup is nearby and I'm not holding anything. I should pick it up.</think><answer>pick up the Cup</answer>",
+      "think_content": "The cup is nearby and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Cup",
+      "actions": [
+        "pick up the Cup"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the cup now. I should decide where to place it. The counter is nearby, so I can put it down there.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the cup now. I should decide where to place it. The counter is nearby, so I can put it down there.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the cup now. I should decide where to place it. The counter is nearby, so I can put it down there.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a loaf of bread on the counter. I should slice it next.</think>\n<answer>slice the Bread</answer>",
+      "llm_response": "<think>I see a loaf of bread on the counter. I should slice it next.</think><answer>slice the Bread</answer>",
+      "think_content": "I see a loaf of bread on the counter. I should slice it next.",
+      "action_content": "slice the Bread",
+      "actions": [
+        "slice the Bread"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The bread has been sliced. I should now pick up a slice of bread to proceed with the next step.</think>\n<answer>pick up the BreadSliced</answer>",
+      "llm_response": "<think>The bread has been sliced. I should now pick up a slice of bread to proceed with the next step.</think><answer>pick up the BreadSliced</answer>",
+      "think_content": "The bread has been sliced. I should now pick up a slice of bread to proceed with the next step.",
+      "action_content": "pick up the BreadSliced",
+      "actions": [
+        "pick up the BreadSliced"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a loaf of sliced bread on the counter. I need to pick it up, but first, I should find the BreadSliced to ensure I'm close enough.</think>\n<answer>find BreadSliced</answer>",
+      "llm_response": "<think>I see a loaf of sliced bread on the counter. I need to pick it up, but first, I should find the BreadSliced to ensure I'm close enough.</think><answer>find BreadSliced</answer>",
+      "think_content": "I see a loaf of sliced bread on the counter. I need to pick it up, but first, I should find the BreadSliced to ensure I'm close enough.",
+      "action_content": "find BreadSliced",
+      "actions": [
+        "find BreadSliced"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a loaf of bread on the counter, and I am nearby. I should pick it up.</think>\n<answer>pick up the Bread</answer>",
+      "llm_response": "<think>I see a loaf of bread on the counter, and I am nearby. I should pick it up.</think><answer>pick up the Bread</answer>",
+      "think_content": "I see a loaf of bread on the counter, and I am nearby. I should pick it up.",
+      "action_content": "pick up the Bread",
+      "actions": [
+        "pick up the Bread"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am holding the bread. To slice it, I need to be near a knife. There is a knife on the counter nearby.</think>\n<answer>slice the Bread</answer>",
+      "llm_response": "<think>I am holding the bread. To slice it, I need to be near a knife. There is a knife on the counter nearby.</think><answer>slice the Bread</answer>",
+      "think_content": "I am holding the bread. To slice it, I need to be near a knife. There is a knife on the counter nearby.",
+      "action_content": "slice the Bread",
+      "actions": [
+        "slice the Bread"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The bread is already sliced, so slicing is unnecessary. I should pick up a slice of bread if I need it for another task.</think>\n<answer>pick up the Bread</answer>",
+      "llm_response": "<think>The bread is already sliced, so slicing is unnecessary. I should pick up a slice of bread if I need it for another task.</think><answer>pick up the Bread</answer>",
+      "think_content": "The bread is already sliced, so slicing is unnecessary. I should pick up a slice of bread if I need it for another task.",
+      "action_content": "pick up the Bread",
+      "actions": [
+        "pick up the Bread"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm already holding BreadSliced. To interact with another object, I need to put down what I'm holding first.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm already holding BreadSliced. To interact with another object, I need to put down what I'm holding first.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm already holding BreadSliced. To interact with another object, I need to put down what I'm holding first.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a loaf of bread on the counter. I should slice it to prepare it for serving or making sandwiches.</think>\n<answer>slice the Bread</answer>",
+      "llm_response": "<think>I see a loaf of bread on the counter. I should slice it to prepare it for serving or making sandwiches.</think><answer>slice the Bread</answer>",
+      "think_content": "I see a loaf of bread on the counter. I should slice it to prepare it for serving or making sandwiches.",
+      "action_content": "slice the Bread",
+      "actions": [
+        "slice the Bread"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The bread is already sliced, so slicing is unnecessary. I should pick up a slice if I need to interact with it further.</think>\n<answer>pick up the Bread</answer>",
+      "llm_response": "<think>The bread is already sliced, so slicing is unnecessary. I should pick up a slice if I need to interact with it further.</think><answer>pick up the Bread</answer>",
+      "think_content": "The bread is already sliced, so slicing is unnecessary. I should pick up a slice if I need to interact with it further.",
+      "action_content": "pick up the Bread",
+      "actions": [
+        "pick up the Bread"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I am holding the bread. I see a knife on the counter, which can be used to slice the bread. I should move closer to the knife to slice the bread.</think>\n<answer>find the Knife</answer>",
+      "llm_response": "<think>I am holding the bread. I see a knife on the counter, which can be used to slice the bread. I should move closer to the knife to slice the bread.</think><answer>find the Knife</answer>",
+      "think_content": "I am holding the bread. I see a knife on the counter, which can be used to slice the bread. I should move closer to the knife to slice the bread.",
+      "action_content": "find the Knife",
+      "actions": [
+        "find the Knife"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The knife is visible on the counter and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Knife</answer>",
+      "llm_response": "<think>The knife is visible on the counter and I am not holding anything. I should pick it up.</think><answer>pick up the Knife</answer>",
+      "think_content": "The knife is visible on the counter and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Knife",
+      "actions": [
+        "pick up the Knife"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Knife is visible on the counter now. I am close to it and not holding anything, so I should pick it up.</think>\n<answer>pick up the Knife</answer>",
+      "llm_response": "<think>The Knife is visible on the counter now. I am close to it and not holding anything, so I should pick it up.</think><answer>pick up the Knife</answer>",
+      "think_content": "The Knife is visible on the counter now. I am close to it and not holding anything, so I should pick it up.",
+      "action_content": "pick up the Knife",
+      "actions": [
+        "pick up the Knife"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Knife is visible on the counter now. I should pick it up since I'm nearby and not holding anything.</think>\n<answer>pick up the Knife</answer>",
+      "llm_response": "<think>The Knife is visible on the counter now. I should pick it up since I'm nearby and not holding anything.</think><answer>pick up the Knife</answer>",
+      "think_content": "The Knife is visible on the counter now. I should pick it up since I'm nearby and not holding anything.",
+      "action_content": "pick up the Knife",
+      "actions": [
+        "pick up the Knife"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Knife is not visible here. I need to go to the DiningTable to find it.</think>\n<answer>find DiningTable</answer>",
+      "llm_response": "<think>The Knife is not visible here. I need to go to the DiningTable to find it.</think><answer>find DiningTable</answer>",
+      "think_content": "The Knife is not visible here. I need to go to the DiningTable to find it.",
+      "action_content": "find DiningTable",
+      "actions": [
+        "find DiningTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a mug visible on the counter near the stove. I should pick it up since I'm not holding anything.</think>\n<answer>pick up the Mug</answer>",
+      "llm_response": "<think>There is a mug visible on the counter near the stove. I should pick it up since I'm not holding anything.</think><answer>pick up the Mug</answer>",
+      "think_content": "There is a mug visible on the counter near the stove. I should pick it up since I'm not holding anything.",
+      "action_content": "pick up the Mug",
+      "actions": [
+        "pick up the Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Mug is not here; it is in the DiningTable. I need to navigate to the DiningTable to find the Mug.</think>\n<answer>find DiningTable</answer>",
+      "llm_response": "<think>The Mug is not here; it is in the DiningTable. I need to navigate to the DiningTable to find the Mug.</think><answer>find DiningTable</answer>",
+      "think_content": "The Mug is not here; it is in the DiningTable. I need to navigate to the DiningTable to find the Mug.",
+      "action_content": "find DiningTable",
+      "actions": [
+        "find DiningTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a mug on the counter near the stove. I should move closer to the mug to interact with it.</think>\n<answer>find Mug</answer>",
+      "llm_response": "<think>I see a mug on the counter near the stove. I should move closer to the mug to interact with it.</think><answer>find Mug</answer>",
+      "think_content": "I see a mug on the counter near the stove. I should move closer to the mug to interact with it.",
+      "action_content": "find Mug",
+      "actions": [
+        "find Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a mug on top of a container near the stove. I need to pick it up, and I'm not holding anything.</think>\n<answer>pick up the Mug</answer>",
+      "llm_response": "<think>I see a mug on top of a container near the stove. I need to pick it up, and I'm not holding anything.</think><answer>pick up the Mug</answer>",
+      "think_content": "I see a mug on top of a container near the stove. I need to pick it up, and I'm not holding anything.",
+      "action_content": "pick up the Mug",
+      "actions": [
+        "pick up the Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I need to go to the DiningTable to access the Mug, as it is not currently visible here.</think>\n<answer>find DiningTable</answer>",
+      "llm_response": "<think>I need to go to the DiningTable to access the Mug, as it is not currently visible here.</think><answer>find DiningTable</answer>",
+      "think_content": "I need to go to the DiningTable to access the Mug, as it is not currently visible here.",
+      "action_content": "find DiningTable",
+      "actions": [
+        "find DiningTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a mug visible on the counter, and I am not currently holding anything. I should pick up the mug.</think>\n<answer>pick up the Mug</answer>",
+      "llm_response": "<think>There is a mug visible on the counter, and I am not currently holding anything. I should pick up the mug.</think><answer>pick up the Mug</answer>",
+      "think_content": "There is a mug visible on the counter, and I am not currently holding anything. I should pick up the mug.",
+      "action_content": "pick up the Mug",
+      "actions": [
+        "pick up the Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Mug is not here; it is in the DiningTable. I need to go to the DiningTable to find the Mug.</think>\n<answer>find DiningTable</answer>",
+      "llm_response": "<think>The Mug is not here; it is in the DiningTable. I need to go to the DiningTable to find the Mug.</think><answer>find DiningTable</answer>",
+      "think_content": "The Mug is not here; it is in the DiningTable. I need to go to the DiningTable to find the Mug.",
+      "action_content": "find DiningTable",
+      "actions": [
+        "find DiningTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a mug on the counter near the stove. I should pick it up since I'm close to it and not holding anything.</think>\n<answer>pick up the Mug</answer>",
+      "llm_response": "<think>I see a mug on the counter near the stove. I should pick it up since I'm close to it and not holding anything.</think><answer>pick up the Mug</answer>",
+      "think_content": "I see a mug on the counter near the stove. I should pick it up since I'm close to it and not holding anything.",
+      "action_content": "pick up the Mug",
+      "actions": [
+        "pick up the Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 405.558,
+    "reset_s": 92.489,
+    "llm_s": 146.696,
+    "env_step_s": 145.808,
+    "other_s": 20.566,
+    "avg_llm_per_turn_s": 5.868,
+    "avg_env_step_per_turn_s": 5.832
+  },
+  "token_usage": {
+    "prompt_tokens": 20600,
+    "completion_tokens": 942,
+    "total_tokens": 21542,
+    "num_calls": 25
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

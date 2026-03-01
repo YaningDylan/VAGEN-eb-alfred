@@ -1,0 +1,475 @@
+{
+  "rollout_id": "20260301-194122-872c5f2d",
+  "seed": 44,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 2.0000000000000004,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 20,
+  "infos": [
+    {
+      "task_instruction": "Turn on the lamp while holding the teapot.",
+      "num_actions": 181,
+      "eval_set": "base",
+      "episode_idx": 44
+    },
+    {
+      "llm_raw_response": "<think>I need to hold the teapot (kettle) before turning on the lamp. First, I should find the kettle.</think>\n<answer>find a Kettle</answer>",
+      "llm_response": "<think>I need to hold the teapot (kettle) before turning on the lamp. First, I should find the kettle.</think><answer>find a Kettle</answer>",
+      "think_content": "I need to hold the teapot (kettle) before turning on the lamp. First, I should find the kettle.",
+      "action_content": "find a Kettle",
+      "actions": [
+        "find a Kettle"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I do not see a kettle in this scene. There is a red cushion and a rectangular object on the sofa. I should explore or find another object or receptacle in the room.</think>\n<answer>find a Cabinet</answer>",
+      "llm_response": "<think>I do not see a kettle in this scene. There is a red cushion and a rectangular object on the sofa. I should explore or find another object or receptacle in the room.</think><answer>find a Cabinet</answer>",
+      "think_content": "I do not see a kettle in this scene. There is a red cushion and a rectangular object on the sofa. I should explore or find another object or receptacle in the room.",
+      "action_content": "find a Cabinet",
+      "actions": [
+        "find a Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a red cushion and a book on the sofa. I should try to interact with one of these objects. Let me find the Book first.</think>\n<answer>find a Book</answer>",
+      "llm_response": "<think>I see a red cushion and a book on the sofa. I should try to interact with one of these objects. Let me find the Book first.</think><answer>find a Book</answer>",
+      "think_content": "I see a red cushion and a book on the sofa. I should try to interact with one of these objects. Let me find the Book first.",
+      "action_content": "find a Book",
+      "actions": [
+        "find a Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a rectangular object on the right sofa that looks like it could be a book or a notepad. I should try to pick it up since I'm close to it.</think>\n<answer>pick up the object</answer>",
+      "llm_response": "<think>There is a rectangular object on the right sofa that looks like it could be a book or a notepad. I should try to pick it up since I'm close to it.</think><answer>pick up the object</answer>",
+      "think_content": "There is a rectangular object on the right sofa that looks like it could be a book or a notepad. I should try to pick it up since I'm close to it.",
+      "action_content": "pick up the object",
+      "actions": [
+        "pick up the object"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a red cushion and a rectangular object (possibly a book or remote) on the sofa. I need to interact with one of them, but first, I should find the object I want to pick up.</think>\n<answer>find the red cushion</answer>",
+      "llm_response": "<think>There is a red cushion and a rectangular object (possibly a book or remote) on the sofa. I need to interact with one of them, but first, I should find the object I want to pick up.</think><answer>find the red cushion</answer>",
+      "think_content": "There is a red cushion and a rectangular object (possibly a book or remote) on the sofa. I need to interact with one of them, but first, I should find the object I want to pick up.",
+      "action_content": "find the red cushion",
+      "actions": [
+        "find the red cushion"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The red cushion is on the right sofa and I am nearby. I am not holding anything, so I should pick it up.</think>\n<answer>pick up the red cushion</answer>",
+      "llm_response": "<think>The red cushion is on the right sofa and I am nearby. I am not holding anything, so I should pick it up.</think><answer>pick up the red cushion</answer>",
+      "think_content": "The red cushion is on the right sofa and I am nearby. I am not holding anything, so I should pick it up.",
+      "action_content": "pick up the red cushion",
+      "actions": [
+        "pick up the red cushion"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a red cushion on the sofa. I need to find the cushion first before interacting with it.</think>\n<answer>find the Cushion</answer>",
+      "llm_response": "<think>I see a red cushion on the sofa. I need to find the cushion first before interacting with it.</think><answer>find the Cushion</answer>",
+      "think_content": "I see a red cushion on the sofa. I need to find the cushion first before interacting with it.",
+      "action_content": "find the Cushion",
+      "actions": [
+        "find the Cushion"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The red cushion is on the right sofa and I am close to it. I am not holding anything, so I should pick up the cushion.</think>\n<answer>pick up the Cushion</answer>",
+      "llm_response": "<think>The red cushion is on the right sofa and I am close to it. I am not holding anything, so I should pick up the cushion.</think><answer>pick up the Cushion</answer>",
+      "think_content": "The red cushion is on the right sofa and I am close to it. I am not holding anything, so I should pick up the cushion.",
+      "action_content": "pick up the Cushion",
+      "actions": [
+        "pick up the Cushion"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a red cushion on the sofa. Since \"Cushion\" is not a recognized action object, I should try interacting with another visible object. There is a book on the sofa as well. I should find the book first.</think>\n<answer>find a Book</answer>",
+      "llm_response": "<think>I see a red cushion on the sofa. Since \"Cushion\" is not a recognized action object, I should try interacting with another visible object. There is a book on the sofa as well. I should find the book first.</think><answer>find a Book</answer>",
+      "think_content": "I see a red cushion on the sofa. Since \"Cushion\" is not a recognized action object, I should try interacting with another visible object. There is a book on the sofa as well. I should find the book first.",
+      "action_content": "find a Book",
+      "actions": [
+        "find a Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book visible on the right sofa. I should pick it up since I am close to it and not holding anything.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book visible on the right sofa. I should pick it up since I am close to it and not holding anything.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book visible on the right sofa. I should pick it up since I am close to it and not holding anything.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Book is visible on the sofa. I need to navigate to it before picking it up.</think>\n<answer>find the Book</answer>",
+      "llm_response": "<think>The Book is visible on the sofa. I need to navigate to it before picking it up.</think><answer>find the Book</answer>",
+      "think_content": "The Book is visible on the sofa. I need to navigate to it before picking it up.",
+      "action_content": "find the Book",
+      "actions": [
+        "find the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book visible on the couch. I am not holding anything and I am close to the book, so I should pick it up.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book visible on the couch. I am not holding anything and I am close to the book, so I should pick it up.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book visible on the couch. I am not holding anything and I am close to the book, so I should pick it up.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the Book on the sofa. I need to navigate to it before interacting with it.</think>\n<answer>find the Book</answer>",
+      "llm_response": "<think>I see the Book on the sofa. I need to navigate to it before interacting with it.</think><answer>find the Book</answer>",
+      "think_content": "I see the Book on the sofa. I need to navigate to it before interacting with it.",
+      "action_content": "find the Book",
+      "actions": [
+        "find the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a book visible on the couch. I am not holding anything and am close to the book, so I should pick it up.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>There is a book visible on the couch. I am not holding anything and am close to the book, so I should pick it up.</think><answer>pick up the Book</answer>",
+      "think_content": "There is a book visible on the couch. I am not holding anything and am close to the book, so I should pick it up.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the Book on the sofa. I need to navigate to it before interacting with it.</think>\n<answer>find the Book</answer>",
+      "llm_response": "<think>I see the Book on the sofa. I need to navigate to it before interacting with it.</think><answer>find the Book</answer>",
+      "think_content": "I see the Book on the sofa. I need to navigate to it before interacting with it.",
+      "action_content": "find the Book",
+      "actions": [
+        "find the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The book is visible on the right sofa, and I am close to it. I am not holding anything, so I should pick up the book.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>The book is visible on the right sofa, and I am close to it. I am not holding anything, so I should pick up the book.</think><answer>pick up the Book</answer>",
+      "think_content": "The book is visible on the right sofa, and I am close to it. I am not holding anything, so I should pick up the book.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the Book on the sofa. I need to find the Book before interacting with it.</think>\n<answer>find the Book</answer>",
+      "llm_response": "<think>I see the Book on the sofa. I need to find the Book before interacting with it.</think><answer>find the Book</answer>",
+      "think_content": "I see the Book on the sofa. I need to find the Book before interacting with it.",
+      "action_content": "find the Book",
+      "actions": [
+        "find the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a book on the couch and I'm not holding anything. I should pick up the book.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>I see a book on the couch and I'm not holding anything. I should pick up the book.</think><answer>pick up the Book</answer>",
+      "think_content": "I see a book on the couch and I'm not holding anything. I should pick up the book.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the Book on the couch. I need to navigate to it before interacting with it.</think>\n<answer>find the Book</answer>",
+      "llm_response": "<think>I see the Book on the couch. I need to navigate to it before interacting with it.</think><answer>find the Book</answer>",
+      "think_content": "I see the Book on the couch. I need to navigate to it before interacting with it.",
+      "action_content": "find the Book",
+      "actions": [
+        "find the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The book is visible on the couch and I am close to it. I am not holding anything, so I should pick up the book.</think>\n<answer>pick up the Book</answer>",
+      "llm_response": "<think>The book is visible on the couch and I am close to it. I am not holding anything, so I should pick up the book.</think><answer>pick up the Book</answer>",
+      "think_content": "The book is visible on the couch and I am close to it. I am not holding anything, so I should pick up the book.",
+      "action_content": "pick up the Book",
+      "actions": [
+        "pick up the Book"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 393.397,
+    "reset_s": 104.269,
+    "llm_s": 138.207,
+    "env_step_s": 132.798,
+    "other_s": 18.124,
+    "avg_llm_per_turn_s": 6.91,
+    "avg_env_step_per_turn_s": 6.64
+  },
+  "token_usage": {
+    "prompt_tokens": 16598,
+    "completion_tokens": 827,
+    "total_tokens": 17425,
+    "num_calls": 20
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

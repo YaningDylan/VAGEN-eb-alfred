@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194122-3b620d51",
+  "seed": 22,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "Put a clean apple slice on the table. ",
+      "num_actions": 228,
+      "eval_set": "base",
+      "episode_idx": 22
+    },
+    {
+      "llm_raw_response": "<think>I see the table, but I need an apple first. Let me find an apple.</think>\n<answer>find a Apple</answer>",
+      "llm_response": "<think>I see the table, but I need an apple first. Let me find an apple.</think><answer>find a Apple</answer>",
+      "think_content": "I see the table, but I need an apple first. Let me find an apple.",
+      "action_content": "find a Apple",
+      "actions": [
+        "find a Apple"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The apple might be inside the microwave. I should open the microwave to check.</think>\n<answer>open the Microwave</answer>",
+      "llm_response": "<think>The apple might be inside the microwave. I should open the microwave to check.</think><answer>open the Microwave</answer>",
+      "think_content": "The apple might be inside the microwave. I should open the microwave to check.",
+      "action_content": "open the Microwave",
+      "actions": [
+        "open the Microwave"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a mug and an apple inside the open microwave. I am not holding anything, so I should pick up one of the objects inside the microwave. I'll start by picking up the mug.</think>\n<answer>pick up the Mug</answer>",
+      "llm_response": "<think>There is a mug and an apple inside the open microwave. I am not holding anything, so I should pick up one of the objects inside the microwave. I'll start by picking up the mug.</think><answer>pick up the Mug</answer>",
+      "think_content": "There is a mug and an apple inside the open microwave. I am not holding anything, so I should pick up one of the objects inside the microwave. I'll start by picking up the mug.",
+      "action_content": "pick up the Mug",
+      "actions": [
+        "pick up the Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the mug and I'm near the microwave. I should put the mug inside the microwave.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the mug and I'm near the microwave. I should put the mug inside the microwave.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the mug and I'm near the microwave. I should put the mug inside the microwave.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The apple and a glass are inside the microwave, and the microwave is currently off. To heat the apple, I need to turn on the microwave.</think>\n<answer>turn on the Microwave</answer>",
+      "llm_response": "<think>The apple and a glass are inside the microwave, and the microwave is currently off. To heat the apple, I need to turn on the microwave.</think><answer>turn on the Microwave</answer>",
+      "think_content": "The apple and a glass are inside the microwave, and the microwave is currently off. To heat the apple, I need to turn on the microwave.",
+      "action_content": "turn on the Microwave",
+      "actions": [
+        "turn on the Microwave"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The microwave door is open, which is likely why I couldn't turn it on. I should close the microwave door first.</think>\n<answer>close the Microwave</answer>",
+      "llm_response": "<think>The microwave door is open, which is likely why I couldn't turn it on. I should close the microwave door first.</think><answer>close the Microwave</answer>",
+      "think_content": "The microwave door is open, which is likely why I couldn't turn it on. I should close the microwave door first.",
+      "action_content": "close the Microwave",
+      "actions": [
+        "close the Microwave"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The microwave is now closed and turned off. There are no further instructions, so I should look for the next object or receptacle to interact with.</think>\n<answer>find a nearby object</answer>",
+      "llm_response": "<think>The microwave is now closed and turned off. There are no further instructions, so I should look for the next object or receptacle to interact with.</think><answer>find a nearby object</answer>",
+      "think_content": "The microwave is now closed and turned off. There are no further instructions, so I should look for the next object or receptacle to interact with.",
+      "action_content": "find a nearby object",
+      "actions": [
+        "find a nearby object"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The microwave is currently off. I should turn it on if I want to use it.</think>\n<answer>turn on the Microwave</answer>",
+      "llm_response": "<think>The microwave is currently off. I should turn it on if I want to use it.</think><answer>turn on the Microwave</answer>",
+      "think_content": "The microwave is currently off. I should turn it on if I want to use it.",
+      "action_content": "turn on the Microwave",
+      "actions": [
+        "turn on the Microwave"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The microwave is now on. I should check if there is anything inside or if I need to interact with it further. I'll open the microwave to see inside.</think>\n<answer>open the Microwave</answer>",
+      "llm_response": "<think>The microwave is now on. I should check if there is anything inside or if I need to interact with it further. I'll open the microwave to see inside.</think><answer>open the Microwave</answer>",
+      "think_content": "The microwave is now on. I should check if there is anything inside or if I need to interact with it further. I'll open the microwave to see inside.",
+      "action_content": "open the Microwave",
+      "actions": [
+        "open the Microwave"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The microwave might be locked or obstructed. I'll try interacting with another object nearby. There are tomatoes on the table, so I'll find a Tomato.</think>\n<answer>find a Tomato</answer>",
+      "llm_response": "<think>The microwave might be locked or obstructed. I'll try interacting with another object nearby. There are tomatoes on the table, so I'll find a Tomato.</think><answer>find a Tomato</answer>",
+      "think_content": "The microwave might be locked or obstructed. I'll try interacting with another object nearby. There are tomatoes on the table, so I'll find a Tomato.",
+      "action_content": "find a Tomato",
+      "actions": [
+        "find a Tomato"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I have navigated to the location of the Tomato. I should try to pick it up since I am not holding anything.</think>\n<answer>pick up the Tomato</answer>",
+      "llm_response": "<think>I have navigated to the location of the Tomato. I should try to pick it up since I am not holding anything.</think><answer>pick up the Tomato</answer>",
+      "think_content": "I have navigated to the location of the Tomato. I should try to pick it up since I am not holding anything.",
+      "action_content": "pick up the Tomato",
+      "actions": [
+        "pick up the Tomato"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I need to navigate to the DiningTable to access the Tomato.</think>\n<answer>find DiningTable</answer>",
+      "llm_response": "<think>I need to navigate to the DiningTable to access the Tomato.</think><answer>find DiningTable</answer>",
+      "think_content": "I need to navigate to the DiningTable to access the Tomato.",
+      "action_content": "find DiningTable",
+      "actions": [
+        "find DiningTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The last action was not recognized, possibly due to incorrect action formatting. I need to use the correct action format to locate the DiningTable.</think>\n<answer>find DiningTable</answer>",
+      "llm_response": "<think>The last action was not recognized, possibly due to incorrect action formatting. I need to use the correct action format to locate the DiningTable.</think><answer>find DiningTable</answer>",
+      "think_content": "The last action was not recognized, possibly due to incorrect action formatting. I need to use the correct action format to locate the DiningTable.",
+      "action_content": "find DiningTable",
+      "actions": [
+        "find DiningTable"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The image appears to show a close-up of a dark, textured surface, possibly a wall or piece of furniture. I need to get my bearings by finding a recognizable object in the environment.</think>\n<answer>find a Chair</answer>",
+      "llm_response": "<think>The image appears to show a close-up of a dark, textured surface, possibly a wall or piece of furniture. I need to get my bearings by finding a recognizable object in the environment.</think><answer>find a Chair</answer>",
+      "think_content": "The image appears to show a close-up of a dark, textured surface, possibly a wall or piece of furniture. I need to get my bearings by finding a recognizable object in the environment.",
+      "action_content": "find a Chair",
+      "actions": [
+        "find a Chair"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The image appears to show a close-up of a dark, textured surface, possibly leather or plastic. I may be too close to an object. I should move or look around to get a better view of my surroundings.</think>\n<answer>find a different object</answer>",
+      "llm_response": "<think>The image appears to show a close-up of a dark, textured surface, possibly leather or plastic. I may be too close to an object. I should move or look around to get a better view of my surroundings.</think><answer>find a different object</answer>",
+      "think_content": "The image appears to show a close-up of a dark, textured surface, possibly leather or plastic. I may be too close to an object. I should move or look around to get a better view of my surroundings.",
+      "action_content": "find a different object",
+      "actions": [
+        "find a different object"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The current view is too close to a dark surface, making it hard to identify any objects or surroundings. I should navigate to find a recognizable object or area.</think>\n<answer>find a nearby object</answer>",
+      "llm_response": "<think>The current view is too close to a dark surface, making it hard to identify any objects or surroundings. I should navigate to find a recognizable object or area.</think><answer>find a nearby object</answer>",
+      "think_content": "The current view is too close to a dark surface, making it hard to identify any objects or surroundings. I should navigate to find a recognizable object or area.",
+      "action_content": "find a nearby object",
+      "actions": [
+        "find a nearby object"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I can't see any objects in my current view. I should navigate to a different area to find an object.</think>\n<answer>find a nearby object</answer>",
+      "llm_response": "<think>I can't see any objects in my current view. I should navigate to a different area to find an object.</think><answer>find a nearby object</answer>",
+      "think_content": "I can't see any objects in my current view. I should navigate to a different area to find an object.",
+      "action_content": "find a nearby object",
+      "actions": [
+        "find a nearby object"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The current view is unclear and I can't see any objects. I should try to navigate to a specific object or area to get a better view.</think>\n<answer>find a Table</answer>",
+      "llm_response": "<think>The current view is unclear and I can't see any objects. I should try to navigate to a specific object or area to get a better view.</think><answer>find a Table</answer>",
+      "think_content": "The current view is unclear and I can't see any objects. I should try to navigate to a specific object or area to get a better view.",
+      "action_content": "find a Table",
+      "actions": [
+        "find a Table"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The image appears to show a close-up of a dark textured surface, possibly a wall or furniture. Since my last action was not recognized, I should try to find a specific object that is likely to be in the environment. I'll look for a common object, such as a Mug.</think>\n<answer>find a Mug</answer>",
+      "llm_response": "<think>The image appears to show a close-up of a dark textured surface, possibly a wall or furniture. Since my last action was not recognized, I should try to find a specific object that is likely to be in the environment. I'll look for a common object, such as a Mug.</think><answer>find a Mug</answer>",
+      "think_content": "The image appears to show a close-up of a dark textured surface, possibly a wall or furniture. Since my last action was not recognized, I should try to find a specific object that is likely to be in the environment. I'll look for a common object, such as a Mug.",
+      "action_content": "find a Mug",
+      "actions": [
+        "find a Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The mug is in the sink and I am nearby. I am not holding anything, so I should pick up the mug.</think>\n<answer>pick up the Mug</answer>",
+      "llm_response": "<think>The mug is in the sink and I am nearby. I am not holding anything, so I should pick up the mug.</think><answer>pick up the Mug</answer>",
+      "think_content": "The mug is in the sink and I am nearby. I am not holding anything, so I should pick up the mug.",
+      "action_content": "pick up the Mug",
+      "actions": [
+        "pick up the Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the mug and I'm near the sink. I should put the mug into the sink.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm holding the mug and I'm near the sink. I should put the mug into the sink.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm holding the mug and I'm near the sink. I should put the mug into the sink.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink and some cabinets below it. I should explore the cabinets to see what items are inside.</think>\n<answer>open Cabinet_1</answer>",
+      "llm_response": "<think>I see a sink and some cabinets below it. I should explore the cabinets to see what items are inside.</think><answer>open Cabinet_1</answer>",
+      "think_content": "I see a sink and some cabinets below it. I should explore the cabinets to see what items are inside.",
+      "action_content": "open Cabinet_1",
+      "actions": [
+        "open Cabinet_1"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink and cabinets below the counter. I should try to find an object of interest in this area.</think>\n<answer>find a Mug</answer>",
+      "llm_response": "<think>I see a sink and cabinets below the counter. I should try to find an object of interest in this area.</think><answer>find a Mug</answer>",
+      "think_content": "I see a sink and cabinets below the counter. I should try to find an object of interest in this area.",
+      "action_content": "find a Mug",
+      "actions": [
+        "find a Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The mug is on the floor nearby, and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Mug</answer>",
+      "llm_response": "<think>The mug is on the floor nearby, and I'm not holding anything. I should pick it up.</think><answer>pick up the Mug</answer>",
+      "think_content": "The mug is on the floor nearby, and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Mug",
+      "actions": [
+        "pick up the Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the mug and I'm near the sink. I should fill the mug with water, but first I need to turn on the faucet.</think>\n<answer>turn on the Faucet</answer>",
+      "llm_response": "<think>I'm holding the mug and I'm near the sink. I should fill the mug with water, but first I need to turn on the faucet.</think><answer>turn on the Faucet</answer>",
+      "think_content": "I'm holding the mug and I'm near the sink. I should fill the mug with water, but first I need to turn on the faucet.",
+      "action_content": "turn on the Faucet",
+      "actions": [
+        "turn on the Faucet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The faucet might be inside a cabinet below the sink. I should try opening the cabinet to check if the faucet controls are inside.</think>\n<answer>open the Cabinet</answer>",
+      "llm_response": "<think>The faucet might be inside a cabinet below the sink. I should try opening the cabinet to check if the faucet controls are inside.</think><answer>open the Cabinet</answer>",
+      "think_content": "The faucet might be inside a cabinet below the sink. I should try opening the cabinet to check if the faucet controls are inside.",
+      "action_content": "open the Cabinet",
+      "actions": [
+        "open the Cabinet"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cabinet I tried to open might already be open, or I may not be close enough to another cabinet. I see a mug on the floor nearby. I should try to pick up the mug since I'm not holding anything.</think>\n<answer>pick up the Mug</answer>",
+      "llm_response": "<think>The cabinet I tried to open might already be open, or I may not be close enough to another cabinet. I see a mug on the floor nearby. I should try to pick up the mug since I'm not holding anything.</think><answer>pick up the Mug</answer>",
+      "think_content": "The cabinet I tried to open might already be open, or I may not be close enough to another cabinet. I see a mug on the floor nearby. I should try to pick up the mug since I'm not holding anything.",
+      "action_content": "pick up the Mug",
+      "actions": [
+        "pick up the Mug"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm currently holding a mug. I should put it down somewhere nearby, such as on the floor or in a receptacle.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm currently holding a mug. I should put it down somewhere nearby, such as on the floor or in a receptacle.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm currently holding a mug. I should put it down somewhere nearby, such as on the floor or in a receptacle.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a mug and a toaster on the floor. I should find a suitable place to put the toaster, such as a countertop or a table.</think>\n<answer>find a countertop</answer>",
+      "llm_response": "<think>I see a mug and a toaster on the floor. I should find a suitable place to put the toaster, such as a countertop or a table.</think><answer>find a countertop</answer>",
+      "think_content": "I see a mug and a toaster on the floor. I should find a suitable place to put the toaster, such as a countertop or a table.",
+      "action_content": "find a countertop",
+      "actions": [
+        "find a countertop"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a sink on the countertop. I should look for an object to interact with, such as a dish or utensil.</think>\n<answer>find a Plate</answer>",
+      "llm_response": "<think>I see a sink on the countertop. I should look for an object to interact with, such as a dish or utensil.</think><answer>find a Plate</answer>",
+      "think_content": "I see a sink on the countertop. I should look for an object to interact with, such as a dish or utensil.",
+      "action_content": "find a Plate",
+      "actions": [
+        "find a Plate"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 478.225,
+    "reset_s": 106.453,
+    "llm_s": 156.635,
+    "env_step_s": 196.592,
+    "other_s": 18.545,
+    "avg_llm_per_turn_s": 5.221,
+    "avg_env_step_per_turn_s": 6.553
+  },
+  "token_usage": {
+    "prompt_tokens": 24365,
+    "completion_tokens": 1250,
+    "total_tokens": 25615,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

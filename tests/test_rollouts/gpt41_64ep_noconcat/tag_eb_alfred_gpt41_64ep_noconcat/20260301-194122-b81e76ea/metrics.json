@@ -1,0 +1,328 @@
+{
+  "rollout_id": "20260301-194122-b81e76ea",
+  "seed": 27,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 1.3,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 13,
+  "infos": [
+    {
+      "task_instruction": "Place a glass cup with butter knife it on the table.",
+      "num_actions": 214,
+      "eval_set": "base",
+      "episode_idx": 27
+    },
+    {
+      "llm_raw_response": "<think>I need to find a glass cup first. The available action is to find a Cup.</think>\n<answer>find a Cup</answer>",
+      "llm_response": "<think>I need to find a glass cup first. The available action is to find a Cup.</think><answer>find a Cup</answer>",
+      "think_content": "I need to find a glass cup first. The available action is to find a Cup.",
+      "action_content": "find a Cup",
+      "actions": [
+        "find a Cup"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The cup is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the Cup</answer>",
+      "llm_response": "<think>The cup is nearby and I'm not holding anything. I should pick it up.</think><answer>pick up the Cup</answer>",
+      "think_content": "The cup is nearby and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the Cup",
+      "actions": [
+        "pick up the Cup"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the cup now. I should find a suitable place to put it down, such as the counter or a nearby receptacle.</think>\n<answer>find a CounterTop</answer>",
+      "llm_response": "<think>I'm holding the cup now. I should find a suitable place to put it down, such as the counter or a nearby receptacle.</think><answer>find a CounterTop</answer>",
+      "think_content": "I'm holding the cup now. I should find a suitable place to put it down, such as the counter or a nearby receptacle.",
+      "action_content": "find a CounterTop",
+      "actions": [
+        "find a CounterTop"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a bowl on the countertop. I should pick it up since it might be needed for a task.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>There is a bowl on the countertop. I should pick it up since it might be needed for a task.</think><answer>pick up the Bowl</answer>",
+      "think_content": "There is a bowl on the countertop. I should pick it up since it might be needed for a task.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see the Bowl on the counter in front of me. I am not holding anything, so I can pick it up now.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>I see the Bowl on the counter in front of me. I am not holding anything, so I can pick it up now.</think><answer>pick up the Bowl</answer>",
+      "think_content": "I see the Bowl on the counter in front of me. I am not holding anything, so I can pick it up now.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Bowl is visible and nearby on the counter. I am not holding anything, so I should pick it up.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The Bowl is visible and nearby on the counter. I am not holding anything, so I should pick it up.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The Bowl is visible and nearby on the counter. I am not holding anything, so I should pick it up.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick it up.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick it up.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The Bowl is visible and nearby. I am not holding anything, so I should pick it up.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Bowl is currently visible and nearby. I am not holding anything, so I should pick up the Bowl.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The Bowl is currently visible and nearby. I am not holding anything, so I should pick up the Bowl.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The Bowl is currently visible and nearby. I am not holding anything, so I should pick up the Bowl.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick it up.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick it up.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The Bowl is visible and nearby. I am not holding anything, so I should pick it up.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.</think>\n<answer>pick up the Bowl</answer>",
+      "llm_response": "<think>The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.</think><answer>pick up the Bowl</answer>",
+      "think_content": "The Bowl is visible and nearby. I am not holding anything, so I should pick up the Bowl.",
+      "action_content": "pick up the Bowl",
+      "actions": [
+        "pick up the Bowl"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 303.052,
+    "reset_s": 90.49,
+    "llm_s": 97.163,
+    "env_step_s": 95.106,
+    "other_s": 20.292,
+    "avg_llm_per_turn_s": 7.474,
+    "avg_env_step_per_turn_s": 7.316
+  },
+  "token_usage": {
+    "prompt_tokens": 11644,
+    "completion_tokens": 461,
+    "total_tokens": 12105,
+    "num_calls": 13
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

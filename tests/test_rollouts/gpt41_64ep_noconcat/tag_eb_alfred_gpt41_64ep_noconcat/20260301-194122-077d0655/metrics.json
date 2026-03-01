@@ -1,0 +1,349 @@
+{
+  "rollout_id": "20260301-194122-077d0655",
+  "seed": 7,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 1.4000000000000001,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 14,
+  "infos": [
+    {
+      "task_instruction": "Put a clean spatula on a wooden table.",
+      "num_actions": 204,
+      "eval_set": "base",
+      "episode_idx": 7
+    },
+    {
+      "llm_raw_response": "<think>I need to find a spatula first before I can put it on the wooden table.</think>\n<answer>find a Spatula</answer>",
+      "llm_response": "<think>I need to find a spatula first before I can put it on the wooden table.</think><answer>find a Spatula</answer>",
+      "think_content": "I need to find a spatula first before I can put it on the wooden table.",
+      "action_content": "find a Spatula",
+      "actions": [
+        "find a Spatula"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The spatula is on the table and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Spatula</answer>",
+      "llm_response": "<think>The spatula is on the table and I am not holding anything. I should pick it up.</think><answer>pick up the Spatula</answer>",
+      "think_content": "The spatula is on the table and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Spatula",
+      "actions": [
+        "pick up the Spatula"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm currently holding the spatula. To interact with other objects, I need to free my hand. I'll put down the spatula on the table.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm currently holding the spatula. To interact with other objects, I need to free my hand. I'll put down the spatula on the table.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm currently holding the spatula. To interact with other objects, I need to free my hand. I'll put down the spatula on the table.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a loaf of bread and a lettuce on the table. I should slice the bread since it is commonly sliced for use.</think>\n<answer>slice the Bread</answer>",
+      "llm_response": "<think>There is a loaf of bread and a lettuce on the table. I should slice the bread since it is commonly sliced for use.</think><answer>slice the Bread</answer>",
+      "think_content": "There is a loaf of bread and a lettuce on the table. I should slice the bread since it is commonly sliced for use.",
+      "action_content": "slice the Bread",
+      "actions": [
+        "slice the Bread"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The bread has been sliced. Next, I should find and pick up the lettuce that is on the table.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The bread has been sliced. Next, I should find and pick up the lettuce that is on the table.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The bread has been sliced. Next, I should find and pick up the lettuce that is on the table.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The lettuce is on the table and I am close to it. I should try to pick it up.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The lettuce is on the table and I am close to it. I should try to pick it up.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The lettuce is on the table and I am close to it. I should try to pick it up.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The lettuce is on the table and I am close to it. I should try to pick it up.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The lettuce is on the table and I am close to it. I should try to pick it up.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The lettuce is on the table and I am close to it. I am not holding anything, so I can try to pick up the lettuce.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The lettuce is on the table and I am close to it. I am not holding anything, so I can try to pick up the lettuce.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The lettuce is on the table and I am close to it. I am not holding anything, so I can try to pick up the lettuce.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The lettuce is on the table and I am close to it. I should try to pick it up.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The lettuce is on the table and I am close to it. I should try to pick it up.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think>\n<answer>pick up the Lettuce</answer>",
+      "llm_response": "<think>The lettuce is on the table and I am close to it. I should try to pick it up.</think><answer>pick up the Lettuce</answer>",
+      "think_content": "The lettuce is on the table and I am close to it. I should try to pick it up.",
+      "action_content": "pick up the Lettuce",
+      "actions": [
+        "pick up the Lettuce"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 322.178,
+    "reset_s": 132.534,
+    "llm_s": 85.222,
+    "env_step_s": 96.447,
+    "other_s": 7.975,
+    "avg_llm_per_turn_s": 6.087,
+    "avg_env_step_per_turn_s": 6.889
+  },
+  "token_usage": {
+    "prompt_tokens": 12198,
+    "completion_tokens": 525,
+    "total_tokens": 12723,
+    "num_calls": 14
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}

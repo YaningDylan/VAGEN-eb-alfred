@@ -1,0 +1,6 @@
+[
+  "<think>I need to find a bowl first before I can put it on the coffee table.</think>\n<answer>find a Bowl</answer>",
+  "<think>The bowl is on the table and I am not holding anything. I should pick up the bowl.</think>\n<answer>pick up the Bowl</answer>",
+  "<think>I am now holding the bowl. Next, I need to find the coffee table to place the bowl on it.</think>\n<answer>find a CoffeeTable</answer>",
+  "<think>I am holding the bowl and am now near the coffee table. I should put the bowl down on the coffee table.</think>\n<answer>put down the object in hand</answer>"
+]

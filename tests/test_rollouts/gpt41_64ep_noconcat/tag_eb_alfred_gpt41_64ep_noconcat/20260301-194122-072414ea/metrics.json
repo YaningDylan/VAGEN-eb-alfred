@@ -1,0 +1,685 @@
+{
+  "rollout_id": "20260301-194122-072414ea",
+  "seed": 33,
+  "terminated": true,
+  "finish_reason": "done",
+  "success": false,
+  "cumulative_reward": 3.0000000000000013,
+  "rewards": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "num_turns": 30,
+  "infos": [
+    {
+      "task_instruction": "pick up keys, turn on lamp.",
+      "num_actions": 190,
+      "eval_set": "base",
+      "episode_idx": 33
+    },
+    {
+      "llm_raw_response": "<think>I need to pick up the keys first. The keys might be on a keychain. Let me find a KeyChain.</think>\n<answer>find a KeyChain</answer>",
+      "llm_response": "<think>I need to pick up the keys first. The keys might be on a keychain. Let me find a KeyChain.</think><answer>find a KeyChain</answer>",
+      "think_content": "I need to pick up the keys first. The keys might be on a keychain. Let me find a KeyChain.",
+      "action_content": "find a KeyChain",
+      "actions": [
+        "find a KeyChain"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The KeyChain is nearby and I'm not holding anything. I should pick it up.</think>\n<answer>pick up the KeyChain</answer>",
+      "llm_response": "<think>The KeyChain is nearby and I'm not holding anything. I should pick it up.</think><answer>pick up the KeyChain</answer>",
+      "think_content": "The KeyChain is nearby and I'm not holding anything. I should pick it up.",
+      "action_content": "pick up the KeyChain",
+      "actions": [
+        "pick up the KeyChain"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm holding the KeyChain. There is a remote on the table. I should find a suitable place to put down the KeyChain.</think>\n<answer>find a Drawer</answer>",
+      "llm_response": "<think>I'm holding the KeyChain. There is a remote on the table. I should find a suitable place to put down the KeyChain.</think><answer>find a Drawer</answer>",
+      "think_content": "I'm holding the KeyChain. There is a remote on the table. I should find a suitable place to put down the KeyChain.",
+      "action_content": "find a Drawer",
+      "actions": [
+        "find a Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I have found the drawer. To interact with its contents, I need to open it first.</think>\n<answer>open the Drawer</answer>",
+      "llm_response": "<think>I have found the drawer. To interact with its contents, I need to open it first.</think><answer>open the Drawer</answer>",
+      "think_content": "I have found the drawer. To interact with its contents, I need to open it first.",
+      "action_content": "open the Drawer",
+      "actions": [
+        "open the Drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see some keys on the floor near the open drawer. I should find the keys to interact with them.</think>\n<answer>find the Keys</answer>",
+      "llm_response": "<think>I see some keys on the floor near the open drawer. I should find the keys to interact with them.</think><answer>find the Keys</answer>",
+      "think_content": "I see some keys on the floor near the open drawer. I should find the keys to interact with them.",
+      "action_content": "find the Keys",
+      "actions": [
+        "find the Keys"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The keys are visible and nearby, and I'm not holding anything. I should pick them up.</think>\n<answer>pick up the Keys</answer>",
+      "llm_response": "<think>The keys are visible and nearby, and I'm not holding anything. I should pick them up.</think><answer>pick up the Keys</answer>",
+      "think_content": "The keys are visible and nearby, and I'm not holding anything. I should pick them up.",
+      "action_content": "pick up the Keys",
+      "actions": [
+        "pick up the Keys"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The keys are on the floor near the open drawer. I need to pick them up, but I should use the correct action format.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The keys are on the floor near the open drawer. I need to pick them up, but I should use the correct action format.</think><answer>pick up the Key</answer>",
+      "think_content": "The keys are on the floor near the open drawer. I need to pick them up, but I should use the correct action format.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a set of keys on the floor near an open drawer. I should try to pick up the keys.</think>\n<answer>pick up the KeyChain</answer>",
+      "llm_response": "<think>I see a set of keys on the floor near an open drawer. I should try to pick up the keys.</think><answer>pick up the KeyChain</answer>",
+      "think_content": "I see a set of keys on the floor near an open drawer. I should try to pick up the keys.",
+      "action_content": "pick up the KeyChain",
+      "actions": [
+        "pick up the KeyChain"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I'm currently holding the KeyChain and I'm near an open drawer. I should put the KeyChain into the drawer.</think>\n<answer>put down the object in hand</answer>",
+      "llm_response": "<think>I'm currently holding the KeyChain and I'm near an open drawer. I should put the KeyChain into the drawer.</think><answer>put down the object in hand</answer>",
+      "think_content": "I'm currently holding the KeyChain and I'm near an open drawer. I should put the KeyChain into the drawer.",
+      "action_content": "put down the object in hand",
+      "actions": [
+        "put down the object in hand"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The drawer is open and empty. I should close the drawer to keep the area tidy.</think>\n<answer>close the drawer</answer>",
+      "llm_response": "<think>The drawer is open and empty. I should close the drawer to keep the area tidy.</think><answer>close the drawer</answer>",
+      "think_content": "The drawer is open and empty. I should close the drawer to keep the area tidy.",
+      "action_content": "close the drawer",
+      "actions": [
+        "close the drawer"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": true,
+          "action_is_effective": true
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>There is a key on the floor near the desk. I should navigate to the key to interact with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>There is a key on the floor near the desk. I should navigate to the key to interact with it.</think><answer>find the Key</answer>",
+      "think_content": "There is a key on the floor near the desk. I should navigate to the key to interact with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor and I am not holding anything. I should pick it up.</think><answer>pick up the Key</answer>",
+      "think_content": "The key is visible on the floor and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor. I need to navigate closer to it before interacting with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor. I need to navigate closer to it before interacting with it.</think><answer>find the Key</answer>",
+      "think_content": "The key is visible on the floor. I need to navigate closer to it before interacting with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think><answer>pick up the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk. I need to move closer to it before I can interact with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk. I need to move closer to it before I can interact with it.</think><answer>find the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk. I need to move closer to it before I can interact with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor and I am close to it. I should pick it up.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor and I am close to it. I should pick it up.</think><answer>pick up the Key</answer>",
+      "think_content": "The key is visible on the floor and I am close to it. I should pick it up.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk. I need to move closer to the key before I can interact with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk. I need to move closer to the key before I can interact with it.</think><answer>find the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk. I need to move closer to the key before I can interact with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk. I need to get closer to it before interacting with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk. I need to get closer to it before interacting with it.</think><answer>find the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk. I need to get closer to it before interacting with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think><answer>pick up the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk. I need to move closer to it before I can interact with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk. I need to move closer to it before I can interact with it.</think><answer>find the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk. I need to move closer to it before I can interact with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think><answer>pick up the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>I see a key on the floor near the desk. I need to navigate closer to it before interacting with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>I see a key on the floor near the desk. I need to navigate closer to it before interacting with it.</think><answer>find the Key</answer>",
+      "think_content": "I see a key on the floor near the desk. I need to navigate closer to it before interacting with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor and I am close to it. I am not holding anything, so I should pick it up.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor and I am close to it. I am not holding anything, so I should pick it up.</think><answer>pick up the Key</answer>",
+      "think_content": "The key is visible on the floor and I am close to it. I am not holding anything, so I should pick it up.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is on the floor near the desk. I need to move closer to it before interacting with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>The key is on the floor near the desk. I need to move closer to it before interacting with it.</think><answer>find the Key</answer>",
+      "think_content": "The key is on the floor near the desk. I need to move closer to it before interacting with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk. I need to get closer to it before picking it up.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk. I need to get closer to it before picking it up.</think><answer>find the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk. I need to get closer to it before picking it up.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think><answer>pick up the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk. I need to navigate closer to it before interacting with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk. I need to navigate closer to it before interacting with it.</think><answer>find the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk. I need to navigate closer to it before interacting with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor and I am close to it. I should pick it up.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor and I am close to it. I should pick it up.</think><answer>pick up the Key</answer>",
+      "think_content": "The key is visible on the floor and I am close to it. I should pick it up.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk. I need to move closer to it before I can interact with it.</think>\n<answer>find the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk. I need to move closer to it before I can interact with it.</think><answer>find the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk. I need to move closer to it before I can interact with it.",
+      "action_content": "find the Key",
+      "actions": [
+        "find the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    },
+    {
+      "llm_raw_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think>\n<answer>pick up the Key</answer>",
+      "llm_response": "<think>The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.</think><answer>pick up the Key</answer>",
+      "think_content": "The key is visible on the floor near the desk, and I am not holding anything. I should pick it up.",
+      "action_content": "pick up the Key",
+      "actions": [
+        "pick up the Key"
+      ],
+      "format_correct": true,
+      "metrics": {
+        "turn_metrics": {
+          "action_is_valid": false,
+          "action_is_effective": false
+        },
+        "traj_metrics": {
+          "success": false
+        }
+      },
+      "success": false
+    }
+  ],
+  "env_config": {
+    "base_urls": [
+      "http://localhost:8000"
+    ],
+    "timeout": 600,
+    "eval_set": "base",
+    "x_display": "2",
+    "obs_image_size": 500,
+    "max_turns": 30,
+    "max_actions_per_step": 1,
+    "action_sep": ",",
+    "prompt_format": "free_think",
+    "use_example_in_sys_prompt": true,
+    "format_reward": 0.1,
+    "success_reward": 1.0
+  },
+  "timing": {
+    "total_s": 432.642,
+    "reset_s": 104.621,
+    "llm_s": 158.372,
+    "env_step_s": 150.335,
+    "other_s": 19.313,
+    "avg_llm_per_turn_s": 5.279,
+    "avg_env_step_per_turn_s": 5.011
+  },
+  "token_usage": {
+    "prompt_tokens": 24060,
+    "completion_tokens": 1096,
+    "total_tokens": 25156,
+    "num_calls": 30
+  },
+  "max_turns": 30,
+  "concat_history": false,
+  "tag_id": "eb_alfred_gpt41_64ep_noconcat",
+  "split": "test",
+  "env_name": "RemoteEnv"
+}
