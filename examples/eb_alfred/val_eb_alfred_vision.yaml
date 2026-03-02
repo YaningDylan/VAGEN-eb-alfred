@@ -2,7 +2,7 @@ envs:
   - name: RemoteEnv
     n_envs: 50
     data_source: eb_alfred
-    seed: [5000, 5050, 1]
+    seed: [5001, 5050, 1]
     max_turns: 30
     response_length_per_turn: 512
     config:

@@ -1,3 +1,5 @@
+"""Utility functions for EB-Navigation environment in VAGEN."""
+
 import re
 from typing import Dict, List, Optional
 from PIL import Image
@@ -8,8 +10,8 @@ def parse_free_think(response: str, action_sep: str = ",", max_actions: int = 1)
     """
     Parse free_think format response: <think>...</think><answer>...</answer>
 
-    For EB-Manipulation, the <answer> tag should contain a 7D discrete action
-    vector, e.g., "[50, 30, 40, 60, 60, 60, 1]".
+    For EB-Navigation, the <answer> tag contains an action name
+    (e.g., "Move forward by 0.25") or an action ID (e.g., "0").
     """
     pattern = r'<think>(.*?)</think>\s*<answer>(.*?)</answer>'
     match = re.search(pattern, response, re.DOTALL)
@@ -23,7 +25,14 @@ def parse_free_think(response: str, action_sep: str = ",", max_actions: int = 1)
     else:
         think_content = match.group(1).strip()
         action_content = match.group(2).strip()
-        actions = [action_content.strip()] if action_content.strip() else []
+
+        if max_actions == 1:
+            actions = [action_content.strip()] if action_content.strip() else []
+        else:
+            actions = [a.strip() for a in action_content.split(action_sep) if a.strip()]
+            if len(actions) > max_actions:
+                actions = actions[:max_actions]
+                action_content = action_sep.join(actions)
 
     llm_response = f"<think>{think_content}</think><answer>{action_content}</answer>"
 
@@ -67,7 +76,13 @@ def parse_wm(response: str, action_sep: str = ",", max_actions: int = 1) -> Dict
         action_content = match.group(3).strip()
         prediction_content = match.group(4).strip()
 
-        actions = [action_content.strip()] if action_content.strip() else []
+        if max_actions == 1:
+            actions = [action_content.strip()] if action_content.strip() else []
+        else:
+            actions = [a.strip() for a in action_content.split(action_sep) if a.strip()]
+            if len(actions) > max_actions:
+                actions = actions[:max_actions]
+                action_content = action_sep.join(actions)
 
     llm_response = (
         f"<observation>{observation_content}</observation>"
@@ -76,14 +91,12 @@ def parse_wm(response: str, action_sep: str = ",", max_actions: int = 1) -> Dict
         f"<prediction>{prediction_content}</prediction>"
     )
 
-    reasoning_content = think_content
-
     return {
         "llm_raw_response": response,
         "llm_response": llm_response,
         "observation_content": observation_content,
         "think_content": think_content,
-        "reasoning_content": reasoning_content,
+        "reasoning_content": think_content,
         "prediction_content": prediction_content,
         "action_content": action_content,
         "actions": actions,
@@ -106,29 +119,42 @@ def parse_response(
         raise ValueError(f"Unknown prompt format: {prompt_format}")
 
 
-def parse_action_vector(action_str: str) -> Optional[List[int]]:
+def match_action(
+    action_name: str,
+    action_list: List[str],
+    action_map: Dict[str, str],
+) -> Optional[int]:
     """
-    Parse a 7D action vector string into a list of integers.
+    Match a parsed action against the valid navigation action set.
 
-    Accepts formats like:
-      - "[50, 30, 40, 60, 60, 60, 1]"
-      - "50, 30, 40, 60, 60, 60, 1"
-      - "[50,30,40,60,60,60,1]"
+    Supports two formats:
+      - Action name (case-insensitive): "Move forward by 0.25"
+      - Action ID (integer): "0"
 
-    Returns list of 7 ints, or None if parsing fails.
+    Returns the action index (int) if matched, None otherwise.
     """
-    # Remove brackets if present
-    cleaned = action_str.strip().strip("[]")
+    name = action_name.strip()
 
+    # Try as integer action ID
     try:
-        values = [int(x.strip()) for x in cleaned.split(",")]
-    except (ValueError, AttributeError):
-        return None
+        idx = int(name)
+        if 0 <= idx < len(action_list):
+            return idx
+    except ValueError:
+        pass
 
-    if len(values) != 7:
-        return None
+    # Try exact match by name (case-insensitive)
+    matched_name = action_map.get(name.lower())
+    if matched_name is not None:
+        return action_list.index(matched_name)
 
-    return values
+    # Try fuzzy match: check if the input is a substring of any action name
+    name_lower = name.lower()
+    for i, action in enumerate(action_list):
+        if name_lower in action.lower() or action.lower() in name_lower:
+            return i
+
+    return None
 
 
 def numpy_to_pil(numpy_array: np.ndarray) -> Image.Image:

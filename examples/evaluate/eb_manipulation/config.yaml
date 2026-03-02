@@ -1,0 +1,111 @@
+# EB-Manipulation evaluation config.
+#
+# EB-Manipulation uses CoppeliaSim/PyRep for Franka Panda robot manipulation tasks
+# (pick, stack, place, wipe). Action space: 7D discrete [X,Y,Z,Roll,Pitch,Yaw,Gripper].
+# The environment runs as a remote server because CoppeliaSim has Qt dependencies.
+#
+# Quick start:
+#   1. Start env server:  ./start_server.sh
+#   2. Run evaluation:    ./run_eval.sh
+#
+# For local (non-remote) evaluation, change name to "EbManipulation" and remove base_urls.
+
+envs:
+  - name: RemoteEnv
+    n_envs: 20
+    tag_id: eb_manipulation_eval
+    seed: [0, 48, 1]           # 48 episodes in base eval set
+    split: test
+    max_turns: 15
+    config:
+      base_urls:
+        - "http://localhost:8001"
+      timeout: 300.0            # CoppeliaSim startup can be slow
+      eval_set: base
+      max_turns: 15
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./rollouts/eb_manipulation
+  default_max_turns: 15
+
+run:
+  backend: "openai"           # choose one: openai | azure | sglang | vllm | together | claude | gemini
+  base_seed: 0
+  max_concurrent_jobs: 1      # CoppeliaSim allows only 1 session per server process
+  resume: skip_completed      # off | skip_completed | force_rerun
+  live_summary: true
+
+backends:
+  openai:
+    api_key: ""               # or env OPENAI_API_KEY
+    base_url: null
+    model: "gpt-4o-mini"
+    max_concurrency: 2
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0
+
+  azure:
+    azure_endpoint: ""
+    azure_api_key: ""
+    azure_api_version: "2024-12-01-preview"
+    deployment: "gpt-4o"
+    model: ${backends.azure.deployment}
+    max_concurrency: 2
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0
+
+  sglang:
+    base_url: "http://127.0.0.1:30000/v1"
+    api_key: "EMPTY"
+    model: "Qwen/Qwen2.5-VL-7B-Instruct"
+    max_concurrency: 2
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0
+
+  vllm:
+    base_url: "http://127.0.0.1:8000/v1"
+    api_key: "EMPTY"
+    model: "Qwen2.5-7B-Instruct"
+    max_concurrency: 2
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0
+
+  together:
+    base_url: "https://api.together.xyz/v1"
+    api_key: ""
+    model: "meta-llama/Llama-3.1-8B-Instruct-Turbo"
+    max_concurrency: 2
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0
+
+  claude:
+    api_key: ""               # or env ANTHROPIC_API_KEY
+    base_url: null
+    model: "claude-sonnet-4-20250514"
+    max_concurrency: 1        # sequential for CoppeliaSim
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0
+
+  gemini:
+    api_key: ""               # or env GEMINI_API_KEY / GOOGLE_API_KEY
+    model: "gemini-1.5-pro"
+    max_concurrency: 2
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

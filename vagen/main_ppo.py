@@ -18,6 +18,8 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 import os
 import socket
 
+import vagen.fix_ray_gpu  # Fix Ray GPU detection on Blackwell (RTX 50xx) GPUs
+
 import hydra
 import ray
 from omegaconf import OmegaConf

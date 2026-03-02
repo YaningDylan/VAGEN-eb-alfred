@@ -1,0 +1,46 @@
+envs:
+  - name: RemoteEnv
+    n_envs: 1
+    tag_id: quick_500
+    seed: [42]
+    seed_list: [100]
+    split: test
+    max_turns: 5
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      timeout: 600
+      eval_set: base
+      x_display: "0"
+      max_turns: 5
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./test_rollouts/quick_500
+  default_max_turns: 5
+
+run:
+  backend: openai
+  base_seed: 0
+  max_concurrent_jobs: 1
+  resume: skip_completed
+  live_summary: true
+
+backends:
+  openai:
+    api_key: "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"
+    base_url: null
+    model: "gpt-4.1"
+    max_concurrency: 1
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

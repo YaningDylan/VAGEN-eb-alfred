@@ -1,0 +1,57 @@
+# EB-ALFRED: 10 episodes, GPT-4.1, 500x500, 10-way parallel, NO-CONCAT + MULTI-STEP.
+#
+# Key changes vs previous no-concat config:
+#   - Dynamic system prompt: task instruction + available actions always in system msg
+#   - Multi-step planning: max_actions_per_step=20 (ERA-aligned)
+#   - max_env_steps=30: total env actions capped at 30 (ERA-aligned)
+#   - ERA-style replan: break on action failure, model replans next turn
+#   - max_tokens=2048: enough room for multi-action plans
+
+envs:
+  - name: RemoteEnv
+    n_envs: 10
+    tag_id: eb_alfred_gpt41_10ep_noconcat_multistep
+    seed_list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    split: test
+    concat_history: false     # no-concat: system + current obs only per turn
+    max_turns: 30
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      timeout: 600
+      eval_set: base
+      x_display: "0"
+      obs_image_size: 500
+      max_turns: 30
+      max_actions_per_step: 20   # multi-step planning (ERA-aligned)
+      max_env_steps: 30          # total env actions cap (ERA-aligned)
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 2048
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./test_rollouts/gpt41_10ep_noconcat_multistep
+  default_max_turns: 30
+
+run:
+  backend: openai
+  base_seed: 0
+  max_concurrent_jobs: 10     # all 10 episodes in parallel
+  resume: skip_completed
+  live_summary: true
+
+backends:
+  openai:
+    api_key: ""               # uses OPENAI_API_KEY env var
+    base_url: null
+    model: "gpt-4.1"
+    max_concurrency: 100
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

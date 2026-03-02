@@ -1,0 +1,53 @@
+# EB-Navigation quick inference test with Claude API.
+# 2 episodes for quick validation.
+#
+# Start server first:
+#   conda run -n embench --no-capture-output python -m vagen.envs.eb_navigation.serve --port 8001
+# Then run:
+#   conda run -n vagen python -m vagen.evaluate.run_eval --config tests/eval_eb_nav_claude_quick.yaml
+
+envs:
+  - name: RemoteEnv
+    n_envs: 2
+    tag_id: eb_nav_claude_quick
+    seed: [42]
+    seed_list: [0, 1]
+    split: test
+    max_turns: 20
+    config:
+      base_urls:
+        - "http://localhost:8001"
+      timeout: 600.0
+      eval_set: base
+      max_turns: 20
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 1024
+      top_p: 1.0
+
+experiment:
+  dump_dir: ./test_rollouts/eb_nav_claude_quick
+  default_max_turns: 20
+
+run:
+  backend: claude
+  base_seed: 0
+  max_concurrent_jobs: 1
+  resume: off
+  live_summary: true
+
+backends:
+  claude:
+    api_key: ""
+    base_url: null
+    model: "claude-sonnet-4-20250514"
+    max_concurrency: 1
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

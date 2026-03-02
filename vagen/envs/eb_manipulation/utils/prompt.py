@@ -54,6 +54,8 @@ def format_prompt(max_actions_per_step, action_sep, add_example=True, prompt_for
     """Generate format prompt based on the specified format."""
     if prompt_format == "free_think":
         return free_think_format_prompt(max_actions_per_step, action_sep, add_example)
+    elif prompt_format == "wm":
+        return wm_format_prompt(max_actions_per_step, action_sep, add_example)
     else:
         raise ValueError(f"Unknown prompt format: {prompt_format}")
 
@@ -78,6 +80,47 @@ Example 2:
 Example 3:
 <think>I've grasped the cube. Now I need to lift it up and move it to the target container at [70, 60, 50].</think>
 <answer>[70, 60, 60, 60, 60, 60, 0]</answer>"""
+        return base + "\n" + examples
+
+    return base
+
+
+def wm_format_prompt(max_actions_per_step, action_sep, add_example=True):
+    """Generate format prompt for wm format with observation and prediction tags."""
+    base = f"""You should output {max_actions_per_step} action(s) at a time.
+Output the action as a 7D vector [X, Y, Z, Roll, Pitch, Yaw, Gripper] with integer values.
+Your response must be in the format of:
+<observation>...</observation><think>...</think><answer>[X, Y, Z, Roll, Pitch, Yaw, Gripper]</answer><prediction>...</prediction>.
+
+Rules for <observation>:
+- Describe the current scene: what objects you see, their positions, colors, and the gripper state.
+- Reference the object coordinates provided to you.
+
+Rules for <prediction>:
+- Predict what will change after your action: where the gripper will be, whether it will grasp an object, and the expected scene state.
+
+Rules for <answer>:
+- Output exactly 1 action as a 7D vector."""
+
+    if add_example:
+        examples = """
+Example 1:
+<observation>I see a red cube at position [50, 30, 40] and a silver container at [70, 60, 30]. The gripper is at the home position with gripper open.</observation>
+<think>I need to move the gripper above the red cube to prepare for grasping. I'll position it above with the gripper open.</think>
+<answer>[50, 30, 55, 60, 60, 60, 1]</answer>
+<prediction>The gripper will be positioned directly above the red cube at height 55, with the gripper open, ready to lower and grasp.</prediction>
+
+Example 2:
+<observation>The gripper is above the red cube at [50, 30, 55]. The red cube is at [50, 30, 40]. The gripper is open.</observation>
+<think>The gripper is now above the cube. I need to lower it to the cube's height and close the gripper to grasp it.</think>
+<answer>[50, 30, 40, 60, 60, 60, 0]</answer>
+<prediction>The gripper will lower to the cube's position and close, grasping the red cube.</prediction>
+
+Example 3:
+<observation>The gripper is holding the red cube at [50, 30, 40]. The target container is at [70, 60, 30].</observation>
+<think>I've grasped the cube. Now I need to lift it and move it above the target container.</think>
+<answer>[70, 60, 50, 60, 60, 60, 0]</answer>
+<prediction>The gripper will move to above the container at [70, 60, 50] while holding the red cube.</prediction>"""
         return base + "\n" + examples
 
     return base
