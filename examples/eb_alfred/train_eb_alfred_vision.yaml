@@ -3,7 +3,7 @@ envs:
     n_envs: 5000
     data_source: eb_alfred
     seed: [1, 5000, 1]
-    max_turns: 30
+    max_turns: 5
     response_length_per_turn: 512
     config:
       base_urls:
@@ -12,7 +12,7 @@ envs:
       eval_set: base
       x_display: "0"
       obs_image_size: 500
-      max_turns: 30
+      max_turns: 5
       max_actions_per_step: 20
       max_env_steps: 30
       action_sep: ","

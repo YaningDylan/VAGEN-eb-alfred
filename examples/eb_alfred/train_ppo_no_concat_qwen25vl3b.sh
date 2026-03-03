@@ -15,16 +15,18 @@ agent_loop_config_path=${BASEDIR}/vagen/configs/agent_no_concat.yaml
 REF_MODEL_PATH=Qwen/Qwen2.5-VL-3B-Instruct
 mkdir -p ${EXPERIMENT_DIR}
 
+export HF_HOME=/workspace/.hf_home
+export PATH=/venv/vagen/bin:$PATH
 
 PYTHONUNBUFFERED=1 python3 -m vagen.main_ppo \
     --config-path=${BASEDIR}/vagen/configs \
     --config-name='vagen_multiturn' \
     data.train_files=${DATASET_TRAIN} \
     data.val_files=${DATASET_VAL} \
-    data.train_batch_size=50 \
+    data.train_batch_size=128 \
     data.max_prompt_length=2048 \
     data.max_response_length=512 \
-    data.max_trajectory_length=7000 \
+    +data.max_trajectory_length=7000 \
     algorithm.adv_estimator=no_concat_gae_first \
     algorithm.gamma=0.99 \
     algorithm.lam=0.99 \
@@ -68,7 +70,6 @@ PYTHONUNBUFFERED=1 python3 -m vagen.main_ppo \
     critic.ppo_micro_batch_size_per_gpu=1 \
     critic.model.fsdp_config.param_offload=True \
     critic.model.fsdp_config.optimizer_offload=True \
-    +critic.model.freeze_vision_tower=True \
     trainer.critic_warmup=3 \
     trainer.logger=['console','wandb'] \
     trainer.val_before_train=True \

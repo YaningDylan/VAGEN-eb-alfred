@@ -64,11 +64,12 @@ class EbAlfredHandler(BaseGymHandler):
         """
         super().__init__(**kwargs)
         self._x_displays = x_displays if x_displays is not None else detect_gpu_displays()
+        self._pending_counts: Dict[str, int] = {d: 0 for d in self._x_displays}
         LOGGER.info(f"[Handler] Using X displays: {self._x_displays}")
 
     def _least_loaded_display(self) -> str:
-        """Pick the display with the fewest active sessions."""
-        counts = {d: 0 for d in self._x_displays}
+        """Pick the display with the fewest active + pending sessions."""
+        counts = {d: self._pending_counts.get(d, 0) for d in self._x_displays}
         for ctx in self._sessions.values():
             d = getattr(ctx.env, "_assigned_display", None)
             if d in counts:
@@ -84,9 +85,14 @@ class EbAlfredHandler(BaseGymHandler):
         AI2-THOR startup is blocking, so we offload to a thread.
         """
         display = self._least_loaded_display()
+        self._pending_counts[display] = self._pending_counts.get(display, 0) + 1
         env_config = {**env_config, "x_display": display}
 
-        env = await asyncio.to_thread(EbAlfred, env_config)
+        try:
+            env = await asyncio.to_thread(EbAlfred, env_config)
+        finally:
+            self._pending_counts[display] = max(0, self._pending_counts.get(display, 1) - 1)
+
         env._assigned_display = display
         LOGGER.info(
             f"[Handler] Created env on display :{display} "

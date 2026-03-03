@@ -15,6 +15,8 @@ agent_loop_config_path=${BASEDIR}/vagen/configs/agent_no_concat.yaml
 REF_MODEL_PATH=Qwen/Qwen2.5-VL-3B-Instruct
 mkdir -p ${EXPERIMENT_DIR}
 
+export HF_HOME=/workspace/.hf_home
+export PATH=/venv/vagen/bin:$PATH
 
 PYTHONUNBUFFERED=1 python3 -m vagen.main_ppo \
     --config-path=${BASEDIR}/vagen/configs \
