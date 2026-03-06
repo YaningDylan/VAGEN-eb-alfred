@@ -8,6 +8,7 @@ with automatic multi-GPU load balancing.
 
 import asyncio
 import logging
+import random
 import subprocess
 from typing import Any, Dict, List, Optional
 
@@ -68,13 +69,19 @@ class EbAlfredHandler(BaseGymHandler):
         LOGGER.info(f"[Handler] Using X displays: {self._x_displays}")
 
     def _least_loaded_display(self) -> str:
-        """Pick the display with the fewest active + pending sessions."""
+        """Pick the display with the fewest active + pending sessions.
+
+        On ties, randomly choose among the least-loaded displays to
+        avoid always funnelling to the first GPU.
+        """
         counts = {d: self._pending_counts.get(d, 0) for d in self._x_displays}
         for ctx in self._sessions.values():
             d = getattr(ctx.env, "_assigned_display", None)
             if d in counts:
                 counts[d] += 1
-        chosen = min(counts, key=counts.get)
+        min_count = min(counts.values())
+        candidates = [d for d, c in counts.items() if c == min_count]
+        chosen = random.choice(candidates)
         LOGGER.debug(f"[Handler] GPU load: {counts}, assigning display :{chosen}")
         return chosen
 

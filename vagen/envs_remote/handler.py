@@ -224,8 +224,14 @@ class BaseGymHandler(ABC):
 
     async def _handle_close(self, ctx: SessionContext) -> HandlerResult:
         """Handle close call and cleanup session."""
-        await ctx.env.close()
-        del self._sessions[ctx.session_id]
+        try:
+            await ctx.env.close()
+        except Exception as e:
+            LOGGER.error(f"[Handler] Error closing env for session {ctx.session_id}: {e}")
+        finally:
+            # Always remove the session, even if close() fails, to avoid
+            # zombie sessions that permanently consume a slot.
+            self._sessions.pop(ctx.session_id, None)
         LOGGER.info(
             f"[Handler] Closed session {ctx.session_id} "
             f"({len(self._sessions)}/{self.max_sessions if self.max_sessions > 0 else 'unlimited'} remaining)"
@@ -272,14 +278,15 @@ class BaseGymHandler(ABC):
                 for session_id in to_remove:
                     ctx = self._sessions.get(session_id)
                     if ctx is None:
-                        # Session may have been removed concurrently
                         continue
                     try:
                         await ctx.env.close()
-                        # Use pop with default to avoid KeyError if concurrently removed
-                        self._sessions.pop(session_id, None)
                     except Exception as e:
                         LOGGER.error(f"[Handler] Error cleaning up session {session_id}: {e}")
+                    finally:
+                        # Always remove, even if close() fails, to prevent
+                        # infinite retry loops on broken sessions.
+                        self._sessions.pop(session_id, None)
 
             except asyncio.CancelledError:
                 break
@@ -325,12 +332,17 @@ class BaseGymHandler(ABC):
             except asyncio.CancelledError:
                 pass
 
-        # Close all remaining sessions
-        for session_id, ctx in list(self._sessions.items()):
+        # Close all remaining sessions in parallel for faster shutdown
+        async def _close_one(session_id: str, ctx: "SessionContext"):
             try:
                 await ctx.env.close()
             except Exception as e:
                 LOGGER.error(f"[Handler] Error closing session {session_id}: {e}")
+
+        if self._sessions:
+            await asyncio.gather(
+                *(_close_one(sid, ctx) for sid, ctx in self._sessions.items())
+            )
 
         self._sessions.clear()
         LOGGER.info("[Handler] All sessions closed")
