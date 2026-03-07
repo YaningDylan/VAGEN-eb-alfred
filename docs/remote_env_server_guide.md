@@ -17,31 +17,59 @@ Training Machine (Remote)                    Env Server (This Machine)
 |  N concurrent clients     |                +---------------------------+
 +---------------------------+
 
-Server IP:   100.79.245.124 (Tailscale)
+Server IP:   localhost (via SSH tunnel) or 100.79.245.124 (Tailscale)
 Server Port: 8000
 ```
 
 ## Network
 
 The env server is on a local machine (LAN IP `192.168.0.107`). Cloud training machines
-cannot reach this directly. We use **Tailscale** to create a VPN mesh between the two machines.
+cannot reach this directly. Two options:
 
+### Option A: SSH Reverse Tunnel (recommended for vast.ai)
+
+Run on the **local env server machine** (keep terminal open):
+```bash
+# One-shot
+ssh -p 28663 root@ssh8.vast.ai -R 8000:localhost:8000
+
+# Persistent (auto-reconnect)
+autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" \
+    -p 28663 root@ssh8.vast.ai -R 8000:localhost:8000 -N
+```
+
+Cloud machine accesses env server via `http://localhost:8000`. No Tailscale needed.
+
+### Option B: Tailscale VPN
+
+Install Tailscale on both machines with the same account:
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up
+```
 - Env server Tailscale IP: `100.79.245.124`
-- Cloud training machine: install Tailscale and `sudo tailscale up` with the same account
+- Cloud machine accesses env server via `http://100.79.245.124:8000`
 
-All `base_urls` in configs below use the Tailscale IP.
+### Which `base_urls` to use?
+
+| Method | `base_urls` |
+|--------|-------------|
+| SSH tunnel | `http://localhost:8000` |
+| Tailscale | `http://100.79.245.124:8000` |
+
+All config examples below use `http://localhost:8000` (SSH tunnel).
 
 ## Server Status
 
 Health check:
 ```bash
-curl http://100.79.245.124:8000/health
+curl http://localhost:8000/health
 # {"ok":true,"service":"gym-env-service","max_inflight":"unlimited"}
 ```
 
 Active sessions:
 ```bash
-curl http://100.79.245.124:8000/sessions
+curl http://localhost:8000/sessions
 ```
 
 ### Server Specs
@@ -69,7 +97,7 @@ envs:
     config:
       # === Connection config (client-side) ===
       base_urls:
-        - "http://100.79.245.124:8000"  # <-- env server Tailscale IP
+        - "http://localhost:8000"  # <-- via SSH reverse tunnel
       timeout: 600                     # request timeout in seconds (increase for slow tasks)
       retries: 8                       # retry count on failure/503
       backoff: 2.0                     # exponential backoff multiplier
@@ -102,7 +130,7 @@ envs:
     response_length_per_turn: 512
     config:
       base_urls:
-        - "http://100.79.245.124:8000"
+        - "http://localhost:8000"
       timeout: 600
       eval_set: base
       x_display: "0"
@@ -169,7 +197,7 @@ envs:
     max_turns: 30
     config:
       base_urls:
-        - "http://100.79.245.124:8000"
+        - "http://localhost:8000"
       timeout: 300.0
       eval_set: base
       x_display: "0"
@@ -243,7 +271,7 @@ Layer 3: If all retries exhausted → RuntimeError, episode fails
    ```yaml
    config:
      base_urls:
-       - "http://100.79.245.124:8000"
+       - "http://localhost:8000"
        - "http://other-machine:8000"
      failover_after_failures: 4    # switch URL after 4 consecutive failures
    ```
@@ -284,10 +312,10 @@ curl http://localhost:8000/health
 
 ## Quick Checklist
 
-- [ ] Tailscale installed on both machines, same account, both `tailscale up`
-- [ ] Server is running: `curl http://100.79.245.124:8000/health` returns `{"ok":true,...}`
-- [ ] Network is reachable from cloud: `curl http://100.79.245.124:8000/health`
+- [ ] SSH tunnel active: `ssh -p 28663 root@ssh8.vast.ai -R 8000:localhost:8000`
+- [ ] Server is running: `curl http://localhost:8000/health` returns `{"ok":true,...}`
+- [ ] Network is reachable from cloud: `curl http://localhost:8000/health`
 - [ ] Config uses `name: RemoteEnv` (not `EbAlfred`)
-- [ ] `base_urls` points to `http://100.79.245.124:8000`
+- [ ] `base_urls` points to `http://localhost:8000`
 - [ ] `timeout` is large enough (>=300 recommended)
 - [ ] Concurrency is reasonable for server capacity
