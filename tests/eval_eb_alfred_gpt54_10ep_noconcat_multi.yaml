@@ -1,0 +1,53 @@
+# EB-ALFRED: 10 episodes, GPT-5.4, NO-CONCAT, multi-action (up to 20 per turn).
+# max_turns=15, max_actions_per_step=20 so the model can plan multiple actions per turn.
+#
+# Start server first:
+#   DISPLAY=:0 conda run -n embench python -m vagen.envs.eb_alfred.serve --port 8000
+# Then run:
+#   conda run -n vagen python -m vagen.evaluate.run_eval --config tests/eval_eb_alfred_gpt54_10ep_noconcat_multi.yaml
+
+envs:
+  - name: RemoteEnv
+    n_envs: 10
+    tag_id: eb_alfred_gpt54_10ep_noconcat_multi
+    seed_list: [100, 207, 315, 423, 531, 639, 747, 855, 963, 1071]
+    split: test
+    concat_history: false
+    max_turns: 15
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      timeout: 600
+      eval_set: base
+      x_display: "0"
+      obs_image_size: 500
+      max_turns: 15
+      max_actions_per_step: 20
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      max_completion_tokens: 1024
+
+experiment:
+  dump_dir: ./test_rollouts/gpt54_10ep_noconcat_multi
+  default_max_turns: 15
+
+run:
+  backend: openai
+  base_seed: 0
+  max_concurrent_jobs: 5
+  resume: skip_completed
+  live_summary: true
+
+backends:
+  openai:
+    api_key: ""
+    base_url: null
+    model: "gpt-5.4"
+    max_concurrency: 20
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0

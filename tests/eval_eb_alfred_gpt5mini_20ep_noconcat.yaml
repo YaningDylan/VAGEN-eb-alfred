@@ -1,0 +1,55 @@
+# EB-ALFRED: 20 episodes, GPT-5 Mini, NO-CONCAT mode.
+# concat_history=false: only system + current obs each turn (no history)
+# Same seeds as gpt41_20ep for direct comparison.
+#
+# Start server first:
+#   DISPLAY=:0 conda run -n embench python -m vagen.envs.eb_alfred.serve --port 8000
+# Then run:
+#   conda run -n vagen python -m vagen.evaluate.run_eval --config tests/eval_eb_alfred_gpt5mini_20ep_noconcat.yaml
+
+envs:
+  - name: RemoteEnv
+    n_envs: 20
+    tag_id: eb_alfred_gpt5mini_20ep_noconcat
+    seed_list: [100, 207, 315, 423, 531, 639, 747, 855, 963, 1071,
+                1179, 1287, 1395, 1503, 1611, 1719, 1827, 1935, 2043, 2151]
+    split: test
+    concat_history: false
+    max_turns: 30
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      timeout: 600
+      eval_set: base
+      x_display: "0"
+      obs_image_size: 500
+      max_turns: 30
+      max_actions_per_step: 1
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      max_completion_tokens: 1024
+
+experiment:
+  dump_dir: ./test_rollouts/gpt5mini_20ep_noconcat
+  default_max_turns: 30
+
+run:
+  backend: openai
+  base_seed: 0
+  max_concurrent_jobs: 5
+  resume: skip_completed
+  live_summary: true
+
+backends:
+  openai:
+    api_key: ""               # uses OPENAI_API_KEY env var
+    base_url: null
+    model: "gpt-5-mini"
+    max_concurrency: 20
+    max_retries: 6
+    min_backoff: 0.5
+    max_backoff: 8.0
