@@ -1,0 +1,9 @@
+[1772930809.6] START
+[1772930809.7] IMPORTED
+[1772930809.7] ERROR: Controller.__init__() got an unexpected keyword argument 'player_screen_width'
+[1772930809.7] Traceback (most recent call last):
+  File "/home/march/workspace/Yaning/VAGEN-eb-alfred/test_ai2thor2.py", line 21, in <module>
+    c = ai2thor.controller.Controller(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Controller.__init__() got an unexpected keyword argument 'player_screen_width'
+

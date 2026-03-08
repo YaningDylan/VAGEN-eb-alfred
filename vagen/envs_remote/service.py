@@ -14,13 +14,17 @@ All business logic is delegated to the handler.
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
 import os
+import time
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import List, Optional
 
 from fastapi import FastAPI, File, Form, UploadFile, Request, HTTPException
 from fastapi.responses import Response
+from starlette.middleware.base import BaseHTTPMiddleware
 
 from .handler import BaseGymHandler
 from .multipart_codec import encode_multipart, parse_data_field, read_images, decode_multipart
@@ -39,6 +43,47 @@ IMAGE_MIME = os.getenv("GYM_IMAGE_MIME", "image/png")
 
 # Global concurrency limiter (optional)
 _sem = asyncio.Semaphore(MAX_INFLIGHT) if MAX_INFLIGHT > 0 else None
+
+# Request log file
+REQUEST_LOG_PATH = Path(os.getenv("GYM_REQUEST_LOG", "request_log.jsonl"))
+
+
+class RequestLogMiddleware(BaseHTTPMiddleware):
+    """Logs every request to a JSONL file for debugging."""
+
+    async def dispatch(self, request: Request, call_next):
+        t0 = time.time()
+
+        # Read form data for POST requests (need to cache body for downstream)
+        body_data = None
+        if request.method == "POST":
+            # We parse the 'data' field from the form later in the endpoint,
+            # so here just record the raw query info.
+            pass
+
+        response = await call_next(request)
+        elapsed = time.time() - t0
+
+        entry = {
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(t0)),
+            "client": request.client.host if request.client else "unknown",
+            "method": request.method,
+            "path": request.url.path,
+            "status": response.status_code,
+            "elapsed_s": round(elapsed, 3),
+        }
+
+        # Add query params if present
+        if request.query_params:
+            entry["query"] = dict(request.query_params)
+
+        try:
+            with open(REQUEST_LOG_PATH, "a") as f:
+                f.write(json.dumps(entry) + "\n")
+        except Exception:
+            pass
+
+        return response
 
 
 def _auth(request: Request) -> None:
@@ -89,6 +134,23 @@ def build_gym_service(handler: BaseGymHandler) -> FastAPI:
         lifespan=lifespan,
     )
     app.state.handler = handler
+    app.add_middleware(RequestLogMiddleware)
+
+    def _log_request_detail(path: str, data_dict: dict, extra: dict = None):
+        """Log detailed request info (form data) to the JSONL file."""
+        entry = {
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "type": "detail",
+            "path": path,
+            "data": data_dict,
+        }
+        if extra:
+            entry.update(extra)
+        try:
+            with open(REQUEST_LOG_PATH, "a") as f:
+                f.write(json.dumps(entry, default=str) + "\n")
+        except Exception:
+            pass
 
     @app.get("/health")
     async def health():
@@ -154,6 +216,7 @@ def build_gym_service(handler: BaseGymHandler) -> FastAPI:
             data_dict = parse_data_field(data)
             env_config = data_dict.get("env_config", {})
             seed = data_dict.get("seed")  # Optional
+            _log_request_detail("/connect", data_dict)
 
             result = await handler.connect(env_config, seed=seed)
 
@@ -219,6 +282,11 @@ def build_gym_service(handler: BaseGymHandler) -> FastAPI:
             session_id = data_dict.get("session_id")
             method = data_dict.get("method")
             params = data_dict.get("params", {})
+            _log_request_detail("/call", {
+                "session_id": session_id,
+                "method": method,
+                "params_keys": list(params.keys()) if isinstance(params, dict) else str(params),
+            }, {"num_images": len(img_list) if img_list else 0})
 
             if not session_id:
                 raise HTTPException(status_code=400, detail="session_id required")

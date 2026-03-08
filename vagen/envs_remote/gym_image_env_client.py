@@ -125,23 +125,15 @@ class GymImageEnvClient(GymImageEnv):
                 limits=httpx.Limits(max_connections=100, max_keepalive_connections=20),
             )
 
-    async def _ensure_connected_for_reset(self, seed: int) -> Optional[Tuple[Dict[str, Any], Dict[str, Any]]]:
+    async def _ensure_connected_for_reset(self, seed: int) -> None:
         """
         Ensure session is established (called by reset only).
 
-        On first reset: Establishes connection, passes seed, and gets reset result.
-        On subsequent resets: Returns None (caller should call reset normally).
-
-        Args:
-            seed: Reset seed (passed to server on first reset only)
-
-        Returns:
-            (obs, info) if this is first reset and server returns reset result
-            None otherwise
+        On first reset: Establishes connection (create env only, no reset).
+        The actual reset is done by the caller via _call("reset").
         """
         if self._session_id is None:
-            return await self._connect(seed=seed)
-        return None
+            await self._connect()  # connect only, no seed → no server-side reset
 
     def _check_connected(self, method_name: str):
         """
