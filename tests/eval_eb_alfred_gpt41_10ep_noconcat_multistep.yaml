@@ -13,7 +13,7 @@ envs:
     tag_id: eb_alfred_gpt41_10ep_noconcat_multistep
     seed_list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     split: test
-    concat_history: false     # no-concat: system + current obs only per turn
+    concat_multi_turn: false     # no-concat: system + current obs only per turn
     max_turns: 30
     config:
       base_urls:

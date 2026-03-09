@@ -98,6 +98,7 @@ class GymImageEnvClient(GymImageEnv):
         self._client: Optional[httpx.AsyncClient] = None
         self._session_id: Optional[str] = None
         self._current_url_index: int = 0
+        self._queued_wait_s: float = 0.0  # extra timeout hint from server when queued
 
         # Remove client-specific keys before passing to remote
         self._remote_env_config = {
@@ -208,10 +209,21 @@ class GymImageEnvClient(GymImageEnv):
                     raise RuntimeError("Server did not return session_id")
 
                 self._current_url_index = url_index
-                LOGGER.info(
-                    f"[Client] Connected to {base_url}, session_id={self._session_id}"
-                    + (f", seed={seed}" if seed is not None else "")
-                )
+
+                # If server says session is queued, store estimated wait
+                # so subsequent _call("reset") uses a longer timeout.
+                status = data.get("status", "ready")
+                if status == "queued":
+                    self._queued_wait_s = float(data.get("estimated_wait_s", 300))
+                    LOGGER.info(
+                        f"[Client] Session {self._session_id} queued at {base_url} "
+                        f"(est wait {self._queued_wait_s:.0f}s)"
+                    )
+                else:
+                    LOGGER.info(
+                        f"[Client] Connected to {base_url}, session_id={self._session_id}"
+                        + (f", seed={seed}" if seed is not None else "")
+                    )
 
                 # If seed was provided, return reset result
                 if seed is not None and "obs" in data:
@@ -298,6 +310,17 @@ class GymImageEnvClient(GymImageEnv):
         if self.token:
             headers["X-API-Key"] = self.token
 
+        # If session was queued, the first reset may block on the server while
+        # it waits for a capacity slot.  Use an extended timeout for that call.
+        call_timeout = self.timeout
+        if method == "reset" and self._queued_wait_s > 0:
+            call_timeout = self.timeout + self._queued_wait_s
+            LOGGER.info(
+                f"[Client] Using extended timeout {call_timeout:.0f}s for reset "
+                f"(base={self.timeout:.0f}s + queued_wait={self._queued_wait_s:.0f}s)"
+            )
+            self._queued_wait_s = 0.0  # only extend for the first reset
+
         last_exc: Optional[Exception] = None
 
         for attempt in range(self.retries + 1):
@@ -306,7 +329,10 @@ class GymImageEnvClient(GymImageEnv):
             url = f"{base_url}/call"
 
             try:
-                response = await self._client.post(url, content=body, headers=headers)
+                response = await self._client.post(
+                    url, content=body, headers=headers,
+                    timeout=call_timeout,
+                )
 
                 if response.status_code == 503:
                     raise RuntimeError("server busy")

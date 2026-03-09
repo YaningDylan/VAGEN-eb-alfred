@@ -1,5 +1,5 @@
 # EB-ALFRED: 20 episodes, GPT-5 Mini, NO-CONCAT mode.
-# concat_history=false: only system + current obs each turn (no history)
+# concat_multi_turn=false: only system + current obs each turn (no history)
 # Same seeds as gpt41_20ep for direct comparison.
 #
 # Start server first:
@@ -14,7 +14,7 @@ envs:
     seed_list: [100, 207, 315, 423, 531, 639, 747, 855, 963, 1071,
                 1179, 1287, 1395, 1503, 1611, 1719, 1827, 1935, 2043, 2151]
     split: test
-    concat_history: false
+    concat_multi_turn: false
     max_turns: 30
     config:
       base_urls:

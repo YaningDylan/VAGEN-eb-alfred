@@ -18,7 +18,7 @@ envs:
     tag_id: eb_alfred_gpt41_5ep_serial_500
     seed_list: [0, 30, 60, 90, 120]
     split: test
-    concat_history: true      # EB-ALFRED requires full history (multi-step task, model needs memory)
+    concat_multi_turn: true      # EB-ALFRED requires full history (multi-step task, model needs memory)
     max_turns: 30
     config:
       base_urls:

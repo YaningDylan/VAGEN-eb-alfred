@@ -8,7 +8,7 @@ envs:
     seed: [42]
     seed_list: [42, 49, 56, 63, 70, 77, 84, 91, 98, 105]
     split: test
-    concat_history: false
+    concat_multi_turn: false
     max_turns: 30
     config:
       base_urls:

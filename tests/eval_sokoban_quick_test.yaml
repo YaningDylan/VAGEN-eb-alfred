@@ -1,0 +1,44 @@
+# Quick sanity test: 2 episodes of Sokoban with GPT-4.1
+#
+# Run:
+#   python -m vagen.evaluate.run_eval --config tests/eval_sokoban_quick_test.yaml
+
+envs:
+  - name: Sokoban
+    n_envs: 2
+    tag_id: sokoban_quick_test
+    seed_list: [100, 207]
+    split: test
+    max_turns: 5
+    config:
+      dim_room: [6, 6]
+      max_steps: 50
+      num_boxes: 1
+      render_mode: vision
+      max_actions_per_step: 3
+      action_sep: ","
+      use_example_in_sys_prompt: true
+      prompt_format: free_think
+      format_reward: 0.1
+      success_reward: 1.0
+    chat_config:
+      temperature: 0
+      max_tokens: 512
+
+experiment:
+  dump_dir: ./test_rollouts/sokoban_quick_test
+  default_max_turns: 5
+
+run:
+  backend: openai
+  max_concurrent_jobs: 2
+  resume: off
+  live_summary: true
+
+backends:
+  openai:
+    model: "gpt-4.1-mini"
+    max_concurrency: 2
+    max_retries: 3
+    min_backoff: 0.5
+    max_backoff: 4.0

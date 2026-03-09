@@ -36,7 +36,7 @@ class GenericVisionInferenceWorkflow:
         success_keys: Optional[List[str]] = None,
         success_threshold: float = 0.99,
         chat_config: Optional[Dict[str, Any]] = None,
-        concat_history: bool = True,
+        concat_multi_turn: bool = True,
     ):
         self.adapter = adapter
         self.dump_dir = dump_dir
@@ -45,7 +45,7 @@ class GenericVisionInferenceWorkflow:
         self.success_keys = success_keys or ["success", "is_success", "solved"]
         self.success_threshold = success_threshold
         self.chat_config = dict(chat_config or {})
-        self.concat_history = concat_history
+        self.concat_multi_turn = concat_multi_turn
         if self.dump_dir:
             os.makedirs(self.dump_dir, exist_ok=True)
 
@@ -192,7 +192,7 @@ class GenericVisionInferenceWorkflow:
 
             for t in range(turn_limit):
                 # In non-concat mode, only send system + current user msg
-                if self.concat_history:
+                if self.concat_multi_turn:
                     api_messages = messages
                 else:
                     api_messages = [messages[0], messages[-1]]  # system + latest user
@@ -311,7 +311,7 @@ class GenericVisionInferenceWorkflow:
             if token_usage is not None:
                 metrics["token_usage"] = token_usage
             metrics.setdefault("max_turns", turn_limit)
-            metrics.setdefault("concat_history", self.concat_history)
+            metrics.setdefault("concat_multi_turn", self.concat_multi_turn)
             if error_info is not None:
                 metrics["error_details"] = error_info
             if metadata:

@@ -1,321 +1,244 @@
-# EB-ALFRED Setup Guide
+# EB-ALFRED Environment Server Setup
 
-Complete guide to set up and run EB-ALFRED evaluation on a new machine.
-Tested on Ubuntu with NVIDIA GPUs (RTX 4090, RTX 5070 Ti, A100).
+This guide covers how to set up the EB-ALFRED environment on a dedicated GPU machine and connect it to a separate VAGEN training/evaluation machine.
+
+## Architecture
+
+EB-ALFRED requires a two-machine setup:
+
+```
+┌─────────────────────────────────┐         ┌──────────────────────────────────┐
+│  Training Machine (Cloud)       │         │  Env Server Machine (GPU)        │
+│                                 │  HTTP   │                                  │
+│  VAGEN / verl training          │◄───────►│  FastAPI + AI2-THOR (Unity 3D)   │
+│  or standalone evaluation       │         │                                  │
+│                                 │         │  Requirements:                   │
+│  Requirements:                  │         │  - NVIDIA GPU (40-series or A100)│
+│  - Python 3.10+                 │         │  - X server (Xvfb or real)       │
+│  - vagen package                │         │  - conda env: embench            │
+│  - No GPU needed for env        │         │  - ai2thor 2.1.0                 │
+│                                 │         │                                  │
+│  Config points to env server:   │         │  Runs:                           │
+│  base_urls:                     │         │  python -m vagen.envs.eb_alfred  │
+│    - "http://localhost:8000"    │         │    .serve --port 8000            │
+└─────────────────────────────────┘         └──────────────────────────────────┘
+```
+
+Why two machines? AI2-THOR uses a 2019 Unity build that requires a specific GPU + X server setup. The training stack (verl/vllm/sglang) has conflicting dependencies. Separating them avoids all of this.
 
 ---
 
-## Prerequisites
+## Part 1: Env Server Machine Setup
 
-- Ubuntu Linux with NVIDIA GPU(s)
+### Prerequisites
+
+- Ubuntu Linux
+- NVIDIA GPU: **40-series** (4060/4070/4080/4090) or **A100/H100**
+  - 50-series (5070 Ti etc.) is **NOT compatible** with ai2thor 2.1.0
 - NVIDIA driver installed (`nvidia-smi` works)
 - Conda (Miniconda or Anaconda)
-- X server running (real display or Xvfb)
-- Git
 
----
-
-## Step 1: Clone the Repository
+### 1.1 Clone the repository
 
 ```bash
 git clone git@github.com:YaningDylan/VAGEN-eb-alfred.git
 cd VAGEN-eb-alfred
 ```
 
----
-
-## Step 2: Create Conda Environments
-
-Two separate environments are needed:
-- **embench**: Runs the AI2-THOR environment server (Python 3.9, ai2thor 2.1.0)
-- **vagen**: Runs the evaluation client (Python 3.10+)
-
-### 2a. Create the `embench` environment (server)
+### 1.2 Create the `embench` conda environment
 
 ```bash
 conda create -n embench python=3.9 -y
 conda activate embench
 
-# Install EmbodiedBench (which installs ai2thor 2.1.0)
+# Install EmbodiedBench (includes ai2thor)
 pip install embodiedbench
 
-# CRITICAL: Pin ai2thor to 2.1.0 (EmbodiedBench requires this version)
+# Pin ai2thor to 2.1.0 (required by EmbodiedBench)
 pip install ai2thor==2.1.0
+
+# Install VAGEN (for server code)
+pip install -e .
 
 # Verify
 python -c "import ai2thor; print(ai2thor.__version__)"
 # Should print: 2.1.0
 ```
 
-### 2b. Create the `vagen` environment (eval client)
+### 1.3 Download EB-ALFRED dataset
+
+The task data (expert demonstrations + language annotations) is hosted on HuggingFace:
 
 ```bash
-conda create -n vagen python=3.10 -y
-conda activate vagen
+# Install git-lfs (needed for large files)
+sudo apt-get install git-lfs
+git lfs install
 
-# Install from project root
-pip install -e .
+# Download dataset into the EmbodiedBench data directory
+EMBENCH_DATA=$(python -c "import embodiedbench, pathlib; print(pathlib.Path(embodiedbench.__file__).parent / 'envs/eb_alfred/data')")
+echo "EmbodiedBench data dir: $EMBENCH_DATA"
+
+cd "$EMBENCH_DATA"
+git clone https://huggingface.co/datasets/EmbodiedBench/EB-ALFRED json_2.1.0
+
+# Verify
+ls json_2.1.0/
+# Should contain: valid_seen/  valid_unseen/  tests_seen/  tests_unseen/  ...
 ```
 
----
+If `embodiedbench` is not pip-installed, you can also clone the [Embodied-Reasoning-Agent](https://github.com/Embodied-Reasoning-Agent/Embodied-Reasoning-Agent) repo and find the data dir at `eval/EmbodiedBench/embodiedbench/envs/eb_alfred/data/`.
 
-## Step 3: Patch ai2thor (CRITICAL)
+### 1.4 Patch ai2thor (CRITICAL)
 
-ai2thor 2.1.0 has a bug where werkzeug sends `Connection: close` headers,
-causing Unity's Mono runtime to throw `SocketException` after a few steps.
-This patch MUST be applied before running any experiments.
+ai2thor 2.1.0 has a bug where werkzeug sends `Connection: close` headers, causing Unity SocketException crashes after a few steps.
 
 ```bash
-conda run -n embench python scripts/patch_ai2thor.py
+python scripts/patch_ai2thor.py
+
+# Verify
+python scripts/patch_ai2thor.py --check
+# Expected:
+#   OK: run_wsgi override with keep-alive
+#   OK: threaded server mode
+#   OK: shutdown_request bypass
 ```
 
-To verify the patch was applied:
+### 1.5 Set up X server
+
+AI2-THOR needs an X display for GPU rendering.
+
 ```bash
-conda run -n embench python scripts/patch_ai2thor.py --check
+# Option A: Real display (desktop machine) — usually :0 is already available
+
+# Option B: Xvfb (headless server)
+sudo apt-get install -y xvfb
+Xvfb :0 -screen 0 1024x768x24 &
+export DISPLAY=:0
 ```
 
-Expected output:
-```
-  OK: run_wsgi override with keep-alive
-  OK: threaded server mode
-  OK: shutdown_request bypass
-```
+Verify: `DISPLAY=:0 glxinfo | head -5`
 
-### What the patch does
-
-The patch modifies `ai2thor/server.py` in the embench conda environment:
-
-1. **run_wsgi override**: Replaces werkzeug's default `run_wsgi()` method in
-   `ThorRequestHandler` to send `Connection: keep-alive` instead of
-   `Connection: close`, and skips the drain loop that would consume the next
-   request's bytes.
-
-2. **threaded=True**: Forces `werkzeug.serving.make_server()` to use threaded
-   mode, so Reset (which creates a new HTTP connection) doesn't deadlock.
-
-3. **shutdown_request bypass**: Patches `shutdown_request` to skip
-   `socket.shutdown(SHUT_WR)` which sends TCP FIN and triggers Unity's
-   SocketException.
-
-### Quick test after patching
+### 1.6 Quick test: verify Unity starts
 
 ```bash
 DISPLAY=:0 conda run -n embench python -c "
 from ai2thor.controller import Controller
 c = Controller(scene='FloorPlan1', gridSize=0.25)
-for i in range(5):
+for i in range(3):
     e = c.step('RotateRight')
     print(f'Step {i+1}: success={e.metadata[\"lastActionSuccess\"]}')
-c.step('Reset')
-e = c.step('RotateRight')
-print(f'After reset: success={e.metadata[\"lastActionSuccess\"]}')
 c.stop()
-print('All OK')
+print('Unity OK')
 "
 ```
 
----
-
-## Step 4: Set Up X Server
-
-AI2-THOR requires an X display for GPU rendering. If running on a headless
-server, use Xvfb:
+### 1.7 Start the environment server
 
 ```bash
-# Option A: Real display (desktop machine)
-# Usually DISPLAY=:0 is already set
-
-# Option B: Xvfb (headless server)
-sudo apt-get install xvfb
-Xvfb :0 -screen 0 1024x768x24 &
-export DISPLAY=:0
-```
-
-Verify X is working:
-```bash
-DISPLAY=:0 glxinfo | head -5
-```
-
----
-
-## Step 5: Start the Environment Server
-
-```bash
-cd VAGEN-eb-alfred
-
-# Basic start (auto-detect GPUs):
 DISPLAY=:0 conda run -n embench python -m vagen.envs.eb_alfred.serve \
-    --port 8000 --max-sessions 64
-
-# Or use the provided script:
-DISPLAY=:0 MAX_SESSIONS=200 bash examples/evaluate/eb_alfred/start_server.sh
+    --port 8000 \
+    --capacity 16 \
+    --x-displays 0
 ```
 
-### Max sessions by GPU
+Key arguments:
 
-| GPU              | VRAM  | Max Sessions (per GPU) |
-|:-----------------|:-----:|:----------------------:|
-| RTX 4060 (8 GB)  | 8 GB  | ~31                    |
-| RTX 4070 (12 GB) | 12 GB | ~51                    |
-| RTX 4080 (16 GB) | 16 GB | ~70                    |
-| RTX 4090 (24 GB) | 24 GB | ~110                   |
-| A100 (80 GB)     | 80 GB | ~384                   |
+| Argument | Default | Description |
+|----------|---------|-------------|
+| `--port` | 8000 | Server port |
+| `--capacity` | 16 | Max concurrent Unity environments. Extra requests are queued (not rejected). |
+| `--x-displays` | auto | Comma-separated GPU display IDs (e.g. `0,1`). Auto-detects GPUs if omitted. |
+| `--max-sessions` | 0 | Max total sessions (0 = unlimited). Sessions beyond this get HTTP 503. |
+| `--thread-workers` | 128 | Thread pool size for Unity instance creation. |
 
-For multi-GPU, multiply by N. The server auto-balances across GPUs.
-
-Each Unity instance also uses ~750 MiB RAM. Check that total RAM is sufficient:
-`floor((total_ram_GB - 4) / 0.75)` = max instances by RAM.
-
-Verify server is running:
+Verify:
 ```bash
-python3 -c "import urllib.request; print(urllib.request.urlopen('http://localhost:8000/health').read().decode())"
+curl http://localhost:8000/health
+# {"ok":true,"service":"gym-env-service","max_inflight":"unlimited"}
+
+curl http://localhost:8000/sessions
+# {"num_sessions":0,"max_sessions":0,...}
 ```
+
+### Capacity guide (per GPU)
+
+| GPU | VRAM | Recommended `--capacity` |
+|-----|------|--------------------------|
+| RTX 4060 (8 GB) | 8 GB | 8-16 |
+| RTX 4070 (12 GB) | 12 GB | 16-32 |
+| RTX 4090 (24 GB) | 24 GB | 32-64 |
+| A100 (80 GB) | 80 GB | 64-128 |
+
+Each Unity instance uses ~148 MB VRAM + ~750 MB RAM. The `--capacity` flag controls how many run concurrently; any number of sessions can be queued beyond this limit.
 
 ---
 
-## Step 6: Run Evaluation
+## Part 2: Network — Connecting the Two Machines
 
-### Quick test (3 episodes)
+The training machine (cloud VM) needs to reach the env server (local GPU machine) via HTTP. Use an SSH reverse tunnel:
 
-```bash
-conda run -n vagen python -m vagen.evaluate.run_eval \
-    --config examples/evaluate/eb_alfred/config.yaml \
-    envs[0].n_envs=3
-```
-
-### Full benchmark (128 episodes, dual GPU)
+Run on the **env server machine** (keeps the tunnel open):
 
 ```bash
-export OPENAI_API_KEY="sk-..."
-bash examples/evaluate/eb_alfred/run_benchmark.sh
+# One-shot
+ssh -p <cloud-ssh-port> root@<cloud-host> -R 8000:localhost:8000
+
+# Persistent (auto-reconnect)
+autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" \
+    -p <cloud-ssh-port> root@<cloud-host> -R 8000:localhost:8000 -N
 ```
 
-Or use individual configs:
-```bash
-conda run -n vagen python -m vagen.evaluate.run_eval \
-    --config benchmarking/configs/parallel_500_128ep.yaml
-```
-
-### Generate markdown report
-
-After experiments complete:
-```bash
-conda run -n vagen python benchmarking/aggregate_results.py
-# Report at: benchmarking/BENCHMARK_REPORT.md
-```
-
----
-
-## Key Configuration Options
-
-### concat_history (in eval YAML)
-
-Controls whether to send full conversation history to the LLM on each turn:
+This forwards the cloud machine's `localhost:8000` back to the env server's `localhost:8000`. The training machine then uses:
 
 ```yaml
-envs:
-  - name: RemoteEnv
-    concat_history: false    # non-concat: only system + current obs (cheaper)
-    # concat_history: true   # concat: full history (more expensive, ~8.5x more tokens)
+base_urls:
+  - "http://localhost:8000"
 ```
 
-- **non-concat** (`false`): Each API call sends only system prompt + current
-  observation. ~25K tokens per 30-turn episode at 500x500. Use this for
-  training and benchmarks.
-- **concat** (`true`, default): Full conversation history accumulates. ~210K
-  tokens per 30-turn episode. Use for evaluation where history context matters.
+Verify connectivity (from the **training machine**):
 
-### Concurrency settings
-
-```yaml
-run:
-  max_concurrent_jobs: 64      # How many episodes run in parallel
-                                # Limited by GPU/RAM capacity
-
-backends:
-  openai:
-    max_concurrency: 64         # How many API calls at the same time
-                                # Limited by API rate limits
+```bash
+curl http://localhost:8000/health
+# {"ok":true,"service":"gym-env-service","max_inflight":"unlimited"}
 ```
-
-Rule of thumb: set both to the number of Unity instances your hardware supports.
 
 ---
 
-## Architecture Overview
+## Part 3: Training Machine Configuration
 
+The training machine only needs the `vagen` package (no ai2thor, no embench). In your YAML config, set `name: RemoteEnv` and point `base_urls` to the env server:
+
+```yaml
+config:
+  base_urls:
+    - "http://localhost:8000"   # via SSH tunnel
 ```
-┌─────────────────────────────────────────────────────────┐
-│  Eval Client (vagen env)                                │
-│                                                         │
-│  run_eval.py → runner.py → vision_workflow.py           │
-│       │              │              │                    │
-│       │         episode_gate    adapter.acompletion()    │
-│       │        (semaphore)      (GPT-4.1 API calls)     │
-│       │              │              │                    │
-│       ▼              ▼              │                    │
-│  GymImageEnvClient ────── HTTP ─────┼──┐                │
-└──────────────────────────────────────┼──┘                │
-                                       │                   │
-┌──────────────────────────────────────┼──┐                │
-│  Env Server (embench env)            │  │                │
-│                                      │  │                │
-│  serve.py → handler.py               │  │                │
-│       │          │                   │  │                │
-│       │    least-loaded GPU          │  │                │
-│       │    assignment                │  │                │
-│       ▼          ▼                   │  │                │
-│  Unity/AI2-THOR instances            │  │                │
-│  (one per session, ~148MB VRAM,     │  │                │
-│   ~750MB RAM each)                   │  │                │
-└──────────────────────────────────────┘  │
-                                          │
-┌─────────────────────────────────────────┘
-│  OpenAI API (GPT-4.1)
-│  (rate limited by max_concurrency)
-└─────────────────────────────────────────
-```
+
+For a complete config example, see [`examples/evaluate/eb_alfred/config.yaml`](../examples/evaluate/eb_alfred/config.yaml).
 
 ---
 
 ## Troubleshooting
 
-### SocketException in Unity
-**Symptom**: `System.Net.Sockets.SocketException: Connection reset by peer`
-**Fix**: Run `conda run -n embench python scripts/patch_ai2thor.py`
+| Problem | Fix |
+|---------|-----|
+| `Connection refused` from training machine | Check server is running (`curl health`), check SSH tunnel is active |
+| `503 server busy` | Reduce `max_concurrent_jobs` or increase `--max-sessions` on server |
+| Timeout on reset | Increase `timeout` in client config (queued sessions need longer) |
+| Unity `SocketException` | Run `python scripts/patch_ai2thor.py` on the env server |
+| `Cannot open display` | Set `DISPLAY=:0` before starting server; verify X: `ls /tmp/.X11-unix/` |
+| GPU OOM | Reduce `--capacity` on server |
+| Orphaned Unity processes | `pkill -9 -f 'thor-201909061227'` |
+| 50-series GPU hangs on reset | Use a 40-series GPU instead; ai2thor 2.1.0 is incompatible with Blackwell |
 
-### X display not found
-**Symptom**: `Cannot open display ":1"` or similar
-**Fix**: Set `DISPLAY=:0` before starting server. Check X is running: `ls /tmp/.X11-unix/`
+## Monitoring
 
-### ai2thor version mismatch
-**Symptom**: Missing `server.py` or different API
-**Fix**: `conda run -n embench pip install ai2thor==2.1.0`
-Note: ai2thor 5.0.0 is incompatible with EmbodiedBench. Must use 2.1.0.
+```bash
+# Watch active sessions
+watch -n 5 'curl -s http://localhost:8000/sessions | python3 -m json.tool'
 
-### Server port already in use
-**Fix**: `lsof -i :8000` to find the process, then `kill <PID>`
+# GPU usage
+watch -n 2 nvidia-smi
 
-### Out of GPU memory
-**Symptom**: Unity instances crash or fail to start
-**Fix**: Reduce `--max-sessions`. Check current usage: `nvidia-smi`
-
-### Orphaned Unity processes
-**Fix**: `pkill -f thor-CloudRendering` or `pkill -f ai2thor`
-
----
-
-## File Reference
-
-| File | Purpose |
-|:-----|:--------|
-| `scripts/patch_ai2thor.py` | Patches ai2thor 2.1.0 SocketException bug |
-| `vagen/envs/eb_alfred/serve.py` | Environment server entry point |
-| `vagen/envs/eb_alfred/handler.py` | Multi-GPU session management |
-| `vagen/evaluate/run_eval.py` | Evaluation entry point |
-| `vagen/evaluate/vision_workflow.py` | Episode runner (concat/non-concat) |
-| `vagen/evaluate/runner.py` | Parallel job orchestration |
-| `examples/evaluate/eb_alfred/` | Example configs and run scripts |
-| `benchmarking/configs/` | Benchmark experiment configs |
-| `benchmarking/aggregate_results.py` | Result aggregation + markdown report |
-| `docs/eb_alfred_resource_guide.md` | GPU/RAM capacity tables |
+# Server logs are printed to stdout
+```

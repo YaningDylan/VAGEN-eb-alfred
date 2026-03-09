@@ -27,7 +27,7 @@ envs:
                 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123,
                 124, 125, 126, 127]
     split: test
-    concat_history: true      # EB-ALFRED requires full history (multi-step task, model needs memory)
+    concat_multi_turn: true      # EB-ALFRED requires full history (multi-step task, model needs memory)
     max_turns: 30
     config:
       base_urls:

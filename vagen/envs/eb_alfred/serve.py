@@ -54,6 +54,13 @@ def main():
         help="Max concurrent sessions (0=unlimited)",
     )
     parser.add_argument(
+        "--capacity",
+        type=int,
+        default=16,
+        help="Max concurrently running Unity environments (0=unlimited). "
+        "Extra sessions are queued and created as slots free up.",
+    )
+    parser.add_argument(
         "--thread-workers",
         type=int,
         default=128,
@@ -67,6 +74,7 @@ def main():
         x_displays=x_displays,
         session_timeout=args.session_timeout,
         max_sessions=args.max_sessions,
+        capacity=args.capacity,
     )
     app = build_gym_service(handler)
 
@@ -82,8 +90,10 @@ def main():
         )
 
     displays_str = ", ".join(f":{d}" for d in handler._x_displays)
+    cap_str = str(args.capacity) if args.capacity > 0 else "unlimited"
     print(f"Starting EB-ALFRED service on {args.host}:{args.port}")
     print(f"GPU displays: [{displays_str}] (auto-balanced)")
+    print(f"Capacity: {cap_str} concurrent environments")
     print(f"Health check: http://localhost:{args.port}/health")
     uvicorn.run(app, host=args.host, port=args.port)
 

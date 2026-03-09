@@ -1,5 +1,5 @@
 # EB-ALFRED evaluation: 64 episodes, GPT-4.1, 500x500, 64-way parallel, NO-CONCAT.
-# concat_history=false: only system + current obs each turn (~8x cheaper tokens, loses history)
+# concat_multi_turn=false: only system + current obs each turn (~8x cheaper tokens, loses history)
 # Seeds 0-63 chosen to allow direct comparison with first 64 of the concat=true 128ep run.
 
 envs:
@@ -12,7 +12,7 @@ envs:
                 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
                 58, 59, 60, 61, 62, 63]
     split: test
-    concat_history: false     # no-concat: system + current obs only (~8x cheaper tokens)
+    concat_multi_turn: false     # no-concat: system + current obs only (~8x cheaper tokens)
     max_turns: 30
     config:
       base_urls:

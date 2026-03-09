@@ -12,7 +12,7 @@ envs:
     tag_id: eb_alfred_gpt54_10ep_noconcat_multi
     seed_list: [100, 207, 315, 423, 531, 639, 747, 855, 963, 1071]
     split: test
-    concat_history: false
+    concat_multi_turn: false
     max_turns: 15
     config:
       base_urls:

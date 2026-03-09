@@ -39,7 +39,7 @@ class EnvSpec:
     seed: List[int] = field(default_factory=lambda: [0])
     seed_list: Optional[List[int]] = None
     max_turns: Optional[int] = None
-    concat_history: bool = True
+    concat_multi_turn: bool = True
 
 
 def _looks_like_path_key(key: str) -> bool:
@@ -92,7 +92,7 @@ def _parse_env_specs(cfg: Dict[str, Any]) -> List[EnvSpec]:
             seed=item.get("seed") if "seed" in item else [0],
             seed_list=item.get("seed_list"),
             max_turns=item.get("max_turns"),
-            concat_history=bool(item.get("concat_history", True)),
+            concat_multi_turn=bool(item.get("concat_multi_turn", True)),
         )
         specs.append(spec)
     return specs
@@ -272,7 +272,7 @@ def _expand_jobs(
                 "env_name": spec.name,
                 "max_turns": job_max_turns,
                 "chat_config": chat_cfg,
-                "concat_history": spec.concat_history,
+                "concat_multi_turn": spec.concat_multi_turn,
             }
             jobs.append({"data": job_data})
     return jobs
