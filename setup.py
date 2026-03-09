@@ -10,5 +10,5 @@ setup(
         "gymnasium[toy-text]",
         "uvicorn<0.41",
     ],
-    python_requires=">=3.10",
+    python_requires=">=3.9",
 )

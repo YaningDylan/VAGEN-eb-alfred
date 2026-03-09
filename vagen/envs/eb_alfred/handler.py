@@ -75,12 +75,20 @@ class EbAlfredHandler(BaseGymHandler):
 
     When capacity = 0 (default):
       - Original behaviour: env is created synchronously on /connect
+
+    startup_concurrency controls how many Unity processes may be in the
+    startup phase simultaneously, independent of capacity.  This prevents
+    a "startup storm" when many sessions are queued and capacity slots
+    become available at the same time.  E.g. capacity=64,
+    startup_concurrency=8 means up to 64 envs run concurrently but at
+    most 8 are initialising at any given moment.
     """
 
     def __init__(
         self,
         x_displays: Optional[List[str]] = None,
         capacity: int = 16,
+        startup_concurrency: int = 8,
         **kwargs,
     ):
         """
@@ -88,24 +96,32 @@ class EbAlfredHandler(BaseGymHandler):
             x_displays: List of X display IDs to use (e.g. ["0", "1"]).
                          None = auto-detect GPUs via nvidia-smi.
             capacity: Max concurrently running Unity environments (0 = unlimited).
+            startup_concurrency: Max Unity processes that may be starting up at
+                once (0 = unlimited).  Prevents CPU spikes when many capacity
+                slots open simultaneously.  Ignored when capacity = 0.
             **kwargs: Passed to BaseGymHandler (session_timeout, max_sessions).
         """
         super().__init__(**kwargs)
         self._x_displays = x_displays if x_displays is not None else detect_gpu_displays()
         self._pending_counts: Dict[str, int] = {d: 0 for d in self._x_displays}
         self._capacity = capacity
+        self._startup_concurrency = startup_concurrency
         # Defer semaphore creation: it must be created on the running event loop,
         # not during __init__ (which runs before uvicorn starts the loop).
         self._capacity_sem: Optional[asyncio.Semaphore] = None
+        self._startup_sem: Optional[asyncio.Semaphore] = None
         LOGGER.info(
             f"[Handler] Using X displays: {self._x_displays}, "
-            f"capacity={capacity if capacity > 0 else 'unlimited'}"
+            f"capacity={capacity if capacity > 0 else 'unlimited'}, "
+            f"startup_concurrency={startup_concurrency if startup_concurrency > 0 else 'unlimited'}"
         )
 
     def _ensure_semaphore(self) -> None:
-        """Lazily create the capacity semaphore on the running event loop."""
+        """Lazily create the capacity and startup semaphores on the running event loop."""
         if self._capacity_sem is None and self._capacity > 0:
             self._capacity_sem = asyncio.Semaphore(self._capacity)
+        if self._startup_sem is None and self._startup_concurrency > 0 and self._capacity > 0:
+            self._startup_sem = asyncio.Semaphore(self._startup_concurrency)
 
     def _least_loaded_display(self) -> str:
         """Pick the display with the fewest active + pending sessions.
@@ -205,13 +221,31 @@ class EbAlfredHandler(BaseGymHandler):
         })
 
     async def _deferred_create(self, ctx: _DeferredSessionContext) -> None:
-        """Background task: acquire capacity slot, then create env."""
+        """Background task: acquire capacity slot, then create env.
+
+        Two-phase acquisition:
+          1. capacity_sem  – limits total running envs (held for env lifetime)
+          2. startup_sem   – limits concurrent Unity startups (held only during
+                             EbAlfred.__init__, released as soon as the process
+                             is running)
+        This prevents a "startup storm" when many capacity slots open at once.
+        """
         try:
             LOGGER.info(f"[Handler] Session {ctx.session_id} waiting for capacity slot...")
             await self._capacity_sem.acquire()
             ctx._holds_slot = True
-            LOGGER.info(f"[Handler] Session {ctx.session_id} acquired slot, creating env...")
-            ctx.env = await self.create_env(ctx.env_config)
+            LOGGER.info(f"[Handler] Session {ctx.session_id} acquired capacity slot, waiting for startup slot...")
+
+            if self._startup_sem is not None:
+                await self._startup_sem.acquire()
+
+            LOGGER.info(f"[Handler] Session {ctx.session_id} starting Unity...")
+            try:
+                ctx.env = await self.create_env(ctx.env_config)
+            finally:
+                if self._startup_sem is not None:
+                    self._startup_sem.release()
+
             LOGGER.info(f"[Handler] Session {ctx.session_id} env ready")
         except Exception as e:
             LOGGER.error(f"[Handler] Session {ctx.session_id} env creation failed: {e}")
