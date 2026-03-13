@@ -10,11 +10,34 @@ It requires a GPU-accelerated X server for rendering.
 
 import asyncio
 import os
-import threading
 import numpy as np
 from PIL import Image
 from dataclasses import dataclass, field
 from typing import Any, Dict, Tuple, List, Optional
+
+# Patch werkzeug to support HTTP 1.1 keep-alive for ai2thor.
+# See serve.py for full explanation.
+import werkzeug.serving as _ws
+
+if not getattr(_ws.WSGIRequestHandler, "_keepalive_patched", False):
+    _orig_send = _ws.WSGIRequestHandler.send_header
+
+    def _ka_send(self, keyword, value):
+        if keyword == "Connection" and value == "close":
+            return
+        _orig_send(self, keyword, value)
+
+    _ws.WSGIRequestHandler.send_header = _ka_send
+
+    _orig_run = _ws.WSGIRequestHandler.run_wsgi
+
+    def _ka_run(self):
+        result = _orig_run(self)
+        self.close_connection = False
+        return result
+
+    _ws.WSGIRequestHandler.run_wsgi = _ka_run
+    _ws.WSGIRequestHandler._keepalive_patched = True
 
 from .utils.prompt import (
     system_prompt,
@@ -25,37 +48,6 @@ from .utils.prompt import (
 from .utils.utils import parse_response, match_action, numpy_to_pil
 
 from vagen.envs.gym_image_env import GymImageEnv
-
-# Thread-local storage for passing x_display to ThorConnector without
-# touching the process-global X_DISPLAY module variable.
-# Each worker thread sets its own _tl.x_display before creating EBAlfEnv;
-# the monkey-patched ThorConnector.__init__ reads it instead of the global.
-_tl = threading.local()
-_patched = False
-_patch_lock = threading.Lock()
-
-
-def _ensure_thor_patched():
-    """One-time monkey-patch: make ThorConnector read display from thread-local."""
-    global _patched
-    if _patched:
-        return
-    with _patch_lock:
-        if _patched:
-            return
-        from embodiedbench.envs.eb_alfred.thor_connector import ThorConnector
-
-        _orig_init = ThorConnector.__init__
-
-        def _patched_init(self, x_display=None, **kwargs):
-            # Prefer thread-local display (set by EbAlfred.__init__)
-            tl_display = getattr(_tl, "x_display", None)
-            if tl_display is not None:
-                x_display = tl_display
-            _orig_init(self, x_display=x_display, **kwargs)
-
-        ThorConnector.__init__ = _patched_init
-        _patched = True
 
 
 @dataclass
@@ -110,24 +102,19 @@ class EbAlfred(GymImageEnv):
         filtered = {k: v for k, v in env_config.items() if k in valid_keys}
         self.config = EbAlfredEnvConfig(**filtered)
 
-        # Patch ThorConnector to read x_display from thread-local storage
-        # instead of the process-global X_DISPLAY.  This allows fully
-        # parallel env creation across GPUs with no locks.
-        _ensure_thor_patched()
+        # Set X display before importing/creating EBAlfEnv
+        import embodiedbench.envs.eb_alfred.EBAlfEnv as ebalfenv_mod
+        ebalfenv_mod.X_DISPLAY = self.config.x_display
         from embodiedbench.envs.eb_alfred.EBAlfEnv import EBAlfEnv
 
-        _tl.x_display = self.config.x_display
-        try:
-            self.env = EBAlfEnv(
-                eval_set=self.config.eval_set,
-                exp_name=self.config.exp_name,
-                down_sample_ratio=self.config.down_sample_ratio,
-                selected_indexes=self.config.selected_indexes,
-                detection_box=self.config.detection_box,
-                resolution=self.config.resolution,
-            )
-        finally:
-            _tl.x_display = None
+        self.env = EBAlfEnv(
+            eval_set=self.config.eval_set,
+            exp_name=self.config.exp_name,
+            down_sample_ratio=self.config.down_sample_ratio,
+            selected_indexes=self.config.selected_indexes,
+            detection_box=self.config.detection_box,
+            resolution=self.config.resolution,
+        )
 
         # Adapter state (reset per episode)
         self._total_turns: int = 0
@@ -142,24 +129,20 @@ class EbAlfred(GymImageEnv):
     # ------------------------------------------------------------------
 
     async def close(self) -> None:
-        """Close AI2-THOR process.
-
-        Applies a 30-second timeout so that a hung Unity process or
-        WSGI server shutdown does not block the event loop forever.
-        """
+        """Close AI2-THOR process with timeout to prevent hangs."""
         try:
             await asyncio.wait_for(
-                asyncio.to_thread(self.env.close), timeout=30.0
+                asyncio.to_thread(self.env.close),
+                timeout=30.0,
             )
         except asyncio.TimeoutError:
-            # Force-kill the Unity process if graceful shutdown hangs
-            import signal
-            pid = getattr(self.env.env, "unity_pid", None)
-            if pid:
-                try:
-                    os.kill(pid, signal.SIGKILL)
-                except OSError:
-                    pass
+            import logging
+            logging.getLogger(__name__).warning(
+                "[EbAlfred] close() timed out after 30s, Unity process may be leaked"
+            )
+        except Exception as e:
+            import logging
+            logging.getLogger(__name__).warning(f"[EbAlfred] close() error: {e}")
 
     async def system_prompt(self) -> Dict[str, Any]:
         """
@@ -195,7 +178,13 @@ class EbAlfred(GymImageEnv):
         episode_idx = seed % self.env.number_of_episodes
         self.env._current_episode_num = episode_idx
 
-        await asyncio.to_thread(self.env.reset)
+        try:
+            await asyncio.wait_for(
+                asyncio.to_thread(self.env.reset),
+                timeout=300.0,
+            )
+        except asyncio.TimeoutError:
+            raise RuntimeError(f"EbAlfred reset() timed out after 300s for episode {episode_idx}")
 
         # Reset adapter state
         self._total_turns = 0
@@ -277,9 +266,18 @@ class EbAlfred(GymImageEnv):
 
                 # Execute in AI2-THOR
                 self._total_env_steps += 1
-                obs_raw, step_reward, step_done, step_info = (
-                    await asyncio.to_thread(self.env.step, matched)
-                )
+                try:
+                    obs_raw, step_reward, step_done, step_info = (
+                        await asyncio.wait_for(
+                            asyncio.to_thread(self.env.step, matched),
+                            timeout=60.0,
+                        )
+                    )
+                except asyncio.TimeoutError:
+                    self._last_action = matched
+                    self._last_feedback = "Action timed out (Unity may be unresponsive)."
+                    done = True
+                    break
 
                 self._last_action = matched
                 self._last_feedback = step_info.get("env_feedback", "")

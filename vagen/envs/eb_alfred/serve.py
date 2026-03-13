@@ -24,7 +24,37 @@ Usage:
 import argparse
 import asyncio
 import concurrent.futures
+import logging
 import uvicorn
+
+# Patch werkzeug to support HTTP 1.1 keep-alive for ai2thor.
+# ai2thor (2019) uses a Flask/werkzeug HTTP server for Unity<->Python
+# communication. Modern werkzeug (3.x) always sends "Connection: close",
+# which breaks ai2thor's Unity client - it tries to reuse the closed
+# socket and gets SocketException. This patch removes that header.
+import werkzeug.serving as _ws
+
+_original_send_header = _ws.WSGIRequestHandler.send_header
+
+
+def _keepalive_send_header(self, keyword, value):
+    if keyword == "Connection" and value == "close":
+        return
+    _original_send_header(self, keyword, value)
+
+
+_ws.WSGIRequestHandler.send_header = _keepalive_send_header
+
+_original_run_wsgi = _ws.WSGIRequestHandler.run_wsgi
+
+
+def _keepalive_run_wsgi(self):
+    result = _original_run_wsgi(self)
+    self.close_connection = False
+    return result
+
+
+_ws.WSGIRequestHandler.run_wsgi = _keepalive_run_wsgi
 
 from vagen.envs_remote.service import build_gym_service
 from .handler import EbAlfredHandler
@@ -76,6 +106,11 @@ def main():
         help="Thread pool size for Unity instance creation (default: 128)",
     )
     args = parser.parse_args()
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    )
 
     x_displays = args.x_displays.split(",") if args.x_displays else None
 

@@ -118,6 +118,7 @@ class BaseGymHandler(ABC):
         self._sessions[session_id] = SessionContext(
             session_id=session_id,
             env=env,
+            env_config=env_config,
             created_at=time.time(),
             last_access=time.time(),
         )
@@ -195,9 +196,24 @@ class BaseGymHandler(ABC):
         return self._obs_to_result(obs)
 
     async def _handle_reset(self, ctx: SessionContext, params: Dict[str, Any]) -> HandlerResult:
-        """Handle reset call."""
+        """Handle reset call. If reset fails, recreate the environment and retry."""
         seed = params.get("seed", 0)
-        obs, info = await ctx.env.reset(seed)
+        try:
+            obs, info = await ctx.env.reset(seed)
+        except Exception as e:
+            LOGGER.warning(
+                f"[Handler] Reset failed for session {ctx.session_id}: {e}. "
+                f"Recreating environment..."
+            )
+            # Try to close the broken env
+            try:
+                await ctx.env.close()
+            except Exception:
+                pass
+            # Recreate the environment
+            env_config = getattr(ctx, "env_config", {})
+            ctx.env = await self.create_env(env_config)
+            obs, info = await ctx.env.reset(seed)
 
         result_data = {
             "obs": obs.get("obs_str", ""),
@@ -354,5 +370,6 @@ class SessionContext:
 
     session_id: str
     env: Any  # Environment instance
+    env_config: Dict[str, Any]  # Config used to create the env (for recreation)
     created_at: float
     last_access: float

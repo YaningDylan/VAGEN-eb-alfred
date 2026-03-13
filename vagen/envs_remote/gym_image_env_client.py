@@ -98,7 +98,6 @@ class GymImageEnvClient(GymImageEnv):
         self._client: Optional[httpx.AsyncClient] = None
         self._session_id: Optional[str] = None
         self._current_url_index: int = 0
-        self._queued_wait_s: float = 0.0  # extra timeout hint from server when queued
 
         # Remove client-specific keys before passing to remote
         self._remote_env_config = {
@@ -166,6 +165,11 @@ class GymImageEnvClient(GymImageEnv):
         If seed is provided, the server will also perform reset and return
         the initial observation and info.
 
+        IMPORTANT: This method does NOT retry on failure. Each /connect
+        creates a new session on the server, so retrying would leak sessions.
+        The timeout (configured via env_config["timeout"]) should be set
+        high enough to cover slow environment creation (e.g., AI2-THOR startup).
+
         Args:
             seed: Optional seed for initial reset
 
@@ -185,79 +189,43 @@ class GymImageEnvClient(GymImageEnv):
         if self.token:
             headers["X-API-Key"] = self.token
 
-        last_exc: Optional[Exception] = None
+        base_url = self.base_urls[self._current_url_index]
+        url = f"{base_url}/connect"
 
-        for attempt in range(self.retries + 1):
-            url_index = self._pick_url_index(attempt)
-            base_url = self.base_urls[url_index]
-            url = f"{base_url}/connect"
+        try:
+            response = await self._client.post(url, content=body, headers=headers)
 
-            try:
-                response = await self._client.post(url, content=body, headers=headers)
+            if response.status_code == 503:
+                raise RuntimeError("server busy")
 
-                if response.status_code == 503:
-                    raise RuntimeError("server busy")
+            response.raise_for_status()
 
-                response.raise_for_status()
+            # Decode response
+            content_type = response.headers.get("content-type", "")
+            data, images = decode_multipart(content_type, response.content)
 
-                # Decode response
-                content_type = response.headers.get("content-type", "")
-                data, images = decode_multipart(content_type, response.content)
+            self._session_id = data.get("session_id")
+            if not self._session_id:
+                raise RuntimeError("Server did not return session_id")
 
-                self._session_id = data.get("session_id")
-                if not self._session_id:
-                    raise RuntimeError("Server did not return session_id")
+            LOGGER.info(
+                f"[Client] Connected to {base_url}, session_id={self._session_id}"
+                + (f", seed={seed}" if seed is not None else "")
+            )
 
-                self._current_url_index = url_index
+            # If seed was provided, return reset result
+            if seed is not None and "obs" in data:
+                obs = {"obs_str": data.get("obs", "")}
+                if images:
+                    obs["multi_modal_input"] = {"<image>": images}
+                info = data.get("info", {})
+                return obs, info
 
-                # If server says session is queued, store estimated wait
-                # so subsequent _call("reset") uses a longer timeout.
-                status = data.get("status", "ready")
-                if status == "queued":
-                    self._queued_wait_s = float(data.get("estimated_wait_s", 300))
-                    LOGGER.info(
-                        f"[Client] Session {self._session_id} queued at {base_url} "
-                        f"(est wait {self._queued_wait_s:.0f}s)"
-                    )
-                else:
-                    LOGGER.info(
-                        f"[Client] Connected to {base_url}, session_id={self._session_id}"
-                        + (f", seed={seed}" if seed is not None else "")
-                    )
+            return None
 
-                # If seed was provided, return reset result
-                if seed is not None and "obs" in data:
-                    obs = {"obs_str": data.get("obs", "")}
-                    if images:
-                        obs["multi_modal_input"] = {"<image>": images}
-                    info = data.get("info", {})
-                    return obs, info
-
-                return None
-
-            except Exception as e:
-                last_exc = e
-
-                if attempt == self.retries:
-                    LOGGER.error(
-                        f"[Client] Connect failed after {self.retries} retries to {base_url}: {e}"
-                    )
-                    raise RuntimeError(f"Failed to connect to any server: {e}") from e
-
-                jitter = self.backoff_jitter_min + self.backoff_jitter_range * random.random()
-                delay = self.backoff * (2**attempt) * jitter
-
-                if self.log_retries:
-                    next_url_index = self._pick_url_index(attempt + 1)
-                    next_url = self.base_urls[next_url_index]
-                    LOGGER.warning(
-                        f"[Client] Connect retry (current={base_url}, next={next_url}, "
-                        f"attempt={attempt + 1}/{self.retries}, delay={delay:.2f}s, error={type(e).__name__})"
-                    )
-
-                await asyncio.sleep(delay)
-
-        raise RuntimeError(f"Failed to connect: {last_exc}")
+        except Exception as e:
+            LOGGER.error(f"[Client] Connect failed to {base_url}: {e}")
+            raise RuntimeError(f"Failed to connect to {base_url}: {e}") from e
 
     def _pick_url_index(self, attempt: int) -> int:
         """
@@ -310,17 +278,6 @@ class GymImageEnvClient(GymImageEnv):
         if self.token:
             headers["X-API-Key"] = self.token
 
-        # If session was queued, the first reset may block on the server while
-        # it waits for a capacity slot.  Use an extended timeout for that call.
-        call_timeout = self.timeout
-        if method == "reset" and self._queued_wait_s > 0:
-            call_timeout = self.timeout + self._queued_wait_s
-            LOGGER.info(
-                f"[Client] Using extended timeout {call_timeout:.0f}s for reset "
-                f"(base={self.timeout:.0f}s + queued_wait={self._queued_wait_s:.0f}s)"
-            )
-            self._queued_wait_s = 0.0  # only extend for the first reset
-
         last_exc: Optional[Exception] = None
 
         for attempt in range(self.retries + 1):
@@ -329,10 +286,7 @@ class GymImageEnvClient(GymImageEnv):
             url = f"{base_url}/call"
 
             try:
-                response = await self._client.post(
-                    url, content=body, headers=headers,
-                    timeout=call_timeout,
-                )
+                response = await self._client.post(url, content=body, headers=headers)
 
                 if response.status_code == 503:
                     raise RuntimeError("server busy")
@@ -402,13 +356,17 @@ class GymImageEnvClient(GymImageEnv):
         Reset remote environment.
 
         On first call: Establishes connection with server and obtains session_id.
-        On subsequent calls: Uses existing session_id.
+        The /connect endpoint already performs reset with the seed, so we use
+        that result directly to avoid a redundant /call reset.
 
-        This is where the session is created and locked to a specific server URL.
+        On subsequent calls: Uses existing session_id and calls /call reset.
         """
-        # Establish connection on first reset
-        await self._ensure_connected_for_reset(seed)
+        # First reset: connect + reset in one round-trip
+        connect_result = await self._ensure_connected_for_reset(seed)
+        if connect_result is not None:
+            return connect_result
 
+        # Subsequent resets: call reset via /call
         data, images = await self._call("reset", params={"seed": seed})
 
         obs = {"obs_str": data.get("obs", "")}

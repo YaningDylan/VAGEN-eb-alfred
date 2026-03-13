@@ -13,3 +13,9 @@ at the top of your entry point.
 import ray._private.accelerators.tpu as _tpu_mod
 
 _tpu_mod.TPUAcceleratorManager.get_current_node_num_accelerators = staticmethod(lambda: 0)
+
+# Disable torch.compile if env var is set
+import os as _os
+if _os.environ.get("TORCH_COMPILE_DISABLE") == "1":
+    import torch._dynamo
+    torch._dynamo.config.disable = True

@@ -71,6 +71,11 @@ def run_ppo(config, task_runner_class=None) -> None:
             runtime_env_kwargs["env_vars"] = runtime_env_vars
 
         runtime_env = OmegaConf.merge(default_runtime_env, runtime_env_kwargs)
+        # Propagate torch compile disable to Ray workers
+        if os.environ.get("TORCH_COMPILE_DISABLE") == "1":
+            env_vars = OmegaConf.to_container(runtime_env.get("env_vars", {}))
+            env_vars["TORCH_COMPILE_DISABLE"] = "1"
+            runtime_env = OmegaConf.merge(runtime_env, {"env_vars": env_vars})
         ray_init_kwargs = OmegaConf.create({**ray_init_kwargs, "runtime_env": runtime_env})
         print(f"ray init kwargs: {ray_init_kwargs}")
         ray.init(**OmegaConf.to_container(ray_init_kwargs))

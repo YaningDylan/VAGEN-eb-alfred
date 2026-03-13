@@ -84,6 +84,10 @@ class AgentData:
         self.response_mask: List[int] = []
         self.response_logprobs: List[float] = []
 
+        # Accumulated multi-modal inputs from processor calls (pixel_values, image_grid_thw)
+        self.accumulated_pixel_values: List[Any] = []
+        self.accumulated_image_grid_thw: List[Any] = []
+
         # Env stats
         self.env_rewards: List[float] = []
         self.traj_success: bool = False
@@ -240,8 +244,6 @@ class GymAgentLoop(AgentLoopBase):
         resp_len = len(agent_data.response_mask)
         response_ids = agent_data.prompt_ids[-resp_len:] if resp_len else []
         prompt_ids = agent_data.prompt_ids[: len(agent_data.prompt_ids) - resp_len]
-        multi_modal_data = {"image": agent_data.image_data} if agent_data.image_data else {}
-
         if len(prompt_ids) > self.prompt_length:
             logger.warning(
                 f"In env:{agent_data.env_name}, prompt_ids length {len(prompt_ids)} exceeds prompt_length {self.prompt_length}",
@@ -251,9 +253,49 @@ class GymAgentLoop(AgentLoopBase):
                 f"In env:{agent_data.env_name}, response_ids length {len(response_ids)} exceeds response_length {self.response_length}",
             )
 
+        # Truncate prompt and response
+        truncated_prompt_ids = prompt_ids[-self.prompt_length:]
+        truncated_response_ids = response_ids[: self.response_length]
+
+        # Build accumulated multi_modal_inputs from rollout processor calls.
+        # This ensures pixel_values match the exact image tokens in input_ids,
+        # avoiding resolution mismatches from re-processing in _postprocess.
+        import torch as _torch
+        accumulated_mm = {}
+        if agent_data.accumulated_pixel_values:
+            accumulated_mm["pixel_values"] = _torch.cat(agent_data.accumulated_pixel_values, dim=0)
+        if agent_data.accumulated_image_grid_thw:
+            accumulated_mm["image_grid_thw"] = _torch.cat(agent_data.accumulated_image_grid_thw, dim=0)
+
+        # When prompt is left-truncated, early images' tokens may be removed.
+        # Filter image_data and pixel_values to match remaining images.
+        kept_images = agent_data.image_data
+        if agent_data.image_data and self.processor is not None:
+            vision_start_id = self.processor.tokenizer.convert_tokens_to_ids("<|vision_start|>")
+            full_ids = truncated_prompt_ids + truncated_response_ids
+            n_images_in_seq = sum(1 for t in full_ids if t == vision_start_id)
+            if n_images_in_seq < len(agent_data.image_data):
+                n_removed = len(agent_data.image_data) - n_images_in_seq
+                kept_images = agent_data.image_data[-n_images_in_seq:] if n_images_in_seq > 0 else []
+                # Also trim pixel_values/image_grid_thw to match
+                if "image_grid_thw" in accumulated_mm and n_images_in_seq > 0:
+                    accumulated_mm["image_grid_thw"] = accumulated_mm["image_grid_thw"][-n_images_in_seq:]
+                    # Recompute pixel_values count from kept grid
+                    kept_pv_count = accumulated_mm["image_grid_thw"].prod(dim=1).sum().item()
+                    if "pixel_values" in accumulated_mm:
+                        accumulated_mm["pixel_values"] = accumulated_mm["pixel_values"][-kept_pv_count:]
+                elif n_images_in_seq == 0:
+                    accumulated_mm = {}
+                logger.warning(
+                    f"In env:{agent_data.env_name}, truncation removed "
+                    f"{n_removed} images ({len(agent_data.image_data)} -> {n_images_in_seq})"
+                )
+
+        multi_modal_data = {"image": kept_images} if kept_images else {}
+
         output = AgentLoopOutput(
-            prompt_ids=prompt_ids[-self.prompt_length:],
-            response_ids=response_ids[: self.response_length],
+            prompt_ids=truncated_prompt_ids,
+            response_ids=truncated_response_ids,
             response_mask=agent_data.response_mask[: self.response_length],
             multi_modal_data=multi_modal_data,
             response_logprobs=(
@@ -262,7 +304,11 @@ class GymAgentLoop(AgentLoopBase):
             reward_score=sum(agent_data.env_rewards) if agent_data.env_rewards else 0.0,
             num_turns=agent_data.env_turns,
             metrics=agent_data.metrics,
-            extra_fields={ "image_data": agent_data.image_data,"reward_extra_info": {"traj_success": float(agent_data.traj_success)}},
+            extra_fields={
+                "image_data": agent_data.image_data,
+                "reward_extra_info": {"traj_success": float(agent_data.traj_success)},
+                "rollout_multi_modal_inputs": accumulated_mm if accumulated_mm else None,
+            },
         )
         return output
 
@@ -280,6 +326,11 @@ class GymAgentLoop(AgentLoopBase):
             )
             model_inputs = self.processor(text=[raw_prompt], images=agent_data.image_data or None, return_tensors="pt")
             agent_data.prompt_ids = model_inputs.pop("input_ids").squeeze(0).tolist()
+            # Save pixel_values and image_grid_thw for consistent training
+            if "pixel_values" in model_inputs:
+                agent_data.accumulated_pixel_values.append(model_inputs["pixel_values"])
+            if "image_grid_thw" in model_inputs:
+                agent_data.accumulated_image_grid_thw.append(model_inputs["image_grid_thw"])
         else:
             if agent_data.image_data:
                 raise ValueError("Environment returned images but `processor` is None.")
@@ -401,6 +452,11 @@ class GymAgentLoop(AgentLoopBase):
             )
             model_inputs = self.processor(text=[raw_user_suffix], images=new_images or None, return_tensors="pt")
             response_ids = model_inputs.pop("input_ids").squeeze(0).tolist()
+            # Accumulate pixel_values and image_grid_thw for consistent training
+            if "pixel_values" in model_inputs:
+                agent_data.accumulated_pixel_values.append(model_inputs["pixel_values"])
+            if "image_grid_thw" in model_inputs:
+                agent_data.accumulated_image_grid_thw.append(model_inputs["image_grid_thw"])
         else:
             if new_images:
                 raise ValueError("Environment returned images but `processor` is None.")

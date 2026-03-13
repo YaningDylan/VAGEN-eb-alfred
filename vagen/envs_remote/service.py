@@ -240,7 +240,8 @@ def build_gym_service(handler: BaseGymHandler) -> FastAPI:
             LOGGER.error(f"[Service] Connect error: {e}")
             raise HTTPException(status_code=500, detail=str(e))
         except Exception as e:
-            LOGGER.error(f"[Service] Connect error: {e}")
+            import traceback
+            LOGGER.error(f"[Service] Connect error: {e}\n{traceback.format_exc()}")
             raise HTTPException(status_code=500, detail=str(e))
         finally:
             if acquired and _sem is not None:
@@ -316,7 +317,8 @@ def build_gym_service(handler: BaseGymHandler) -> FastAPI:
                 raise HTTPException(status_code=503, detail=str(e))
             raise HTTPException(status_code=500, detail=str(e))
         except Exception as e:
-            LOGGER.error(f"[Service] Call error: {e}")
+            import traceback
+            LOGGER.error(f"[Service] Call error: {e}\n{traceback.format_exc()}")
             raise HTTPException(status_code=500, detail=str(e))
         finally:
             if acquired and _sem is not None:
