@@ -6,7 +6,7 @@
 #
 # Key differences from ERA:
 #   - ZeRO-2 instead of ZeRO-3 (4xH100 has plenty of VRAM, no offloading needed)
-#   - eval_strategy="steps" with 5% hold-out eval set (ERA had eval_strategy="no")
+#   - eval_strategy="steps" with 20 base-split samples as eval (ERA had eval_strategy="no")
 #   - model_max_length=8192 (aligned with ERA)
 #
 # Prerequisites:
@@ -30,6 +30,7 @@ LLM_PATH="Qwen/Qwen2.5-VL-3B-Instruct"
 SAVE_DIR="/root/workspace/VAGEN-eb-alfred/exps/sft"
 IMAGE_FOLDER="/root/workspace/era_sft_data/EB-ALFRED_trajectory_augmented_prior_dataset"
 DATA_YAML="/root/workspace/era_sft_data/vagen_format/stage.yaml"
+EVAL_TRAJ="/root/workspace/era_sft_data/vagen_format/trajectory_vagen.json"
 
 RUN_NAME="${LLM_VERSION}-sft-stage"
 echo "SFT_RUN_NAME: ${RUN_NAME}"
@@ -58,9 +59,10 @@ torchrun \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 1 \
+    --eval_data_path "${EVAL_TRAJ}" \
+    --n_eval_samples 20 \
     --eval_strategy "steps" \
     --eval_steps 200 \
-    --eval_split_ratio 0.05 \
     --save_strategy "steps" \
     --save_steps 500 \
     --save_total_limit 3 \

@@ -57,9 +57,14 @@ class DataArguments:
     data_path: str = field(default=None)
     image_folder: Optional[str] = field(default=None)
     processor: Optional[object] = field(default=None)
-    eval_split_ratio: float = field(
-        default=0.05,
-        metadata={"help": "Fraction of trajectory data to hold out for eval (default 5%)"},
+    eval_data_path: Optional[str] = field(
+        default=None,
+        metadata={"help": "Path to trajectory JSON for eval (base split only). If set, "
+                  "n_eval_samples are drawn from base-split entries."},
+    )
+    n_eval_samples: int = field(
+        default=20,
+        metadata={"help": "Number of base-split samples to hold out for eval"},
     )
 
 
@@ -89,13 +94,19 @@ class VagenSFTDataset(Dataset):
     The conversations use standard <think>/<answer> tags (no special tokens).
     """
 
-    def __init__(self, tokenizer, processor, data_path, data_args):
+    def __init__(self, tokenizer, processor, data_path, data_args, preloaded=None):
         super().__init__()
         self.tokenizer = tokenizer
         self.processor = processor
         self.data_args = data_args
         self.list_data_dict = []
         self.list_image_path = []
+
+        if preloaded is not None:
+            self.list_data_dict = preloaded
+            self.list_image_path = [""] * len(preloaded)
+            rank0_print(f"Preloaded dataset: {len(self.list_data_dict)} samples")
+            return
 
         if data_path.endswith(".yaml"):
             with open(data_path) as f:
@@ -350,8 +361,8 @@ def train():
                 p.requires_grad = True
         rank0_print("Visual encoder frozen (merger unfrozen)")
 
-    # Build dataset
-    full_dataset = VagenSFTDataset(
+    # Build train dataset (all data)
+    train_dataset = VagenSFTDataset(
         tokenizer=tokenizer,
         processor=processor,
         data_path=data_args.data_path,
@@ -359,19 +370,25 @@ def train():
     )
     data_collator = SFTDataCollator(tokenizer=tokenizer)
 
-    # Split eval set
+    # Build eval dataset: base-split samples only, no overlap with train
     eval_dataset = None
-    if data_args.eval_split_ratio > 0:
-        total = len(full_dataset)
-        n_eval = max(1, int(total * data_args.eval_split_ratio))
-        n_train = total - n_eval
-        generator = torch.Generator().manual_seed(42)
-        train_dataset, eval_dataset = torch.utils.data.random_split(
-            full_dataset, [n_train, n_eval], generator=generator,
+    if data_args.eval_data_path and data_args.n_eval_samples > 0:
+        with open(data_args.eval_data_path) as f:
+            traj_data = json.load(f)
+        # Filter to base split only (image path contains "/base/")
+        base_samples = [s for s in traj_data if "/base/" in str(s.get("image", ""))]
+        rng = random.Random(42)
+        rng.shuffle(base_samples)
+        eval_samples = base_samples[:data_args.n_eval_samples]
+        rank0_print(f"Eval: {len(eval_samples)} base-split samples (from {len(base_samples)} total base)")
+
+        eval_dataset = VagenSFTDataset(
+            tokenizer=tokenizer,
+            processor=processor,
+            data_path=None,
+            data_args=data_args,
+            preloaded=eval_samples,
         )
-        rank0_print(f"Split: {n_train} train, {n_eval} eval")
-    else:
-        train_dataset = full_dataset
 
     # Train
     trainer = Trainer(
