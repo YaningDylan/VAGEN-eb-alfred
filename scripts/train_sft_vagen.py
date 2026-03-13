@@ -57,6 +57,10 @@ class DataArguments:
     data_path: str = field(default=None)
     image_folder: Optional[str] = field(default=None)
     processor: Optional[object] = field(default=None)
+    eval_split_ratio: float = field(
+        default=0.05,
+        metadata={"help": "Fraction of trajectory data to hold out for eval (default 5%)"},
+    )
 
 
 @dataclass
@@ -68,6 +72,8 @@ class TrainingArguments(transformers.TrainingArguments):
     gradient_checkpointing: bool = field(default=True)
     freeze_visual_encoder: bool = field(default=True)
     attn_implementation: str = field(default="flash_attention_2")
+    eval_strategy: str = field(default="steps")
+    eval_steps: int = field(default=200)
 
 
 # ── Dataset ──
@@ -345,7 +351,7 @@ def train():
         rank0_print("Visual encoder frozen (merger unfrozen)")
 
     # Build dataset
-    train_dataset = VagenSFTDataset(
+    full_dataset = VagenSFTDataset(
         tokenizer=tokenizer,
         processor=processor,
         data_path=data_args.data_path,
@@ -353,13 +359,27 @@ def train():
     )
     data_collator = SFTDataCollator(tokenizer=tokenizer)
 
+    # Split eval set
+    eval_dataset = None
+    if data_args.eval_split_ratio > 0:
+        total = len(full_dataset)
+        n_eval = max(1, int(total * data_args.eval_split_ratio))
+        n_train = total - n_eval
+        generator = torch.Generator().manual_seed(42)
+        train_dataset, eval_dataset = torch.utils.data.random_split(
+            full_dataset, [n_train, n_eval], generator=generator,
+        )
+        rank0_print(f"Split: {n_train} train, {n_eval} eval")
+    else:
+        train_dataset = full_dataset
+
     # Train
     trainer = Trainer(
         model=model,
         processing_class=processor,
         args=training_args,
         train_dataset=train_dataset,
-        eval_dataset=None,
+        eval_dataset=eval_dataset,
         data_collator=data_collator,
     )
 
