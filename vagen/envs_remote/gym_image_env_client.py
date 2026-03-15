@@ -192,12 +192,44 @@ class GymImageEnvClient(GymImageEnv):
         base_url = self.base_urls[self._current_url_index]
         url = f"{base_url}/connect"
 
+        # Retry on 503 or network errors (server busy/overloaded) — safe because
+        # the server has not created any session yet when these errors occur.
+        max_connect_retries = 20
+        connect_retry_base = 5.0  # seconds
+        last_exc = None
+        response = None
+        for connect_attempt in range(max_connect_retries + 1):
+            last_exc = None
+            try:
+                response = await self._client.post(url, content=body, headers=headers)
+            except Exception as e:
+                last_exc = e
+                if connect_attempt >= max_connect_retries:
+                    LOGGER.error(f"[Client] Connect to {base_url} failed after {max_connect_retries} retries: {e}")
+                    raise RuntimeError(f"Failed to connect to {base_url}: {e}") from e
+                jitter = self.backoff_jitter_min + self.backoff_jitter_range * random.random()
+                delay = connect_retry_base * jitter
+                LOGGER.warning(
+                    f"[Client] Connect network error, retry {connect_attempt+1}/{max_connect_retries} in {delay:.1f}s: {e}"
+                )
+                await asyncio.sleep(delay)
+                continue
+
+            if response.status_code != 503:
+                break
+
+            if connect_attempt >= max_connect_retries:
+                LOGGER.error(f"[Client] Connect to {base_url} got 503 after {max_connect_retries} retries")
+                raise RuntimeError(f"Failed to connect to {base_url}: server busy")
+
+            jitter = self.backoff_jitter_min + self.backoff_jitter_range * random.random()
+            delay = connect_retry_base * jitter
+            LOGGER.warning(
+                f"[Client] Connect got 503 (server busy), retry {connect_attempt+1}/{max_connect_retries} in {delay:.1f}s"
+            )
+            await asyncio.sleep(delay)
+
         try:
-            response = await self._client.post(url, content=body, headers=headers)
-
-            if response.status_code == 503:
-                raise RuntimeError("server busy")
-
             response.raise_for_status()
 
             # Decode response
