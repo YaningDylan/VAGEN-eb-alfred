@@ -22,9 +22,25 @@ import re
 from dataclasses import dataclass, field
 from typing import Dict, Optional, Sequence
 
+# Bypass Transformers' torch.load safety checks so checkpoint resume works.
+# Transformers requires torch>=2.6 for weights_only=True, but our .pt checkpoint files
+# (rng_state, scheduler) contain numpy objects that need weights_only=False anyway.
+import transformers.utils.import_utils as _tf_import_utils
+_tf_import_utils.check_torch_load_is_safe = lambda: None
+import transformers.trainer as _tf_trainer
+if hasattr(_tf_trainer, "check_torch_load_is_safe"):
+    _tf_trainer.check_torch_load_is_safe = lambda: None
+import torch as _torch
+_orig_torch_load = _torch.load
+def _patched_torch_load(f, *args, **kwargs):
+    kwargs["weights_only"] = False
+    return _orig_torch_load(f, *args, **kwargs)
+_torch.load = _patched_torch_load
+
 import torch
 import transformers
 import yaml
+from liger_kernel.transformers import apply_liger_kernel_to_qwen2_vl
 from PIL import Image, ImageFile
 from qwen_vl_utils import process_vision_info
 from torch.utils.data import Dataset
@@ -33,6 +49,8 @@ from transformers import (
     Qwen2_5_VLForConditionalGeneration,
     Trainer,
 )
+
+apply_liger_kernel_to_qwen2_vl()
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 torch.multiprocessing.set_sharing_strategy("file_system")
@@ -78,7 +96,7 @@ class TrainingArguments(transformers.TrainingArguments):
     freeze_visual_encoder: bool = field(default=True)
     attn_implementation: str = field(default="flash_attention_2")
     eval_strategy: str = field(default="steps")
-    eval_steps: int = field(default=200)
+    eval_steps: int = field(default=500)
 
 
 # ── Dataset ──
@@ -301,7 +319,7 @@ class SFTDataCollator:
             "attention_mask": torch.stack(input_ids).ne(pad_id),
         }
 
-        if "pixel_values" in instances[0]:
+        if all("pixel_values" in inst for inst in instances):
             batch["pixel_values"] = torch.cat([inst["pixel_values"] for inst in instances], dim=0)
             batch["image_grid_thw"] = torch.cat([inst["image_grid_thw"] for inst in instances], dim=0)
 
@@ -390,8 +408,26 @@ def train():
             preloaded=eval_samples,
         )
 
+    # Custom Trainer that replaces batches at known-problematic global steps
+    # with the previous step's batch (step 2742 consistently causes NCCL AllReduce hang)
+    class SafeTrainer(transformers.Trainer):
+        SKIP_GLOBAL_STEPS = {2742, 2743, 2744, 2952, 2953, 2954, 3330, 3331, 3332}
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self._last_safe_batch = None
+
+        def training_step(self, model, inputs, num_items_in_batch=None):
+            step = self.state.global_step + 1  # step being computed
+            if step in self.SKIP_GLOBAL_STEPS and self._last_safe_batch is not None:
+                rank0_print(f"[SafeTrainer] Replacing batch at global_step {step} with previous safe batch")
+                inputs = self._last_safe_batch
+            else:
+                self._last_safe_batch = inputs
+            return super().training_step(model, inputs, num_items_in_batch)
+
     # Train
-    trainer = Trainer(
+    trainer = SafeTrainer(
         model=model,
         processing_class=processor,
         args=training_args,

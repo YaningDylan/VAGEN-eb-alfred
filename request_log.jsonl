@@ -803,3 +803,7 @@
 {"timestamp": "2026-03-09 07:58:34", "client": "127.0.0.1", "method": "POST", "path": "/call", "status": 200, "elapsed_s": 0.338}
 {"timestamp": "2026-03-09 07:58:35", "type": "detail", "path": "/call", "data": {"session_id": "8963097dea9949e694fd117a8aebecec", "method": "close", "params_keys": []}, "num_images": 0}
 {"timestamp": "2026-03-09 07:58:35", "client": "127.0.0.1", "method": "POST", "path": "/call", "status": 200, "elapsed_s": 1.06}
+{"timestamp": "2026-03-14 23:42:12", "client": "127.0.0.1", "method": "GET", "path": "/health", "status": 200, "elapsed_s": 0.002}
+{"timestamp": "2026-03-15 05:03:19", "client": "127.0.0.1", "method": "GET", "path": "/health", "status": 200, "elapsed_s": 0.011}
+{"timestamp": "2026-03-15 05:04:46", "client": "127.0.0.1", "method": "GET", "path": "/health", "status": 200, "elapsed_s": 0.001}
+{"timestamp": "2026-03-15 05:09:47", "client": "127.0.0.1", "method": "GET", "path": "/health", "status": 200, "elapsed_s": 0.011}

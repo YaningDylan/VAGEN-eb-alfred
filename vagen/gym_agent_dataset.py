@@ -31,6 +31,7 @@ class EnvSpec:
     seed_list: Optional[List[int]] = None
     max_turns: int = 1
     response_length_per_turn: Optional[int] = None
+    tag_id: Optional[str] = None
 
 @dataclass
 class EnvSpecs:
