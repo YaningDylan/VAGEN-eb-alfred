@@ -18,3 +18,13 @@ dependencies:
     - pillow
     - numpy
     - python-multipart
+    - opencv-python-headless
+    - scipy
+    - networkx
+    - natsort
+    - pyquaternion
+    - h5py
+    - revtok
+    - vocab
+    - tqdm
+    - hydra-core
