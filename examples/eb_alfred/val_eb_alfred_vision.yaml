@@ -1,18 +1,42 @@
 envs:
   - name: RemoteEnv
-    n_envs: 32
+    n_envs: 16
     data_source: eb_alfred
-    seed: [5001, 5050, 1]
-    max_turns: 5
+    tag_id: eb_alfred_val_common
+    seed: [0, 50, 1]
+    max_turns: 6
     response_length_per_turn: 512
     config:
       base_urls:
         - "http://localhost:8000"
       timeout: 600
-      eval_set: base
+      eval_set: common_sense
       x_display: "0"
       obs_image_size: 500
-      max_turns: 5
+      max_turns: 6
+      max_actions_per_step: 20
+      max_env_steps: 30
+      action_sep: ","
+      prompt_format: free_think
+      use_example_in_sys_prompt: true
+      format_reward: 0.1
+      success_reward: 1.0
+
+  - name: RemoteEnv
+    n_envs: 16
+    data_source: eb_alfred
+    tag_id: eb_alfred_val_spatial
+    seed: [0, 50, 1]
+    max_turns: 6
+    response_length_per_turn: 512
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      timeout: 600
+      eval_set: spatial
+      x_display: "0"
+      obs_image_size: 500
+      max_turns: 6
       max_actions_per_step: 20
       max_env_steps: 30
       action_sep: ","

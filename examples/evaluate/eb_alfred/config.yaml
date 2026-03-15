@@ -11,19 +11,31 @@
 
 envs:
   - name: RemoteEnv
-    n_envs: 20
-    tag_id: eb_alfred_eval
-    seed: [0, 100, 1]
+    n_envs: 32
+    tag_id: eb_alfred_eval_common
+    seed: [0, 50, 1]
     split: test
-    max_turns: 30
+    max_turns: 6
     config:
       base_urls:
         - "http://localhost:8000"
       timeout: 300.0
-      eval_set: base
+      eval_set: common_sense
+
+  - name: RemoteEnv
+    n_envs: 32
+    tag_id: eb_alfred_eval_spatial
+    seed: [0, 50, 1]
+    split: test
+    max_turns: 6
+    config:
+      base_urls:
+        - "http://localhost:8000"
+      timeout: 300.0
+      eval_set: spatial
       x_display: "0"
-      max_turns: 30
-      max_actions_per_step: 1
+      max_turns: 6
+      max_actions_per_step: 20
       action_sep: ","
       prompt_format: free_think
       use_example_in_sys_prompt: true
@@ -36,12 +48,12 @@ envs:
 
 experiment:
   dump_dir: ./rollouts/eb_alfred
-  default_max_turns: 30
+  default_max_turns: 6
 
 run:
   backend: "openai"           # choose one: openai | azure | sglang | vllm | together | claude | gemini
   base_seed: 0
-  max_concurrent_jobs: 3      # limited by env server capacity
+  max_concurrent_jobs: 16     # limited by env server capacity
   resume: skip_completed      # off | skip_completed | force_rerun
   live_summary: true
 
@@ -50,7 +62,7 @@ backends:
     api_key: ""               # or env OPENAI_API_KEY
     base_url: null
     model: "gpt-4o-mini"
-    max_concurrency: 2
+    max_concurrency: 16
     max_retries: 6
     min_backoff: 0.5
     max_backoff: 8.0
@@ -61,7 +73,7 @@ backends:
     azure_api_version: "2024-12-01-preview"
     deployment: "gpt-4o"
     model: ${backends.azure.deployment}
-    max_concurrency: 2
+    max_concurrency: 16
     max_retries: 6
     min_backoff: 0.5
     max_backoff: 8.0
@@ -70,7 +82,7 @@ backends:
     base_url: "http://127.0.0.1:30000/v1"
     api_key: "EMPTY"
     model: "Qwen/Qwen2.5-VL-7B-Instruct"
-    max_concurrency: 2
+    max_concurrency: 16
     max_retries: 6
     min_backoff: 0.5
     max_backoff: 8.0
@@ -79,7 +91,7 @@ backends:
     base_url: "http://127.0.0.1:8000/v1"
     api_key: "EMPTY"
     model: "Qwen2.5-7B-Instruct"
-    max_concurrency: 2
+    max_concurrency: 16
     max_retries: 6
     min_backoff: 0.5
     max_backoff: 8.0
@@ -88,7 +100,7 @@ backends:
     base_url: "https://api.together.xyz/v1"
     api_key: ""
     model: "meta-llama/Llama-3.1-8B-Instruct-Turbo"
-    max_concurrency: 2
+    max_concurrency: 16
     max_retries: 6
     min_backoff: 0.5
     max_backoff: 8.0
@@ -97,7 +109,7 @@ backends:
     api_key: ""               # or env ANTHROPIC_API_KEY
     base_url: null
     model: "claude-sonnet-4-20250514"
-    max_concurrency: 2
+    max_concurrency: 16
     max_retries: 6
     min_backoff: 0.5
     max_backoff: 8.0
@@ -105,7 +117,7 @@ backends:
   gemini:
     api_key: ""               # or env GEMINI_API_KEY / GOOGLE_API_KEY
     model: "gemini-1.5-pro"
-    max_concurrency: 2
+    max_concurrency: 16
     max_retries: 6
     min_backoff: 0.5
     max_backoff: 8.0

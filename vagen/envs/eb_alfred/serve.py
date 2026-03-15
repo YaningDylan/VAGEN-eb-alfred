@@ -118,8 +118,6 @@ def main():
         x_displays=x_displays,
         session_timeout=args.session_timeout,
         max_sessions=args.max_sessions,
-        capacity=args.capacity,
-        startup_concurrency=args.startup_concurrency,
     )
     app = build_gym_service(handler)
 
