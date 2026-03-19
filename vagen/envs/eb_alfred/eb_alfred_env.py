@@ -67,7 +67,7 @@ class EbAlfredEnvConfig:
     max_turns: int = 30
     max_actions_per_step: int = 20
     max_env_steps: int = 30  # Max total environment actions per episode (matches ERA)
-    action_sep: str = ","
+    action_sep: str = "|"
     image_placeholder: str = "<image>"
     prompt_format: str = "free_think"
     use_example_in_sys_prompt: bool = True

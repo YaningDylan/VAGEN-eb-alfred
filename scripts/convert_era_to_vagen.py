@@ -58,11 +58,11 @@ VAGEN_SYSTEM_TEMPLATE = """You are a robot operating in a home. Given a task, yo
 
 Example 1: Pick up the alarm clock and turn on the lamp
 <think>I need to find the alarm clock, pick it up, then find the desk lamp and turn it on.</think>
-<answer>find a AlarmClock</answer>
+<answer>[12, find a AlarmClock] | [78, pick up the AlarmClock] | [25, find a DeskLamp] | [99, turn on the DeskLamp]</answer>
 
 Example 2: Set the box on the table
 <think>I need to find the box, pick it up, then find the dining table and put it down.</think>
-<answer>find a Box</answer>
+<answer>[5, find a Box] | [70, pick up the Box] | [20, find a DiningTable] | [110, put down the object in hand]</answer>
 
 ## Current Task
 {task_instruction}
@@ -70,28 +70,28 @@ Example 2: Set the box on the table
 ## Available Actions (0~{n_actions})
 {action_list_str}
 
-You should output 1 action at a time.
-Output the action name exactly as listed in the available actions, or the action ID (integer).
+You should output a plan of up to 20 actions at a time, separated by "|".
+Output each action using the format [action_id, action_name].
 Your response should be in the format of:
-<think>...</think><answer>action name or action ID</answer>
+<think>...</think><answer>[id1, action1] | [id2, action2] | ...</answer>
 
 Example 1:
 <think>I need to find a mug first. Let me navigate to where mugs might be.</think>
-<answer>find a Mug</answer>
+<answer>[42, find a Mug]</answer>
 
 Example 2:
 <think>The mug is nearby and I'm not holding anything. I should pick it up.</think>
-<answer>pick up the Mug</answer>
+<answer>[78, pick up the Mug]</answer>
 
 Example 3:
 <think>I'm holding the mug and I'm near the table. Let me put it down.</think>
-<answer>put down the object in hand</answer>"""
+<answer>[110, put down the object in hand]</answer>"""
 
 
-def extract_action_name(action_str: str) -> Optional[str]:
+def extract_action_with_id(action_str: str) -> Optional[str]:
     """
-    Extract action name from ERA format like "[64, 'find a Ladle']"
-    or "[109, 'pick up the Ladle']".
+    Extract action from ERA format like "[64, 'find a Ladle']"
+    and return in VAGEN format "[64, find a Ladle]" (preserving action ID).
     """
     action_str = action_str.strip()
 
@@ -99,16 +99,18 @@ def extract_action_name(action_str: str) -> Optional[str]:
     try:
         parsed = ast.literal_eval(action_str)
         if isinstance(parsed, list) and len(parsed) == 2:
-            return str(parsed[1])
+            action_id = parsed[0]
+            action_name = str(parsed[1])
+            return f"[{action_id}, {action_name}]"
     except (ValueError, SyntaxError):
         pass
 
     # Fallback: regex for [id, 'action name']
-    match = re.search(r"\[\s*\d+\s*,\s*['\"](.+?)['\"]\s*\]", action_str)
+    match = re.search(r"\[\s*(\d+)\s*,\s*['\"](.+?)['\"]\s*\]", action_str)
     if match:
-        return match.group(1)
+        return f"[{match.group(1)}, {match.group(2)}]"
 
-    # If it's just a plain action name
+    # If it's just a plain action name (no ID available)
     if not action_str.startswith("["):
         return action_str
 
@@ -195,9 +197,9 @@ def convert_trajectory_sample(sample: Dict[str, Any]) -> Optional[Dict[str, Any]
     if not action_list:
         return None
 
-    # Extract action name
-    action_name = extract_action_name(action_text)
-    if not action_name:
+    # Extract action with ID preserved
+    action_token = extract_action_with_id(action_text)
+    if not action_token:
         return None
 
     # Build VAGEN format
@@ -212,8 +214,8 @@ def convert_trajectory_sample(sample: Dict[str, Any]) -> Optional[Dict[str, Any]
         # Extract the last action and feedback from interaction_history in user text
         user_content = f"<image>\n[Current Observation]:\nDescribe what you see, reflect on the feedback, and plan your next actions."
 
-    # Build assistant response in VAGEN format
-    assistant_content = f"<think>{think_text}</think><answer>{action_name}</answer>"
+    # Build assistant response in VAGEN format (preserving action ID)
+    assistant_content = f"<think>{think_text}</think><answer>{action_token}</answer>"
 
     vagen_sample = {
         "image": image,
@@ -251,7 +253,7 @@ def convert_env_anchored_sample(sample: Dict[str, Any]) -> Optional[Dict[str, An
                 new_convs.append({"from": "gpt", "value": f"<think>{value}</think>"})
             elif toa == 1:
                 # Action - extract and wrap
-                action_name = extract_action_name(value)
+                action_name = extract_action_with_id(value)
                 if action_name:
                     # Merge with previous think if exists
                     if new_convs and new_convs[-1]["from"] == "gpt" and "<think>" in new_convs[-1]["value"]:

@@ -119,6 +119,35 @@ def parse_response(
         raise ValueError(f"Unknown prompt format: {prompt_format}")
 
 
+def parse_action_token(token: str) -> tuple:
+    """
+    Parse a single action token that may contain an action ID.
+
+    Supported formats:
+      - "[id, action_name]"  e.g. "[64, find a Ladle]"
+      - "id, action_name"    e.g. "64, find a Ladle"
+      - plain action name    e.g. "find a Ladle"
+      - plain integer ID     e.g. "42"
+
+    Returns (action_id_or_none, action_name_or_original).
+    """
+    text = token.strip()
+
+    # Try "[id, name]" or "[id, 'name']"
+    m = re.match(r"^\[?\s*(\d+)\s*,\s*['\"]?(.+?)['\"]?\s*\]?$", text)
+    if m:
+        return int(m.group(1)), m.group(2).strip()
+
+    # Plain integer
+    try:
+        return int(text), None
+    except ValueError:
+        pass
+
+    # Plain action name
+    return None, text
+
+
 def match_action(
     action_name: str,
     action_list: List[str],
@@ -127,24 +156,27 @@ def match_action(
     """
     Match a parsed action against the valid action set.
 
-    Supports two formats:
+    Supports formats:
+      - "[id, action_name]": "[64, find a Ladle]" — match by ID
       - Action name (case-insensitive): "find a Cabinet"
       - Action ID (integer): "42"
 
     Returns the original action string if matched, None otherwise.
     """
-    name = action_name.strip()
+    action_id, action_name_parsed = parse_action_token(action_name)
 
-    # Try as integer action ID
-    try:
-        idx = int(name)
-        if 0 <= idx < len(action_list):
-            return action_list[idx]
-    except ValueError:
-        pass
+    # If we got an action ID, use it directly
+    if action_id is not None:
+        if 0 <= action_id < len(action_list):
+            return action_list[action_id]
 
     # Try exact match by name (case-insensitive)
-    return action_map.get(name.lower())
+    if action_name_parsed:
+        matched = action_map.get(action_name_parsed.lower())
+        if matched:
+            return matched
+
+    return None
 
 
 def numpy_to_pil(numpy_array: np.ndarray) -> Image.Image:

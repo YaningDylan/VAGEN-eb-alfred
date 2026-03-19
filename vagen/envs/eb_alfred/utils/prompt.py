@@ -64,7 +64,9 @@ def system_prompt(task_instruction: Optional[str] = None, action_list: Optional[
     if add_task_examples and TASK_EXAMPLES:
         base += "\n\n## Task Examples"
         for i, ex in enumerate(TASK_EXAMPLES):
-            actions_str = ", ".join(ex["actions"])
+            # Show actions in [id, name] format separated by |
+            # IDs are illustrative (actual IDs depend on per-episode action space)
+            actions_str = " | ".join(ex["actions"])
             base += f"\n\nExample {i+1}: {ex['task']}\n<think>{ex['think']}</think>\n<answer>{actions_str}</answer>"
 
     if task_instruction is not None:
@@ -119,42 +121,42 @@ def free_think_format_prompt(max_actions_per_step, action_sep, add_example=True)
     """Generate format prompt for free_think format."""
     if max_actions_per_step == 1:
         base = """You should output 1 action at a time.
-Output the action name exactly as listed in the available actions, or the action ID (integer).
+Output the action using the format [action_id, action_name], e.g. [42, find a Mug].
 Your response should be in the format of:
-<think>...</think><answer>action name or action ID</answer>"""
+<think>...</think><answer>[action_id, action_name]</answer>"""
     else:
         base = f"""You should output a plan of up to {max_actions_per_step} actions at a time, separated by "{action_sep}".
-Output the action name exactly as listed in the available actions, or the action ID (integer).
+Output each action using the format [action_id, action_name].
 Your response should be in the format of:
-<think>...</think><answer>action1{action_sep} action2{action_sep} ...</answer>"""
+<think>...</think><answer>[id1, action1] {action_sep} [id2, action2] {action_sep} ...</answer>"""
 
     if add_example:
         if max_actions_per_step == 1:
             examples = """
 Example 1:
 <think>I need to find a mug first. Let me navigate to where mugs might be.</think>
-<answer>find a Mug</answer>
+<answer>[42, find a Mug]</answer>
 
 Example 2:
 <think>The mug is nearby and I'm not holding anything. I should pick it up.</think>
-<answer>pick up the Mug</answer>
+<answer>[78, pick up the Mug]</answer>
 
 Example 3:
 <think>I'm holding the mug and I'm near the table. Let me put it down.</think>
-<answer>put down the object in hand</answer>"""
+<answer>[110, put down the object in hand]</answer>"""
         else:
             examples = f"""
 Example 1 (multi-step plan):
 <think>I need to find the alarm clock, pick it up, then find the desk lamp and turn it on.</think>
-<answer>find a AlarmClock{action_sep} pick up the AlarmClock{action_sep} find a DeskLamp{action_sep} turn on the DeskLamp</answer>
+<answer>[12, find a AlarmClock] {action_sep} [78, pick up the AlarmClock] {action_sep} [25, find a DeskLamp] {action_sep} [99, turn on the DeskLamp]</answer>
 
 Example 2 (single action when unsure):
 <think>I am not sure where the mug is. Let me find it first.</think>
-<answer>find a Mug</answer>
+<answer>[42, find a Mug]</answer>
 
 Example 3 (replanning after failure):
 <think>The last action failed because the cabinet was closed. I need to open it first, then pick up the object.</think>
-<answer>open the Cabinet{action_sep} pick up the Mug</answer>"""
+<answer>[87, open the Cabinet] {action_sep} [78, pick up the Mug]</answer>"""
         return base + "\n" + examples
 
     return base
